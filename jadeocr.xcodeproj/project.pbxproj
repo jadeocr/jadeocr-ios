@@ -26,6 +26,7 @@
 		9D7F06CB2547A012002C8947 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7F06C92547A012002C8947 /* LaunchScreen.storyboard */; };
 		9D7F06D52547A794002C8947 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F06D42547A794002C8947 /* DrawingViewController.swift */; };
 		9D7F06D92547B573002C8947 /* OCRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F06D82547B573002C8947 /* OCRController.swift */; };
+		9DC526D42586B07F00F2BF6E /* DeckControlPanelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC526D32586B07F00F2BF6E /* DeckControlPanelDelegate.swift */; };
 		9DC857FD2569E2AE00EA00F9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC857FC2569E2AE00EA00F9 /* HomeViewController.swift */; };
 		9DCDBBAE25802E6E00D62F4B /* deckItemCreate.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCDBBAD25802E6E00D62F4B /* deckItemCreate.xib */; };
 		9DCDBBB12580353500D62F4B /* deckItemCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDBBB02580353500D62F4B /* deckItemCreate.swift */; };
@@ -57,6 +58,7 @@
 		9D7F06CC2547A012002C8947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D7F06D42547A794002C8947 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		9D7F06D82547B573002C8947 /* OCRController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRController.swift; sourceTree = "<group>"; };
+		9DC526D32586B07F00F2BF6E /* DeckControlPanelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckControlPanelDelegate.swift; sourceTree = "<group>"; };
 		9DC857FC2569E2AE00EA00F9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9DCDBBAD25802E6E00D62F4B /* deckItemCreate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = deckItemCreate.xib; sourceTree = "<group>"; };
 		9DCDBBB02580353500D62F4B /* deckItemCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deckItemCreate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				9DD1012D2548CA0B00AD3AE5 /* DrawingDelegate.swift */,
 				9D5D071C2585596F003235D8 /* DeckDelegate.swift */,
+				9DC526D32586B07F00F2BF6E /* DeckControlPanelDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				9D5D071125854838003235D8 /* deckTitle.swift in Sources */,
 				9D650E97256A4036007B17AA /* SignUpViewController.swift in Sources */,
 				9DEC4EEE255099FA0027763F /* SignInViewController.swift in Sources */,
+				9DC526D42586B07F00F2BF6E /* DeckControlPanelDelegate.swift in Sources */,
 				9D7F06D52547A794002C8947 /* DrawingViewController.swift in Sources */,
 				9D7F06D92547B573002C8947 /* OCRController.swift in Sources */,
 				9D7F06BF2547A011002C8947 /* AppDelegate.swift in Sources */,

@@ -62,6 +62,7 @@ class deckItemCreate: UIView {
             }
             
         })
+        delegate?.addNewChar(char: charText.text ?? "")
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {

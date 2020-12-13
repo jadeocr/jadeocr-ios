@@ -8,7 +8,7 @@
 import UIKit
 
 class deckControlPanel: UIView {
-    var delegate:DeckDelegate?
+    var delegateForDeck:DeckDelegate?
     
     @IBOutlet var deckControlPanelContent: UIView!
     
@@ -30,10 +30,10 @@ class deckControlPanel: UIView {
     }
     
     @IBAction func addCardButtonPressed(_ sender: Any) {
-        delegate?.addDeckItem(self)
+        delegateForDeck?.addDeckItem(self)
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        delegate?.donePressed()
+        delegateForDeck?.donePressed()
     }
 }

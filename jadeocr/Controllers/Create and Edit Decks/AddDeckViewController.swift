@@ -43,7 +43,7 @@ class AddDeckViewController: UIViewController, DeckDelegate {
         
         //Add control panel
         let b = deckControlPanel()
-        b.delegate = self
+        b.delegateForDeck = self
         self.stackView.addArrangedSubview(b)
         b.translatesAutoresizingMaskIntoConstraints = false
         b.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -59,6 +59,10 @@ class AddDeckViewController: UIViewController, DeckDelegate {
         self.stackView.insertArrangedSubview(c, at: self.stackView.arrangedSubviews.count - 1)
         c.translatesAutoresizingMaskIntoConstraints = false
         c.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
+    }
+    
+    func addNewChar(char: String) {
+        print(char)
     }
     
     func removeDeckItem(sender: deckItemCreate) {
