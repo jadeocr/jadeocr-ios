@@ -442,7 +442,7 @@
             </objects>
             <point key="canvasLocation" x="3541.40625" y="-553.125"/>
         </scene>
-        <!--Add Deck View Controller-->
+        <!--Add Deck-->
         <scene sceneID="cuN-U9-EY3">
             <objects>
                 <viewController id="GUT-jY-DwA" customClass="AddDeckViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
@@ -465,7 +465,7 @@
                             <constraint firstItem="YSD-p0-dCd" firstAttribute="top" secondItem="kQi-1l-yRJ" secondAttribute="top" id="q9O-QR-SjE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="PfR-s3-DZT"/>
+                    <navigationItem key="navigationItem" title="Add Deck" id="PfR-s3-DZT"/>
                     <connections>
                         <outlet property="scrollView" destination="YSD-p0-dCd" id="n7I-aW-8ya"/>
                         <outlet property="stackView" destination="O0V-bJ-CHS" id="lID-KG-oWH"/>

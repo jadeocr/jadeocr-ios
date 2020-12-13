@@ -9,4 +9,6 @@ import Foundation
 
 protocol DeckDelegate {
     func addDeckItem(_ sender: deckControlPanel)
+    func removeDeckItem(sender: deckItemCreate)
+    func donePressed()
 }

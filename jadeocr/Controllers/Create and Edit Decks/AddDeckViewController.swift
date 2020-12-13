@@ -34,11 +34,19 @@ class AddDeckViewController: UIViewController, DeckDelegate {
         
         //Add input fields
         for _ in 1...2 {
-            let c = deckItemCreate()
+            let c = deckItemCreate(index: self.stackView.arrangedSubviews.count)
+            c.delegate = self
             self.stackView.addArrangedSubview(c)
             c.translatesAutoresizingMaskIntoConstraints = false
             c.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
         }
+        
+//        let d = deckItemCreate(index: self.stackView.arrangedSubviews.count)
+//        d.delegate = self
+//        self.stackView.addArrangedSubview(d)
+//        d.translatesAutoresizingMaskIntoConstraints = false
+//        d.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
+//        self.stackView.removeArrangedSubview(d)
         
         //Add control panel
         let b = deckControlPanel()
@@ -53,9 +61,19 @@ class AddDeckViewController: UIViewController, DeckDelegate {
     }
     
     func addDeckItem(_ sender: deckControlPanel) {
-        let c = deckItemCreate()
+        let c = deckItemCreate(index: self.stackView.arrangedSubviews.count - 1)
+        c.delegate = self
         self.stackView.insertArrangedSubview(c, at: self.stackView.arrangedSubviews.count - 1)
         c.translatesAutoresizingMaskIntoConstraints = false
         c.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
+    }
+    
+    func removeDeckItem(sender: deckItemCreate) {
+        self.stackView.removeArrangedSubview(sender)
+        sender.removeFromSuperview()
+    }
+    
+    func donePressed() {
+        print(self.stackView.arrangedSubviews.count)
     }
 }

@@ -28,7 +28,12 @@ class deckControlPanel: UIView {
         deckControlPanelContent.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(deckControlPanelContent)
     }
+    
     @IBAction func addCardButtonPressed(_ sender: Any) {
         delegate?.addDeckItem(self)
+    }
+    
+    @IBAction func doneButtonPressed(_ sender: Any) {
+        delegate?.donePressed()
     }
 }

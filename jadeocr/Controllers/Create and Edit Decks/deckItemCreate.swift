@@ -13,6 +13,9 @@ class deckItemCreate: UIView {
     @IBOutlet weak var pinyinText: UITextField!
     @IBOutlet weak var defText: UITextField!
     
+    var stackVewPosition:Int?
+    var delegate:DeckDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
@@ -23,6 +26,11 @@ class deckItemCreate: UIView {
         initWithNib()
     }
     
+    convenience init(index: Int) {
+        self.init()
+        stackVewPosition = index
+    }
+    
     func initWithNib() {
         Bundle.main.loadNibNamed("deckItemCreate", owner: self, options: nil)
         deckItemViewContent.frame = bounds
@@ -31,5 +39,6 @@ class deckItemCreate: UIView {
     }
 
     @IBAction func deleteButtonPressed(_ sender: Any) {
+        delegate?.removeDeckItem(sender: self)
     }
 }
