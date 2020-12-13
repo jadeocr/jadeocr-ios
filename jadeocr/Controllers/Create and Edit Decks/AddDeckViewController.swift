@@ -41,13 +41,6 @@ class AddDeckViewController: UIViewController, DeckDelegate {
             c.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
         }
         
-//        let d = deckItemCreate(index: self.stackView.arrangedSubviews.count)
-//        d.delegate = self
-//        self.stackView.addArrangedSubview(d)
-//        d.translatesAutoresizingMaskIntoConstraints = false
-//        d.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
-//        self.stackView.removeArrangedSubview(d)
-        
         //Add control panel
         let b = deckControlPanel()
         b.delegate = self

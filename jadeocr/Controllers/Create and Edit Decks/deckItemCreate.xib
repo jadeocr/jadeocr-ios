@@ -26,6 +26,9 @@
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="finishedEditingCharText:" destination="-1" eventType="editingDidEnd" id="mS5-B4-FxR"/>
+                    </connections>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="xue" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fJn-na-bhm">
                     <rect key="frame" x="190.5" y="16" width="140.5" height="34"/>

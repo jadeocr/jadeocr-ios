@@ -37,7 +37,33 @@ class deckItemCreate: UIView {
         deckItemViewContent.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(deckItemViewContent)
     }
-
+    
+    @IBAction func finishedEditingCharText(_ sender: Any) {
+        GlobalData.getPinyinAndDefinition(char: charText.text ?? "", completion: { result in
+            do {
+                if let parsedResult = try JSONSerialization.jsonObject(with: result, options: []) as? [String: Any] {
+                    if let pinyin = parsedResult["pinyin"] as? [String] {
+                        DispatchQueue.main.async(execute: {
+                            if self.pinyinText.text == "" {
+                                self.pinyinText.text = pinyin[0]
+                            }
+                        })
+                    }
+                    if let definition = parsedResult["definition"] as? String {
+                        DispatchQueue.main.async(execute: {
+                            if self.defText.text == "" {
+                                self.defText.text = definition
+                            }
+                        })
+                    }
+                }
+            } catch let error as NSError {
+                print("Failed to load: \(error.localizedDescription)")
+            }
+            
+        })
+    }
+    
     @IBAction func deleteButtonPressed(_ sender: Any) {
         delegate?.removeDeckItem(sender: self)
     }
