@@ -181,72 +181,6 @@
             </objects>
             <point key="canvasLocation" x="1252" y="-554"/>
         </scene>
-        <!--Decks-->
-        <scene sceneID="h5O-hk-h7d">
-            <objects>
-                <navigationController id="y3E-jS-lNq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Decks" id="XGS-iC-6NT"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ei8-km-iI9">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="tQj-CJ-BIM" kind="relationship" relationship="rootViewController" id="vEZ-ZK-b2W"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qu9-sf-oed" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="322" y="2242"/>
-        </scene>
-        <!--Decks-->
-        <scene sceneID="PBq-Gw-Uho">
-            <objects>
-                <viewController id="tQj-CJ-BIM" customClass="DeckViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tqg-hC-gSt">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="974"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NJQ-CI-Vja">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="974"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="First Deck" id="A7s-PU-cJL">
-                                        <rect key="frame" x="0.0" y="28" width="768" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A7s-PU-cJL" id="2DE-g1-fSZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="NSF-1R-Zdi"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="NSF-1R-Zdi" firstAttribute="bottom" secondItem="NJQ-CI-Vja" secondAttribute="bottom" id="Dtc-y4-MgN"/>
-                            <constraint firstItem="NSF-1R-Zdi" firstAttribute="trailing" secondItem="NJQ-CI-Vja" secondAttribute="trailing" id="J3i-Gc-bv1"/>
-                            <constraint firstItem="NJQ-CI-Vja" firstAttribute="leading" secondItem="NSF-1R-Zdi" secondAttribute="leading" id="XGL-dB-3GH"/>
-                            <constraint firstItem="NJQ-CI-Vja" firstAttribute="top" secondItem="NSF-1R-Zdi" secondAttribute="top" id="cmG-nM-Df3"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Decks" id="8Rr-zp-bGm"/>
-                    <navigationItem key="navigationItem" title="Decks" id="wSZ-eo-97L">
-                        <barButtonItem key="rightBarButtonItem" title="Profile" id="O8B-Wq-YWP">
-                            <connections>
-                                <action selector="profileButtonPressed:" destination="tQj-CJ-BIM" id="Dkz-mf-Lwr"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="NJQ-CI-Vja" id="bnd-al-eia"/>
-                        <segue destination="dNc-se-B0L" kind="presentation" identifier="DrawSegue" modalPresentationStyle="fullScreen" id="qxq-vj-ROn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D3w-PO-3eL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1125" y="2242"/>
-        </scene>
         <!--Sign In View Controller-->
         <scene sceneID="IJb-B4-PcW">
             <objects>
@@ -535,58 +469,9 @@
             </objects>
             <point key="canvasLocation" x="2019" y="-554"/>
         </scene>
-        <!--Show Deck Controller-->
-        <scene sceneID="5J7-oO-L15">
-            <objects>
-                <viewController id="dNc-se-B0L" customClass="ShowDeckController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lT5-Qa-3h0">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUy-I3-Cdc">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
-                                <items>
-                                    <navigationItem title="Title" id="E4z-2c-eJZ">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="7NB-f0-Xpl">
-                                            <connections>
-                                                <segue destination="GNn-O4-w5i" kind="unwind" unwindAction="unwindToDeckViewController:" id="OZg-2G-qHT"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not loaded yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsQ-LO-JAX">
-                                <rect key="frame" x="232.5" y="482.5" width="303" height="59"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="49"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="aMI-yu-tRK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="aMI-yu-tRK" firstAttribute="trailing" secondItem="UUy-I3-Cdc" secondAttribute="trailing" id="5uR-hE-zK5"/>
-                            <constraint firstItem="UUy-I3-Cdc" firstAttribute="leading" secondItem="aMI-yu-tRK" secondAttribute="leading" id="E3F-5A-3JN"/>
-                            <constraint firstItem="jsQ-LO-JAX" firstAttribute="centerX" secondItem="aMI-yu-tRK" secondAttribute="centerX" id="TPx-up-oiQ"/>
-                            <constraint firstItem="jsQ-LO-JAX" firstAttribute="centerY" secondItem="aMI-yu-tRK" secondAttribute="centerY" id="qAI-Z2-Xso"/>
-                            <constraint firstItem="UUy-I3-Cdc" firstAttribute="top" secondItem="aMI-yu-tRK" secondAttribute="top" id="wbQ-4I-IH4"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="dataLabel" destination="jsQ-LO-JAX" id="914-Am-tga"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tzu-9X-sDq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="GNn-O4-w5i" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1904" y="2242"/>
-        </scene>
     </scenes>
     <resources>
         <image name="person-circle" width="30" height="30"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
