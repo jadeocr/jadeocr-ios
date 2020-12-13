@@ -9,7 +9,9 @@ import UIKit
 
 class deckItemCreate: UIView {
     @IBOutlet var deckItemViewContent: UIView!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var charText: UITextField!
+    @IBOutlet weak var pinyinText: UITextField!
+    @IBOutlet weak var defText: UITextField!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,11 +23,6 @@ class deckItemCreate: UIView {
         initWithNib()
     }
     
-    convenience init(titleText: String? = "") {
-        self.init()
-        label.text = titleText
-    }
-    
     func initWithNib() {
         Bundle.main.loadNibNamed("deckItemCreate", owner: self, options: nil)
         deckItemViewContent.frame = bounds
@@ -33,4 +30,6 @@ class deckItemCreate: UIView {
         addSubview(deckItemViewContent)
     }
 
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+    }
 }

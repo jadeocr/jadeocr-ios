@@ -12,6 +12,7 @@ class AddDeckViewController: UIViewController, DeckDelegate {
     @IBOutlet var stackView: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    let deckItemCreateHeight = CGFloat(50)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +34,10 @@ class AddDeckViewController: UIViewController, DeckDelegate {
         
         //Add input fields
         for _ in 1...2 {
-            let c = deckItemCreate(titleText: "hello world")
+            let c = deckItemCreate()
             self.stackView.addArrangedSubview(c)
             c.translatesAutoresizingMaskIntoConstraints = false
-            c.heightAnchor.constraint(equalToConstant: 20).isActive = true
+            c.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
         }
         
         //Add control panel
@@ -52,9 +53,9 @@ class AddDeckViewController: UIViewController, DeckDelegate {
     }
     
     func addDeckItem(_ sender: deckControlPanel) {
-        let c = deckItemCreate(titleText: "hello me")
+        let c = deckItemCreate()
         self.stackView.insertArrangedSubview(c, at: self.stackView.arrangedSubviews.count - 1)
         c.translatesAutoresizingMaskIntoConstraints = false
-        c.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        c.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
     }
 }
