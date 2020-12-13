@@ -7,8 +7,6 @@
 
 import Foundation
 
-import UIKit
-
 protocol DrawingDelegate {
     func checked(_ sender: OCRController)
 }
