@@ -9,7 +9,7 @@ import Foundation
 
 protocol DeckDelegate {
     func addDeckItem(_ sender: deckControlPanel)
-    func removeDeckItem(sender: deckItemCreate)
+    func removeDeckItem(sender: deckItemCreate, deckItemId: String)
     func donePressed()
-    func addNewChar(char: String)
+    func addNewChar(char: String, pinyin: String, definition: String, deckItemId: String)
 }

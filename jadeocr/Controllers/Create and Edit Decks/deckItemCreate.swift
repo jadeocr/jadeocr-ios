@@ -8,10 +8,15 @@
 import UIKit
 
 class deckItemCreate: UIView {
+    
     @IBOutlet var deckItemViewContent: UIView!
     @IBOutlet weak var charText: UITextField!
     @IBOutlet weak var pinyinText: UITextField!
     @IBOutlet weak var defText: UITextField!
+    
+    var deckItemId = "\(UUID.init())"
+    var pinyinTextEdited = false
+    var defTextEdited = false
     
     var stackVewPosition:Int?
     var delegate:DeckDelegate?
@@ -38,34 +43,45 @@ class deckItemCreate: UIView {
         addSubview(deckItemViewContent)
     }
     
+    func addDataToParent() {
+        self.delegate?.addNewChar(char: self.charText.text ?? "", pinyin: self.pinyinText.text ?? "", definition: self.defText.text ?? "", deckItemId: deckItemId)
+    }
+    
     @IBAction func finishedEditingCharText(_ sender: Any) {
         GlobalData.getPinyinAndDefinition(char: charText.text ?? "", completion: { result in
             do {
                 if let parsedResult = try JSONSerialization.jsonObject(with: result, options: []) as? [String: Any] {
-                    if let pinyin = parsedResult["pinyin"] as? [String] {
-                        DispatchQueue.main.async(execute: {
-                            if self.pinyinText.text == "" {
-                                self.pinyinText.text = pinyin[0]
-                            }
-                        })
-                    }
-                    if let definition = parsedResult["definition"] as? String {
-                        DispatchQueue.main.async(execute: {
-                            if self.defText.text == "" {
-                                self.defText.text = definition
-                            }
-                        })
-                    }
+                    DispatchQueue.main.async(execute: {
+                        if let pinyin = parsedResult["pinyin"] as? [String] {
+                            if !self.pinyinTextEdited {
+                                    self.pinyinText.text = pinyin[0]
+                                }
+                        }
+                        if let definition = parsedResult["definition"] as? String {
+                            if !self.defTextEdited {
+                                    self.defText.text = definition
+                                }
+                        }
+                        self.addDataToParent()
+                    })
                 }
             } catch let error as NSError {
                 print("Failed to load: \(error.localizedDescription)")
             }
-            
         })
-        delegate?.addNewChar(char: charText.text ?? "")
+    }
+    
+    @IBAction func finishedEditingPinyinText(_ sender: Any) {
+        self.pinyinTextEdited = true
+        self.addDataToParent()
+    }
+    
+    @IBAction func finishedEditingDefText(_ sender: Any) {
+        self.defTextEdited = true
+        self.addDataToParent()
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
-        delegate?.removeDeckItem(sender: self)
+        delegate?.removeDeckItem(sender: self, deckItemId: deckItemId)
     }
 }

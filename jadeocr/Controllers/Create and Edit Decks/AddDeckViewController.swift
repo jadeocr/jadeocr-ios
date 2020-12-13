@@ -61,16 +61,23 @@ class AddDeckViewController: UIViewController, DeckDelegate {
         c.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
     }
     
-    func addNewChar(char: String) {
-        print(char)
+    var charDict: [String: [String: String]] = [:]
+    func addNewChar(char: String, pinyin: String, definition: String, deckItemId: String) {
+        charDict[deckItemId] = [
+            "char": char,
+            "pinyin": pinyin,
+            "definition": definition,
+        ]
     }
     
-    func removeDeckItem(sender: deckItemCreate) {
+    func removeDeckItem(sender: deckItemCreate, deckItemId: String) {
+        charDict[deckItemId] = nil
         self.stackView.removeArrangedSubview(sender)
         sender.removeFromSuperview()
     }
     
     func donePressed() {
         print(self.stackView.arrangedSubviews.count)
+        print(charDict)
     }
 }
