@@ -47,7 +47,7 @@ class deckItemCreate: UIView {
         self.delegate?.addNewChar(char: self.charText.text ?? "", pinyin: self.pinyinText.text ?? "", definition: self.defText.text ?? "", deckItemId: deckItemId)
     }
     
-    @IBAction func finishedEditingCharText(_ sender: Any) {
+    @IBAction func charTextChanged(_ sender: Any) {
         GlobalData.getPinyinAndDefinition(char: charText.text ?? "", completion: { result in
             do {
                 if let parsedResult = try JSONSerialization.jsonObject(with: result, options: []) as? [String: Any] {
@@ -71,12 +71,12 @@ class deckItemCreate: UIView {
         })
     }
     
-    @IBAction func finishedEditingPinyinText(_ sender: Any) {
+    @IBAction func pinyinTextChanged(_ sender: Any) {
         self.pinyinTextEdited = true
         self.addDataToParent()
     }
     
-    @IBAction func finishedEditingDefText(_ sender: Any) {
+    @IBAction func defTextChanged(_ sender: Any) {
         self.defTextEdited = true
         self.addDataToParent()
     }

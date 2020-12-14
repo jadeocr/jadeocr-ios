@@ -261,7 +261,7 @@
                     <connections>
                         <outlet property="emailField" destination="Oc3-g3-Sz2" id="Bvs-Tt-J0o"/>
                         <outlet property="passwordField" destination="LnZ-4N-VZd" id="a8h-a7-R5n"/>
-                        <segue destination="Wt2-Qd-b6R" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHome:" id="bse-OC-ifw"/>
+                        <segue destination="Wt2-Qd-b6R" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeFromProfile:" id="bse-OC-ifw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTf-gb-ht5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -368,7 +368,7 @@
                         <outlet property="firstNameField" destination="LVS-Sp-10E" id="tNB-IU-8Ns"/>
                         <outlet property="lastNameField" destination="QXC-e7-zSD" id="bMO-vf-Dl7"/>
                         <outlet property="passwordField" destination="WxP-Yt-WcD" id="8HZ-kQ-MTJ"/>
-                        <segue destination="ZhZ-jL-m74" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHome:" id="mXO-9W-8ZP"/>
+                        <segue destination="ZhZ-jL-m74" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeFromProfile:" id="mXO-9W-8ZP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SyK-hV-8kn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -403,9 +403,11 @@
                     <connections>
                         <outlet property="scrollView" destination="YSD-p0-dCd" id="n7I-aW-8ya"/>
                         <outlet property="stackView" destination="O0V-bJ-CHS" id="lID-KG-oWH"/>
+                        <segue destination="keH-Ld-dqW" kind="unwind" identifier="unwindToHome" unwindAction="unwintToHomeFromAddDeck:" id="Zrx-j8-AsI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyg-5j-Tmp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="keH-Ld-dqW" userLabel="Exit" sceneMemberID="exit"/>
                 <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" axis="vertical" distribution="equalSpacing" id="O0V-bJ-CHS">
                     <rect key="frame" x="0.0" y="0.0" width="642" height="388"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

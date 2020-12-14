@@ -55,11 +55,17 @@ class AddDeckViewController: UIViewController, DeckDelegate {
     }
     
     //MARK: Functions
+    func sendAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     var deckInfoDict: [String: Any] = [:]
     func addDeckInfo(title: String, description: String, privacy: Bool) {
         deckInfoDict["title"] = title
         deckInfoDict["description"] = description
-        deckInfoDict["isPrivate"] = privacy
+        deckInfoDict["isPublic"] = privacy
     }
     
     func addDeckItem(_ sender: deckControlPanel) {
@@ -86,12 +92,22 @@ class AddDeckViewController: UIViewController, DeckDelegate {
     }
     
     func donePressed() {
+        guard deckInfoDict["title"] != nil, charDict.count != 0, deckInfoDict["isPublic"] != nil else {
+            sendAlert(message: "Please fill in all title fields and provide at least one character")
+            print(deckInfoDict)
+            return
+        }
+        
         var charArray: [[String: String]] = []
         for char in charDict {
             charArray.append(char.value)
         }
-        GlobalData.createDeck(title: deckInfoDict["title"] as? String ?? "", description: deckInfoDict["description"] as? String ?? "", characters: charArray, privacy: deckInfoDict["isPrivate"] as! Bool, completion: { result in
-            
+        GlobalData.createDeck(title: deckInfoDict["title"] as! String, description: deckInfoDict["description"] as! String, characters: charArray, privacy: deckInfoDict["isPublic"] as! Bool, completion: { result in
+            if result {
+                DispatchQueue.main.async(execute: {
+                    self.performSegue(withIdentifier: "unwindToHome", sender: self)
+                })
+            }
         })
     }
 }

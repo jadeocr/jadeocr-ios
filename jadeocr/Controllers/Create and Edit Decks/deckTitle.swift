@@ -16,7 +16,7 @@ class deckTitle: UIView {
     
     var delegate:DeckDelegate?
     
-    var privacy = true
+    var isPublic = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,26 +36,27 @@ class deckTitle: UIView {
     }
 
     func addDataToParent() {
-        delegate?.addDeckInfo(title: titleText.text ?? "", description: descriptionText.text ?? "", privacy: privacy)
+        delegate?.addDeckInfo(title: titleText.text ?? "", description: descriptionText.text ?? "", privacy: isPublic)
     }
     
-    @IBAction func finishedEditingTitleText(_ sender: Any) {
+    @IBAction func titleTextChanged(_ sender: Any) {
         addDataToParent()
     }
     
-    @IBAction func finishedEditingDescriptionText(_ sender: Any) {
+    @IBAction func descriptionTextChanged(_ sender: Any) {
         addDataToParent()
     }
     
     @IBAction func privacyButtonPressed(_ sender: Any) {
-        if privacy {
-            privacyButton.setTitle("Public", for: .normal)
-            privacy = false
+        if isPublic {
+            privacyButton.setTitle("Private", for: .normal)
+            isPublic = false
             addDataToParent()
         } else {
-            privacyButton.setTitle("Private", for: .normal)
-            privacy = true
+            privacyButton.setTitle("Public", for: .normal)
+            isPublic = true
             addDataToParent()
         }
     }
 }
+

@@ -27,7 +27,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
-                        <action selector="finishedEditingCharText:" destination="-1" eventType="editingDidEnd" id="mS5-B4-FxR"/>
+                        <action selector="charTextChanged:" destination="-1" eventType="editingChanged" id="lqc-Jm-JlD"/>
                     </connections>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="xue" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fJn-na-bhm">
@@ -36,7 +36,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
-                        <action selector="finishedEditingPinyinText:" destination="-1" eventType="editingDidEnd" id="cAc-5a-EMC"/>
+                        <action selector="pinyinTextChanged:" destination="-1" eventType="editingChanged" id="LMi-hj-WJQ"/>
                     </connections>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="to learn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D5R-CK-VNS">
@@ -45,7 +45,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
-                        <action selector="finishedEditingDefText:" destination="-1" eventType="editingDidEnd" id="CXQ-PI-Pr6"/>
+                        <action selector="defTextChanged:" destination="-1" eventType="editingChanged" id="HKU-hP-M0Q"/>
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKV-Dc-sHb">
