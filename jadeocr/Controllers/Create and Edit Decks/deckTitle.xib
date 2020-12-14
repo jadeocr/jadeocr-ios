@@ -11,6 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="deckTitle" customModule="jadeocr" customModuleProvider="target">
             <connections>
                 <outlet property="deckTitleContent" destination="iN0-l3-epB" id="b0G-1J-kOf"/>
+                <outlet property="descriptionText" destination="GBO-FA-LmN" id="PAq-2B-K0l"/>
+                <outlet property="privacyButton" destination="Id8-qE-AAr" id="wO9-B2-Nmw"/>
+                <outlet property="titleText" destination="FCj-JQ-ljn" id="hSG-l4-h25"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,13 +26,27 @@
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="finishedEditingTitleText:" destination="-1" eventType="editingDidEnd" id="tJA-zE-agE"/>
+                    </connections>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBO-FA-LmN">
                     <rect key="frame" x="25.5" y="66" width="355" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="finishedEditingDescriptionText:" destination="-1" eventType="editingDidEnd" id="lxD-LY-1FO"/>
+                    </connections>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Id8-qE-AAr">
+                    <rect key="frame" x="418.5" y="66" width="76" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="Private"/>
+                    <connections>
+                        <action selector="privacyButtonPressed:" destination="-1" eventType="touchUpInside" id="Shv-Lx-NHY"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -37,8 +54,11 @@
                 <constraint firstItem="FCj-JQ-ljn" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="0c3-WZ-BbO"/>
                 <constraint firstItem="GBO-FA-LmN" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.7" id="DfX-Xe-56R"/>
                 <constraint firstItem="FCj-JQ-ljn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ot3-FQ-fbN"/>
+                <constraint firstItem="Id8-qE-AAr" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.3" id="PNX-R2-wjU"/>
                 <constraint firstItem="GBO-FA-LmN" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.3" id="QCu-bD-Qta"/>
+                <constraint firstItem="Id8-qE-AAr" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.15" id="jgC-2B-bKJ"/>
                 <constraint firstItem="FCj-JQ-ljn" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.5" id="umx-Md-E1S"/>
+                <constraint firstItem="Id8-qE-AAr" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.8" id="wpt-DU-hxp"/>
                 <constraint firstItem="GBO-FA-LmN" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="0.8" id="ysQ-ov-16r"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

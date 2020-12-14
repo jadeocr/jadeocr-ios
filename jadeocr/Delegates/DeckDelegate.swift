@@ -12,4 +12,5 @@ protocol DeckDelegate {
     func removeDeckItem(sender: deckItemCreate, deckItemId: String)
     func donePressed()
     func addNewChar(char: String, pinyin: String, definition: String, deckItemId: String)
+    func addDeckInfo(title: String, description: String, privacy: Bool)
 }

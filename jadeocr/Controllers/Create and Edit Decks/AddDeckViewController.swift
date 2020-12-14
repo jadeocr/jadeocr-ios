@@ -28,6 +28,7 @@ class AddDeckViewController: UIViewController, DeckDelegate {
         
         //Add fields for title
         let a = deckTitle()
+        a.delegate = self
         self.stackView.addArrangedSubview(a)
         a.translatesAutoresizingMaskIntoConstraints = false
         a.heightAnchor.constraint(equalToConstant: 150).isActive = true
@@ -51,6 +52,14 @@ class AddDeckViewController: UIViewController, DeckDelegate {
         //Set scrollview scrolling parameters
         self.scrollView.contentSize.height = self.stackView.frame.height
         self.scrollView.contentSize.width = self.stackView.frame.width
+    }
+    
+    //MARK: Functions
+    var deckInfoDict: [String: Any] = [:]
+    func addDeckInfo(title: String, description: String, privacy: Bool) {
+        deckInfoDict["title"] = title
+        deckInfoDict["description"] = description
+        deckInfoDict["isPrivate"] = privacy
     }
     
     func addDeckItem(_ sender: deckControlPanel) {
@@ -77,7 +86,12 @@ class AddDeckViewController: UIViewController, DeckDelegate {
     }
     
     func donePressed() {
-        print(self.stackView.arrangedSubviews.count)
-        print(charDict)
+        var charArray: [[String: String]] = []
+        for char in charDict {
+            charArray.append(char.value)
+        }
+        GlobalData.createDeck(title: deckInfoDict["title"] as? String ?? "", description: deckInfoDict["description"] as? String ?? "", characters: charArray, privacy: deckInfoDict["isPrivate"] as! Bool, completion: { result in
+            
+        })
     }
 }

@@ -143,6 +143,48 @@ class GlobalData {
         }
         task.resume()
     }
+    
+    public static func createDeck(title: String, description: String, characters: [[String: String]], privacy: Bool, completion: @escaping (Bool)->()) {
+        let url = URL(string: GlobalData.apiURL + "api/deck/create")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        do {
+            let parameters: [String: Any] = [
+                "title": title,
+                "description": description,
+                "characters": characters,
+                "isPublic": privacy,
+            ]
+            let jsonData = try JSONSerialization.data(withJSONObject: parameters)
+            request.httpBody = jsonData
+
+        } catch {
+
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+            }
+
+            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                print(dataString)
+                completion(true)
+            }
+        }
+        task.resume()
+    }
 }
 
 extension Dictionary {

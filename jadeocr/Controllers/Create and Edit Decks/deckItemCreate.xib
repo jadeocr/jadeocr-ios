@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17700" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="学" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gG9-Vt-0Ia">
-                    <rect key="frame" x="28" y="16" width="140.5" height="34"/>
+                    <rect key="frame" x="28" y="16" width="140.33333333333334" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
@@ -31,7 +31,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="xue" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fJn-na-bhm">
-                    <rect key="frame" x="190.5" y="16" width="140.5" height="34"/>
+                    <rect key="frame" x="190.66666666666663" y="16" width="140.33333333333337" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
@@ -40,7 +40,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="to learn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D5R-CK-VNS">
-                    <rect key="frame" x="350.5" y="16" width="140.5" height="34"/>
+                    <rect key="frame" x="350.66666666666669" y="16" width="140.33333333333331" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
@@ -49,7 +49,7 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKV-Dc-sHb">
-                    <rect key="frame" x="509" y="18.5" width="20" height="29"/>
+                    <rect key="frame" x="509.33333333333326" y="18.666666666666671" width="19" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <state key="normal" image="trash" catalog="system"/>
                     <connections>
