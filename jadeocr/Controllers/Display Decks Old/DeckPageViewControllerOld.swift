@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DeckPageViewController: UIPageViewController {
+class DeckPageViewControllerOld: UIPageViewController {
     var items: [UIViewController] = []
     
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class DeckPageViewController: UIPageViewController {
     }
     
     func decoratePageController() {
-        let pc = UIPageControl.appearance(whenContainedInInstancesOf: [DeckPageViewController.self])
+        let pc = UIPageControl.appearance(whenContainedInInstancesOf: [DeckPageViewControllerOld.self])
         pc.currentPageIndicatorTintColor = .systemBlue
         pc.pageIndicatorTintColor = .gray
     }
@@ -39,14 +39,14 @@ class DeckPageViewController: UIPageViewController {
     
     func createDeckPageItemController(with titleText: String?) -> UIViewController {
         let c = UIViewController()
-        c.view = DeckItemView(titleText: titleText)
+        c.view = DeckItemViewOld(titleText: titleText)
         return c
     }
 }
 
 //MARK: Datasource
 
-extension DeckPageViewController: UIPageViewControllerDataSource {
+extension DeckPageViewControllerOld: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = items.firstIndex(of: viewController) else {
             return nil

@@ -14,7 +14,7 @@ class deckTitle: UIView {
     @IBOutlet weak var descriptionText: UITextField!
     @IBOutlet weak var privacyButton: UIButton!
     
-    var delegate:DeckDelegate?
+    var delegate:AddDeckDelegate?
     
     var isPublic = false
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddDeckViewController: UIViewController, DeckDelegate {
+class AddDeckViewController: UIViewController, AddDeckDelegate {
 
     @IBOutlet var stackView: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -35,7 +35,7 @@ class AddDeckViewController: UIViewController, DeckDelegate {
         
         //Add input fields
         for _ in 1...2 {
-            let c = deckItemCreate(index: self.stackView.arrangedSubviews.count)
+            let c = deckItemCreate()
             c.delegate = self
             self.stackView.addArrangedSubview(c)
             c.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +69,7 @@ class AddDeckViewController: UIViewController, DeckDelegate {
     }
     
     func addDeckItem(_ sender: deckControlPanel) {
-        let c = deckItemCreate(index: self.stackView.arrangedSubviews.count - 1)
+        let c = deckItemCreate()
         c.delegate = self
         self.stackView.insertArrangedSubview(c, at: self.stackView.arrangedSubviews.count - 1)
         c.translatesAutoresizingMaskIntoConstraints = false

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class DeckItemView: UIView {
+class DeckItemViewOld: UIView {
 
     @IBOutlet var deckItemViewContent: UIView!
     @IBOutlet weak var deckItemLabel: UILabel!

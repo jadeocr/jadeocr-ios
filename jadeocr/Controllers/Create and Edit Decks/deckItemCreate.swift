@@ -17,9 +17,8 @@ class deckItemCreate: UIView {
     var deckItemId = "\(UUID.init())"
     var pinyinTextEdited = false
     var defTextEdited = false
-    
-    var stackVewPosition:Int?
-    var delegate:DeckDelegate?
+
+    var delegate:AddDeckDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,11 +28,6 @@ class deckItemCreate: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
-    }
-    
-    convenience init(index: Int) {
-        self.init()
-        stackVewPosition = index
     }
     
     func initWithNib() {
