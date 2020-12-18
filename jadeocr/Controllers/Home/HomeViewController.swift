@@ -12,6 +12,7 @@ class HomeViewController: UIViewController, DisplayDeckDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var stackView: UIStackView!
     
+    var currDeck:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +39,15 @@ class HomeViewController: UIViewController, DisplayDeckDelegate {
         self.stackView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
         self.stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         
-        updateDecks()
-        
         //Set scrollview scrolling parameters
         self.scrollView.contentSize.height = self.stackView.frame.height
         self.scrollView.contentSize.width = self.stackView.frame.width
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        updateDecks()
     }
 
     func updateDecks() {
@@ -53,9 +57,9 @@ class HomeViewController: UIViewController, DisplayDeckDelegate {
         
         GlobalData.getAllDecks(completion: {result in
             DispatchQueue.main.async(execute: {
-                for card in result {
-                    let cardDict = card as! Dictionary<String, Any>
-                    let c = DeckItem(deck: cardDict)
+                for deck in result {
+                    let deckDict = deck as! Dictionary<String, Any>
+                    let c = DeckItem(deck: deckDict)
                     c.delegate = self
                     self.stackView.addArrangedSubview(c)
                     c.translatesAutoresizingMaskIntoConstraints = false
@@ -65,12 +69,19 @@ class HomeViewController: UIViewController, DisplayDeckDelegate {
         })
     }
     
-    //MARK: Delegate functions
+    //MARK: Delegate function
     func tapped(deck: Dictionary<String, Any>?) {
+        self.currDeck = deck?["deckId"] as? String
         self.performSegue(withIdentifier: "deckInfoSegue", sender: self)
-        print(deck)
     }
     
+    //MARK: Segue prep
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is DeckInfoViewController {
+            let vc = segue.destination as! DeckInfoViewController
+            vc.deckId = currDeck
+        }
+    }
     
     //MARK: Unwind Functions
     @IBAction func profile(_ sender: Any) {
@@ -103,10 +114,7 @@ class HomeViewController: UIViewController, DisplayDeckDelegate {
         } catch {
             print(error)
         }
-        updateDecks()
     }
     
-    @IBAction func unwintToHomeFromAddDeck (_ unwindSegue: UIStoryboardSegue) {
-       updateDecks()
-    }
+    @IBAction func unwintToHomeFromAddDeck (_ unwindSegue: UIStoryboardSegue) {}
 }

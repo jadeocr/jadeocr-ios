@@ -64,6 +64,7 @@ class GlobalData {
         guard status == errSecSuccess || status == errSecItemNotFound else { throw KeychainError.unhandledError(status: status) }
     }
     
+    //MARK: checkSignInStatus
     public static func checkSignInStatus(completion: @escaping (Bool)->()) throws {
         // Make request to check
         let url = URL(string: GlobalData.apiURL + "api/signin")
@@ -121,6 +122,7 @@ class GlobalData {
         task.resume()
     }
     
+    //MARK: getPinyinAndDefinition
     public static func getPinyinAndDefinition(char: String, completion: @escaping (Data)->()) {
         let url = URL(string: GlobalData.apiURL + "api/pinyinAndDefinition")
         guard let requestUrl = url else { fatalError() }
@@ -153,6 +155,7 @@ class GlobalData {
         task.resume()
     }
     
+    //MARK: createDeck
     public static func createDeck(title: String, description: String, characters: [[String: String]], privacy: Bool, completion: @escaping (Bool)->()) {
         let url = URL(string: GlobalData.apiURL + "api/deck/create")
         guard let requestUrl = url else { fatalError() }
@@ -195,6 +198,50 @@ class GlobalData {
         task.resume()
     }
     
+    //MARK: updateDeck
+    public static func updateDeck(deckId: String, title: String, description: String, characters: [[String: String]], privacy: Bool, completion: @escaping (Bool)->()) {
+        let url = URL(string: GlobalData.apiURL + "api/deck/update")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        do {
+            let parameters: [String: Any] = [
+                "deckId": deckId,
+                "title": title,
+                "description": description,
+                "characters": characters,
+                "isPublic": privacy,
+            ]
+            let jsonData = try JSONSerialization.data(withJSONObject: parameters)
+            request.httpBody = jsonData
+        } catch {
+
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+            }
+
+            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                print(dataString)
+                completion(true)
+            }
+        }
+        task.resume()
+    }
+    
+    //MARK: getAlDecks
     public static func getAllDecks (completion: @escaping (NSArray)->()) {
         let url = URL(string: GlobalData.apiURL + "api/deck/allDecks")
         guard let requestUrl = url else { fatalError() }
@@ -216,11 +263,96 @@ class GlobalData {
                 print("Response HTTP Status code: \(response.statusCode)")
             }
 
-            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+            if let data = data {
                 do {
                     let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! NSArray
                     completion(jsonData)
                 } catch {}
+            }
+        }
+        task.resume()
+    }
+    
+    //MARK: getOneDeck
+    public static func getOneDeck (deckId: String, completion: @escaping (Dictionary<String, Any>)->()) {
+        let url = URL(string: GlobalData.apiURL + "api/deck/deck")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        
+        do {
+            let parameters: [String: Any] = [
+                "deckId": deckId
+            ]
+            let jsonData = try JSONSerialization.data(withJSONObject: parameters)
+            request.httpBody = jsonData
+
+        } catch {
+
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+            }
+
+            if let data = data {
+                do {
+                    let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! Dictionary<String, Any>
+                    completion(jsonData)
+                } catch {}
+            }
+        }
+        task.resume()
+    }
+    
+    //MARK: removeDeck
+    public static func removeDeck (deckId: String, completion: @escaping (Bool)->()) {
+        let url = URL(string: GlobalData.apiURL + "api/deck/delete")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let parameters: [String: Any] = [
+                "deckId": deckId
+            ]
+            let jsonData = try JSONSerialization.data(withJSONObject: parameters)
+            request.httpBody = jsonData
+
+        } catch {
+
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+                if response.statusCode == 200 {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
             }
         }
         task.resume()
