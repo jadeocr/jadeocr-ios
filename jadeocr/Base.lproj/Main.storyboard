@@ -140,14 +140,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v4w-98-2Bl">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="v4w-98-2Bl">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tableCell" textLabel="yr8-kw-FE0" detailTextLabel="0Ge-Zi-91m" style="IBUITableViewCellStyleSubtitle" id="aly-lO-Zcw" customClass="HomeTableViewCell" customModule="jadeocr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="768" height="115.5"/>
+                                        <rect key="frame" x="16" y="55.5" width="736" height="115.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aly-lO-Zcw" id="BGt-xz-DxK">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="115.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="736" height="115.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yr8-kw-FE0">
@@ -166,6 +167,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <connections>
                                             <outlet property="descLabel" destination="0Ge-Zi-91m" id="cKi-DY-wDS"/>
                                             <outlet property="titleLabel" destination="yr8-kw-FE0" id="Xj6-dI-R7q"/>

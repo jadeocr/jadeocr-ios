@@ -77,16 +77,18 @@ class AddDeckViewController: UIViewController, AddDeckDelegate {
     }
     
     var charDict: [String: [String: String]] = [:]
-    func addNewChar(char: String, pinyin: String, definition: String, deckItemId: String) {
-        charDict[deckItemId] = [
+    func addNewChar(char: String, pinyin: String, definition: String, sender: deckItemCreate) {
+        let index = String(self.stackView.arrangedSubviews.firstIndex(of: sender)!)
+        charDict[index] = [
             "char": char,
             "pinyin": pinyin,
             "definition": definition,
         ]
     }
     
-    func removeDeckItem(sender: deckItemCreate, deckItemId: String) {
-        charDict[deckItemId] = nil
+    func removeDeckItem(sender: deckItemCreate) {
+        let index = String(self.stackView.arrangedSubviews.firstIndex(of: sender)!)
+        charDict[index] = nil
         self.stackView.removeArrangedSubview(sender)
         sender.removeFromSuperview()
     }
@@ -98,10 +100,11 @@ class AddDeckViewController: UIViewController, AddDeckDelegate {
             return
         }
         
-        var charArray: [[String: String]] = []
+        var charArray: [[String: String]] = Array(repeating: ["nil":"nil"], count: charDict.count)
         for char in charDict {
-            charArray.append(char.value)
+            charArray[Int(char.key)! - 1] = char.value
         }
+        
         GlobalData.createDeck(title: deckInfoDict["title"] as! String, description: deckInfoDict["description"] as! String, characters: charArray, privacy: deckInfoDict["isPublic"] as! Bool, completion: { result in
             if result {
                 DispatchQueue.main.async(execute: {
