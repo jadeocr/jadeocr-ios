@@ -27,7 +27,8 @@ class DeckInfoViewController: UIViewController {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.rowHeight = 100
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 100
     }
     
     func updateDeckInfo() {

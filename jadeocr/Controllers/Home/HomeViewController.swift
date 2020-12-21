@@ -7,12 +7,14 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, DisplayDeckDelegate {
-
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet var stackView: UIStackView!
+class HomeViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var currDeck:String?
+    var decks: NSArray?
+    
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,19 +31,13 @@ class HomeViewController: UIViewController, DisplayDeckDelegate {
             print(error)
         }
         
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 100
         
-        //MARK: Add stack view to scroll view
-        self.scrollView.addSubview(stackView)
-        self.stackView.translatesAutoresizingMaskIntoConstraints = false
-        self.stackView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
-        self.stackView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
-        self.stackView.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
-        self.stackView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
-        self.stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        
-        //Set scrollview scrolling parameters
-        self.scrollView.contentSize.height = self.stackView.frame.height
-        self.scrollView.contentSize.width = self.stackView.frame.width
+        self.tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,28 +46,25 @@ class HomeViewController: UIViewController, DisplayDeckDelegate {
         updateDecks()
     }
 
+    @objc func refreshTableView() {
+        updateDecks()
+    }
+    
     func updateDecks() {
-        for view in stackView.arrangedSubviews {
-            view.removeFromSuperview()
-        }
-        
         GlobalData.getAllDecks(completion: {result in
             DispatchQueue.main.async(execute: {
-                for deck in result {
-                    let deckDict = deck as! Dictionary<String, Any>
-                    let c = DeckItem(deck: deckDict)
-                    c.delegate = self
-                    self.stackView.addArrangedSubview(c)
-                    c.translatesAutoresizingMaskIntoConstraints = false
-                    c.heightAnchor.constraint(equalToConstant: 180).isActive = true
-                }
+                self.decks = result
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             })
         })
     }
     
-    //MARK: Delegate function
-    func tapped(deck: Dictionary<String, Any>?) {
-        self.currDeck = deck?["deckId"] as? String
+    //MARK: Transition function
+    func tapped(index: Int) {
+        if let deck = decks?[index] as? Dictionary<String, Any> {
+            self.currDeck = deck["deckId"] as? String
+        }
         self.performSegue(withIdentifier: "deckInfoSegue", sender: self)
     }
     
@@ -117,4 +110,30 @@ class HomeViewController: UIViewController, DisplayDeckDelegate {
     }
     
     @IBAction func unwintToHomeFromAddDeck (_ unwindSegue: UIStoryboardSegue) {}
+}
+
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tapped(index: indexPath[1])
+    }
+}
+
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return decks?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") as! HomeTableViewCell
+        if let deck = decks?[indexPath[1]] as? Dictionary<String, Any> {
+            cell.titleLabel?.text = deck["deckName"] as? String
+            cell.descLabel?.text = deck["deckDescription"] as? String
+        }
+        return cell
+    }
+}
+
+class HomeTableViewCell: UITableViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
 }
