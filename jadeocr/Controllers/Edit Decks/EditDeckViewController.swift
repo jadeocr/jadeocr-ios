@@ -59,7 +59,6 @@ class EditDeckViewController: UIViewController, EditDeckDelegate {
             let pinyin = character["pinyin"] as? String
             let definition = character["definition"] as? String
             let id = character["id"] as? String
-            let deckItemId = "\(UUID.init())"
             
             let c = EditDeckItem()
             c.delegate = self
@@ -68,9 +67,8 @@ class EditDeckViewController: UIViewController, EditDeckDelegate {
             c.defText.text = definition
             c.alreadyExists = true
             c.id = id
-            c.deckItemId = deckItemId
-            addNewChar(char: char ?? "", pinyin: pinyin ?? "", definition: definition ?? "", deckItemId: deckItemId, id: id ?? "")
             self.stackView.addArrangedSubview(c)
+            addNewChar(char: char ?? "", pinyin: pinyin ?? "", definition: definition ?? "", id: id ?? "", sender: c)
             c.translatesAutoresizingMaskIntoConstraints = false
             c.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
         }
@@ -114,24 +112,76 @@ class EditDeckViewController: UIViewController, EditDeckDelegate {
     func addDeckItem(_ sender: EditDeckControlPanel) {
         let c = EditDeckItem()
         c.delegate = self
-        c.deckItemId = "\(UUID.init())"
         self.stackView.insertArrangedSubview(c, at: self.stackView.arrangedSubviews.count - 1)
         c.translatesAutoresizingMaskIntoConstraints = false
         c.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
     }
     
-    var charDict: [String: [String: String]] = [:]
-    func addNewChar(char: String, pinyin: String, definition: String, deckItemId: String, id: String) {
-        charDict[deckItemId] = [
-            "char": char,
-            "pinyin": pinyin,
-            "definition": definition,
-            "id": id
-        ]
+    var chars:[[String: String]] = []
+    func addNewChar(char: String, pinyin: String, definition: String, id: String, sender: EditDeckItem) {
+        let index = self.stackView.arrangedSubviews.firstIndex(of: sender)! - 1
+        
+        func appendWithId() {
+            chars.append([
+                "char": char,
+                "pinyin": pinyin,
+                "definition": definition,
+                "id": id,
+            ])
+        }
+        
+        func appendWithoutId() {
+            chars.append([
+                "char": char,
+                "pinyin": pinyin,
+                "definition": definition,
+            ])
+        }
+        
+        func editWithId(index: Int) {
+            chars[index] = [
+                "char": char,
+                "pinyin": pinyin,
+                "definition": definition,
+                "id": id,
+            ]
+        }
+        
+        func editWithoutId(index: Int) {
+            chars[index] = [
+                "char": char,
+                "pinyin": pinyin,
+                "definition": definition,
+            ]
+        }
+        
+        if chars.count < index { //If there is gap between the items
+            for _ in 1...(index - chars.count) {
+                chars.append([:])
+            }
+            if id == "" {
+                appendWithoutId()
+            } else {
+                appendWithId()
+            }
+        } else if chars.count == index { //Adding an extra item
+            if id == "" {
+                appendWithoutId()
+            } else {
+                appendWithId()
+            }
+        } else if chars.count > index { //Changing an existing item
+            if id == "" {
+                editWithoutId(index: index)
+            } else {
+                editWithId(index: index)
+            }
+        }
     }
     
-    func removeDeckItem(sender: EditDeckItem, deckItemId: String) {
-        charDict[deckItemId] = nil
+    func removeDeckItem(sender: EditDeckItem) {
+        let index = self.stackView.arrangedSubviews.firstIndex(of: sender)! - 1
+        chars.remove(at: index)
         self.stackView.removeArrangedSubview(sender)
         sender.removeFromSuperview()
     }
@@ -156,36 +206,7 @@ class EditDeckViewController: UIViewController, EditDeckDelegate {
             return
         }
         
-        print(charDict)
-        
-        var charArray: [[String: String]] = []
-        var doneArray: [String] = []
-        for character in deckStruct!.characters { //Adds the ones that have been edited
-            for (key, char) in charDict {
-                if char["id"] == character["id"] as? String ?? "" && char["id"] != "" {
-                    charArray.append([
-                        "char": char["char"] ?? "",
-                        "definition": char["definition"] ?? "",
-                        "pinyin": char["pinyin"] ?? "",
-                        "id": char["id"] ?? "",
-                    ])
-                    doneArray.append(key)
-                    break
-                }
-            }
-        }
-        for key in doneArray {
-            charDict[key] = nil
-        }
-        for (_, char) in charDict { //Adds the ones that have been newly created
-            charArray.append([
-                "char": char["char"] ?? "",
-                "definition": char["definition"] ?? "",
-                "pinyin": char["pinyin"] ?? "",
-            ])
-        }
-        
-        GlobalData.updateDeck(deckId: deckStruct!._id, title: deckStruct!.title, description: deckStruct!.description, characters: charArray, privacy: deckStruct?.access["isPublic"] as! Bool, completion: { result in
+        GlobalData.updateDeck(deckId: deckStruct!._id, title: deckStruct!.title, description: deckStruct!.description, characters: chars, privacy: deckStruct?.access["isPublic"] as! Bool, completion: { result in
             if result {
                 DispatchQueue.main.async(execute: {
                     self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)

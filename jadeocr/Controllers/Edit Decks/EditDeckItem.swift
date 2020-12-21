@@ -14,7 +14,6 @@ class EditDeckItem: UIView {
     @IBOutlet weak var pinyinText: UITextField!
     @IBOutlet weak var defText: UITextField!
     
-    var deckItemId:String?
     var pinyinTextEdited = false
     var defTextEdited = false
     var alreadyExists:Bool?
@@ -44,7 +43,7 @@ class EditDeckItem: UIView {
     }
     
     func addDataToParent() {
-        self.delegate?.addNewChar(char: self.charText.text ?? "", pinyin: self.pinyinText.text ?? "", definition: self.defText.text ?? "", deckItemId: deckItemId!, id: id ?? "")
+        self.delegate?.addNewChar(char: self.charText.text ?? "", pinyin: self.pinyinText.text ?? "", definition: self.defText.text ?? "", id: id ?? "", sender: self)
     }
     
     @IBAction func charTextChanged(_ sender: Any) {
@@ -82,6 +81,6 @@ class EditDeckItem: UIView {
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
-        delegate?.removeDeckItem(sender: self, deckItemId: deckItemId!)
+        delegate?.removeDeckItem(sender: self)
     }
 }

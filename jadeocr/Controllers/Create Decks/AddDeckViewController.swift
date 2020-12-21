@@ -76,36 +76,49 @@ class AddDeckViewController: UIViewController, AddDeckDelegate {
         c.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
     }
     
-    var charDict: [String: [String: String]] = [:]
+    var chars:[[String: String]] = []
     func addNewChar(char: String, pinyin: String, definition: String, sender: deckItemCreate) {
-        let index = String(self.stackView.arrangedSubviews.firstIndex(of: sender)!)
-        charDict[index] = [
-            "char": char,
-            "pinyin": pinyin,
-            "definition": definition,
-        ]
+        let index = self.stackView.arrangedSubviews.firstIndex(of: sender)! - 1
+        
+        if chars.count < index { //If there is gap between the items
+            for _ in 1...(index - chars.count) {
+                chars.append([:])
+            }
+            chars.append([
+                "char": char,
+                "pinyin": pinyin,
+                "definition": definition,
+            ])
+        } else if chars.count == index { //Adding an extra item
+            chars.append([
+                "char": char,
+                "pinyin": pinyin,
+                "definition": definition,
+            ])
+        } else if chars.count > index { //Changing an existing item
+            chars[index] = [
+                "char": char,
+                "pinyin": pinyin,
+                "definition": definition,
+            ]
+        }
     }
     
     func removeDeckItem(sender: deckItemCreate) {
-        let index = String(self.stackView.arrangedSubviews.firstIndex(of: sender)!)
-        charDict[index] = nil
+        let index = self.stackView.arrangedSubviews.firstIndex(of: sender)! - 1
+        chars.remove(at: index)
         self.stackView.removeArrangedSubview(sender)
         sender.removeFromSuperview()
     }
     
     func donePressed() {
-        guard deckInfoDict["title"] != nil, charDict.count != 0, deckInfoDict["isPublic"] != nil else {
+        guard deckInfoDict["title"] != nil, chars.count != 0, deckInfoDict["isPublic"] != nil else {
             sendAlert(message: "Please fill in all title fields and provide at least one character")
             print(deckInfoDict)
             return
         }
-        
-        var charArray: [[String: String]] = Array(repeating: ["nil":"nil"], count: charDict.count)
-        for char in charDict {
-            charArray[Int(char.key)! - 1] = char.value
-        }
-        
-        GlobalData.createDeck(title: deckInfoDict["title"] as! String, description: deckInfoDict["description"] as! String, characters: charArray, privacy: deckInfoDict["isPublic"] as! Bool, completion: { result in
+
+        GlobalData.createDeck(title: deckInfoDict["title"] as! String, description: deckInfoDict["description"] as! String, characters: chars, privacy: deckInfoDict["isPublic"] as! Bool, completion: { result in
             if result {
                 DispatchQueue.main.async(execute: {
                     self.performSegue(withIdentifier: "unwindToHome", sender: self)
