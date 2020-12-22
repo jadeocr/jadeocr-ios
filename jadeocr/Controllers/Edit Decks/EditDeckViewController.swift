@@ -201,8 +201,8 @@ class EditDeckViewController: UIViewController, EditDeckDelegate {
     }
     
     func donePressed() {
-        guard deckStruct?.title != "", deckStruct?.characters.count != 0, deckStruct?.access["isPublic"] != nil else {
-            sendAlert(message: "Please fill in all title fields and provide at least one character")
+        guard deckStruct?.title != "" else {
+            sendAlert(message: "Please enter a title")
             return
         }
         

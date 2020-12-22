@@ -7,7 +7,7 @@
 
 import UIKit
 
-class deckItemCreate: UIView {
+class deckItem: UIView {
     
     @IBOutlet var deckItemViewContent: UIView!
     @IBOutlet weak var charText: UITextField!
@@ -16,6 +16,7 @@ class deckItemCreate: UIView {
 
     var pinyinTextEdited = false
     var defTextEdited = false
+    var id:String?
 
     var delegate:AddDeckDelegate?
     
@@ -30,14 +31,10 @@ class deckItemCreate: UIView {
     }
     
     func initWithNib() {
-        Bundle.main.loadNibNamed("deckItemCreate", owner: self, options: nil)
+        Bundle.main.loadNibNamed("deckItem", owner: self, options: nil)
         deckItemViewContent.frame = bounds
         deckItemViewContent.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(deckItemViewContent)
-    }
-    
-    func addDataToParent() {
-        self.delegate?.addNewChar(char: self.charText.text ?? "", pinyin: self.pinyinText.text ?? "", definition: self.defText.text ?? "", sender: self)
     }
     
     @IBAction func charTextChanged(_ sender: Any) {
@@ -55,7 +52,6 @@ class deckItemCreate: UIView {
                                     self.defText.text = definition
                                 }
                         }
-                        self.addDataToParent()
                     })
                 }
             } catch let error as NSError {
@@ -66,15 +62,30 @@ class deckItemCreate: UIView {
     
     @IBAction func pinyinTextChanged(_ sender: Any) {
         self.pinyinTextEdited = true
-        self.addDataToParent()
     }
     
     @IBAction func defTextChanged(_ sender: Any) {
         self.defTextEdited = true
-        self.addDataToParent()
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
         delegate?.removeDeckItem(sender: self)
+    }
+    
+    public func getData() -> Dictionary<String, String> {
+        if id != nil {
+            return [
+                "char": charText.text ?? "",
+                "pinyin": pinyinText.text ?? "",
+                "definition": defText.text ?? "",
+                "id": id!
+            ]
+        } else {
+            return [
+                "char": charText.text ?? "",
+                "pinyin": pinyinText.text ?? "",
+                "definition": defText.text ?? "",
+            ]
+        }
     }
 }

@@ -46,7 +46,6 @@
                                         <state key="normal" title="Clear"/>
                                         <connections>
                                             <action selector="clearPressed:" destination="sJn-pb-R3Q" eventType="touchUpInside" id="4Wp-4j-bxZ"/>
-                                            <action selector="clearPressed:" destination="f2U-Rl-PDu" eventType="touchUpInside" id="A83-LY-T3x"/>
                                             <action selector="clearPressed:" destination="aRm-uH-Lwc" eventType="touchUpInside" id="Dbu-bK-xBq"/>
                                         </connections>
                                     </button>
@@ -90,6 +89,7 @@
                     <navigationItem key="navigationItem" title="Draw!" id="nZp-mL-nNY"/>
                     <connections>
                         <outlet property="charShown" destination="PuV-ay-HfG" id="PNY-pi-MUM"/>
+                        <outlet property="ocrController" destination="f2U-Rl-PDu" id="zf4-Xy-HWg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="669-e3-PbE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -600,7 +600,13 @@
                             <constraint firstItem="YSD-p0-dCd" firstAttribute="top" secondItem="kQi-1l-yRJ" secondAttribute="top" id="q9O-QR-SjE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Deck" id="PfR-s3-DZT"/>
+                    <navigationItem key="navigationItem" title="Add Deck" id="PfR-s3-DZT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="1t0-kY-woG">
+                            <connections>
+                                <action selector="savePressed:" destination="GUT-jY-DwA" id="CuG-NY-7mA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="YSD-p0-dCd" id="n7I-aW-8ya"/>
                         <outlet property="stackView" destination="O0V-bJ-CHS" id="lID-KG-oWH"/>
@@ -641,7 +647,12 @@
                             <constraint firstItem="I2K-I8-fef" firstAttribute="bottom" secondItem="soW-UR-31H" secondAttribute="bottom" id="pLk-1o-vTv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit" id="3Na-Bp-kuD"/>
+                    <navigationItem key="navigationItem" title="Edit" id="3Na-Bp-kuD">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="aRt-5S-IW6"/>
+                            <barButtonItem systemItem="trash" id="bmZ-ne-Tpl"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="soW-UR-31H" id="ibK-Gt-D5v"/>
                         <outlet property="stackView" destination="DpZ-zn-bpf" id="rgl-lt-F8o"/>

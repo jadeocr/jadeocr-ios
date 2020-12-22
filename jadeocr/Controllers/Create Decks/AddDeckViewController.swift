@@ -35,7 +35,7 @@ class AddDeckViewController: UIViewController, AddDeckDelegate {
         
         //Add input fields
         for _ in 1...2 {
-            let c = deckItemCreate()
+            let c = deckItem()
             c.delegate = self
             self.stackView.addArrangedSubview(c)
             c.translatesAutoresizingMaskIntoConstraints = false
@@ -69,55 +69,31 @@ class AddDeckViewController: UIViewController, AddDeckDelegate {
     }
     
     func addDeckItem(_ sender: deckControlPanel) {
-        let c = deckItemCreate()
+        let c = deckItem()
         c.delegate = self
         self.stackView.insertArrangedSubview(c, at: self.stackView.arrangedSubviews.count - 1)
         c.translatesAutoresizingMaskIntoConstraints = false
         c.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
     }
     
-    var chars:[[String: String]] = []
-    func addNewChar(char: String, pinyin: String, definition: String, sender: deckItemCreate) {
-        let index = self.stackView.arrangedSubviews.firstIndex(of: sender)! - 1
-        
-        if chars.count < index { //If there is gap between the items
-            for _ in 1...(index - chars.count) {
-                chars.append([:])
-            }
-            chars.append([
-                "char": char,
-                "pinyin": pinyin,
-                "definition": definition,
-            ])
-        } else if chars.count == index { //Adding an extra item
-            chars.append([
-                "char": char,
-                "pinyin": pinyin,
-                "definition": definition,
-            ])
-        } else if chars.count > index { //Changing an existing item
-            chars[index] = [
-                "char": char,
-                "pinyin": pinyin,
-                "definition": definition,
-            ]
-        }
-    }
-    
-    func removeDeckItem(sender: deckItemCreate) {
-        let index = self.stackView.arrangedSubviews.firstIndex(of: sender)! - 1
-        chars.remove(at: index)
+    func removeDeckItem(sender: deckItem) {
         self.stackView.removeArrangedSubview(sender)
         sender.removeFromSuperview()
     }
     
-    func donePressed() {
-        guard deckInfoDict["title"] != nil, chars.count != 0, deckInfoDict["isPublic"] != nil else {
-            sendAlert(message: "Please fill in all title fields and provide at least one character")
-            print(deckInfoDict)
+    @IBAction func savePressed(_ sender: Any) {
+        guard deckInfoDict["title"] != nil else {
+            sendAlert(message: "Please enter a title")
             return
         }
 
+        var chars:[[String:String]] = []
+        for view in stackView.arrangedSubviews {
+            if let char = view as? deckItem {
+                chars.append(char.getData())
+            }
+        }
+        
         GlobalData.createDeck(title: deckInfoDict["title"] as! String, description: deckInfoDict["description"] as! String, characters: chars, privacy: deckInfoDict["isPublic"] as! Bool, completion: { result in
             if result {
                 DispatchQueue.main.async(execute: {

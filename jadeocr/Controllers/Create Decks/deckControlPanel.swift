@@ -32,8 +32,4 @@ class deckControlPanel: UIView {
     @IBAction func addCardButtonPressed(_ sender: Any) {
         delegateForDeck?.addDeckItem(self)
     }
-    
-    @IBAction func doneButtonPressed(_ sender: Any) {
-        delegateForDeck?.donePressed()
-    }
 }

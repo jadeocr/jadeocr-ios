@@ -7,29 +7,26 @@
 
 import UIKit
 
-class DrawingViewController: UIViewController, DrawingDelegate {
+class DrawingViewController: UIViewController {
     
-    var drawController: OCRController?
     
+    @IBOutlet weak var ocrController: OCRController!
     @IBOutlet weak var charShown: UILabel!
-    
-    func checked(_ sender: OCRController) {
-        DispatchQueue.main.async(execute: {
-            self.charShown.text = OCRController.getCharacter()
-        })
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        drawController = OCRController()
-        drawController?.delegate = self
     }
 
     @IBAction func clearPressed(_ sender: Any) {
-        drawController?.clear()
+        ocrController.clear()
+        charShown.text = "No character drawn."
     }
+    
     @IBAction func checkPressed(_ sender: Any) {
-        drawController?.check()
+        GlobalData.OCR(sendArray: ocrController.getSendArray() , completion: {result in
+            DispatchQueue.main.async {
+                self.charShown.text = result
+            }
+        })
     }
 }

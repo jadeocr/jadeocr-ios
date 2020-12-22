@@ -19,31 +19,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19L-sD-ylG">
-                    <rect key="frame" x="227.5" y="13.5" width="166" height="41"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <rect key="frame" x="103.5" y="16" width="207" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <state key="normal" title="Add Card"/>
                     <connections>
                         <action selector="addCardButtonPressed:" destination="-1" eventType="touchUpInside" id="F3a-K7-G9F"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7f-YC-Qgf">
-                    <rect key="frame" x="20.5" y="13.5" width="166" height="41"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                    <state key="normal" title="Done"/>
-                    <connections>
-                        <action selector="doneButtonPressed:" destination="-1" eventType="touchUpInside" id="N9n-hD-ePk"/>
                     </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemGray5Color"/>
             <constraints>
-                <constraint firstItem="Y7f-YC-Qgf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6KH-jz-4N6"/>
-                <constraint firstItem="19L-sD-ylG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.4" id="QW6-Cc-Ed1"/>
-                <constraint firstItem="Y7f-YC-Qgf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="0.5" id="asZ-LV-tc6"/>
+                <constraint firstItem="19L-sD-ylG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="QW6-Cc-Ed1"/>
                 <constraint firstItem="19L-sD-ylG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fw6-TN-T5u"/>
-                <constraint firstItem="19L-sD-ylG" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.5" id="hgV-5q-t8m"/>
-                <constraint firstItem="Y7f-YC-Qgf" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.4" id="nT1-wq-hbO"/>
+                <constraint firstItem="19L-sD-ylG" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="hgV-5q-t8m"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="140.57971014492756" y="257.14285714285711"/>
