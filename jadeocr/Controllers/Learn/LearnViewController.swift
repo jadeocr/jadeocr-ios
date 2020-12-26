@@ -11,9 +11,15 @@ class LearnViewController: UIViewController, CardDelegate {
 
     @IBOutlet var learnViewContent: UIView!
     
+    struct card {
+        var front: frontCard
+        var back: backCard
+    }
+    
+    var cardArray:[card] = []
     var frontCardArray:[frontCard] = []
     var backCardArray:[backCard] = []
-    var count:Int = 0
+    var count:Int = -1
     
     var handwriting:Bool?
     var front:String?
@@ -30,22 +36,19 @@ class LearnViewController: UIViewController, CardDelegate {
                 if front == "Character" {
                     for i in 0..<characters.count {
                         if let character = characters[i] as? Dictionary<String, Any> {
-                            createFrontCard(title: character["char"] as? String ?? "")
-                            createBackCard(first: character["pinyin"] as? String ?? "", second: character["definition"] as? String ?? "")
+                            createCard(front: character["char"] as? String ?? "", backFirst: character["pinyin"] as? String ?? "", backSecond: character["definition"] as? String ?? "")
                         }
                     }
                 } else if front == "Pinyin" {
                     for i in 0..<characters.count {
                         if let character = characters[i] as? Dictionary<String, Any> {
-                            createFrontCard(title: character["pinyin"] as? String ?? "")
-                            createBackCard(first: character["char"] as? String ?? "", second: character["definition"] as? String ?? "")
+                            createCard(front: character["pinyin"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["definition"] as? String ?? "")
                         }
                     }
                 } else if front == "Definition" {
                     for i in 0..<characters.count {
                         if let character = characters[i] as? Dictionary<String, Any> {
-                            createFrontCard(title: character["definition"] as? String ?? "")
-                            createBackCard(first: character["char"] as? String ?? "", second: character["pinyin"] as? String ?? "")
+                            createCard(front: character["definition"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["pinyin"] as? String ?? "")
                         }
                     }
                 }
@@ -53,13 +56,13 @@ class LearnViewController: UIViewController, CardDelegate {
         }
         
         if scramble ?? false {
-            
+            shuffle()
         }
         
         showNextCard()
     }
     
-    func createFrontCard(title: String) {
+    func createFrontCard(title: String) -> frontCard {
         let frontCardView = frontCard(title: title)
         learnViewContent.addSubview(frontCardView)
         
@@ -72,10 +75,10 @@ class LearnViewController: UIViewController, CardDelegate {
         frontCardView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         frontCardView.isHidden = true
         
-        frontCardArray.append(frontCardView)
+        return frontCardView
     }
     
-    func createBackCard(first: String, second: String) {
+    func createBackCard(first: String, second: String) -> backCard {
         let backCardView = backCard(first: first, second: second)
         learnViewContent.addSubview(backCardView)
         
@@ -88,60 +91,44 @@ class LearnViewController: UIViewController, CardDelegate {
         backCardView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         backCardView.isHidden = true
         
-        backCardArray.append(backCardView)
+        return backCardView
     }
-
+    
+    func createCard(front: String, backFirst: String, backSecond: String) {
+        cardArray.append(card(front: createFrontCard(title: front), back: createBackCard(first: backFirst, second: backSecond)))
+    }
     
     func showNextCard() {
-        if count == 0 && frontCardArray.count != 0 {
-            frontCardArray[count].isHidden = false
-            count += 1
-        } else if count < frontCardArray.count {
-            frontCardArray[count - 1].isHidden = true
-            if count < frontCardArray.count {
-                frontCardArray[count].isHidden = false
-            }
-            if count < frontCardArray.count {
-                count += 1
-            }
-        }
-    }
-    
-    @IBAction func buttonPressed(_ sender: Any) {
-        if count == frontCardArray.count {
+        guard count < cardArray.count - 1 else {
             self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+            return
         }
-        showNextCard()
+        
+        count += 1
+        if count == 0 {
+            cardArray[count].front.isHidden = false
+        } else {
+            cardArray[count - 1].front.isHidden = true
+            cardArray[count - 1].back.isHidden = true
+            cardArray[count].front.isHidden = false
+        }
     }
     
     func flip() {
-        if count == 0 && frontCardArray.count != 0 {
-            if frontCardArray[count].isHidden {
-                frontCardArray[count].isHidden = false
-                backCardArray[count].isHidden = true
-            } else {
-                frontCardArray[count].isHidden = true
-                backCardArray[count].isHidden = false
-            }
-        } else if count < frontCardArray.count + 1 {
-            if frontCardArray[count - 1].isHidden {
-                frontCardArray[count - 1].isHidden = false
-                backCardArray[count - 1].isHidden = true
-            } else {
-                frontCardArray[count - 1].isHidden = true
-                backCardArray[count - 1].isHidden = false
-            }
+        if cardArray[count].front.isHidden {
+            cardArray[count].front.isHidden = false
+            cardArray[count].back.isHidden = true
+        } else {
+            cardArray[count].front.isHidden = true
+            cardArray[count].back.isHidden = false
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func shuffle() {
+        cardArray.shuffle()
     }
-    */
-
+    
+    @IBAction func buttonPressed(_ sender: Any) {
+        showNextCard()
+    }
 }
