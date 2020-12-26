@@ -18,7 +18,11 @@ class UserViewController: UIViewController {
     @IBAction func signOutPressed(_ sender: Any) {
         do {
             try GlobalData.deleteCredentialsFromKeychain()
-            self.performSegue(withIdentifier: "unwindToHome", sender: self)
+            GlobalData.signout(completion: {_ in
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "unwindToHome", sender: self)
+                }
+            })
         } catch {
             print(error)
         }

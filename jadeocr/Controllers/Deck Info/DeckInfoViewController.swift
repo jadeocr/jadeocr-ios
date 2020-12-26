@@ -11,7 +11,7 @@ class DeckInfoViewController: UIViewController {
 
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var creatorLabel: UILabel!
     @IBOutlet weak var isPublicLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -50,7 +50,7 @@ class DeckInfoViewController: UIViewController {
                 }
                 
                 titleLabel.text = deck?["title"] as? String ?? ""
-                descriptionLabel.text = deck?["description"] as? String ?? ""
+                descriptionText.text = deck?["description"] as? String ?? ""
                 creatorLabel.text = "Creator: " + creatorFirst + " " + creatorLast
                 isPublicLabel.text = "This deck is: " + isPublic
                 
@@ -63,6 +63,10 @@ class DeckInfoViewController: UIViewController {
         if segue.destination is EditDeckViewController {
             let vc = segue.destination as! EditDeckViewController
             vc.deckDict = deck
+        } else if segue.destination is LearnOptionsViewController {
+            let vc = segue.destination as! LearnOptionsViewController
+            vc.deck = deck
+            
         }
     }
     

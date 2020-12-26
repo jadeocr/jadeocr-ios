@@ -7,12 +7,14 @@
 
 import UIKit
 
-class AddDeckViewController: UIViewController, AddDeckDelegate {
+class AddDeckViewController: UIViewController, DeckDelegate {
 
     @IBOutlet var stackView: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
     
     let deckItemCreateHeight = CGFloat(50)
+    
+    var deckTitleView:deckTitle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +29,11 @@ class AddDeckViewController: UIViewController, AddDeckDelegate {
         self.stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         
         //Add fields for title
-        let a = deckTitle()
-        a.delegate = self
-        self.stackView.addArrangedSubview(a)
-        a.translatesAutoresizingMaskIntoConstraints = false
-        a.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        deckTitleView = deckTitle()
+        deckTitleView!.delegate = self
+        self.stackView.addArrangedSubview(deckTitleView!)
+        deckTitleView!.translatesAutoresizingMaskIntoConstraints = false
+        deckTitleView!.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
         //Add input fields
         for _ in 1...2 {
@@ -61,13 +63,6 @@ class AddDeckViewController: UIViewController, AddDeckDelegate {
         self.present(alert, animated: true)
     }
     
-    var deckInfoDict: [String: Any] = [:]
-    func addDeckInfo(title: String, description: String, privacy: Bool) {
-        deckInfoDict["title"] = title
-        deckInfoDict["description"] = description
-        deckInfoDict["isPublic"] = privacy
-    }
-    
     func addDeckItem(_ sender: deckControlPanel) {
         let c = deckItem()
         c.delegate = self
@@ -82,7 +77,9 @@ class AddDeckViewController: UIViewController, AddDeckDelegate {
     }
     
     @IBAction func savePressed(_ sender: Any) {
-        guard deckInfoDict["title"] != nil else {
+        let deckInfoDict = deckTitleView!.getData()
+        
+        guard deckInfoDict["title"] as! String != "" else {
             sendAlert(message: "Please enter a title")
             return
         }

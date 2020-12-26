@@ -10,7 +10,7 @@ import Security
 
 class GlobalData {
     
-    public static var apiURL:String = "http://192.168.1.103:3000/"
+    public static var apiURL:String = "http://simfony.tech:3003/"
     
     enum KeychainError: Error {
         case noPassword
@@ -118,6 +118,34 @@ class GlobalData {
 //                    return
 //                }
 //            }
+        }
+        task.resume()
+    }
+    
+    //MARK: Sign out
+    public static func signout(completion: @escaping (Bool) -> ()) {
+        let url = URL(string: GlobalData.apiURL + "api/signout")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+            }
+
+            if data != nil {
+                completion(true)
+            }
         }
         task.resume()
     }
@@ -261,6 +289,9 @@ class GlobalData {
             // Read HTTP Response Status code
             if let response = response as? HTTPURLResponse {
                 print("Response HTTP Status code: \(response.statusCode)")
+                if response.statusCode == 401 {
+                    completion([false])
+                }
             }
 
             if let data = data {

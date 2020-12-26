@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditDeckViewController: UIViewController, EditDeckDelegate {
+class EditDeckViewController: UIViewController, DeckDelegate {
 
     struct deck {
         var access: Dictionary<String, Any>
@@ -23,6 +23,8 @@ class EditDeckViewController: UIViewController, EditDeckDelegate {
     let deckItemCreateHeight = CGFloat(50)
     var deckDict: Dictionary<String, Any>?
     var deckStruct:deck?
+    
+    var deckTitleView:deckTitle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,18 +42,17 @@ class EditDeckViewController: UIViewController, EditDeckDelegate {
         self.stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         
         //Add fields for title
-        let a = EditDeckTitle()
-        a.delegate = self
-        self.stackView.addArrangedSubview(a)
-        a.titleText.text = deckStruct?.title ?? nil
-        a.descriptionText.text = deckStruct?.description ?? nil
-        a.isPublic = deckStruct?.access["isPublic"] as? Bool ?? false
-        if a.isPublic! {
-            a.privacyButton.setTitle("Public", for: .normal)
+        deckTitleView = deckTitle()
+        deckTitleView!.delegate = self
+        self.stackView.addArrangedSubview(deckTitleView!)
+        deckTitleView!.titleText.text = deckStruct?.title ?? nil
+        deckTitleView!.descriptionText.text = deckStruct?.description ?? nil
+        deckTitleView!.isPublic = deckStruct?.access["isPublic"] as? Bool ?? false
+        if deckTitleView!.isPublic {
+            deckTitleView!.privacyButton.setTitle("Public", for: .normal)
         }
-        
-        a.translatesAutoresizingMaskIntoConstraints = false
-        a.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        deckTitleView!.translatesAutoresizingMaskIntoConstraints = false
+        deckTitleView!.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
         //Add input fields
         for character in deckStruct!.characters {
@@ -60,7 +61,7 @@ class EditDeckViewController: UIViewController, EditDeckDelegate {
             let definition = character["definition"] as? String
             let id = character["id"] as? String
             
-            let c = EditDeckItem()
+            let c = deckItem()
             c.delegate = self
             c.charText.text = char
             c.pinyinText.text = pinyin
@@ -68,13 +69,12 @@ class EditDeckViewController: UIViewController, EditDeckDelegate {
             c.alreadyExists = true
             c.id = id
             self.stackView.addArrangedSubview(c)
-            addNewChar(char: char ?? "", pinyin: pinyin ?? "", definition: definition ?? "", id: id ?? "", sender: c)
             c.translatesAutoresizingMaskIntoConstraints = false
             c.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
         }
         
         //Add control panel
-        let b = EditDeckControlPanel()
+        let b = deckControlPanel()
         b.delegateForDeck = self
         self.stackView.addArrangedSubview(b)
         b.translatesAutoresizingMaskIntoConstraints = false
@@ -103,90 +103,20 @@ class EditDeckViewController: UIViewController, EditDeckDelegate {
         self.present(alert, animated: true)
     }
     
-    func addDeckInfo(title: String, description: String, privacy: Bool) {
-        deckStruct?.title = title
-        deckStruct?.description = description
-        deckStruct?.access["isPublic"] = privacy
-    }
-    
-    func addDeckItem(_ sender: EditDeckControlPanel) {
-        let c = EditDeckItem()
+    func addDeckItem(_ sender: deckControlPanel) {
+        let c = deckItem()
         c.delegate = self
         self.stackView.insertArrangedSubview(c, at: self.stackView.arrangedSubviews.count - 1)
         c.translatesAutoresizingMaskIntoConstraints = false
         c.heightAnchor.constraint(equalToConstant: deckItemCreateHeight).isActive = true
     }
     
-    var chars:[[String: String]] = []
-    func addNewChar(char: String, pinyin: String, definition: String, id: String, sender: EditDeckItem) {
-        let index = self.stackView.arrangedSubviews.firstIndex(of: sender)! - 1
-        
-        func appendWithId() {
-            chars.append([
-                "char": char,
-                "pinyin": pinyin,
-                "definition": definition,
-                "id": id,
-            ])
-        }
-        
-        func appendWithoutId() {
-            chars.append([
-                "char": char,
-                "pinyin": pinyin,
-                "definition": definition,
-            ])
-        }
-        
-        func editWithId(index: Int) {
-            chars[index] = [
-                "char": char,
-                "pinyin": pinyin,
-                "definition": definition,
-                "id": id,
-            ]
-        }
-        
-        func editWithoutId(index: Int) {
-            chars[index] = [
-                "char": char,
-                "pinyin": pinyin,
-                "definition": definition,
-            ]
-        }
-        
-        if chars.count < index { //If there is gap between the items
-            for _ in 1...(index - chars.count) {
-                chars.append([:])
-            }
-            if id == "" {
-                appendWithoutId()
-            } else {
-                appendWithId()
-            }
-        } else if chars.count == index { //Adding an extra item
-            if id == "" {
-                appendWithoutId()
-            } else {
-                appendWithId()
-            }
-        } else if chars.count > index { //Changing an existing item
-            if id == "" {
-                editWithoutId(index: index)
-            } else {
-                editWithId(index: index)
-            }
-        }
-    }
-    
-    func removeDeckItem(sender: EditDeckItem) {
-        let index = self.stackView.arrangedSubviews.firstIndex(of: sender)! - 1
-        chars.remove(at: index)
+    func removeDeckItem(sender: deckItem) {
         self.stackView.removeArrangedSubview(sender)
         sender.removeFromSuperview()
     }
     
-    func deleteDeck() {
+    @IBAction func deletePressed(_ sender: Any) {
         confirm(message: "Are you sure you want to delete this deck?", completion: {result in
             if result {
                 GlobalData.removeDeck(deckId: self.deckStruct!._id, completion: {result in
@@ -200,13 +130,22 @@ class EditDeckViewController: UIViewController, EditDeckDelegate {
         })
     }
     
-    func donePressed() {
-        guard deckStruct?.title != "" else {
+    @IBAction func savePressed(_ sender: Any) {
+        let deckInfoDict = deckTitleView!.getData()
+        
+        guard deckInfoDict["title"] as! String != "" else {
             sendAlert(message: "Please enter a title")
             return
         }
         
-        GlobalData.updateDeck(deckId: deckStruct!._id, title: deckStruct!.title, description: deckStruct!.description, characters: chars, privacy: deckStruct?.access["isPublic"] as! Bool, completion: { result in
+        var chars:[[String:String]] = []
+        for view in stackView.arrangedSubviews {
+            if let char = view as? deckItem {
+                chars.append(char.getData())
+            }
+        }
+        
+        GlobalData.updateDeck(deckId: deckStruct!._id, title: deckInfoDict["title"] as! String, description: deckInfoDict["description"] as! String, characters: chars, privacy: deckInfoDict["isPublic"] as! Bool, completion: { result in
             if result {
                 DispatchQueue.main.async(execute: {
                     self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)

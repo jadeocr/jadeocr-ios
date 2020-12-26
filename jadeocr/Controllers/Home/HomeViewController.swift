@@ -25,6 +25,8 @@ class HomeViewController: UIViewController {
                     DispatchQueue.main.async(execute: {
                         self.performSegue(withIdentifier: "SignInSegue", sender: nil)
                     })
+                } else {
+                    self.updateDecks()
                 }
             })
         } catch {
@@ -53,7 +55,13 @@ class HomeViewController: UIViewController {
     func updateDecks() {
         GlobalData.getAllDecks(completion: {result in
             DispatchQueue.main.async(execute: {
-                self.decks = result
+                if let passed = result[0] as? Bool {
+                    if !passed {
+                        self.decks = []
+                    }
+                } else {
+                    self.decks = result
+                }
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             })
@@ -109,7 +117,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func unwintToHomeFromAddDeck (_ unwindSegue: UIStoryboardSegue) {}
+    @IBAction func unwindToHomeFromAddDeck (_ unwindSegue: UIStoryboardSegue) {}
 }
 
 extension HomeViewController: UITableViewDelegate {

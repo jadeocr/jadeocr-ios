@@ -26,18 +26,12 @@
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <action selector="titleTextChanged:" destination="-1" eventType="editingChanged" id="dwc-xw-mIG"/>
-                    </connections>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBO-FA-LmN">
                     <rect key="frame" x="25.5" y="66" width="355" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <action selector="descriptionTextChanged:" destination="-1" eventType="editingChanged" id="qkt-kp-VJl"/>
-                    </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Id8-qE-AAr">
                     <rect key="frame" x="418.5" y="66" width="76" height="34"/>

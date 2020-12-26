@@ -7,8 +7,7 @@
 
 import Foundation
 
-protocol AddDeckDelegate {
+protocol DeckDelegate {
     func addDeckItem(_ sender: deckControlPanel)
     func removeDeckItem(sender: deckItem)
-    func addDeckInfo(title: String, description: String, privacy: Bool)
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 class deckControlPanel: UIView {
-    var delegateForDeck:AddDeckDelegate?
+    var delegateForDeck:DeckDelegate?
     
     @IBOutlet var deckControlPanelContent: UIView!
     

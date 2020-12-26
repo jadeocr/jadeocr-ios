@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17700" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="backCard" customModule="jadeocr" customModuleProvider="target">
+            <connections>
+                <outlet property="backCardContent" destination="iN0-l3-epB" id="Rxn-3h-yeJ"/>
+                <outlet property="firstTextView" destination="jNz-ww-xKb" id="Rei-i4-pgT"/>
+                <outlet property="secondTextView" destination="amc-xD-QGX" id="OIv-sg-QWN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="523"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="f" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNz-ww-xKb">
+                    <rect key="frame" x="0.0" y="11" width="414" height="261.5"/>
+                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="f" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amc-xD-QGX">
+                    <rect key="frame" x="0.0" y="294.5" width="414" height="261.5"/>
+                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemGray4Color"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="jNz-ww-xKb" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="5ie-NH-aaG"/>
+                <constraint firstItem="amc-xD-QGX" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.5" id="A2n-Ch-4us"/>
+                <constraint firstItem="jNz-ww-xKb" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="APy-rU-jWG"/>
+                <constraint firstItem="amc-xD-QGX" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="HqZ-Ve-BMG"/>
+                <constraint firstItem="jNz-ww-xKb" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="KXN-AS-Woh"/>
+                <constraint firstItem="amc-xD-QGX" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="RBh-IW-4jt"/>
+                <constraint firstItem="amc-xD-QGX" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="gke-Bz-j7r"/>
+                <constraint firstItem="jNz-ww-xKb" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.5" id="vr6-hC-7u6"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="7PS-yq-md0" appends="YES" id="H4y-4p-fGG"/>
+            </connections>
+            <point key="canvasLocation" x="279.71014492753625" y="578.23660714285711"/>
+        </view>
+        <tapGestureRecognizer id="7PS-yq-md0">
+            <connections>
+                <action selector="tapped:" destination="-1" id="XmE-ii-dhx"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

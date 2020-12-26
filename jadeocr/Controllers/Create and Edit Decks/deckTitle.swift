@@ -14,7 +14,7 @@ class deckTitle: UIView {
     @IBOutlet weak var descriptionText: UITextField!
     @IBOutlet weak var privacyButton: UIButton!
     
-    var delegate:AddDeckDelegate?
+    var delegate:DeckDelegate?
     
     var isPublic = false
     
@@ -34,29 +34,23 @@ class deckTitle: UIView {
         deckTitleContent.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(deckTitleContent)
     }
-
-    func addDataToParent() {
-        delegate?.addDeckInfo(title: titleText.text ?? "", description: descriptionText.text ?? "", privacy: isPublic)
-    }
-    
-    @IBAction func titleTextChanged(_ sender: Any) {
-        addDataToParent()
-    }
-    
-    @IBAction func descriptionTextChanged(_ sender: Any) {
-        addDataToParent()
-    }
     
     @IBAction func privacyButtonPressed(_ sender: Any) {
         if isPublic {
             privacyButton.setTitle("Private", for: .normal)
             isPublic = false
-            addDataToParent()
         } else {
             privacyButton.setTitle("Public", for: .normal)
             isPublic = true
-            addDataToParent()
         }
+    }
+    
+    public func getData() -> Dictionary<String, Any> {
+        return [
+            "title": titleText.text ?? "",
+            "description": descriptionText.text ?? "",
+            "isPublic": isPublic
+        ]
     }
 }
 

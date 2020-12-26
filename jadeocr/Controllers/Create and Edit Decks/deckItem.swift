@@ -7,19 +7,19 @@
 
 import UIKit
 
-class EditDeckItem: UIView {
+class deckItem: UIView {
     
     @IBOutlet var deckItemViewContent: UIView!
     @IBOutlet weak var charText: UITextField!
     @IBOutlet weak var pinyinText: UITextField!
     @IBOutlet weak var defText: UITextField!
-    
+
     var pinyinTextEdited = false
     var defTextEdited = false
     var alreadyExists:Bool?
     var id:String?
 
-    var delegate:EditDeckDelegate?
+    var delegate:DeckDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,18 +32,10 @@ class EditDeckItem: UIView {
     }
     
     func initWithNib() {
-        Bundle.main.loadNibNamed("EditDeckItem", owner: self, options: nil)
-        if charText.text != "" {
-            pinyinTextEdited = true
-            defTextEdited = true
-        }
+        Bundle.main.loadNibNamed("deckItem", owner: self, options: nil)
         deckItemViewContent.frame = bounds
         deckItemViewContent.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(deckItemViewContent)
-    }
-    
-    func addDataToParent() {
-        self.delegate?.addNewChar(char: self.charText.text ?? "", pinyin: self.pinyinText.text ?? "", definition: self.defText.text ?? "", id: id ?? "", sender: self)
     }
     
     @IBAction func charTextChanged(_ sender: Any) {
@@ -52,7 +44,7 @@ class EditDeckItem: UIView {
                 if let parsedResult = try JSONSerialization.jsonObject(with: result, options: []) as? [String: Any] {
                     DispatchQueue.main.async(execute: {
                         if let pinyin = parsedResult["pinyin"] as? [String] {
-                            if !self.pinyinTextEdited && !(self.alreadyExists ?? false) {
+                            if !self.pinyinTextEdited && !(self.alreadyExists ?? false){
                                     self.pinyinText.text = pinyin[0]
                                 }
                         }
@@ -61,7 +53,6 @@ class EditDeckItem: UIView {
                                     self.defText.text = definition
                                 }
                         }
-                        self.addDataToParent()
                     })
                 }
             } catch let error as NSError {
@@ -72,15 +63,30 @@ class EditDeckItem: UIView {
     
     @IBAction func pinyinTextChanged(_ sender: Any) {
         self.pinyinTextEdited = true
-        self.addDataToParent()
     }
     
     @IBAction func defTextChanged(_ sender: Any) {
         self.defTextEdited = true
-        self.addDataToParent()
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
         delegate?.removeDeckItem(sender: self)
+    }
+    
+    public func getData() -> Dictionary<String, String> {
+        if id != nil {
+            return [
+                "char": charText.text ?? "",
+                "pinyin": pinyinText.text ?? "",
+                "definition": defText.text ?? "",
+                "id": id!
+            ]
+        } else {
+            return [
+                "char": charText.text ?? "",
+                "pinyin": pinyinText.text ?? "",
+                "definition": defText.text ?? "",
+            ]
+        }
     }
 }
