@@ -11,7 +11,7 @@ class DrawingViewController: UIViewController {
     
     
     @IBOutlet weak var ocrController: OCRController!
-    @IBOutlet weak var charShown: UILabel!
+    @IBOutlet weak var charShown: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +23,13 @@ class DrawingViewController: UIViewController {
     }
     
     @IBAction func checkPressed(_ sender: Any) {
-        GlobalData.OCR(sendArray: ocrController.getSendArray() , completion: {result in
+        GlobalData.OCR(sendArray: ocrController.getSendArray() , completion: {results in
             DispatchQueue.main.async {
-                self.charShown.text = result
+                var charString = ""
+                for result in results {
+                    charString += (result + ", ")
+                }
+                self.charShown.text = charString
             }
         })
     }

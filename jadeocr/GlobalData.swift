@@ -390,7 +390,7 @@ class GlobalData {
     }
     
     //MARK: OCR
-    public static func OCR(sendArray: [[[Int]]], completion: @escaping (String) -> ()) {
+    public static func OCR(sendArray: [[[Int]]], completion: @escaping ([String]) -> ()) {
         // Make request to check
         let url = URL(string: GlobalData.apiURL + "api/ocr")
         guard let requestUrl = url else { fatalError() }
@@ -402,6 +402,7 @@ class GlobalData {
         
         let jsonData = try? JSONSerialization.data(withJSONObject: sendArray)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         
         var requestBodyComponents = URLComponents()
         requestBodyComponents.queryItems = [
@@ -423,8 +424,15 @@ class GlobalData {
             }
 
             // Convert HTTP Response Data to a simple String
-            if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                completion(dataString)
+//            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+//                completion(dataString)
+//            }
+            
+            if let data = data {
+                do {
+                    let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! [String]
+                    completion(jsonData)
+                } catch {}
             }
 
         }

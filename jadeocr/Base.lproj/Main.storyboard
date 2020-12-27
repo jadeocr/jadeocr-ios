@@ -64,31 +64,33 @@
                                     <constraint firstItem="aYF-W4-7SO" firstAttribute="leading" secondItem="gCF-Ff-pKx" secondAttribute="trailing" constant="82" id="bMy-Qv-lBF"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No character drawn." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PuV-ay-HfG">
-                                <rect key="frame" x="0.0" y="849" width="768" height="43"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="No Character Drawn" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Cwc-o6-9wq">
+                                <rect key="frame" x="38.5" y="834.5" width="691" height="71.5"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WMB-fU-Saf"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="f2U-Rl-PDu" firstAttribute="width" secondItem="wW1-H8-9AV" secondAttribute="width" multiplier="0.9" id="5fU-RG-HZx"/>
                             <constraint firstItem="f2U-Rl-PDu" firstAttribute="centerX" secondItem="WMB-fU-Saf" secondAttribute="centerX" id="5yI-Ho-qGH"/>
-                            <constraint firstItem="WMB-fU-Saf" firstAttribute="trailing" secondItem="PuV-ay-HfG" secondAttribute="trailing" id="6GQ-yC-aF7"/>
+                            <constraint firstItem="Cwc-o6-9wq" firstAttribute="width" secondItem="wW1-H8-9AV" secondAttribute="width" multiplier="0.9" id="6D4-XI-3nf"/>
                             <constraint firstItem="f2U-Rl-PDu" firstAttribute="top" secondItem="WMB-fU-Saf" secondAttribute="top" constant="20" id="Gqp-VR-oEo"/>
                             <constraint firstItem="WNG-9z-lHc" firstAttribute="centerY" secondItem="WMB-fU-Saf" secondAttribute="centerY" multiplier="1.5" id="ImP-Zt-16P"/>
-                            <constraint firstItem="PuV-ay-HfG" firstAttribute="leading" secondItem="WMB-fU-Saf" secondAttribute="leading" id="Jzr-pf-GPb"/>
+                            <constraint firstItem="Cwc-o6-9wq" firstAttribute="centerX" secondItem="WMB-fU-Saf" secondAttribute="centerX" id="Qbg-JJ-BfV"/>
                             <constraint firstItem="WNG-9z-lHc" firstAttribute="centerX" secondItem="f2U-Rl-PDu" secondAttribute="centerX" id="bB9-c2-qe8"/>
-                            <constraint firstItem="PuV-ay-HfG" firstAttribute="centerY" secondItem="WMB-fU-Saf" secondAttribute="centerY" multiplier="1.7" id="e2B-Ar-Jfh"/>
+                            <constraint firstItem="Cwc-o6-9wq" firstAttribute="centerY" secondItem="WMB-fU-Saf" secondAttribute="centerY" multiplier="1.7" id="fAd-gX-ip7"/>
+                            <constraint firstItem="Cwc-o6-9wq" firstAttribute="height" secondItem="wW1-H8-9AV" secondAttribute="height" multiplier="0.07" id="nLh-F6-QQK"/>
                             <constraint firstItem="f2U-Rl-PDu" firstAttribute="height" secondItem="wW1-H8-9AV" secondAttribute="height" multiplier="0.6" id="rFu-ud-6kn"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Draw!" id="g3J-t5-Gmv"/>
                     <navigationItem key="navigationItem" title="Draw!" id="nZp-mL-nNY"/>
                     <connections>
-                        <outlet property="charShown" destination="PuV-ay-HfG" id="PNY-pi-MUM"/>
+                        <outlet property="charShown" destination="Cwc-o6-9wq" id="ERa-ZU-CcZ"/>
                         <outlet property="ocrController" destination="f2U-Rl-PDu" id="zf4-Xy-HWg"/>
                     </connections>
                 </viewController>
@@ -397,23 +399,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uX-Ee-lce">
-                                <rect key="frame" x="368" y="906.5" width="32" height="30"/>
+                                <rect key="frame" x="445" y="906.5" width="32" height="30"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="g6b-bv-N3Z" eventType="touchUpInside" id="n93-PB-IWP"/>
+                                    <action selector="nextButtonPressed:" destination="g6b-bv-N3Z" eventType="touchUpInside" id="n93-PB-IWP"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paE-KO-R4z">
+                                <rect key="frame" x="641.5" y="912.5" width="23" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be1-YI-udX">
+                                <rect key="frame" x="290" y="906.5" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="g6b-bv-N3Z" eventType="touchUpInside" id="Z05-Qj-yzf"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JkR-7Y-Ya7"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
+                            <constraint firstItem="paE-KO-R4z" firstAttribute="centerX" secondItem="JkR-7Y-Ya7" secondAttribute="centerX" multiplier="1.7" id="6ay-C5-P00"/>
+                            <constraint firstItem="5uX-Ee-lce" firstAttribute="centerY" secondItem="JkR-7Y-Ya7" secondAttribute="centerY" multiplier="0.9" priority="999" id="VYP-99-YUp" userLabel="next center y secondary"/>
+                            <constraint firstItem="paE-KO-R4z" firstAttribute="centerY" secondItem="JkR-7Y-Ya7" secondAttribute="centerY" multiplier="1.8" id="WPq-xo-Rtm"/>
                             <constraint firstItem="5uX-Ee-lce" firstAttribute="centerY" secondItem="JkR-7Y-Ya7" secondAttribute="centerY" multiplier="1.8" id="dSS-J8-Cjv"/>
-                            <constraint firstItem="5uX-Ee-lce" firstAttribute="centerX" secondItem="JkR-7Y-Ya7" secondAttribute="centerX" id="wYP-ot-vzK"/>
+                            <constraint firstItem="Be1-YI-udX" firstAttribute="centerX" secondItem="JkR-7Y-Ya7" secondAttribute="centerX" multiplier="0.8" id="f44-G5-Lnr"/>
+                            <constraint firstItem="Be1-YI-udX" firstAttribute="centerY" secondItem="JkR-7Y-Ya7" secondAttribute="centerY" multiplier="0.9" priority="999" id="g6w-Gh-D3X" userLabel="back center y secondary"/>
+                            <constraint firstItem="5uX-Ee-lce" firstAttribute="centerX" secondItem="JkR-7Y-Ya7" secondAttribute="centerX" multiplier="1.2" id="wYP-ot-vzK"/>
+                            <constraint firstItem="Be1-YI-udX" firstAttribute="centerY" secondItem="JkR-7Y-Ya7" secondAttribute="centerY" multiplier="1.8" id="z4x-7a-uZs"/>
+                            <constraint firstItem="paE-KO-R4z" firstAttribute="centerY" secondItem="JkR-7Y-Ya7" secondAttribute="centerY" multiplier="0.9" priority="999" id="z9s-sh-j7E" userLabel="count center y secondary"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hK6-tJ-BBX"/>
                     <connections>
+                        <outlet property="backButtonCenterYAnchor" destination="z4x-7a-uZs" id="egb-RF-te3"/>
+                        <outlet property="countLabel" destination="paE-KO-R4z" id="0pM-qa-ibk"/>
+                        <outlet property="countLabelCenterYAnchor" destination="WPq-xo-Rtm" id="qyH-Yt-PCB"/>
                         <outlet property="learnViewContent" destination="uhW-L8-bnG" id="kbA-0G-iDF"/>
+                        <outlet property="nextButtonCenterYAnchor" destination="dSS-J8-Cjv" id="hpd-kx-PL2"/>
                         <segue destination="MKB-rZ-VS7" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="bmY-CF-aGb"/>
                     </connections>
                 </viewController>
