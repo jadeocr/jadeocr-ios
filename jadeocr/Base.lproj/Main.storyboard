@@ -241,18 +241,24 @@
                                         <rect key="frame" x="0.0" y="0.0" width="55" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="SRS"/>
+                                        <connections>
+                                            <action selector="srsButtonPressed:" destination="jXA-aa-RkH" eventType="touchUpInside" id="TGF-OE-hVg"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTf-sl-oCw">
                                         <rect key="frame" x="95" y="0.0" width="60" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Quiz"/>
+                                        <connections>
+                                            <action selector="quizButtonPressed:" destination="jXA-aa-RkH" eventType="touchUpInside" id="ozQ-O5-9jo"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oO4-5l-78Z">
                                         <rect key="frame" x="195" y="0.0" width="73" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Learn"/>
                                         <connections>
-                                            <segue destination="Vzz-mJ-IMI" kind="show" id="imX-vf-2aj"/>
+                                            <action selector="learnButtonPressed:" destination="jXA-aa-RkH" eventType="touchUpInside" id="Obe-v0-fbG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -384,16 +390,19 @@
                         <outlet property="isPublicLabel" destination="5MA-ZJ-pBa" id="E8T-ZL-jzM"/>
                         <outlet property="tableView" destination="EEX-aJ-ZpZ" id="Wwb-I2-w2b"/>
                         <outlet property="titleLabel" destination="V5A-In-3t5" id="mJb-Or-1LD"/>
+                        <segue destination="SNB-nM-hwi" kind="show" identifier="segueToSRS" id="AzL-Nv-SsW"/>
+                        <segue destination="Vzz-mJ-IMI" kind="show" identifier="segueToLearn" id="uLF-3a-hOq"/>
+                        <segue destination="qrK-zR-Hg2" kind="show" identifier="segueToQuiz" id="Lsn-Hv-pxv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nAo-xz-hxy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2034" y="-554"/>
         </scene>
-        <!--Learn View Controller-->
+        <!--Flashcards-->
         <scene sceneID="KgR-qj-KPu">
             <objects>
-                <viewController id="g6b-bv-N3Z" customClass="LearnViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="g6b-bv-N3Z" customClass="FlashcardsViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uhW-L8-bnG">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -433,12 +442,14 @@
                             <constraint firstItem="paE-KO-R4z" firstAttribute="centerY" secondItem="JkR-7Y-Ya7" secondAttribute="centerY" multiplier="0.9" priority="999" id="z9s-sh-j7E" userLabel="count center y secondary"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hK6-tJ-BBX"/>
+                    <navigationItem key="navigationItem" title="Flashcards" id="hK6-tJ-BBX"/>
                     <connections>
+                        <outlet property="backButton" destination="Be1-YI-udX" id="5L9-f8-dhy"/>
                         <outlet property="backButtonCenterYAnchor" destination="z4x-7a-uZs" id="egb-RF-te3"/>
                         <outlet property="countLabel" destination="paE-KO-R4z" id="0pM-qa-ibk"/>
                         <outlet property="countLabelCenterYAnchor" destination="WPq-xo-Rtm" id="qyH-Yt-PCB"/>
                         <outlet property="learnViewContent" destination="uhW-L8-bnG" id="kbA-0G-iDF"/>
+                        <outlet property="nextButton" destination="5uX-Ee-lce" id="Wsp-Lc-rw6"/>
                         <outlet property="nextButtonCenterYAnchor" destination="dSS-J8-Cjv" id="hpd-kx-PL2"/>
                         <segue destination="MKB-rZ-VS7" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="bmY-CF-aGb"/>
                     </connections>
@@ -446,12 +457,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LDf-NS-oNR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="MKB-rZ-VS7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3624" y="-554"/>
+            <point key="canvasLocation" x="3641" y="-554"/>
         </scene>
-        <!--Options-->
+        <!--Learn Options-->
         <scene sceneID="pVQ-fW-eI3">
             <objects>
-                <viewController id="Vzz-mJ-IMI" customClass="LearnOptionsViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Learn Options" id="Vzz-mJ-IMI" customClass="FlashcardsOptionsViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XTB-Rp-z4x">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -589,7 +600,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTJ-hm-73m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="8t3-yZ-g58" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2810" y="-554"/>
+            <point key="canvasLocation" x="2838" y="132"/>
         </scene>
         <!--Sign In-->
         <scene sceneID="IJb-B4-PcW">
@@ -819,7 +830,7 @@
                     <connections>
                         <outlet property="scrollView" destination="YSD-p0-dCd" id="n7I-aW-8ya"/>
                         <outlet property="stackView" destination="O0V-bJ-CHS" id="lID-KG-oWH"/>
-                        <segue destination="keH-Ld-dqW" kind="unwind" identifier="unwindToHome" unwindAction="unwintToHomeFromAddDeck:" id="Zrx-j8-AsI"/>
+                        <segue destination="keH-Ld-dqW" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeFromAddDeck:" id="Zrx-j8-AsI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyg-5j-Tmp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -934,7 +945,162 @@
             </objects>
             <point key="canvasLocation" x="1223" y="-2123"/>
         </scene>
+        <!--SRS Options-->
+        <scene sceneID="WPk-B6-FwT">
+            <objects>
+                <viewController title="SRS Options" id="SNB-nM-hwi" customClass="FlashcardsOptionsViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iPr-Xs-kkD">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NXF-EX-V5x">
+                                <rect key="frame" x="435" y="179" width="282" height="256"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="snk-mE-HLQ">
+                                        <rect key="frame" x="20" y="176.5" width="242" height="32"/>
+                                        <segments>
+                                            <segment title="Character"/>
+                                            <segment title="Pinyin"/>
+                                            <segment title="Definition"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="leZ-di-BOp">
+                                        <rect key="frame" x="116.5" y="48.5" width="51" height="31"/>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstItem="snk-mE-HLQ" firstAttribute="centerX" secondItem="NXF-EX-V5x" secondAttribute="centerX" id="BSs-TT-t3l"/>
+                                    <constraint firstItem="leZ-di-BOp" firstAttribute="centerX" secondItem="NXF-EX-V5x" secondAttribute="centerX" id="IYW-aI-ZkP"/>
+                                    <constraint firstItem="leZ-di-BOp" firstAttribute="centerY" secondItem="NXF-EX-V5x" secondAttribute="centerY" multiplier="0.5" id="mde-Xx-RZo"/>
+                                    <constraint firstItem="snk-mE-HLQ" firstAttribute="centerY" secondItem="NXF-EX-V5x" secondAttribute="centerY" multiplier="1.5" id="rhI-Ky-S5P"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNd-8h-x6x">
+                                <rect key="frame" x="93.5" y="179" width="197" height="256"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Handwriting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aF-RP-kf8">
+                                        <rect key="frame" x="19.5" y="32" width="177.5" height="64"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Front" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahi-aO-jfP">
+                                        <rect key="frame" x="19.5" y="160" width="177.5" height="64"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstItem="7aF-RP-kf8" firstAttribute="centerY" secondItem="qNd-8h-x6x" secondAttribute="centerY" multiplier="0.5" id="E1S-54-sTU"/>
+                                    <constraint firstItem="ahi-aO-jfP" firstAttribute="height" secondItem="qNd-8h-x6x" secondAttribute="height" multiplier="0.25" id="E5P-B8-C12"/>
+                                    <constraint firstItem="7aF-RP-kf8" firstAttribute="leading" secondItem="qNd-8h-x6x" secondAttribute="centerX" multiplier="0.2" id="PqG-Kf-JLQ"/>
+                                    <constraint firstItem="ahi-aO-jfP" firstAttribute="leading" secondItem="qNd-8h-x6x" secondAttribute="centerX" multiplier="0.2" id="Qzf-xo-qjK"/>
+                                    <constraint firstItem="ahi-aO-jfP" firstAttribute="width" secondItem="qNd-8h-x6x" secondAttribute="width" multiplier="0.9" id="Tfk-kH-Xdb"/>
+                                    <constraint firstItem="7aF-RP-kf8" firstAttribute="width" secondItem="qNd-8h-x6x" secondAttribute="width" multiplier="0.9" id="jPq-cT-8PL"/>
+                                    <constraint firstItem="7aF-RP-kf8" firstAttribute="height" secondItem="qNd-8h-x6x" secondAttribute="height" multiplier="0.25" id="jRR-4U-HsP"/>
+                                    <constraint firstItem="ahi-aO-jfP" firstAttribute="centerY" secondItem="qNd-8h-x6x" secondAttribute="centerY" multiplier="1.5" id="q8s-pk-END"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ia-pD-I6j">
+                                <rect key="frame" x="353" y="744" width="62" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <segue destination="g6b-bv-N3Z" kind="show" id="tgr-lh-Nr0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3hN-dM-srk"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="qNd-8h-x6x" firstAttribute="centerX" secondItem="3hN-dM-srk" secondAttribute="centerX" multiplier="0.5" id="7by-IK-ko2"/>
+                            <constraint firstItem="NXF-EX-V5x" firstAttribute="centerX" secondItem="3hN-dM-srk" secondAttribute="centerX" multiplier="1.5" id="A56-1P-fSo"/>
+                            <constraint firstItem="0ia-pD-I6j" firstAttribute="centerY" secondItem="3hN-dM-srk" secondAttribute="centerY" multiplier="1.5" id="Ami-En-vf6"/>
+                            <constraint firstItem="qNd-8h-x6x" firstAttribute="centerY" secondItem="3hN-dM-srk" secondAttribute="centerY" multiplier="0.6" id="CdV-aI-rnG"/>
+                            <constraint firstItem="NXF-EX-V5x" firstAttribute="centerY" secondItem="3hN-dM-srk" secondAttribute="centerY" multiplier="0.6" id="Gu0-4w-sK6"/>
+                            <constraint firstItem="qNd-8h-x6x" firstAttribute="width" secondItem="iPr-Xs-kkD" secondAttribute="width" multiplier="0.25651" id="PYH-og-TPn"/>
+                            <constraint firstItem="0ia-pD-I6j" firstAttribute="centerX" secondItem="3hN-dM-srk" secondAttribute="centerX" id="Wm5-SG-H5A"/>
+                            <constraint firstItem="qNd-8h-x6x" firstAttribute="height" secondItem="iPr-Xs-kkD" secondAttribute="height" multiplier="0.25" id="elR-1u-RR6"/>
+                            <constraint firstItem="NXF-EX-V5x" firstAttribute="width" secondItem="iPr-Xs-kkD" secondAttribute="width" multiplier="0.367188" id="lzb-uM-h82"/>
+                            <constraint firstItem="NXF-EX-V5x" firstAttribute="height" secondItem="iPr-Xs-kkD" secondAttribute="height" multiplier="0.25" id="wMB-pe-ogI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Options" id="G8M-bS-1h1"/>
+                    <connections>
+                        <outlet property="frontControl" destination="snk-mE-HLQ" id="fhS-Ce-WdH"/>
+                        <outlet property="handwritingControl" destination="leZ-di-BOp" id="JrC-T8-9PX"/>
+                        <segue destination="6F5-Gg-FI9" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="XVm-0h-Sho"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DMe-g1-lcz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="6F5-Gg-FI9" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2838" y="-1214"/>
+        </scene>
+        <!--Quiz Options-->
+        <scene sceneID="b1U-hj-U5v">
+            <objects>
+                <viewController title="Quiz Options" id="qrK-zR-Hg2" customClass="FlashcardsOptionsViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bf0-91-Fdh">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Qj-bx-htf">
+                                <rect key="frame" x="353" y="744" width="62" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <segue destination="g6b-bv-N3Z" kind="show" id="KGA-Dm-oc9"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Quiz:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1P-VZ-Fje">
+                                <rect key="frame" x="77" y="64" width="177.5" height="128"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Tml-bm-GzI">
+                                <rect key="frame" x="38.5" y="240.5" width="691" height="32"/>
+                                <segments>
+                                    <segment title="Character"/>
+                                    <segment title="Handwriting"/>
+                                    <segment title="Pinyin"/>
+                                    <segment title="Definition"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mpG-df-ucB"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="m1P-VZ-Fje" firstAttribute="leading" secondItem="Bf0-91-Fdh" secondAttribute="centerX" multiplier="0.2" id="49W-E4-ipT"/>
+                            <constraint firstItem="m1P-VZ-Fje" firstAttribute="height" secondItem="Bf0-91-Fdh" secondAttribute="height" multiplier="0.25" constant="-128" id="7PV-X9-GkZ"/>
+                            <constraint firstItem="8Qj-bx-htf" firstAttribute="centerX" secondItem="mpG-df-ucB" secondAttribute="centerX" id="TbF-uI-ziI"/>
+                            <constraint firstItem="8Qj-bx-htf" firstAttribute="centerY" secondItem="mpG-df-ucB" secondAttribute="centerY" multiplier="1.5" id="WKp-mu-JKG"/>
+                            <constraint firstItem="Tml-bm-GzI" firstAttribute="centerY" secondItem="Bf0-91-Fdh" secondAttribute="centerY" multiplier="0.5" id="XX9-7l-6dW"/>
+                            <constraint firstItem="m1P-VZ-Fje" firstAttribute="centerY" secondItem="Bf0-91-Fdh" secondAttribute="centerY" multiplier="0.25" id="eU3-bV-2rf"/>
+                            <constraint firstItem="m1P-VZ-Fje" firstAttribute="width" secondItem="Bf0-91-Fdh" secondAttribute="width" multiplier="0.9" constant="-513.70000000000005" id="io3-0H-Nxd"/>
+                            <constraint firstItem="Tml-bm-GzI" firstAttribute="width" secondItem="Bf0-91-Fdh" secondAttribute="width" multiplier="0.9" id="m3p-xL-iHA"/>
+                            <constraint firstItem="Tml-bm-GzI" firstAttribute="centerX" secondItem="Bf0-91-Fdh" secondAttribute="centerX" id="rfE-wg-Pko"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Options" id="mwS-mp-VCE"/>
+                    <connections>
+                        <outlet property="frontControl" destination="Tml-bm-GzI" id="JUf-fz-1dd"/>
+                        <segue destination="oFI-Af-sPB" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="10f-Sq-j7Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="991-6e-rC1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="oFI-Af-sPB" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2837.5" y="-554.296875"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="KGA-Dm-oc9"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="person-circle" width="30" height="30"/>
         <systemColor name="labelColor">

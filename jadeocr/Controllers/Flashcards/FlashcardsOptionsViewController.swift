@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LearnOptionsViewController: UIViewController {
+class FlashcardsOptionsViewController: UIViewController {
 
     @IBOutlet weak var handwritingControl: UISwitch!
     @IBOutlet weak var frontControl: UISegmentedControl!
@@ -16,6 +16,7 @@ class LearnOptionsViewController: UIViewController {
     @IBOutlet weak var repetitionLabel: UILabel!
     
     var deck:Dictionary<String, Any>?
+    var mode:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,19 +44,34 @@ class LearnOptionsViewController: UIViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? LearnViewController {
-            if handwritingControl.isOn {
-                vc.handwriting = true
-            } else {
-                vc.handwriting = false
+        if let vc = segue.destination as? FlashcardsViewController {
+            if mode == "learn" {
+                vc.mode = "learn"
+                if handwritingControl.isOn {
+                    vc.handwriting = true
+                } else {
+                    vc.handwriting = false
+                }
+                vc.front = frontControl.titleForSegment(at: frontControl.selectedSegmentIndex)
+                if scrambleControl.isOn {
+                    vc.scramble = true
+                } else {
+                    vc.scramble = false
+                }
+                vc.repetitions = Int(repetitionStepper.value)
+            } else if mode == "srs" {
+                vc.mode = "srs"
+                if handwritingControl.isOn {
+                    vc.handwriting = true
+                } else {
+                    vc.handwriting = false
+                }
+                vc.front = frontControl.titleForSegment(at: frontControl.selectedSegmentIndex)
+            } else if mode == "quiz" {
+                vc.mode = "quiz"
+                vc.quizMode = frontControl.titleForSegment(at: frontControl.selectedSegmentIndex)
             }
-            vc.front = frontControl.titleForSegment(at: frontControl.selectedSegmentIndex)
-            if scrambleControl.isOn {
-                vc.scramble = true
-            } else {
-                vc.scramble = false
-            }
-            vc.repetitions = Int(repetitionStepper.value)
+            
             vc.deck = deck
         }
     }

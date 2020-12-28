@@ -19,6 +19,7 @@ class DeckInfoViewController: UIViewController {
     var deckId: String?
     var deck: Dictionary<String, Any>?
     var characters: [Dictionary<String, Any>]?
+    var mode:String = "none"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,16 +64,41 @@ class DeckInfoViewController: UIViewController {
         if segue.destination is EditDeckViewController {
             let vc = segue.destination as! EditDeckViewController
             vc.deckDict = deck
-        } else if segue.destination is LearnOptionsViewController {
-            let vc = segue.destination as! LearnOptionsViewController
+        } else if segue.destination is FlashcardsOptionsViewController {
+            let vc = segue.destination as! FlashcardsOptionsViewController
             vc.deck = deck
-            
+            vc.mode = mode
         }
     }
     
     @IBAction func unwindToDeckInfo(unwindSegue: UIStoryboardSegue) {
         updateDeckInfo()
     }
+    
+    //MARK: Handle Button Presses for Learn
+    @IBAction func srsButtonPressed(_ sender: Any) {
+        mode = "srs"
+        GlobalData.getSRSDeck(deckId: deck?["_id"] as? String ?? "", completion: { results in
+            DispatchQueue.main.async {
+                self.deck = [
+                    "_id": self.deck?["_id"] ?? "",
+                    "characters": results
+                ]
+                self.performSegue(withIdentifier: "segueToSRS", sender: self)
+            }
+        })
+    }
+    
+    @IBAction func quizButtonPressed(_ sender: Any) {
+        mode = "quiz"
+        performSegue(withIdentifier: "segueToQuiz", sender: self)
+    }
+    
+    @IBAction func learnButtonPressed(_ sender: Any) {
+        mode = "learn"
+        performSegue(withIdentifier: "segueToLearn", sender: self)
+    }
+    
 }
 
 extension DeckInfoViewController: UITableViewDelegate {

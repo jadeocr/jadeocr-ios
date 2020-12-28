@@ -7,10 +7,12 @@
 
 import UIKit
 
-class LearnViewController: UIViewController, CardDelegate {
+class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
 
     @IBOutlet var learnViewContent: UIView!
     @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var backButtonCenterYAnchor: NSLayoutConstraint!
     @IBOutlet weak var nextButtonCenterYAnchor: NSLayoutConstraint!
@@ -20,14 +22,18 @@ class LearnViewController: UIViewController, CardDelegate {
         var front: frontCard
         var back: backCard
         var char: String
+        var charId: String
     }
     
     var cardArray:[card] = []
     var count:Int = -1
     var handwritingView:ocrView?
+    var srsResultsArray:[srsResults] = []
     
+    var mode:String?
     var handwriting:Bool?
     var front:String?
+    var quizMode:String?
     var scramble:Bool?
     var repetitions:Int?
     var deck:Dictionary<String, Any>?
@@ -56,28 +62,13 @@ class LearnViewController: UIViewController, CardDelegate {
             createHandwritingView()
         }
         
-        for _ in 1...(repetitions ?? 1) {
-            if let characters = deck?["characters"] as? NSArray {
-                if front == "Character" {
-                    for i in 0..<characters.count {
-                        if let character = characters[i] as? Dictionary<String, Any> {
-                            createCard(front: character["char"] as? String ?? "", backFirst: character["pinyin"] as? String ?? "", backSecond: character["definition"] as? String ?? "", char: character["char"] as? String ?? "")
-                        }
-                    }
-                } else if front == "Pinyin" {
-                    for i in 0..<characters.count {
-                        if let character = characters[i] as? Dictionary<String, Any> {
-                            createCard(front: character["pinyin"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["definition"] as? String ?? "", char: character["char"] as? String ?? "")
-                        }
-                    }
-                } else if front == "Definition" {
-                    for i in 0..<characters.count {
-                        if let character = characters[i] as? Dictionary<String, Any> {
-                            createCard(front: character["definition"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["pinyin"] as? String ?? "", char: character["char"] as? String ?? "")
-                        }
-                    }
-                }
-            }
+        if mode == "learn" {
+            createCardBasedOnRepetitions(repetitions: repetitions ?? 1)
+        } else if mode == "srs" {
+            createCardBasedOnRepetitions(repetitions: repetitions ?? 1)
+            changeButtonTextToSRS()
+        } else if mode == "quiz" {
+            
         }
         
         countLabel.text = "0/" + String(cardArray.count)
@@ -133,13 +124,43 @@ class LearnViewController: UIViewController, CardDelegate {
         return backCardView
     }
     
-    func createCard(front: String, backFirst: String, backSecond: String, char: String) {
-        cardArray.append(card(front: createFrontCard(title: front), back: createBackCard(first: backFirst, second: backSecond), char: char))
+    func createCard(front: String, backFirst: String, backSecond: String, char: String, charId: String) {
+        cardArray.append(card(front: createFrontCard(title: front), back: createBackCard(first: backFirst, second: backSecond), char: char, charId: charId))
+    }
+    
+    func createCardBasedOnRepetitions(repetitions: Int) {
+        for _ in 1...(repetitions) {
+            if let characters = deck?["characters"] as? NSArray {
+                if front == "Character" {
+                    for i in 0..<characters.count {
+                        if let character = characters[i] as? Dictionary<String, Any> {
+                            createCard(front: character["char"] as? String ?? "", backFirst: character["pinyin"] as? String ?? "", backSecond: character["definition"] as? String ?? "", char: character["char"] as? String ?? "", charId: character["id"] as? String ?? "")
+                        }
+                    }
+                } else if front == "Pinyin" {
+                    for i in 0..<characters.count {
+                        if let character = characters[i] as? Dictionary<String, Any> {
+                            createCard(front: character["pinyin"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["definition"] as? String ?? "", char: character["char"] as? String ?? "", charId: character["id"] as? String ?? "")
+                        }
+                    }
+                } else if front == "Definition" {
+                    for i in 0..<characters.count {
+                        if let character = characters[i] as? Dictionary<String, Any> {
+                            createCard(front: character["definition"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["pinyin"] as? String ?? "", char: character["char"] as? String ?? "", charId: character["id"] as? String ?? "")
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func showNextCard() {
         guard count < cardArray.count - 1 else {
-            self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+            if mode == "srs" {
+                submitSRS()
+            } else {
+                self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+            }
             return
         }
         
@@ -187,6 +208,7 @@ class LearnViewController: UIViewController, CardDelegate {
     func createHandwritingView() {
         handwritingView = ocrView()
         learnViewContent.addSubview(handwritingView!)
+        handwritingView!.delegate = self
         handwritingView!.translatesAutoresizingMaskIntoConstraints = false
         
         handwritingView!.heightAnchor.constraint(equalTo: learnViewContent.heightAnchor, multiplier: handwritingViewHeightMultiplier)
@@ -206,10 +228,59 @@ class LearnViewController: UIViewController, CardDelegate {
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
+        if mode == "srs" {
+            addSRSResult(correct: true)
+        }
         showNextCard()
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
-        showLastCard()
+        if mode == "srs" {
+            addSRSResult(correct: false)
+            showNextCard()
+        } else {
+            showLastCard()
+        }
+    }
+    
+    func checked(correct: Bool) {
+        if mode == "srs" {
+            addSRSResult(correct: correct)
+            showNextCard()
+        }
+    }
+    
+    //MARK: SRS functions
+    func changeButtonTextToSRS() {
+        nextButton.setTitle("Know", for: .normal)
+        backButton.setTitle("Don't Know", for: .normal)
+    }
+    
+    func addSRSResult(correct: Bool) {
+        var quality:Int = 1
+        if correct {
+            quality = 5
+        }
+        srsResultsArray.append(srsResults(charId: cardArray[count].charId, quality: quality))
+    }
+    
+    func submitSRS() {
+        GlobalData.practiced(results: srsResultsArray, deckId: deck?["_id"] as? String ?? "", completion: {result in
+            if result == true {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+                }
+            }
+        })
+    }
+    
+    //MARK: Quiz functions
+    func changeButtonTextToQuiz() {
+        nextButton.isHidden = true
+        backButton.isHidden = true
+    }
+    
+    func showNextQuizCard() {
+        
     }
 }

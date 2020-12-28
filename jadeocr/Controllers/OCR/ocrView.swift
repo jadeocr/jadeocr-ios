@@ -15,6 +15,8 @@ class ocrView: UIView {
     
     var char:String?
     
+    var delegate:OCRDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
@@ -51,8 +53,10 @@ class ocrView: UIView {
                 
                 if matched == true {
                     charString = "Correct!"
+                    self.delegate?.checked(correct: true)
                 } else {
                     charString = "Incorrect. You matched: " + charString
+                    self.delegate?.checked(correct: false)
                 }
                 
                 self.charShown.text = charString

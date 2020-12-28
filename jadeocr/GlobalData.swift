@@ -11,6 +11,7 @@ import Security
 class GlobalData {
     
     public static var apiURL:String = "http://simfony.tech:3003/"
+//    public static var apiURL:String = "http://192.168.1.103:3000/"
     
     enum KeychainError: Error {
         case noPassword
@@ -270,7 +271,7 @@ class GlobalData {
     }
     
     //MARK: getAlDecks
-    public static func getAllDecks (completion: @escaping (NSArray)->()) {
+    public static func getAllDecks(completion: @escaping (NSArray)->()) {
         let url = URL(string: GlobalData.apiURL + "api/deck/allDecks")
         guard let requestUrl = url else { fatalError() }
         
@@ -305,7 +306,7 @@ class GlobalData {
     }
     
     //MARK: getOneDeck
-    public static func getOneDeck (deckId: String, completion: @escaping (Dictionary<String, Any>)->()) {
+    public static func getOneDeck(deckId: String, completion: @escaping (Dictionary<String, Any>)->()) {
         let url = URL(string: GlobalData.apiURL + "api/deck/deck")
         guard let requestUrl = url else { fatalError() }
         
@@ -349,7 +350,7 @@ class GlobalData {
     }
     
     //MARK: removeDeck
-    public static func removeDeck (deckId: String, completion: @escaping (Bool)->()) {
+    public static func removeDeck(deckId: String, completion: @escaping (Bool)->()) {
         let url = URL(string: GlobalData.apiURL + "api/deck/delete")
         guard let requestUrl = url else { fatalError() }
         
@@ -422,17 +423,112 @@ class GlobalData {
             if let response = response as? HTTPURLResponse {
                 print("Response HTTP Status code: \(response.statusCode)")
             }
-
-            // Convert HTTP Response Data to a simple String
-//            if let data = data, let dataString = String(data: data, encoding: .utf8) {
-//                completion(dataString)
-//            }
             
             if let data = data {
                 do {
                     let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! [String]
                     completion(jsonData)
                 } catch {}
+            }
+
+        }
+        task.resume()
+    }
+    
+    //MARK: SRS
+    public static func getSRSDeck(deckId: String, completion: @escaping ([Dictionary<String, Any>])->()) {
+        let url = URL(string: GlobalData.apiURL + "api/deck/srs")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        
+        do {
+            let parameters: [String: Any] = [
+                "deckId": deckId
+            ]
+            let jsonData = try JSONSerialization.data(withJSONObject: parameters)
+            request.httpBody = jsonData
+
+        } catch {
+
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+            }
+
+            if let data = data {
+                do {
+                    let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! [Dictionary<String, Any>]
+                    completion(jsonData)
+                } catch {}
+            }
+        }
+        task.resume()
+    }
+    
+    public static func practiced(results: [srsResults], deckId: String, completion: @escaping (Bool) -> ()) {
+        // Make request to check
+        let url = URL(string: GlobalData.apiURL + "api/deck/practiced")
+        guard let requestUrl = url else { fatalError() }
+        
+        guard !results.isEmpty else { return }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        
+        var sendArray: [Dictionary<String, Any>] = []
+        for result in results {
+            sendArray.append(result.getDictionary)
+        }
+        
+//        let parameters: [String: Any] = [
+//            "results": sendArray,
+//            "deckId": deckId
+//        ]
+        
+        let sendArrayJson = try? JSONSerialization.data(withJSONObject: sendArray)
+//        let deckIdJson = try? JSONSerialization.data(withJSONObject: deckId)
+        
+//        let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
+        
+        var requestBodyComponents = URLComponents()
+        requestBodyComponents.queryItems = [
+            URLQueryItem(name: "results", value: String(data: sendArrayJson!, encoding: String.Encoding.utf8)),
+            URLQueryItem(name: "deckId", value: deckId)
+        ]
+        request.httpBody = requestBodyComponents.query?.data(using: .utf8)
+//        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+                if response.statusCode == 200 {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
             }
 
         }
