@@ -12,6 +12,7 @@ class ocrView: UIView {
     @IBOutlet var ocrViewContent: UIView!
     @IBOutlet weak var ocrController: OCRController!
     @IBOutlet weak var charShown: UITextView!
+    @IBOutlet weak var iWasCorrectButton: UIButton!
     
     var char:String?
     
@@ -38,6 +39,18 @@ class ocrView: UIView {
         self.char = char
     }
     
+    public func setCharShown(text: String) {
+        self.charShown.text = text
+    }
+    
+    public func turnOnIWasCorrect() {
+        iWasCorrectButton.isHidden = false
+    }
+    
+    public func turnOffIWasCorrect() {
+        iWasCorrectButton.isHidden = true
+    }
+    
     @IBAction func checkButtonPressed(_ sender: Any) {
         GlobalData.OCR(sendArray: ocrController.getSendArray() , completion: {results in
             DispatchQueue.main.async {
@@ -55,7 +68,7 @@ class ocrView: UIView {
                     charString = "Correct!"
                     self.delegate?.checked(correct: true)
                 } else {
-                    charString = "Incorrect. You matched: " + charString
+                    charString = "Correct was: " + (self.char ?? "") + ". You matched: " + charString
                     self.delegate?.checked(correct: false)
                 }
                 
@@ -67,5 +80,9 @@ class ocrView: UIView {
     @IBAction func clearButtonPressed(_ sender: Any) {
         ocrController.clear()
         self.charShown.text = "No character drawn."
+    }
+    
+    @IBAction func iWasCorrectButtonPressed(_ sender: Any) {
+        delegate?.override()
     }
 }

@@ -70,6 +70,9 @@ class FlashcardsOptionsViewController: UIViewController {
             } else if mode == "quiz" {
                 vc.mode = "quiz"
                 vc.quizMode = frontControl.titleForSegment(at: frontControl.selectedSegmentIndex)
+                if vc.quizMode == "Handwriting" {
+                    vc.handwriting = true
+                }
             }
             
             vc.deck = deck

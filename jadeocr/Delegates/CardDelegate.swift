@@ -9,4 +9,8 @@ import Foundation
 
 protocol CardDelegate {
     func flip()
+    func aTapped()
+    func bTapped()
+    func cTapped()
+    func dTapped()
 }

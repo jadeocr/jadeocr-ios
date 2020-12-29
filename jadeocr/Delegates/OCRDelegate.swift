@@ -9,4 +9,5 @@ import Foundation
 
 protocol OCRDelegate {
     func checked(correct: Bool)
+    func override()
 }

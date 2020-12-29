@@ -495,15 +495,7 @@ class GlobalData {
             sendArray.append(result.getDictionary)
         }
         
-//        let parameters: [String: Any] = [
-//            "results": sendArray,
-//            "deckId": deckId
-//        ]
-        
         let sendArrayJson = try? JSONSerialization.data(withJSONObject: sendArray)
-//        let deckIdJson = try? JSONSerialization.data(withJSONObject: deckId)
-        
-//        let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
         
         var requestBodyComponents = URLComponents()
         requestBodyComponents.queryItems = [
@@ -511,7 +503,6 @@ class GlobalData {
             URLQueryItem(name: "deckId", value: deckId)
         ]
         request.httpBody = requestBodyComponents.query?.data(using: .utf8)
-//        request.httpBody = jsonData
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
 
@@ -531,6 +522,52 @@ class GlobalData {
                 }
             }
 
+        }
+        task.resume()
+    }
+    
+    public static func quizzed(results: [quizResults], deckId: String, completion: @escaping (Bool) -> ()) {
+        // Make request to check
+        let url = URL(string: GlobalData.apiURL + "api/deck/quizzed")
+        guard let requestUrl = url else { fatalError() }
+        
+        guard !results.isEmpty else { return }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        
+        var sendArray: [Dictionary<String, Any>] = []
+        for result in results {
+            sendArray.append(result.getDictionary)
+        }
+        
+        let sendArrayJson = try? JSONSerialization.data(withJSONObject: sendArray)
+        
+        var requestBodyComponents = URLComponents()
+        requestBodyComponents.queryItems = [
+            URLQueryItem(name: "results", value: String(data: sendArrayJson!, encoding: String.Encoding.utf8)),
+            URLQueryItem(name: "deckId", value: deckId)
+        ]
+        request.httpBody = requestBodyComponents.query?.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+                if response.statusCode == 200 {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
         }
         task.resume()
     }

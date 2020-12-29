@@ -12,6 +12,8 @@
 		9D1A65FA255472AF007C2C09 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1A65F9255472AF007C2C09 /* UserViewController.swift */; };
 		9D3473AD25940983008A9998 /* CardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3473AC25940983008A9998 /* CardDelegate.swift */; };
 		9D3473B225940EC7008A9998 /* FlashcardsOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3473B125940EC7008A9998 /* FlashcardsOptionsViewController.swift */; };
+		9D4487CA259A5BD000257D67 /* multipleChoiceCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4487C9259A5BD000257D67 /* multipleChoiceCard.xib */; };
+		9D4487CD259A5EB200257D67 /* multipleChoiceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4487CC259A5EB200257D67 /* multipleChoiceCard.swift */; };
 		9D491C5B257C14BD00986890 /* AddDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D491C5A257C14BD00986890 /* AddDeckViewController.swift */; };
 		9D5D070E2585480B003235D8 /* deckTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5D070D2585480B003235D8 /* deckTitle.xib */; };
 		9D5D071125854838003235D8 /* deckTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5D071025854838003235D8 /* deckTitle.swift */; };
@@ -48,6 +50,8 @@
 		9D1A65F9255472AF007C2C09 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		9D3473AC25940983008A9998 /* CardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDelegate.swift; sourceTree = "<group>"; };
 		9D3473B125940EC7008A9998 /* FlashcardsOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsOptionsViewController.swift; sourceTree = "<group>"; };
+		9D4487C9259A5BD000257D67 /* multipleChoiceCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = multipleChoiceCard.xib; sourceTree = "<group>"; };
+		9D4487CC259A5EB200257D67 /* multipleChoiceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = multipleChoiceCard.swift; sourceTree = "<group>"; };
 		9D491C5A257C14BD00986890 /* AddDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckViewController.swift; sourceTree = "<group>"; };
 		9D5D070D2585480B003235D8 /* deckTitle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = deckTitle.xib; sourceTree = "<group>"; };
 		9D5D071025854838003235D8 /* deckTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deckTitle.swift; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 				9DA40A4A2592E2A00019E814 /* frontCard.swift */,
 				9D9052C32596B84A00D022DF /* backCard.xib */,
 				9D9052C62596B86000D022DF /* backCard.swift */,
+				9D4487C9259A5BD000257D67 /* multipleChoiceCard.xib */,
+				9D4487CC259A5EB200257D67 /* multipleChoiceCard.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -275,6 +281,7 @@
 				9D5D070E2585480B003235D8 /* deckTitle.xib in Resources */,
 				9D7F06CB2547A012002C8947 /* LaunchScreen.storyboard in Resources */,
 				9D7F06C82547A012002C8947 /* Assets.xcassets in Resources */,
+				9D4487CA259A5BD000257D67 /* multipleChoiceCard.xib in Resources */,
 				9DA40A482592E1610019E814 /* frontCard.xib in Resources */,
 				9D8EE1B725981BD90083A944 /* ocrView.xib in Resources */,
 				9D7F06C62547A011002C8947 /* Main.storyboard in Resources */,
@@ -304,6 +311,7 @@
 				9D7F06D52547A794002C8947 /* DrawingViewController.swift in Sources */,
 				9D3473AD25940983008A9998 /* CardDelegate.swift in Sources */,
 				9D7F06D92547B573002C8947 /* OCRController.swift in Sources */,
+				9D4487CD259A5EB200257D67 /* multipleChoiceCard.swift in Sources */,
 				9D7F06BF2547A011002C8947 /* AppDelegate.swift in Sources */,
 				9DC857FD2569E2AE00EA00F9 /* HomeViewController.swift in Sources */,
 				9DCDBBB12580353500D62F4B /* deckItem.swift in Sources */,

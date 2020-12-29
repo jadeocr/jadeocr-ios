@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ocrView" customModule="jadeocr" customModuleProvider="target">
             <connections>
                 <outlet property="charShown" destination="3uz-Lc-pO9" id="Y8k-TW-VBH"/>
+                <outlet property="iWasCorrectButton" destination="9c4-1I-GdZ" id="sAi-jK-PX4"/>
                 <outlet property="ocrController" destination="jMJ-iC-Nkj" id="p4l-ZF-9xi"/>
                 <outlet property="ocrViewContent" destination="iN0-l3-epB" id="zAY-Yc-3Cd"/>
             </connections>
@@ -47,25 +48,34 @@
                     <rect key="frame" x="0.0" y="0.0" width="881" height="370.5"/>
                     <color key="backgroundColor" systemColor="systemFillColor"/>
                 </view>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9c4-1I-GdZ">
+                    <rect key="frame" x="770.5" y="434.5" width="89" height="30"/>
+                    <state key="normal" title="I was correct"/>
+                    <connections>
+                        <action selector="iWasCorrectButtonPressed:" destination="-1" eventType="touchUpInside" id="KgY-9P-4Ts"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemGray5Color"/>
             <constraints>
                 <constraint firstItem="jMJ-iC-Nkj" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="5PE-zd-M01"/>
                 <constraint firstItem="3uz-Lc-pO9" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="7Ga-S2-Nya"/>
+                <constraint firstItem="9c4-1I-GdZ" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.55" id="8rj-jV-edV"/>
                 <constraint firstItem="3uz-Lc-pO9" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.1" id="Fp9-Z5-vBk"/>
                 <constraint firstItem="jMJ-iC-Nkj" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="GvM-an-JF1"/>
                 <constraint firstItem="7Xn-Bf-6pA" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.55" id="HUz-bB-qom"/>
                 <constraint firstItem="7Xn-Bf-6pA" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.3" id="WIQ-kz-bA0"/>
                 <constraint firstItem="3uz-Lc-pO9" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Xvd-fF-Gja"/>
                 <constraint firstItem="wW2-CJ-9PA" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="0.7" id="hQw-BF-GRk"/>
+                <constraint firstItem="9c4-1I-GdZ" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.85" id="hZa-h4-XvP"/>
                 <constraint firstItem="wW2-CJ-9PA" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.55" id="oCY-TP-ckH"/>
                 <constraint firstItem="jMJ-iC-Nkj" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.65" id="wO4-zJ-N1S"/>
                 <constraint firstItem="3uz-Lc-pO9" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.8" id="yhF-Dj-7E2"/>
                 <constraint firstItem="jMJ-iC-Nkj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zwc-mh-jGB"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="486" y="265"/>
+            <point key="canvasLocation" x="484.78260869565219" y="264.50892857142856"/>
         </view>
     </objects>
     <resources>

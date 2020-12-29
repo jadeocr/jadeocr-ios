@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17700" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="multipleChoiceCard" customModule="jadeocr" customModuleProvider="target">
+            <connections>
+                <outlet property="aTextView" destination="ye9-zf-E0z" id="Ekn-Db-Q8a"/>
+                <outlet property="bTextView" destination="Pjo-qK-3hy" id="EVc-MN-CBo"/>
+                <outlet property="cTextView" destination="xGV-Uk-HVG" id="34K-xL-aIq"/>
+                <outlet property="dTextView" destination="4op-yg-hgP" id="IKm-Av-jRI"/>
+                <outlet property="multipleChoiceCardContent" destination="iN0-l3-epB" id="zWc-0N-TNL"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="819" height="430"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybV-ni-Zqs" userLabel="aView">
+                    <rect key="frame" x="20.5" y="13.5" width="368.5" height="193.5"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="a" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ye9-zf-E0z">
+                            <rect key="frame" x="10" y="10" width="348.5" height="173.5"/>
+                            <color key="backgroundColor" systemColor="systemGray4Color"/>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="ye9-zf-E0z" firstAttribute="leading" secondItem="ybV-ni-Zqs" secondAttribute="leading" constant="10" id="Aea-Ki-BpA"/>
+                        <constraint firstAttribute="bottom" secondItem="ye9-zf-E0z" secondAttribute="bottom" constant="10" id="WiE-n4-4hF"/>
+                        <constraint firstItem="ye9-zf-E0z" firstAttribute="top" secondItem="ybV-ni-Zqs" secondAttribute="top" constant="10" id="b07-12-JR1"/>
+                        <constraint firstAttribute="trailing" secondItem="ye9-zf-E0z" secondAttribute="trailing" constant="10" id="bTN-uJ-IMc"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="Xro-pM-RXR" appends="YES" id="0FI-fI-Ilf"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwj-X2-gfl" userLabel="cView">
+                    <rect key="frame" x="20.5" y="226" width="368.5" height="193.5"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="c" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGV-Uk-HVG">
+                            <rect key="frame" x="10" y="10" width="348.5" height="173.5"/>
+                            <color key="backgroundColor" systemColor="systemGray4Color"/>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="xGV-Uk-HVG" firstAttribute="top" secondItem="bwj-X2-gfl" secondAttribute="top" constant="10" id="7Qj-Nl-FUJ"/>
+                        <constraint firstAttribute="bottom" secondItem="xGV-Uk-HVG" secondAttribute="bottom" constant="10" id="QQw-y2-uW2"/>
+                        <constraint firstItem="xGV-Uk-HVG" firstAttribute="leading" secondItem="bwj-X2-gfl" secondAttribute="leading" constant="10" id="ReS-9n-oSh"/>
+                        <constraint firstAttribute="trailing" secondItem="xGV-Uk-HVG" secondAttribute="trailing" constant="10" id="g8p-jc-8nM"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="iT4-sh-aKe" appends="YES" id="f5e-X2-OCr"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSh-BY-oE6" userLabel="dView">
+                    <rect key="frame" x="430" y="226" width="368.5" height="193.5"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="d" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4op-yg-hgP">
+                            <rect key="frame" x="10" y="10" width="348.5" height="173.5"/>
+                            <color key="backgroundColor" systemColor="systemGray4Color"/>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="4op-yg-hgP" firstAttribute="top" secondItem="ZSh-BY-oE6" secondAttribute="top" constant="10" id="axp-DQ-FIY"/>
+                        <constraint firstItem="4op-yg-hgP" firstAttribute="leading" secondItem="ZSh-BY-oE6" secondAttribute="leading" constant="10" id="mca-0n-xrr"/>
+                        <constraint firstAttribute="trailing" secondItem="4op-yg-hgP" secondAttribute="trailing" constant="10" id="na3-dB-csk"/>
+                        <constraint firstAttribute="bottom" secondItem="4op-yg-hgP" secondAttribute="bottom" constant="10" id="tt2-yM-gPo"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="Luy-IP-OkB" appends="YES" id="tQS-qI-Vni"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zkF-42-Tlc" userLabel="bView">
+                    <rect key="frame" x="430" y="13.5" width="368.5" height="193.5"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="b" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pjo-qK-3hy">
+                            <rect key="frame" x="10" y="10" width="348.5" height="173.5"/>
+                            <color key="backgroundColor" systemColor="systemGray4Color"/>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Pjo-qK-3hy" secondAttribute="trailing" constant="10" id="BX2-b9-Ijk"/>
+                        <constraint firstItem="Pjo-qK-3hy" firstAttribute="leading" secondItem="zkF-42-Tlc" secondAttribute="leading" constant="10" id="I1f-x1-I72"/>
+                        <constraint firstItem="Pjo-qK-3hy" firstAttribute="top" secondItem="zkF-42-Tlc" secondAttribute="top" constant="10" id="RK2-l3-rsL"/>
+                        <constraint firstAttribute="bottom" secondItem="Pjo-qK-3hy" secondAttribute="bottom" constant="10" id="cKc-5x-44a"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="Nku-1N-7vx" appends="YES" id="3CE-XR-atT"/>
+                    </connections>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemGray5Color"/>
+            <constraints>
+                <constraint firstItem="ZSh-BY-oE6" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.5" id="0IF-LO-z2K"/>
+                <constraint firstItem="ybV-ni-Zqs" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.5" id="269-9Z-oFG"/>
+                <constraint firstItem="bwj-X2-gfl" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="0.5" id="Bct-zA-CbY"/>
+                <constraint firstItem="ZSh-BY-oE6" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.45" id="CZN-Al-wMc"/>
+                <constraint firstItem="zkF-42-Tlc" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.45" id="DZJ-m6-Khw"/>
+                <constraint firstItem="ybV-ni-Zqs" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.45" id="Okw-Z3-qK1"/>
+                <constraint firstItem="zkF-42-Tlc" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.45" id="Ov3-3K-sua"/>
+                <constraint firstItem="ZSh-BY-oE6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.5" id="TeF-HU-hhi"/>
+                <constraint firstItem="bwj-X2-gfl" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.45" id="ToP-m3-nW4"/>
+                <constraint firstItem="bwj-X2-gfl" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.45" id="b9a-5N-jQd"/>
+                <constraint firstItem="bwj-X2-gfl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.5" id="dXH-Gu-rve"/>
+                <constraint firstItem="ybV-ni-Zqs" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="0.5" id="gSq-ta-nzS"/>
+                <constraint firstItem="zkF-42-Tlc" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.5" id="q8a-86-end"/>
+                <constraint firstItem="zkF-42-Tlc" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.5" id="rBc-VZ-UWG"/>
+                <constraint firstItem="ZSh-BY-oE6" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.45" id="rJY-h7-A7L"/>
+                <constraint firstItem="ybV-ni-Zqs" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.45" id="sAK-24-WLY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="434.05797101449281" y="279.91071428571428"/>
+        </view>
+        <tapGestureRecognizer id="Xro-pM-RXR">
+            <connections>
+                <action selector="aViewTapped:" destination="-1" id="1EF-qa-Cqb"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="Nku-1N-7vx">
+            <connections>
+                <action selector="bViewTapped:" destination="-1" id="TBZ-cW-o8T"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="iT4-sh-aKe">
+            <connections>
+                <action selector="cViewTapped:" destination="-1" id="dTj-wK-xKE"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="Luy-IP-OkB">
+            <connections>
+                <action selector="dViewTapped:" destination="-1" id="yKn-yL-uYq"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -17,3 +17,16 @@ struct srsResults {
         ]
     }
 }
+
+struct quizResults {
+    var id: String
+    var correct: Bool
+    var overriden: Bool
+    var getDictionary: Dictionary<String, Any> {
+        return [
+            "id": id,
+            "correct": correct,
+            "overriden": overriden,
+        ]
+    }
+}
