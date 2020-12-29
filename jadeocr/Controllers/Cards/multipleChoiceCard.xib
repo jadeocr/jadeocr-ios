@@ -13,20 +13,21 @@
                 <outlet property="aTextView" destination="ye9-zf-E0z" id="Ekn-Db-Q8a"/>
                 <outlet property="bTextView" destination="Pjo-qK-3hy" id="EVc-MN-CBo"/>
                 <outlet property="cTextView" destination="xGV-Uk-HVG" id="34K-xL-aIq"/>
+                <outlet property="correctLabel" destination="aMW-Tu-Wgd" id="Z6O-zy-gH9"/>
                 <outlet property="dTextView" destination="4op-yg-hgP" id="IKm-Av-jRI"/>
                 <outlet property="multipleChoiceCardContent" destination="iN0-l3-epB" id="zWc-0N-TNL"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="819" height="430"/>
+            <rect key="frame" x="0.0" y="0.0" width="819" height="508"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybV-ni-Zqs" userLabel="aView">
-                    <rect key="frame" x="20.5" y="13.5" width="368.5" height="193.5"/>
+                    <rect key="frame" x="20.5" y="79.5" width="368.5" height="203.5"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="a" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ye9-zf-E0z">
-                            <rect key="frame" x="10" y="10" width="348.5" height="173.5"/>
+                            <rect key="frame" x="10" y="10" width="348.5" height="183.5"/>
                             <color key="backgroundColor" systemColor="systemGray4Color"/>
                             <color key="textColor" systemColor="labelColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="36"/>
@@ -46,10 +47,10 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwj-X2-gfl" userLabel="cView">
-                    <rect key="frame" x="20.5" y="226" width="368.5" height="193.5"/>
+                    <rect key="frame" x="20.5" y="305" width="368.5" height="203"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="c" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGV-Uk-HVG">
-                            <rect key="frame" x="10" y="10" width="348.5" height="173.5"/>
+                            <rect key="frame" x="10" y="10" width="348.5" height="183"/>
                             <color key="backgroundColor" systemColor="systemGray4Color"/>
                             <color key="textColor" systemColor="labelColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="36"/>
@@ -68,34 +69,11 @@
                         <outletCollection property="gestureRecognizers" destination="iT4-sh-aKe" appends="YES" id="f5e-X2-OCr"/>
                     </connections>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSh-BY-oE6" userLabel="dView">
-                    <rect key="frame" x="430" y="226" width="368.5" height="193.5"/>
-                    <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="d" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4op-yg-hgP">
-                            <rect key="frame" x="10" y="10" width="348.5" height="173.5"/>
-                            <color key="backgroundColor" systemColor="systemGray4Color"/>
-                            <color key="textColor" systemColor="labelColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemGray4Color"/>
-                    <gestureRecognizers/>
-                    <constraints>
-                        <constraint firstItem="4op-yg-hgP" firstAttribute="top" secondItem="ZSh-BY-oE6" secondAttribute="top" constant="10" id="axp-DQ-FIY"/>
-                        <constraint firstItem="4op-yg-hgP" firstAttribute="leading" secondItem="ZSh-BY-oE6" secondAttribute="leading" constant="10" id="mca-0n-xrr"/>
-                        <constraint firstAttribute="trailing" secondItem="4op-yg-hgP" secondAttribute="trailing" constant="10" id="na3-dB-csk"/>
-                        <constraint firstAttribute="bottom" secondItem="4op-yg-hgP" secondAttribute="bottom" constant="10" id="tt2-yM-gPo"/>
-                    </constraints>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="Luy-IP-OkB" appends="YES" id="tQS-qI-Vni"/>
-                    </connections>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zkF-42-Tlc" userLabel="bView">
-                    <rect key="frame" x="430" y="13.5" width="368.5" height="193.5"/>
+                    <rect key="frame" x="430" y="79.5" width="368.5" height="203.5"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="b" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pjo-qK-3hy">
-                            <rect key="frame" x="10" y="10" width="348.5" height="173.5"/>
+                            <rect key="frame" x="10" y="10" width="348.5" height="183.5"/>
                             <color key="backgroundColor" systemColor="systemGray4Color"/>
                             <color key="textColor" systemColor="labelColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="36"/>
@@ -114,29 +92,60 @@
                         <outletCollection property="gestureRecognizers" destination="Nku-1N-7vx" appends="YES" id="3CE-XR-atT"/>
                     </connections>
                 </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incorrect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMW-Tu-Wgd">
+                    <rect key="frame" x="352" y="21" width="115" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSh-BY-oE6" userLabel="dView">
+                    <rect key="frame" x="430" y="305" width="368.5" height="203"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="d" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4op-yg-hgP">
+                            <rect key="frame" x="10" y="10" width="348.5" height="183"/>
+                            <color key="backgroundColor" systemColor="systemGray4Color"/>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="4op-yg-hgP" firstAttribute="top" secondItem="ZSh-BY-oE6" secondAttribute="top" constant="10" id="axp-DQ-FIY"/>
+                        <constraint firstItem="4op-yg-hgP" firstAttribute="leading" secondItem="ZSh-BY-oE6" secondAttribute="leading" constant="10" id="mca-0n-xrr"/>
+                        <constraint firstAttribute="trailing" secondItem="4op-yg-hgP" secondAttribute="trailing" constant="10" id="na3-dB-csk"/>
+                        <constraint firstAttribute="bottom" secondItem="4op-yg-hgP" secondAttribute="bottom" constant="10" id="tt2-yM-gPo"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="Luy-IP-OkB" appends="YES" id="tQS-qI-Vni"/>
+                    </connections>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemGray5Color"/>
             <constraints>
                 <constraint firstItem="ZSh-BY-oE6" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.5" id="0IF-LO-z2K"/>
-                <constraint firstItem="ybV-ni-Zqs" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.5" id="269-9Z-oFG"/>
+                <constraint firstItem="ybV-ni-Zqs" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.7" id="269-9Z-oFG"/>
                 <constraint firstItem="bwj-X2-gfl" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="0.5" id="Bct-zA-CbY"/>
                 <constraint firstItem="ZSh-BY-oE6" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.45" id="CZN-Al-wMc"/>
-                <constraint firstItem="zkF-42-Tlc" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.45" id="DZJ-m6-Khw"/>
+                <constraint firstItem="zkF-42-Tlc" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.4" id="DZJ-m6-Khw"/>
+                <constraint firstItem="aMW-Tu-Wgd" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.15" id="JLY-lf-fSr"/>
+                <constraint firstItem="aMW-Tu-Wgd" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="JRI-Aw-cpC"/>
                 <constraint firstItem="ybV-ni-Zqs" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.45" id="Okw-Z3-qK1"/>
                 <constraint firstItem="zkF-42-Tlc" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.45" id="Ov3-3K-sua"/>
-                <constraint firstItem="ZSh-BY-oE6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.5" id="TeF-HU-hhi"/>
-                <constraint firstItem="bwj-X2-gfl" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.45" id="ToP-m3-nW4"/>
+                <constraint firstItem="ZSh-BY-oE6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.6" id="TeF-HU-hhi"/>
+                <constraint firstItem="bwj-X2-gfl" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.4" id="ToP-m3-nW4"/>
                 <constraint firstItem="bwj-X2-gfl" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.45" id="b9a-5N-jQd"/>
-                <constraint firstItem="bwj-X2-gfl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.5" id="dXH-Gu-rve"/>
+                <constraint firstItem="bwj-X2-gfl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.6" id="dXH-Gu-rve"/>
                 <constraint firstItem="ybV-ni-Zqs" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="0.5" id="gSq-ta-nzS"/>
                 <constraint firstItem="zkF-42-Tlc" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.5" id="q8a-86-end"/>
-                <constraint firstItem="zkF-42-Tlc" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.5" id="rBc-VZ-UWG"/>
-                <constraint firstItem="ZSh-BY-oE6" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.45" id="rJY-h7-A7L"/>
-                <constraint firstItem="ybV-ni-Zqs" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.45" id="sAK-24-WLY"/>
+                <constraint firstItem="zkF-42-Tlc" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.7" id="rBc-VZ-UWG"/>
+                <constraint firstItem="ZSh-BY-oE6" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.4" id="rJY-h7-A7L"/>
+                <constraint firstItem="ybV-ni-Zqs" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.4" id="sAK-24-WLY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="434.05797101449281" y="279.91071428571428"/>
+            <point key="canvasLocation" x="434.05797101449281" y="253.79464285714283"/>
         </view>
         <tapGestureRecognizer id="Xro-pM-RXR">
             <connections>

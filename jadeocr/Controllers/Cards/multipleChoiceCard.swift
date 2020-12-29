@@ -14,6 +14,7 @@ class multipleChoiceCard: UIView {
     @IBOutlet weak var bTextView: UITextView!
     @IBOutlet weak var cTextView: UITextView!
     @IBOutlet weak var dTextView: UITextView!
+    @IBOutlet weak var correctLabel: UILabel!
     
     var delegate:CardDelegate?
     
@@ -49,19 +50,24 @@ class multipleChoiceCard: UIView {
         dTextView.text = d
     }
     
+    public func setCorrectLabel(text: String) {
+        correctLabel.text = text
+        correctLabel.isHidden = false
+    }
+    
     @IBAction func aViewTapped(_ sender: Any) {
-        delegate?.aTapped()
+        delegate?.selectedChoice(selected: aTextView.text)
     }
     
     @IBAction func bViewTapped(_ sender: Any) {
-        delegate?.bTapped()
+        delegate?.selectedChoice(selected: bTextView.text)
     }
     
     @IBAction func cViewTapped(_ sender: Any) {
-        delegate?.cTapped()
+        delegate?.selectedChoice(selected: cTextView.text)
     }
     
     @IBAction func dViewTapped(_ sender: Any) {
-        delegate?.dTapped()
+        delegate?.selectedChoice(selected: dTextView.text)
     }
 }

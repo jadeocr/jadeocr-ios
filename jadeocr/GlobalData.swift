@@ -10,8 +10,8 @@ import Security
 
 class GlobalData {
     
-    public static var apiURL:String = "http://simfony.tech:3003/"
-//    public static var apiURL:String = "http://192.168.1.103:3000/"
+//    public static var apiURL:String = "http://simfony.tech:3003/"
+    public static var apiURL:String = "http://192.168.1.103:3000/"
     
     enum KeychainError: Error {
         case noPassword
@@ -107,18 +107,6 @@ class GlobalData {
             } else {
                 completion(false)
             }
-
-            // Convert HTTP Response Data to a simple String
-//            if let data = data, let dataString = String(data: data, encoding: .utf8) {
-//                if dataString == "Unauthorized" {
-//                    completion(false)
-//                    return
-//                } else {
-//                    completion(true)
-//                    print(dataString)
-//                    return
-//                }
-//            }
         }
         task.resume()
     }

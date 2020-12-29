@@ -41,6 +41,8 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     var scramble:Bool?
     var repetitions:Int?
     var deck:Dictionary<String, Any>?
+    var pentultimate:Bool = false
+    var final:Bool = false
     
     var cardHeightMultiplier:CGFloat = 0.7
     var cardWidthMultiplier:CGFloat = 0.8
@@ -101,8 +103,20 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
         
         if mode == "quiz" {
             flip() //Quiz cards are back cards
-            setMultipleChoiceOptions()
+            if quizMode != "Handwriting" && cardArray.count < 4 {
+                sendAlert(message: "At least 4 characters are required for multiple choice")
+            } else {
+                setMultipleChoiceOptions()
+            }
         }
+    }
+    
+    func sendAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+            self.self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+        }))
+        self.present(alert, animated: true)
     }
     
     func createFrontCard(title: String) -> frontCard {
@@ -180,9 +194,9 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     
     func showNextCard() {
         guard count < cardArray.count - 1 else {
-            if mode == "srs" {
+            if mode == "srs" && final {
                 submitSRS()
-            } else {
+            } else if mode == "quiz" && final {
                 submitQuiz()
             }
             return
@@ -275,6 +289,11 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     }
     
     func checked(correct: Bool) {
+        guard !final else {
+            showNextCard()
+            return
+        }
+        
         if mode == "srs" {
             addSRSResult(correct: correct)
             showNextCard()
@@ -289,11 +308,23 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
             } else {
                 handwritingView?.turnOffIWasCorrect()
             }
+        }        
+        
+        if pentultimate {
+            final = true
+            handwritingView?.changeCheckButton()
+        }
+        
+        if count == cardArray.count - 1 {
+            pentultimate = true
         }
     }
     
     func override() {
-        count -= 1 //So addResult functions grab the correct charId
+        if count < cardArray.count - 1 {
+            count -= 1 //So addResult functions grab the correct charId
+        }
+        
         if mode == "srs" {
             srsResultsArray.removeLast()
             addSRSResult(correct: true)
@@ -302,7 +333,10 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
             addQuizResultForHandwriting(correct: true, overriden: true)
             
         }
-        count += 1
+        
+        if count < cardArray.count - 1 {
+            count += 1
+        }
         handwritingView?.setCharShown(text: "Correct!")
         handwritingView?.turnOffIWasCorrect()
     }
@@ -411,24 +445,39 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
         quizResultsArray.append(quizResults(id: cardArray[count].charId, correct: correct, overriden: overriden))
     }
     
-    func addQuizResultForMultipleChoice() {
+    func addQuizResultForMultipleChoice(selected: String) {
+        var correct:Bool = false
         
+        if quizMode == "Character" {
+            if selected == cardArray[count].char {
+                correct = true
+            }
+        } else if quizMode == "Pinyin" {
+            if selected == cardArray[count].pinyin {
+                correct = true
+            }
+        } else if quizMode == "Definition" {
+            if selected == cardArray[count].definition {
+                correct = true
+            }
+        }
+        
+        if correct {
+            quizMultipleChoiceView?.setCorrectLabel(text: "Correct!")
+        } else {
+            quizMultipleChoiceView?.setCorrectLabel(text: "Incorrect")
+        }
+        
+        quizResultsArray.append(quizResults(id: cardArray[count].charId, correct: correct, overriden: false))
+        showNextQuizCard()
     }
     
-    func aTapped() {
-        
-    }
-    
-    func bTapped() {
-        
-    }
-    
-    func cTapped() {
-        
-    }
-    
-    func dTapped() {
-        
+    //delegate function
+    func selectedChoice(selected: String) {
+        addQuizResultForMultipleChoice(selected: selected)
+        if count < cardArray.count - 1 {
+            setMultipleChoiceOptions()
+        }
     }
     
     func submitQuiz() {

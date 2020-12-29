@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ocrView" customModule="jadeocr" customModuleProvider="target">
             <connections>
                 <outlet property="charShown" destination="3uz-Lc-pO9" id="Y8k-TW-VBH"/>
+                <outlet property="checkButton" destination="7Xn-Bf-6pA" id="YdY-sL-dVD"/>
                 <outlet property="iWasCorrectButton" destination="9c4-1I-GdZ" id="sAi-jK-PX4"/>
                 <outlet property="ocrController" destination="jMJ-iC-Nkj" id="p4l-ZF-9xi"/>
                 <outlet property="ocrViewContent" destination="iN0-l3-epB" id="zAY-Yc-3Cd"/>

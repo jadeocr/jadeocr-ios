@@ -13,8 +13,11 @@ class ocrView: UIView {
     @IBOutlet weak var ocrController: OCRController!
     @IBOutlet weak var charShown: UITextView!
     @IBOutlet weak var iWasCorrectButton: UIButton!
+    @IBOutlet weak var checkButton: UIButton!
+    
     
     var char:String?
+    var checkButtonChanged:Bool = false
     
     var delegate:OCRDelegate?
     
@@ -51,7 +54,16 @@ class ocrView: UIView {
         iWasCorrectButton.isHidden = true
     }
     
+    public func changeCheckButton() {
+        checkButton.setTitle("Done", for: .normal)
+        checkButtonChanged = true
+    }
+    
     @IBAction func checkButtonPressed(_ sender: Any) {
+        guard !checkButtonChanged else {
+            self.delegate?.checked(correct: true) //Value doesn't matter
+            return
+        }
         GlobalData.OCR(sendArray: ocrController.getSendArray() , completion: {results in
             DispatchQueue.main.async {
                 var charString = ""
