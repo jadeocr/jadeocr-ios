@@ -194,9 +194,9 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     
     func showNextCard() {
         guard count < cardArray.count - 1 else {
-            if mode == "srs" && final {
+            if mode == "srs" {
                 submitSRS()
-            } else if mode == "quiz" && final {
+            } else if mode == "quiz" && (final || !(handwriting ?? false)) {
                 submitQuiz()
             }
             return
@@ -437,6 +437,9 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     }
     
     func showNextQuizCard() {
+        if count < (cardArray.count - 1) {
+            setMultipleChoiceOptions()
+        }
         showNextCard()
         flip()
     }
@@ -469,24 +472,35 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
         }
         
         quizResultsArray.append(quizResults(id: cardArray[count].charId, correct: correct, overriden: false))
-        showNextQuizCard()
     }
     
     //delegate function
     func selectedChoice(selected: String) {
         addQuizResultForMultipleChoice(selected: selected)
-        if count < cardArray.count - 1 {
-            setMultipleChoiceOptions()
-        }
+        showNextQuizCard()
     }
     
     func submitQuiz() {
         GlobalData.quizzed(results: quizResultsArray, deckId: deck?["_id"] as? String ?? "", completion: {result in
             if result == true {
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+                    self.performSegue(withIdentifier: "segueToSummary", sender: self)
                 }
             }
         })
+    }
+    
+    //MARK: Navigation override
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SummaryViewController {
+            for i in 0..<quizResultsArray.count {
+                guard quizResultsArray.indices.contains(i) && cardArray.indices.contains(i) else {
+                    return
+                }
+                vc.answers.append([
+                    cardArray[i].char: quizResultsArray[i].correct
+                ])
+            }
+        }
     }
 }

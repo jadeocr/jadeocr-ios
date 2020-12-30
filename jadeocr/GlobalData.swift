@@ -10,8 +10,8 @@ import Security
 
 class GlobalData {
     
-//    public static var apiURL:String = "http://simfony.tech:3003/"
-    public static var apiURL:String = "http://192.168.1.103:3000/"
+    public static var apiURL:String = "http://simfony.tech:3003/"
+//    public static var apiURL:String = "http://192.168.1.103:3000/"
     
     enum KeychainError: Error {
         case noPassword
