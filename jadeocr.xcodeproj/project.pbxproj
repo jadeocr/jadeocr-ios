@@ -12,6 +12,7 @@
 		9D1A65FA255472AF007C2C09 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1A65F9255472AF007C2C09 /* UserViewController.swift */; };
 		9D3473AD25940983008A9998 /* CardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3473AC25940983008A9998 /* CardDelegate.swift */; };
 		9D3473B225940EC7008A9998 /* FlashcardsOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3473B125940EC7008A9998 /* FlashcardsOptionsViewController.swift */; };
+		9D3A443825A1052C00461467 /* ClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A443725A1052C00461467 /* ClassesViewController.swift */; };
 		9D4487CA259A5BD000257D67 /* multipleChoiceCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4487C9259A5BD000257D67 /* multipleChoiceCard.xib */; };
 		9D4487CD259A5EB200257D67 /* multipleChoiceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4487CC259A5EB200257D67 /* multipleChoiceCard.swift */; };
 		9D491C5B257C14BD00986890 /* AddDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D491C5A257C14BD00986890 /* AddDeckViewController.swift */; };
@@ -26,8 +27,10 @@
 		9D7F06C62547A011002C8947 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7F06C42547A011002C8947 /* Main.storyboard */; };
 		9D7F06C82547A012002C8947 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7F06C72547A012002C8947 /* Assets.xcassets */; };
 		9D7F06CB2547A012002C8947 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7F06C92547A012002C8947 /* LaunchScreen.storyboard */; };
-		9D7F06D52547A794002C8947 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F06D42547A794002C8947 /* DrawingViewController.swift */; };
+		9D7F06D52547A794002C8947 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F06D42547A794002C8947 /* WriteViewController.swift */; };
 		9D7F06D92547B573002C8947 /* OCRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F06D82547B573002C8947 /* OCRController.swift */; };
+		9D88E62225A5232F004FD1E5 /* JoinClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88E62125A5232F004FD1E5 /* JoinClassViewController.swift */; };
+		9D88E62525A57570004FD1E5 /* CreateClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88E62425A57570004FD1E5 /* CreateClassViewController.swift */; };
 		9D8EE1B725981BD90083A944 /* ocrView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8EE1B625981BD90083A944 /* ocrView.xib */; };
 		9D8EE1BA25981FC80083A944 /* ocrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8EE1B925981FC80083A944 /* ocrView.swift */; };
 		9D9052C42596B84A00D022DF /* backCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9052C32596B84A00D022DF /* backCard.xib */; };
@@ -51,6 +54,7 @@
 		9D1A65F9255472AF007C2C09 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		9D3473AC25940983008A9998 /* CardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDelegate.swift; sourceTree = "<group>"; };
 		9D3473B125940EC7008A9998 /* FlashcardsOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsOptionsViewController.swift; sourceTree = "<group>"; };
+		9D3A443725A1052C00461467 /* ClassesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesViewController.swift; sourceTree = "<group>"; };
 		9D4487C9259A5BD000257D67 /* multipleChoiceCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = multipleChoiceCard.xib; sourceTree = "<group>"; };
 		9D4487CC259A5EB200257D67 /* multipleChoiceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = multipleChoiceCard.swift; sourceTree = "<group>"; };
 		9D491C5A257C14BD00986890 /* AddDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckViewController.swift; sourceTree = "<group>"; };
@@ -67,8 +71,10 @@
 		9D7F06C72547A012002C8947 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D7F06CA2547A012002C8947 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D7F06CC2547A012002C8947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D7F06D42547A794002C8947 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
+		9D7F06D42547A794002C8947 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		9D7F06D82547B573002C8947 /* OCRController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRController.swift; sourceTree = "<group>"; };
+		9D88E62125A5232F004FD1E5 /* JoinClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinClassViewController.swift; sourceTree = "<group>"; };
+		9D88E62425A57570004FD1E5 /* CreateClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClassViewController.swift; sourceTree = "<group>"; };
 		9D8EE1B625981BD90083A944 /* ocrView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ocrView.xib; sourceTree = "<group>"; };
 		9D8EE1B925981FC80083A944 /* ocrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ocrView.swift; sourceTree = "<group>"; };
 		9D9052C32596B84A00D022DF /* backCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = backCard.xib; sourceTree = "<group>"; };
@@ -119,7 +125,7 @@
 		9D2D82E025771BE9004FD541 /* OCR */ = {
 			isa = PBXGroup;
 			children = (
-				9D7F06D42547A794002C8947 /* DrawingViewController.swift */,
+				9D7F06D42547A794002C8947 /* WriteViewController.swift */,
 				9D7F06D82547B573002C8947 /* OCRController.swift */,
 				9D8EE1B625981BD90083A944 /* ocrView.xib */,
 				9D8EE1B925981FC80083A944 /* ocrView.swift */,
@@ -135,6 +141,16 @@
 				9DFA4E2B259D339100D1BFE5 /* SummaryViewController.swift */,
 			);
 			path = Flashcards;
+			sourceTree = "<group>";
+		};
+		9D3A443625A1051500461467 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9D3A443725A1052C00461467 /* ClassesViewController.swift */,
+				9D88E62125A5232F004FD1E5 /* JoinClassViewController.swift */,
+				9D88E62425A57570004FD1E5 /* CreateClassViewController.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		9D491C59257C149000986890 /* Create and Edit Decks */ = {
@@ -165,6 +181,7 @@
 		9D7044DC254B6C6B007A8F21 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9D3A443625A1051500461467 /* Classes */,
 				9D3473AF25940E5D008A9998 /* Flashcards */,
 				9DA40A462592E13E0019E814 /* Cards */,
 				9D01C537258AD5FD00982550 /* Deck Info */,
@@ -301,6 +318,7 @@
 				9DA8E76D2599530600B05016 /* Structs.swift in Sources */,
 				9DFA4E2C259D339100D1BFE5 /* SummaryViewController.swift in Sources */,
 				9D5D071D2585596F003235D8 /* DeckDelegate.swift in Sources */,
+				9D88E62525A57570004FD1E5 /* CreateClassViewController.swift in Sources */,
 				9D8EE1BA25981FC80083A944 /* ocrView.swift in Sources */,
 				9D491C5B257C14BD00986890 /* AddDeckViewController.swift in Sources */,
 				9D1A65FA255472AF007C2C09 /* UserViewController.swift in Sources */,
@@ -311,9 +329,11 @@
 				9D650E97256A4036007B17AA /* SignUpViewController.swift in Sources */,
 				9DEC4EEE255099FA0027763F /* SignInViewController.swift in Sources */,
 				9DA40A4B2592E2A00019E814 /* frontCard.swift in Sources */,
+				9D3A443825A1052C00461467 /* ClassesViewController.swift in Sources */,
 				9D11C923258C03C700B45793 /* EditDeckViewController.swift in Sources */,
-				9D7F06D52547A794002C8947 /* DrawingViewController.swift in Sources */,
+				9D7F06D52547A794002C8947 /* WriteViewController.swift in Sources */,
 				9D3473AD25940983008A9998 /* CardDelegate.swift in Sources */,
+				9D88E62225A5232F004FD1E5 /* JoinClassViewController.swift in Sources */,
 				9D7F06D92547B573002C8947 /* OCRController.swift in Sources */,
 				9D4487CD259A5EB200257D67 /* multipleChoiceCard.swift in Sources */,
 				9D7F06BF2547A011002C8947 /* AppDelegate.swift in Sources */,

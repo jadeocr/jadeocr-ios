@@ -514,6 +514,7 @@ class GlobalData {
         task.resume()
     }
     
+    //MARK: Quiz
     public static func quizzed(results: [quizResults], deckId: String, completion: @escaping (Bool) -> ()) {
         // Make request to check
         let url = URL(string: GlobalData.apiURL + "api/deck/quizzed")
@@ -557,6 +558,146 @@ class GlobalData {
                 }
             }
         }
+        task.resume()
+    }
+    
+    //MARK: Classes
+    public static func getTeachingClasses(completion: @escaping ([Dictionary<String, Any>]) -> ()) {
+        let url = URL(string: GlobalData.apiURL + "api/class/getTeachingClasses")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+                if response.statusCode == 200 {
+                    if let data = data {
+                        do {
+                            let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! [Dictionary<String, Any>]
+                            completion(jsonData)
+                        } catch {}
+                    }
+                } else {
+                    completion([])
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    public static func getJoinedClasses(completion: @escaping ([Dictionary<String, Any>]) -> ()) {
+        let url = URL(string: GlobalData.apiURL + "api/class/getJoinedClasses")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+                if response.statusCode == 200 {
+                    if let data = data {
+                        do {
+                            let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! [Dictionary<String, Any>]
+                            completion(jsonData)
+                        } catch {}
+                    }
+                } else {
+                    completion([])
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    public static func joinClass(classCode: String, completion: @escaping(String) -> ()) {
+        let url = URL(string: GlobalData.apiURL + "api/class/join")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        var requestBodyComponents = URLComponents()
+        requestBodyComponents.queryItems = [
+            URLQueryItem(name: "classCode", value: classCode),
+        ]
+        request.httpBody = requestBodyComponents.query?.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+            }
+            
+            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                completion(dataString)
+            }
+        }
+        
+        task.resume()
+    }
+    
+    public static func createClass(name: String, description: String, completion: @escaping(String) -> ()) {
+        let url = URL(string: GlobalData.apiURL + "api/class/create")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        var requestBodyComponents = URLComponents()
+        requestBodyComponents.queryItems = [
+            URLQueryItem(name: "className", value: name),
+            URLQueryItem(name: "description", value: description)
+        ]
+        request.httpBody = requestBodyComponents.query?.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+                
+                if response.statusCode == 403 {
+                    completion("not a teacher")
+                } else if response.statusCode == 400 {
+                    completion("error")
+                } else if response.statusCode == 200 {
+                    completion("worked")
+                }
+            }
+        }
+        
         task.resume()
     }
 }

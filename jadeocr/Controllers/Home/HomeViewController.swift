@@ -55,14 +55,16 @@ class HomeViewController: UIViewController {
     func updateDecks() {
         GlobalData.getAllDecks(completion: {result in
             DispatchQueue.main.async(execute: {
-                if let passed = result[0] as? Bool {
-                    if !passed {
-                        self.decks = []
+                if result.count != 0 {
+                    if let passed = result[0] as? Bool {
+                        if !passed {
+                            self.decks = []
+                        }
+                    } else {
+                        self.decks = result
                     }
-                } else {
-                    self.decks = result
+                    self.tableView.reloadData()
                 }
-                self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             })
         })
@@ -133,9 +135,11 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") as! HomeTableViewCell
-        if let deck = decks?[indexPath[1]] as? Dictionary<String, Any> {
-            cell.titleLabel?.text = deck["deckName"] as? String
-            cell.descLabel?.text = deck["deckDescription"] as? String
+        if decks?.count != 0 && decks?.count != nil {
+            if let deck = decks?[indexPath[1]] as? Dictionary<String, Any> {
+                cell.titleLabel?.text = deck["deckName"] as? String
+                cell.descLabel?.text = deck["deckDescription"] as? String
+            }
         }
         return cell
     }

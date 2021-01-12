@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DrawingViewController: UIViewController {
+class WriteViewController: UIViewController {
     
     
     @IBOutlet weak var ocrController: OCRController!
