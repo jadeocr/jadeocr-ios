@@ -18,6 +18,8 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     @IBOutlet weak var nextButtonCenterYAnchor: NSLayoutConstraint!
     @IBOutlet weak var countLabelCenterYAnchor: NSLayoutConstraint!
     
+    var studentDelegate: StudentDelegate?
+    
     struct card {
         var front: frontCard?
         var back: backCard?
@@ -43,6 +45,7 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     var deck:Dictionary<String, Any>?
     var pentultimate:Bool = false
     var final:Bool = false
+    var fromButton: Bool = false
     
     var cardHeightMultiplier:CGFloat = 0.7
     var cardWidthMultiplier:CGFloat = 0.8
@@ -114,7 +117,11 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     func sendAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
-            self.self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+            if self.studentDelegate == nil {
+                self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+            } else {
+                self.performSegue(withIdentifier: "unwindToStudentView", sender: self)
+            }
         }))
         self.present(alert, animated: true)
     }
@@ -194,10 +201,12 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     
     func showNextCard() {
         guard count < cardArray.count - 1 else {
-            if mode == "srs" {
+            if mode == "srs" && ((final || !(handwriting ?? false)) || fromButton) {
                 submitSRS()
             } else if mode == "quiz" && (final || !(handwriting ?? false)) {
                 submitQuiz()
+            } else if mode == "learn" {
+                finishedLearn()
             }
             return
         }
@@ -230,6 +239,7 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     }
     
     func flip() {
+        print(cardArray)
         guard mode != "quiz" else {
             cardArray[count].front?.isHidden = true
             cardArray[count].back?.isHidden = false
@@ -250,6 +260,8 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
+        fromButton = true
+        pentultimate = true
         if mode == "srs" {
             addSRSResult(correct: true)
         }
@@ -263,6 +275,15 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
         } else {
             showLastCard()
         }
+    }
+    
+    func finishedLearn() {
+        if self.studentDelegate == nil {
+            self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "unwindToStudentView", sender: self)
+        }
+        studentDelegate?.submit(resultsForQuiz: [])
     }
     
     //MARK: OCR functions
@@ -289,6 +310,7 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     }
     
     func checked(correct: Bool) {
+        fromButton = false
         guard !final else {
             showNextCard()
             return
@@ -310,7 +332,7 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
             }
         }        
         
-        if pentultimate {
+        if pentultimate && mode != "learn" {
             final = true
             handwritingView?.changeCheckButton()
         }
@@ -359,10 +381,15 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
         GlobalData.practiced(results: srsResultsArray, deckId: deck?["_id"] as? String ?? "", completion: {result in
             if result == true {
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+                    if self.studentDelegate == nil {
+                        self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+                    } else {
+                        self.performSegue(withIdentifier: "unwindToStudentView", sender: self)
+                    }
                 }
             }
         })
+        studentDelegate?.submit(resultsForQuiz: [])
     }
     
     //MARK: Quiz functions
@@ -488,6 +515,7 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
                 }
             }
         })
+        studentDelegate?.submit(resultsForQuiz: quizResultsArray)
     }
     
     //MARK: Navigation override
@@ -500,6 +528,9 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
                 vc.answers.append([
                     cardArray[i].char: quizResultsArray[i].correct
                 ])
+            }
+            if self.studentDelegate != nil {
+                vc.toStudentView = true
             }
         }
     }

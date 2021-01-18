@@ -9,10 +9,12 @@ import UIKit
 
 class UserViewController: UIViewController {
 
+    @IBOutlet weak var userLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        userLabel.text = GlobalData.getFirstName() + " " + GlobalData.getLastName()
     }
     
     @IBAction func signOutPressed(_ sender: Any) {

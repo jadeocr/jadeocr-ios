@@ -7,6 +7,14 @@
 
 import Foundation
 
+struct userStruct {
+    var id: String
+    var email: String
+    var firstName: String
+    var lastName: String
+    var isTeacher: Bool
+}
+
 struct srsResults {
     var charId: String
     var quality: Int
@@ -29,4 +37,9 @@ struct quizResults {
             "overriden": overriden,
         ]
     }
+}
+
+struct decksInClass {
+    var error: String
+    var decks: [Dictionary<String, Any>]
 }

@@ -47,25 +47,13 @@ class FlashcardsOptionsViewController: UIViewController {
         if let vc = segue.destination as? FlashcardsViewController {
             if mode == "learn" {
                 vc.mode = "learn"
-                if handwritingControl.isOn {
-                    vc.handwriting = true
-                } else {
-                    vc.handwriting = false
-                }
+                vc.handwriting = handwritingControl.isOn
                 vc.front = frontControl.titleForSegment(at: frontControl.selectedSegmentIndex)
-                if scrambleControl.isOn {
-                    vc.scramble = true
-                } else {
-                    vc.scramble = false
-                }
+                vc.scramble = scrambleControl.isOn
                 vc.repetitions = Int(repetitionStepper.value)
             } else if mode == "srs" {
                 vc.mode = "srs"
-                if handwritingControl.isOn {
-                    vc.handwriting = true
-                } else {
-                    vc.handwriting = false
-                }
+                vc.handwriting = handwritingControl.isOn
                 vc.front = frontControl.titleForSegment(at: frontControl.selectedSegmentIndex)
             } else if mode == "quiz" {
                 vc.mode = "quiz"
@@ -73,6 +61,7 @@ class FlashcardsOptionsViewController: UIViewController {
                 if vc.quizMode == "Handwriting" {
                     vc.handwriting = true
                 }
+                vc.scramble = scrambleControl.isOn
             }
             
             vc.deck = deck

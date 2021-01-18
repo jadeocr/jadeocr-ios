@@ -10,6 +10,10 @@
 		9D01C53E258B3DCA00982550 /* DeckInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01C53D258B3DCA00982550 /* DeckInfoViewController.swift */; };
 		9D11C923258C03C700B45793 /* EditDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D11C91C258C03C600B45793 /* EditDeckViewController.swift */; };
 		9D1A65FA255472AF007C2C09 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1A65F9255472AF007C2C09 /* UserViewController.swift */; };
+		9D243DF625B241120036A67B /* AssignSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D243DF525B241120036A67B /* AssignSelectTableViewController.swift */; };
+		9D243DF925B241620036A67B /* AssignOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D243DF825B241620036A67B /* AssignOptionsViewController.swift */; };
+		9D2FF29625AE8921009B4CAD /* StudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FF29525AE8921009B4CAD /* StudentViewController.swift */; };
+		9D2FF29925AE892D009B4CAD /* TeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FF29825AE892D009B4CAD /* TeacherViewController.swift */; };
 		9D3473AD25940983008A9998 /* CardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3473AC25940983008A9998 /* CardDelegate.swift */; };
 		9D3473B225940EC7008A9998 /* FlashcardsOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3473B125940EC7008A9998 /* FlashcardsOptionsViewController.swift */; };
 		9D3A443825A1052C00461467 /* ClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A443725A1052C00461467 /* ClassesViewController.swift */; };
@@ -40,9 +44,11 @@
 		9DA40A4E259322320019E814 /* FlashcardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA40A4D259322320019E814 /* FlashcardsViewController.swift */; };
 		9DA8E7672599448A00B05016 /* OCRDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8E7662599448A00B05016 /* OCRDelegate.swift */; };
 		9DA8E76D2599530600B05016 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8E76C2599530600B05016 /* Structs.swift */; };
+		9DBC798325B00B3100890AE2 /* StudentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC798225B00B3100890AE2 /* StudentDelegate.swift */; };
 		9DC857FD2569E2AE00EA00F9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC857FC2569E2AE00EA00F9 /* HomeViewController.swift */; };
 		9DCDBBAE25802E6E00D62F4B /* deckItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCDBBAD25802E6E00D62F4B /* deckItem.xib */; };
 		9DCDBBB12580353500D62F4B /* deckItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDBBB02580353500D62F4B /* deckItem.swift */; };
+		9DEA84B025B64C7F00FB15BC /* DetailedResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA84AF25B64C7F00FB15BC /* DetailedResultsViewController.swift */; };
 		9DEC4EEE255099FA0027763F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC4EED255099FA0027763F /* SignInViewController.swift */; };
 		9DF8870B2550A059000A777A /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF8870A2550A059000A777A /* GlobalData.swift */; };
 		9DFA4E2C259D339100D1BFE5 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA4E2B259D339100D1BFE5 /* SummaryViewController.swift */; };
@@ -52,6 +58,10 @@
 		9D01C53D258B3DCA00982550 /* DeckInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoViewController.swift; sourceTree = "<group>"; };
 		9D11C91C258C03C600B45793 /* EditDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDeckViewController.swift; sourceTree = "<group>"; };
 		9D1A65F9255472AF007C2C09 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		9D243DF525B241120036A67B /* AssignSelectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignSelectTableViewController.swift; sourceTree = "<group>"; };
+		9D243DF825B241620036A67B /* AssignOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignOptionsViewController.swift; sourceTree = "<group>"; };
+		9D2FF29525AE8921009B4CAD /* StudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewController.swift; sourceTree = "<group>"; };
+		9D2FF29825AE892D009B4CAD /* TeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherViewController.swift; sourceTree = "<group>"; };
 		9D3473AC25940983008A9998 /* CardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDelegate.swift; sourceTree = "<group>"; };
 		9D3473B125940EC7008A9998 /* FlashcardsOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsOptionsViewController.swift; sourceTree = "<group>"; };
 		9D3A443725A1052C00461467 /* ClassesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesViewController.swift; sourceTree = "<group>"; };
@@ -84,9 +94,11 @@
 		9DA40A4D259322320019E814 /* FlashcardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsViewController.swift; sourceTree = "<group>"; };
 		9DA8E7662599448A00B05016 /* OCRDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRDelegate.swift; sourceTree = "<group>"; };
 		9DA8E76C2599530600B05016 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		9DBC798225B00B3100890AE2 /* StudentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDelegate.swift; sourceTree = "<group>"; };
 		9DC857FC2569E2AE00EA00F9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9DCDBBAD25802E6E00D62F4B /* deckItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = deckItem.xib; sourceTree = "<group>"; };
 		9DCDBBB02580353500D62F4B /* deckItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deckItem.swift; sourceTree = "<group>"; };
+		9DEA84AF25B64C7F00FB15BC /* DetailedResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedResultsViewController.swift; sourceTree = "<group>"; };
 		9DEC4EED255099FA0027763F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9DF8870A2550A059000A777A /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		9DFA4E2B259D339100D1BFE5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
@@ -146,9 +158,10 @@
 		9D3A443625A1051500461467 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9DEA84AD25B64C2E00FB15BC /* Teacher */,
+				9DEA84AC25B64C2900FB15BC /* Student */,
 				9D3A443725A1052C00461467 /* ClassesViewController.swift */,
 				9D88E62125A5232F004FD1E5 /* JoinClassViewController.swift */,
-				9D88E62425A57570004FD1E5 /* CreateClassViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -174,6 +187,7 @@
 				9D5D071C2585596F003235D8 /* DeckDelegate.swift */,
 				9D3473AC25940983008A9998 /* CardDelegate.swift */,
 				9DA8E7662599448A00B05016 /* OCRDelegate.swift */,
+				9DBC798225B00B3100890AE2 /* StudentDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -236,6 +250,26 @@
 				9D4487CC259A5EB200257D67 /* multipleChoiceCard.swift */,
 			);
 			path = Cards;
+			sourceTree = "<group>";
+		};
+		9DEA84AC25B64C2900FB15BC /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				9D2FF29525AE8921009B4CAD /* StudentViewController.swift */,
+			);
+			path = Student;
+			sourceTree = "<group>";
+		};
+		9DEA84AD25B64C2E00FB15BC /* Teacher */ = {
+			isa = PBXGroup;
+			children = (
+				9D88E62425A57570004FD1E5 /* CreateClassViewController.swift */,
+				9D2FF29825AE892D009B4CAD /* TeacherViewController.swift */,
+				9D243DF525B241120036A67B /* AssignSelectTableViewController.swift */,
+				9D243DF825B241620036A67B /* AssignOptionsViewController.swift */,
+				9DEA84AF25B64C7F00FB15BC /* DetailedResultsViewController.swift */,
+			);
+			path = Teacher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,8 +349,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D2FF29625AE8921009B4CAD /* StudentViewController.swift in Sources */,
 				9DA8E76D2599530600B05016 /* Structs.swift in Sources */,
 				9DFA4E2C259D339100D1BFE5 /* SummaryViewController.swift in Sources */,
+				9D243DF625B241120036A67B /* AssignSelectTableViewController.swift in Sources */,
 				9D5D071D2585596F003235D8 /* DeckDelegate.swift in Sources */,
 				9D88E62525A57570004FD1E5 /* CreateClassViewController.swift in Sources */,
 				9D8EE1BA25981FC80083A944 /* ocrView.swift in Sources */,
@@ -325,13 +361,16 @@
 				9DA8E7672599448A00B05016 /* OCRDelegate.swift in Sources */,
 				9D5D071125854838003235D8 /* deckTitle.swift in Sources */,
 				9D3473B225940EC7008A9998 /* FlashcardsOptionsViewController.swift in Sources */,
+				9D243DF925B241620036A67B /* AssignOptionsViewController.swift in Sources */,
 				9D01C53E258B3DCA00982550 /* DeckInfoViewController.swift in Sources */,
 				9D650E97256A4036007B17AA /* SignUpViewController.swift in Sources */,
 				9DEC4EEE255099FA0027763F /* SignInViewController.swift in Sources */,
 				9DA40A4B2592E2A00019E814 /* frontCard.swift in Sources */,
 				9D3A443825A1052C00461467 /* ClassesViewController.swift in Sources */,
 				9D11C923258C03C700B45793 /* EditDeckViewController.swift in Sources */,
+				9DEA84B025B64C7F00FB15BC /* DetailedResultsViewController.swift in Sources */,
 				9D7F06D52547A794002C8947 /* WriteViewController.swift in Sources */,
+				9DBC798325B00B3100890AE2 /* StudentDelegate.swift in Sources */,
 				9D3473AD25940983008A9998 /* CardDelegate.swift in Sources */,
 				9D88E62225A5232F004FD1E5 /* JoinClassViewController.swift in Sources */,
 				9D7F06D92547B573002C8947 /* OCRController.swift in Sources */,
@@ -339,6 +378,7 @@
 				9D7F06BF2547A011002C8947 /* AppDelegate.swift in Sources */,
 				9DC857FD2569E2AE00EA00F9 /* HomeViewController.swift in Sources */,
 				9DCDBBB12580353500D62F4B /* deckItem.swift in Sources */,
+				9D2FF29925AE892D009B4CAD /* TeacherViewController.swift in Sources */,
 				9DF8870B2550A059000A777A /* GlobalData.swift in Sources */,
 				9D5D0719258552A6003235D8 /* deckControlPanel.swift in Sources */,
 				9DA40A4E259322320019E814 /* FlashcardsViewController.swift in Sources */,

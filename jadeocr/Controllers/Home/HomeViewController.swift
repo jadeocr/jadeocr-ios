@@ -19,6 +19,18 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 100
+        
+        self.tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         do { //Check if user is signed in
             try GlobalData.checkSignInStatus(completion: {result in
                 if result == false {
@@ -32,18 +44,6 @@ class HomeViewController: UIViewController {
         } catch {
             print(error)
         }
-        
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 100
-        
-        self.tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         updateDecks()
     }

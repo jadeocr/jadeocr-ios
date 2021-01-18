@@ -10,15 +10,18 @@ import UIKit
 class ClassesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var createButton: UIBarButtonItem!
+    @IBOutlet weak var joinButton: UIBarButtonItem!
     
     let refreshControl = UIRefreshControl()
     
     var classesTeaching:[Dictionary<String, Any>] = []
     var classesJoined:[Dictionary<String, Any>] = []
+    var selectedIndexPath: IndexPath = IndexPath.init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
@@ -26,6 +29,18 @@ class ClassesViewController: UIViewController {
         
         self.tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !GlobalData.getIsTeacher() {
+            self.createButton.isEnabled = false
+            self.createButton.tintColor = .clear
+        } else {
+            self.createButton.isEnabled = true
+            self.createButton.tintColor = self.joinButton.tintColor
+        }
         
         updateDecks()
     }
@@ -50,15 +65,20 @@ class ClassesViewController: UIViewController {
         self.refreshControl.endRefreshing()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        tableView.deselectRow(at: selectedIndexPath, animated: true)
+        if let vc = segue.destination as? TeacherViewController {
+            vc.classCode = classesTeaching[selectedIndexPath[1]]["classCode"] as? String ?? ""
+            vc.className = classesTeaching[selectedIndexPath[1]]["name"] as? String ?? ""
+            vc.classDescription = classesTeaching[selectedIndexPath[1]]["description"] as? String ?? ""
+            vc.teacherName = classesTeaching[selectedIndexPath[1]]["teacherName"] as? String ?? ""
+        } else if let vc = segue.destination as? StudentViewController {
+            vc.classCode = classesJoined[selectedIndexPath[1]]["classCode"] as? String ?? ""
+            vc.className = classesJoined[selectedIndexPath[1]]["name"] as? String ?? ""
+            vc.classDescription = classesJoined[selectedIndexPath[1]]["description"] as? String ?? ""
+            vc.teacherName = classesJoined[selectedIndexPath[1]]["teacherName"] as? String ?? ""
+        }
     }
-    */
     
     @IBAction func unwindToClassesView(unwindSegue: UIStoryboardSegue) {
         updateDecks()
@@ -68,10 +88,11 @@ class ClassesViewController: UIViewController {
 
 extension ClassesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedIndexPath = indexPath
         if indexPath[0] == 0 {
-            print("teach")
+            self.performSegue(withIdentifier: "toTeacherView", sender: self)
         } else {
-            print("learn")
+            self.performSegue(withIdentifier: "toStudentView", sender: self)
         }
     }
 }

@@ -13,6 +13,7 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var correctLabel: UILabel!
     
     var answers:[Dictionary<String, Bool>] = []
+    var toStudentView: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,11 @@ class SummaryViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+        if toStudentView {
+            performSegue(withIdentifier: "unwindToStudentView", sender: self)
+        } else {
+            performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+        }
     }
 }
 
