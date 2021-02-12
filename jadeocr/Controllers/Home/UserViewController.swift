@@ -22,7 +22,7 @@ class UserViewController: UIViewController {
             try GlobalData.deleteCredentialsFromKeychain()
             GlobalData.signout(completion: {_ in
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "unwindToHome", sender: self)
+                    self.performSegue(withIdentifier: "unwindToInitial", sender: self)
                 }
             })
         } catch {

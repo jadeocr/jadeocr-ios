@@ -76,7 +76,9 @@ class TeacherViewController: UIViewController {
 }
 
 extension TeacherViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        GlobalData.getDetailedResults(deckId: decks[indexPath[1]]["_id"] as? String ?? "", classCode: classCode, completion: {})
+    }
 }
 
 extension TeacherViewController: UITableViewDataSource {

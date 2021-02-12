@@ -78,7 +78,7 @@ class SignUpViewController: UIViewController {
                         } catch {
                             print(error)
                         }
-                        self.performSegue(withIdentifier: "unwindToHome", sender: self)
+                        self.performSegue(withIdentifier: "unwindToSignin", sender: self)
                     })
                 } else if (dataString == "Email already in use") {
                     DispatchQueue.main.async(execute: {

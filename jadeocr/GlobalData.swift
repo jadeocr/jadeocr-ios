@@ -11,7 +11,8 @@ import Security
 class GlobalData {
     
 //    public static var apiURL:String = "http://simfony.tech:3003/"
-    public static var apiURL:String = "http://192.168.1.103:3000/"
+    public static var apiURL:String = "https://next.jadeocr.com/"
+//    public static var apiURL:String = "http://192.168.1.77:3000/"
     
     public static var user: userStruct?
     
@@ -947,6 +948,41 @@ class GlobalData {
                     completion("Not authorized")
                 }
                
+            }
+        }
+        
+        task.resume()
+    }
+    
+    public static func getDetailedResults(deckId: String, classCode: String, completion: @escaping () -> ()) {
+        let url = URL(string: GlobalData.apiURL + "api/class/getDeckResults")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        var requestBodyComponents = URLComponents()
+        requestBodyComponents.queryItems = [
+            URLQueryItem(name: "classCode", value: classCode),
+            URLQueryItem(name: "deckId", value: deckId),
+        ]
+        request.httpBody = requestBodyComponents.query?.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print(dataString)
+                    
+                }
             }
         }
         

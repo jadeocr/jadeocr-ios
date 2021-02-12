@@ -21,7 +21,7 @@ class DetailedResultsViewController: UIViewController {
 
 extension DetailedResultsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        
     }
 }
 

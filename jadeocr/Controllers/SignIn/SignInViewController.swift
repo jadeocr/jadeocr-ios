@@ -43,7 +43,7 @@ class SignInViewController: UIViewController {
                 try GlobalData.checkSignInStatus(completion: {result in
                     if result == true {
                         DispatchQueue.main.async(execute: {
-                            self.performSegue(withIdentifier: "unwindToHome", sender: self)
+                            self.performSegue(withIdentifier: "openApp", sender: self)
                         })
                     } else {
                         DispatchQueue.main.async(execute: {
@@ -64,5 +64,7 @@ class SignInViewController: UIViewController {
         }
     }
     
-    
+    @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
+        self.performSegue(withIdentifier: "openApp", sender: self)
+    }
 }
