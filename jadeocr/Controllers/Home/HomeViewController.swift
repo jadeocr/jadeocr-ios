@@ -31,20 +31,6 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        do { //Check if user is signed in
-            try GlobalData.checkSignInStatus(completion: {result in
-                if result == false {
-                    DispatchQueue.main.async(execute: {
-                        self.performSegue(withIdentifier: "SignInSegue", sender: nil)
-                    })
-                } else {
-                    self.updateDecks()
-                }
-            })
-        } catch {
-            print(error)
-        }
-        
         updateDecks()
     }
 
@@ -83,39 +69,6 @@ class HomeViewController: UIViewController {
         if segue.destination is DeckInfoViewController {
             let vc = segue.destination as! DeckInfoViewController
             vc.deckId = currDeck
-        }
-    }
-    
-    //MARK: Unwind Functions
-    @IBAction func profile(_ sender: Any) {
-        do {
-            try GlobalData.checkSignInStatus(completion: {result in
-                if result == true {
-                    DispatchQueue.main.async(execute: {
-                        self.performSegue(withIdentifier: "UserSegue", sender: nil)
-                    })
-                } else {
-                    DispatchQueue.main.async(execute: {
-                        self.performSegue(withIdentifier: "SignInSegue", sender: nil)
-                    })
-                }
-            })
-        } catch {
-            print(error)
-        }
-    }
-    
-    @IBAction func unwindToHomeFromProfile(_ unwindSegue: UIStoryboardSegue) {
-        do {
-            try GlobalData.checkSignInStatus(completion: {result in
-                if result == false {
-                    DispatchQueue.main.async(execute: {
-                        self.performSegue(withIdentifier: "SignInSegue", sender: nil)
-                    })
-                }
-            })
-        } catch {
-            print(error)
         }
     }
     

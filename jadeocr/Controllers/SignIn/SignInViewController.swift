@@ -65,6 +65,7 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
+        print("Hi")
         self.performSegue(withIdentifier: "openApp", sender: self)
     }
 }
