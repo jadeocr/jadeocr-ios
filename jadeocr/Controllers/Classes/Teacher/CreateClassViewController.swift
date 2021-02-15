@@ -26,7 +26,7 @@ class CreateClassViewController: UIViewController {
     }
     
     @IBAction func createButtonClicked(_ sender: Any) {
-        GlobalData.createClass(name: classNameField.text ?? "", description: classDescriptionField.text ?? "", completion: {result in
+        TeacherRequests.createClass(name: classNameField.text ?? "", description: classDescriptionField.text ?? "", completion: {result in
             DispatchQueue.main.async {
                 if result == "not a teacher" {
                     self.classCreateError(message: "Only teachers can create classes")

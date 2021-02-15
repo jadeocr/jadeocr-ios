@@ -14,6 +14,10 @@
 		9D243DF925B241620036A67B /* AssignOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D243DF825B241620036A67B /* AssignOptionsViewController.swift */; };
 		9D2FF29625AE8921009B4CAD /* StudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FF29525AE8921009B4CAD /* StudentViewController.swift */; };
 		9D2FF29925AE892D009B4CAD /* TeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FF29825AE892D009B4CAD /* TeacherViewController.swift */; };
+		9D33A29D25DA39FB0044348C /* TeacherRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A29C25DA39FB0044348C /* TeacherRequests.swift */; };
+		9D33A2A125DA3A0D0044348C /* StudentRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A2A025DA3A0D0044348C /* StudentRequests.swift */; };
+		9D33A2A425DA3BCE0044348C /* CharRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A2A325DA3BCE0044348C /* CharRequests.swift */; };
+		9D33A2A825DA3C870044348C /* DeckRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A2A725DA3C870044348C /* DeckRequests.swift */; };
 		9D3473AD25940983008A9998 /* CardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3473AC25940983008A9998 /* CardDelegate.swift */; };
 		9D3473B225940EC7008A9998 /* FlashcardsOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3473B125940EC7008A9998 /* FlashcardsOptionsViewController.swift */; };
 		9D3A443825A1052C00461467 /* ClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A443725A1052C00461467 /* ClassesViewController.swift */; };
@@ -63,6 +67,10 @@
 		9D243DF825B241620036A67B /* AssignOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignOptionsViewController.swift; sourceTree = "<group>"; };
 		9D2FF29525AE8921009B4CAD /* StudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewController.swift; sourceTree = "<group>"; };
 		9D2FF29825AE892D009B4CAD /* TeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherViewController.swift; sourceTree = "<group>"; };
+		9D33A29C25DA39FB0044348C /* TeacherRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherRequests.swift; sourceTree = "<group>"; };
+		9D33A2A025DA3A0D0044348C /* StudentRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentRequests.swift; sourceTree = "<group>"; };
+		9D33A2A325DA3BCE0044348C /* CharRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharRequests.swift; sourceTree = "<group>"; };
+		9D33A2A725DA3C870044348C /* DeckRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRequests.swift; sourceTree = "<group>"; };
 		9D3473AC25940983008A9998 /* CardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDelegate.swift; sourceTree = "<group>"; };
 		9D3473B125940EC7008A9998 /* FlashcardsOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsOptionsViewController.swift; sourceTree = "<group>"; };
 		9D3A443725A1052C00461467 /* ClassesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +151,25 @@
 				9D8EE1B925981FC80083A944 /* ocrView.swift */,
 			);
 			path = OCR;
+			sourceTree = "<group>";
+		};
+		9D33A29A25DA39870044348C /* Server Requests */ = {
+			isa = PBXGroup;
+			children = (
+				9D33A29B25DA39EB0044348C /* Class Requests */,
+				9D33A2A325DA3BCE0044348C /* CharRequests.swift */,
+				9D33A2A725DA3C870044348C /* DeckRequests.swift */,
+			);
+			path = "Server Requests";
+			sourceTree = "<group>";
+		};
+		9D33A29B25DA39EB0044348C /* Class Requests */ = {
+			isa = PBXGroup;
+			children = (
+				9D33A29C25DA39FB0044348C /* TeacherRequests.swift */,
+				9D33A2A025DA3A0D0044348C /* StudentRequests.swift */,
+			);
+			path = "Class Requests";
 			sourceTree = "<group>";
 		};
 		9D3473AF25940E5D008A9998 /* Flashcards */ = {
@@ -238,6 +265,7 @@
 			children = (
 				9D7044DC254B6C6B007A8F21 /* Controllers */,
 				9D5D071B25855937003235D8 /* Delegates */,
+				9D33A29A25DA39870044348C /* Server Requests */,
 				9DF8870A2550A059000A777A /* GlobalData.swift */,
 				9DA8E76C2599530600B05016 /* Structs.swift */,
 				9D7F06BE2547A011002C8947 /* AppDelegate.swift */,
@@ -373,6 +401,7 @@
 				9DA8E7672599448A00B05016 /* OCRDelegate.swift in Sources */,
 				9D5D071125854838003235D8 /* deckTitle.swift in Sources */,
 				9D3473B225940EC7008A9998 /* FlashcardsOptionsViewController.swift in Sources */,
+				9D33A2A425DA3BCE0044348C /* CharRequests.swift in Sources */,
 				9D243DF925B241620036A67B /* AssignOptionsViewController.swift in Sources */,
 				9D01C53E258B3DCA00982550 /* DeckInfoViewController.swift in Sources */,
 				9D650E97256A4036007B17AA /* SignUpViewController.swift in Sources */,
@@ -383,15 +412,18 @@
 				9DEA84B025B64C7F00FB15BC /* DetailedResultsViewController.swift in Sources */,
 				9D7F06D52547A794002C8947 /* WriteViewController.swift in Sources */,
 				9DBC798325B00B3100890AE2 /* StudentDelegate.swift in Sources */,
+				9D33A2A825DA3C870044348C /* DeckRequests.swift in Sources */,
 				9D3473AD25940983008A9998 /* CardDelegate.swift in Sources */,
 				9D88E62225A5232F004FD1E5 /* JoinClassViewController.swift in Sources */,
 				9D7F06D92547B573002C8947 /* OCRController.swift in Sources */,
 				9D4487CD259A5EB200257D67 /* multipleChoiceCard.swift in Sources */,
+				9D33A29D25DA39FB0044348C /* TeacherRequests.swift in Sources */,
 				9D7F06BF2547A011002C8947 /* AppDelegate.swift in Sources */,
 				9DC857FD2569E2AE00EA00F9 /* HomeViewController.swift in Sources */,
 				9DCDBBB12580353500D62F4B /* deckItem.swift in Sources */,
 				9D2FF29925AE892D009B4CAD /* TeacherViewController.swift in Sources */,
 				9DF8870B2550A059000A777A /* GlobalData.swift in Sources */,
+				9D33A2A125DA3A0D0044348C /* StudentRequests.swift in Sources */,
 				9D5D0719258552A6003235D8 /* deckControlPanel.swift in Sources */,
 				9DA40A4E259322320019E814 /* FlashcardsViewController.swift in Sources */,
 				9D7F06C12547A011002C8947 /* SceneDelegate.swift in Sources */,

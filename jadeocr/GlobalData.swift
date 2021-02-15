@@ -11,8 +11,8 @@ import Security
 class GlobalData {
     
 //    public static var apiURL:String = "http://simfony.tech:3003/"
-    public static var apiURL:String = "https://next.jadeocr.com/"
-//    public static var apiURL:String = "http://192.168.1.77:3000/"
+//    public static var apiURL:String = "https://next.jadeocr.com/"
+    public static var apiURL:String = "http://192.168.1.77:3000/"
     
     public static var user: userStruct?
     
@@ -24,6 +24,7 @@ class GlobalData {
         return user?.lastName ?? ""
     }
     
+    //Moved
     public static func getIsTeacher() -> (Bool) {
         return user?.isTeacher ?? false
     }
@@ -165,6 +166,7 @@ class GlobalData {
         task.resume()
     }
     
+    //Moved
     //MARK: getPinyinAndDefinition
     public static func getPinyinAndDefinition(char: String, completion: @escaping (Data)->()) {
         let url = URL(string: GlobalData.apiURL + "api/pinyinAndDefinition")
@@ -199,6 +201,7 @@ class GlobalData {
     }
     
     //MARK: createDeck
+    //moved
     public static func createDeck(title: String, description: String, characters: [[String: String]], privacy: Bool, completion: @escaping (Bool)->()) {
         let url = URL(string: GlobalData.apiURL + "api/deck/create")
         guard let requestUrl = url else { fatalError() }
@@ -242,6 +245,7 @@ class GlobalData {
     }
     
     //MARK: updateDeck
+    //Moved
     public static func updateDeck(deckId: String, title: String, description: String, characters: [[String: String]], privacy: Bool, completion: @escaping (Bool)->()) {
         let url = URL(string: GlobalData.apiURL + "api/deck/update")
         guard let requestUrl = url else { fatalError() }
@@ -286,6 +290,7 @@ class GlobalData {
     }
     
     //MARK: getAlDecks
+    //Moved
     public static func getAllDecks(completion: @escaping (NSArray)->()) {
         let url = URL(string: GlobalData.apiURL + "api/deck/allDecks")
         guard let requestUrl = url else { fatalError() }
@@ -321,6 +326,7 @@ class GlobalData {
     }
     
     //MARK: getOneDeck
+    //Moved
     public static func getOneDeck(deckId: String, completion: @escaping (Dictionary<String, Any>)->()) {
         let url = URL(string: GlobalData.apiURL + "api/deck/deck")
         guard let requestUrl = url else { fatalError() }
@@ -365,6 +371,7 @@ class GlobalData {
     }
     
     //MARK: removeDeck
+    //Moved
     public static func removeDeck(deckId: String, completion: @escaping (Bool)->()) {
         let url = URL(string: GlobalData.apiURL + "api/deck/delete")
         guard let requestUrl = url else { fatalError() }
@@ -405,6 +412,7 @@ class GlobalData {
         task.resume()
     }
     
+    //Moved
     //MARK: OCR
     public static func OCR(sendArray: [[[Int]]], completion: @escaping ([String]) -> ()) {
         // Make request to check
@@ -451,6 +459,7 @@ class GlobalData {
     }
     
     //MARK: SRS
+    //moved
     public static func getSRSDeck(deckId: String, completion: @escaping ([Dictionary<String, Any>])->()) {
         let url = URL(string: GlobalData.apiURL + "api/deck/srs")
         guard let requestUrl = url else { fatalError() }
@@ -494,6 +503,7 @@ class GlobalData {
         task.resume()
     }
     
+    //moved
     public static func practiced(results: [srsResults], deckId: String, completion: @escaping (Bool) -> ()) {
         // Make request to check
         let url = URL(string: GlobalData.apiURL + "api/deck/practiced")
@@ -545,6 +555,7 @@ class GlobalData {
     }
     
     //MARK: Quiz
+    //moved
     public static func quizzed(results: [quizResults], deckId: String, completion: @escaping (Bool) -> ()) {
         // Make request to check
         let url = URL(string: GlobalData.apiURL + "api/deck/quizzed")
@@ -592,6 +603,7 @@ class GlobalData {
     }
     
     //MARK: Classes
+    //Moved
     public static func getTeachingClasses(completion: @escaping ([Dictionary<String, Any>]) -> ()) {
         let url = URL(string: GlobalData.apiURL + "api/class/getTeachingClasses")
         guard let requestUrl = url else { fatalError() }
@@ -625,6 +637,7 @@ class GlobalData {
         task.resume()
     }
     
+    //Moved
     public static func getJoinedClasses(completion: @escaping ([Dictionary<String, Any>]) -> ()) {
         let url = URL(string: GlobalData.apiURL + "api/class/getJoinedClasses")
         guard let requestUrl = url else { fatalError() }
@@ -658,6 +671,7 @@ class GlobalData {
         task.resume()
     }
     
+    //Moved
     public static func joinClass(classCode: String, completion: @escaping(String) -> ()) {
         let url = URL(string: GlobalData.apiURL + "api/class/join")
         guard let requestUrl = url else { fatalError() }
@@ -692,6 +706,7 @@ class GlobalData {
         task.resume()
     }
     
+    //Moved
     public static func createClass(name: String, description: String, completion: @escaping(String) -> ()) {
         let url = URL(string: GlobalData.apiURL + "api/class/create")
         guard let requestUrl = url else { fatalError() }
@@ -731,6 +746,7 @@ class GlobalData {
         task.resume()
     }
     
+    //Moved
     public static func getDecksAsStudent(classCode: String, completion: @escaping(decksInClass) -> ()) {
         let url = URL(string: GlobalData.apiURL + "api/class/getAssignedDecksAsStudent")
         guard let requestUrl = url else { fatalError() }
@@ -784,6 +800,7 @@ class GlobalData {
         task.resume()
     }
     
+    //Moved
     public static func getDecksAsTeacher(classCode: String, completion: @escaping(decksInClass) -> ()) {
         let url = URL(string: GlobalData.apiURL + "api/class/getAssignedDecksAsTeacher")
         guard let requestUrl = url else { fatalError() }
@@ -838,6 +855,7 @@ class GlobalData {
         task.resume()
     }
     
+    //Moved
     public static func submitFinishedDeckToClass(classCode: String, deckId: String, mode: String, resultsForQuiz: [quizResults], completion: @escaping(String) -> ()) {
         let url = URL(string: GlobalData.apiURL + "api/class/submitFinishedDeck")
         guard let requestUrl = url else { fatalError() }
@@ -898,6 +916,7 @@ class GlobalData {
         task.resume()
     }
     
+    //Moved
     public static func assignDeck(classCode: String, deckId: String, mode: String, front: String, dueDate: Double, handwriting: Bool, repetitions: Int, completion: @escaping (String) -> ()) {
         let url = URL(string: GlobalData.apiURL + "api/class/assign")
         guard let requestUrl = url else { fatalError() }
@@ -954,6 +973,7 @@ class GlobalData {
         task.resume()
     }
     
+    //Moved
     public static func getDetailedResults(deckId: String, classCode: String, completion: @escaping () -> ()) {
         let url = URL(string: GlobalData.apiURL + "api/class/getDeckResults")
         guard let requestUrl = url else { fatalError() }

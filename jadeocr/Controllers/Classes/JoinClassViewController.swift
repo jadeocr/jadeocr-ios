@@ -24,7 +24,7 @@ class JoinClassViewController: UIViewController {
     }
     
     @IBAction func joinButtonPressed(_ sender: Any) {
-        GlobalData.joinClass(classCode: classCodeField.text ?? "", completion: {result in
+        StudentRequests.joinClass(classCode: classCodeField.text ?? "", completion: {result in
             DispatchQueue.main.async {
                 if result == "Student already in class" {
                     self.classJoinError(message: "Class already joined")

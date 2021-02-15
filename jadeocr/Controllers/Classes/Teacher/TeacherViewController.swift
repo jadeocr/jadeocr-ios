@@ -51,7 +51,7 @@ class TeacherViewController: UIViewController {
     }
     
     func updateDecks() {
-        GlobalData.getDecksAsTeacher(classCode: classCode, completion: {result in
+        TeacherRequests.getDecksAsTeacher(classCode: classCode, completion: {result in
             DispatchQueue.main.async {
                 self.decks = result.decks
                 print(result.error)
@@ -77,7 +77,7 @@ class TeacherViewController: UIViewController {
 
 extension TeacherViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        GlobalData.getDetailedResults(deckId: decks[indexPath[1]]["_id"] as? String ?? "", classCode: classCode, completion: {})
+        TeacherRequests.getDetailedResults(deckId: decks[indexPath[1]]["_id"] as? String ?? "", classCode: classCode, completion: {})
     }
 }
 

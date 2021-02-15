@@ -54,7 +54,7 @@ class StudentViewController: UIViewController {
     }
     
     func updateDecks() {
-        GlobalData.getDecksAsStudent(classCode: classCode, completion: {result in
+        StudentRequests.getDecksAsStudent(classCode: classCode, completion: {result in
             DispatchQueue.main.async {
                 self.decks = result.decks
                 print(result.error)
@@ -96,7 +96,7 @@ class StudentViewController: UIViewController {
 
 extension StudentViewController: StudentDelegate {
     func submit(resultsForQuiz: [quizResults]) {
-        GlobalData.submitFinishedDeckToClass(classCode: classCode, deckId: decks[deckIndex]["deckId"] as? String ?? "", mode: decks[deckIndex]["mode"] as? String ?? "", resultsForQuiz: resultsForQuiz, completion: {_ in
+        StudentRequests.submitFinishedDeckToClass(classCode: classCode, deckId: decks[deckIndex]["deckId"] as? String ?? "", mode: decks[deckIndex]["mode"] as? String ?? "", resultsForQuiz: resultsForQuiz, completion: {_ in
             DispatchQueue.main.async {
                 self.updateDecks()
             }
@@ -108,7 +108,7 @@ extension StudentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
         if decks[indexPath[1]]["mode"] as? String ?? "" == "srs" {
-            GlobalData.getSRSDeck(deckId: decks[indexPath[1]]["deckId"] as? String ?? "", completion: { results in
+            DeckRequests.getSRSDeck(deckId: decks[indexPath[1]]["deckId"] as? String ?? "", completion: { results in
                 DispatchQueue.main.async {
                     self.deck = [
                         "_id": self.decks[indexPath[1]]["deckId"] as? String ?? "",
@@ -119,7 +119,7 @@ extension StudentViewController: UITableViewDelegate {
                 }
             })
         } else {
-            GlobalData.getOneDeck(deckId: decks[indexPath[1]]["deckId"] as? String ?? "", completion: {result in
+            DeckRequests.getOneDeck(deckId: decks[indexPath[1]]["deckId"] as? String ?? "", completion: {result in
                 DispatchQueue.main.async {
                     self.deck = result
                     self.deckIndex = indexPath[1]

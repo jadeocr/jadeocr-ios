@@ -80,7 +80,7 @@ class AssignOptionsViewController: UIViewController {
             frontMode = (front.titleForSegment(at: front.selectedSegmentIndex)?.lowercased())!
         }
         
-        GlobalData.assignDeck(classCode: classCode, deckId: deckCode, mode: (mode.titleForSegment(at: mode.selectedSegmentIndex)?.lowercased())!, front: frontMode, dueDate: dueDatePicker.date.timeIntervalSince1970, handwriting: handwriting.isEnabled, repetitions: Int(repetitionsStepper.value), completion: {result in
+        TeacherRequests.assignDeck(classCode: classCode, deckId: deckCode, mode: (mode.titleForSegment(at: mode.selectedSegmentIndex)?.lowercased())!, front: frontMode, dueDate: dueDatePicker.date.timeIntervalSince1970, handwriting: handwriting.isEnabled, repetitions: Int(repetitionsStepper.value), completion: {result in
             DispatchQueue.main.async {
                 print(result)
                 if result == "" {

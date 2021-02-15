@@ -34,7 +34,7 @@ class ClassesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if !GlobalData.getIsTeacher() {
+        if !TeacherRequests.getIsTeacher() {
             self.createButton.isEnabled = false
             self.createButton.tintColor = .clear
         } else {
@@ -50,13 +50,13 @@ class ClassesViewController: UIViewController {
     }
     
     func updateDecks() {
-        GlobalData.getTeachingClasses(completion: {result in
+        TeacherRequests.getTeachingClasses(completion: {result in
             self.classesTeaching = result
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         })
-        GlobalData.getJoinedClasses(completion: {result in
+        StudentRequests.getJoinedClasses(completion: {result in
             self.classesJoined = result
             DispatchQueue.main.async {
                 self.tableView.reloadData()
