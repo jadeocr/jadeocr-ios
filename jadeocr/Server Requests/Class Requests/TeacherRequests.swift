@@ -201,7 +201,7 @@ class TeacherRequests {
     }
 
     //MARK: Get detailed results
-    public static func getDetailedResults(deckId: String, classCode: String, completion: @escaping () -> ()) {
+    public static func getDetailedResults(deckId: String, classCode: String, completion: @escaping ([detailedResults]) -> ()) {
         let url = URL(string: GlobalData.apiURL + "api/class/getDeckResults")
         guard let requestUrl = url else { fatalError() }
         
@@ -227,9 +227,54 @@ class TeacherRequests {
             if let response = response as? HTTPURLResponse {
                 print("Response HTTP Status code: \(response.statusCode)")
                 if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                    print(dataString)
-                    
+                    do {
+                        let jsonData = try JSONDecoder().decode([detailedResults].self, from: data)
+                        completion(jsonData)
+                    } catch {
+                        print("died")
+                    }
                 }
+            }
+        }
+        
+        task.resume()
+    }
+    
+    //MARK: Unassign
+    public static func unassign(deckId: String, classCode: String, assignmentId: String, completion: @escaping (Bool) -> ()) {
+        let url = URL(string: GlobalData.apiURL + "api/class/unassign")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        var requestBodyComponents = URLComponents()
+        requestBodyComponents.queryItems = [
+            URLQueryItem(name: "classCode", value: classCode),
+            URLQueryItem(name: "deckId", value: deckId),
+            URLQueryItem(name: "assignmentId", value: assignmentId),
+        ]
+        request.httpBody = requestBodyComponents.query?.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+                if (response.statusCode == 200) {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+//                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+//
+//                }
             }
         }
         

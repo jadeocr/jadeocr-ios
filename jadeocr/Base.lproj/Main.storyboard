@@ -291,7 +291,7 @@
                         <outlet property="descriptionLabel" destination="vGe-Fc-Jj6" id="rp7-ny-PDH"/>
                         <outlet property="tableView" destination="lBE-I4-NF2" id="XfU-Tl-A6D"/>
                         <outlet property="teacherLabel" destination="bQG-KS-Lvx" id="UWW-j0-cSA"/>
-                        <segue destination="Jyn-zP-pMF" kind="show" id="QfS-P7-tEn"/>
+                        <segue destination="Jyn-zP-pMF" kind="show" identifier="toDetailedResults" id="QfS-P7-tEn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnT-OU-pSr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -322,7 +322,31 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fQj-CR-YHe" id="KmE-hn-Bmo">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqH-VY-EoP">
+                                                    <rect key="frame" x="77" y="10" width="52" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmp-EW-13Y">
+                                                    <rect key="frame" x="590" y="10" width="101" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Nmp-EW-13Y" firstAttribute="trailing" secondItem="KmE-hn-Bmo" secondAttribute="centerX" multiplier="1.8" id="UCz-EU-TSU"/>
+                                                <constraint firstItem="LqH-VY-EoP" firstAttribute="centerY" secondItem="KmE-hn-Bmo" secondAttribute="centerY" id="gGY-nh-Q14"/>
+                                                <constraint firstItem="LqH-VY-EoP" firstAttribute="leading" secondItem="KmE-hn-Bmo" secondAttribute="centerX" multiplier="0.2" id="m2W-0D-hge"/>
+                                                <constraint firstItem="Nmp-EW-13Y" firstAttribute="centerY" secondItem="KmE-hn-Bmo" secondAttribute="centerY" id="sJF-An-tKl"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="completionLabel" destination="Nmp-EW-13Y" id="OKK-Uw-qYB"/>
+                                            <outlet property="nameLabel" destination="LqH-VY-EoP" id="Pi3-R9-vci"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

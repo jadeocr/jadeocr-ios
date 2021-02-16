@@ -43,3 +43,10 @@ struct decksInClass {
     var error: String
     var decks: [Dictionary<String, Any>]
 }
+
+struct detailedResults: Decodable {
+    var finished: Bool
+    var firstName: String
+    var lastName: String
+    var id: String
+}

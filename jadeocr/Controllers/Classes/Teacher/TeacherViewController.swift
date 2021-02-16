@@ -20,6 +20,8 @@ class TeacherViewController: UIViewController {
     var classDescription: String = ""
     var teacherName: String = ""
     var decks: [Dictionary<String, Any>] = []
+    var deckId: String = ""
+    var detailedResults: [detailedResults] = []
     
     let refreshControl = UIRefreshControl()
     
@@ -61,12 +63,28 @@ class TeacherViewController: UIViewController {
         })
     }
     
+    func confirm(message: String, completion: @escaping (Bool) ->()) {
+        let alert = UIAlertController(title: "Are you sure", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {_ in
+            completion(true)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in
+            completion(false)
+        }))
+        self.present(alert, animated: true)
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAssignSelect" {
             let nc = segue.destination as! UINavigationController
             let vc = nc.topViewController as! AssignSelectTableViewController
             vc.classCode = classCode
+        } else if segue.identifier == "toDetailedResults" {
+            let vc = segue.destination as! DetailedResultsViewController
+            vc.detailedResults = self.detailedResults
+            vc.classCode = self.classCode
+            vc.deckId = self.deckId
         }
     }
 
@@ -74,10 +92,16 @@ class TeacherViewController: UIViewController {
         updateDecks()
     }
 }
-
+         
 extension TeacherViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        TeacherRequests.getDetailedResults(deckId: decks[indexPath[1]]["_id"] as? String ?? "", classCode: classCode, completion: {})
+        TeacherRequests.getDetailedResults(deckId: decks[indexPath[1]]["deckId"] as? String ?? "", classCode: classCode, completion: {results in
+            DispatchQueue.main.async {
+                self.detailedResults = results
+                self.deckId = self.decks[indexPath[1]]["deckId"] as? String ?? ""
+                self.performSegue(withIdentifier: "toDetailedResults", sender: self)
+            }
+        })
     }
 }
 
@@ -103,6 +127,33 @@ extension TeacherViewController: UITableViewDataSource {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy HH:mm" //yyyy
         return formatter.string(from: date)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
+                self.confirm(message: "Unassign this deck? This deck will be removed forever (a very long time)", completion: {remove in
+                    if remove {
+                        TeacherRequests.unassign(deckId: self.decks[indexPath[1]]["deckId"] as? String ?? "", classCode: self.classCode, assignmentId: self.decks[indexPath[1]]["_id"] as? String ?? "") { result in
+                            print(self.decks[indexPath[1]])
+                            DispatchQueue.main.async {
+                                self.decks.remove(at: indexPath[1]) //Doesnt do anything, but need to satisfy next line
+                                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                                self.updateDecks()
+                                completionHandler(true)
+                            }
+                        }
+                    }
+                })
+            }
+        
+            deleteAction.image = UIImage(systemName: "trash")
+            deleteAction.backgroundColor = .systemRed
+            let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+            return configuration
     }
 }
 

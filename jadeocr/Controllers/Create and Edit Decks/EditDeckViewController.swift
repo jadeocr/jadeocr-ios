@@ -131,7 +131,7 @@ class EditDeckViewController: UIViewController, DeckDelegate {
     }
     
     func confirm(message: String, completion: @escaping (Bool) ->()) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Are you sure", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {_ in
             completion(true)
         }))
