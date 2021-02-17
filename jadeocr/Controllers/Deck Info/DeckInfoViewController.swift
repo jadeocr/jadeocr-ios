@@ -33,7 +33,7 @@ class DeckInfoViewController: UIViewController {
     }
     
     func updateDeckInfo() {
-        GlobalData.getOneDeck(deckId: deckId!, completion: {result in
+        DeckRequests.getOneDeck(deckId: deckId!, completion: {result in
             DispatchQueue.main.async(execute: { [self] in
                 self.deck = result
                 
@@ -78,7 +78,7 @@ class DeckInfoViewController: UIViewController {
     //MARK: Handle Button Presses for Learn
     @IBAction func srsButtonPressed(_ sender: Any) {
         mode = "srs"
-        GlobalData.getSRSDeck(deckId: deck?["_id"] as? String ?? "", completion: { results in
+        DeckRequests.getSRSDeck(deckId: deck?["_id"] as? String ?? "", completion: { results in
             DispatchQueue.main.async {
                 self.deck = [
                     "_id": self.deck?["_id"] ?? "",

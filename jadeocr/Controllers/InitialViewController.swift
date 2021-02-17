@@ -17,7 +17,7 @@ class InitialViewController: UIViewController {
     
     func redirectUser() {
         do { //Check if user is signed in
-            try GlobalData.checkSignInStatus(completion: {result in
+            try UserRequests.checkSignInStatus(completion: {result in
                 DispatchQueue.main.async(execute: {
                     if result == false {
                         self.performSegue(withIdentifier: "signin", sender: nil)

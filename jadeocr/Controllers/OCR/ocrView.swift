@@ -64,7 +64,7 @@ class ocrView: UIView {
             self.delegate?.checked(correct: true) //Value doesn't matter
             return
         }
-        GlobalData.OCR(sendArray: ocrController.getSendArray() , completion: {results in
+        CharRequests.OCR(sendArray: ocrController.getSendArray() , completion: {results in
             DispatchQueue.main.async {
                 var charString = ""
                 var matched = false

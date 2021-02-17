@@ -157,7 +157,7 @@ class EditDeckViewController: UIViewController, DeckDelegate {
     @IBAction func deletePressed(_ sender: Any) {
         confirm(message: "Are you sure you want to delete this deck?", completion: {result in
             if result {
-                GlobalData.removeDeck(deckId: self.deckStruct!._id, completion: {result in
+                DeckRequests.removeDeck(deckId: self.deckStruct!._id, completion: {result in
                     if result {
                         DispatchQueue.main.async {
                             self.performSegue(withIdentifier: "unwindToHome", sender: self)
@@ -183,7 +183,7 @@ class EditDeckViewController: UIViewController, DeckDelegate {
             }
         }
         
-        GlobalData.updateDeck(deckId: deckStruct!._id, title: deckInfoDict["title"] as! String, description: deckInfoDict["description"] as! String, characters: chars, privacy: deckInfoDict["isPublic"] as! Bool, completion: { result in
+        DeckRequests.updateDeck(deckId: deckStruct!._id, title: deckInfoDict["title"] as! String, description: deckInfoDict["description"] as! String, characters: chars, privacy: deckInfoDict["isPublic"] as! Bool, completion: { result in
             if result {
                 DispatchQueue.main.async(execute: {
                     self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)

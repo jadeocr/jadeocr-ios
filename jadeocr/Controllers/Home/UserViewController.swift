@@ -14,13 +14,13 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        userLabel.text = GlobalData.getFirstName() + " " + GlobalData.getLastName()
+        userLabel.text = UserRequests.getFirstName() + " " + UserRequests.getLastName()
     }
     
     @IBAction func signOutPressed(_ sender: Any) {
         do {
-            try GlobalData.deleteCredentialsFromKeychain()
-            GlobalData.signout(completion: {_ in
+            try UserRequests.deleteCredentialsFromKeychain()
+            UserRequests.signout(completion: {_ in
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "unwindToInitial", sender: self)
                 }

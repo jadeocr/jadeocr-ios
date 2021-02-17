@@ -73,8 +73,8 @@ class SignUpViewController: UIViewController {
                 if (dataString == "OK") {
                     DispatchQueue.main.async(execute: {
                         do {
-                            try GlobalData.deleteCredentialsFromKeychain()
-                            try GlobalData.saveToKeychain(email: self.emailField.text!, password: self.passwordField.text!)
+                            try UserRequests.deleteCredentialsFromKeychain()
+                            try UserRequests.saveToKeychain(email: self.emailField.text!, password: self.passwordField.text!)
                         } catch {
                             print(error)
                         }

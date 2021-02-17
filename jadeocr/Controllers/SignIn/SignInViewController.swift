@@ -36,11 +36,11 @@ class SignInViewController: UIViewController {
         }
 
         do {
-            try GlobalData.deleteCredentialsFromKeychain()
-            try GlobalData.saveToKeychain(email: emailField.text!, password: passwordField.text!)
+            try UserRequests.deleteCredentialsFromKeychain()
+            try UserRequests.saveToKeychain(email: emailField.text!, password: passwordField.text!)
             
             do {
-                try GlobalData.checkSignInStatus(completion: {result in
+                try UserRequests.checkSignInStatus(completion: {result in
                     if result == true {
                         DispatchQueue.main.async(execute: {
                             self.performSegue(withIdentifier: "openApp", sender: self)

@@ -378,7 +378,7 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     }
     
     func submitSRS() {
-        GlobalData.practiced(results: srsResultsArray, deckId: deck?["_id"] as? String ?? "", completion: {result in
+        DeckRequests.practiced(results: srsResultsArray, deckId: deck?["_id"] as? String ?? "", completion: {result in
             if result == true {
                 DispatchQueue.main.async {
                     if self.studentDelegate == nil {
@@ -508,7 +508,7 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     }
     
     func submitQuiz() {
-        GlobalData.quizzed(results: quizResultsArray, deckId: deck?["_id"] as? String ?? "", completion: {result in
+        DeckRequests.quizzed(results: quizResultsArray, deckId: deck?["_id"] as? String ?? "", completion: {result in
             if result == true {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "segueToSummary", sender: self)

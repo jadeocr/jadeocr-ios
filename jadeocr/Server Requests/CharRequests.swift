@@ -17,10 +17,11 @@ class CharRequests {
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
         
-        let parameters: [String: String] = [
-            "character": char,
+        var requestBodyComponents = URLComponents()
+        requestBodyComponents.queryItems = [
+            URLQueryItem(name: "character", value: char),
         ]
-        request.httpBody = parameters.percentEncoded()
+        request.httpBody = requestBodyComponents.query?.data(using: .utf8)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
 

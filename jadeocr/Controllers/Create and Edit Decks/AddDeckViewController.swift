@@ -129,7 +129,7 @@ class AddDeckViewController: UIViewController, DeckDelegate {
             }
         }
         
-        GlobalData.createDeck(title: deckInfoDict["title"] as! String, description: deckInfoDict["description"] as! String, characters: chars, privacy: deckInfoDict["isPublic"] as! Bool, completion: { result in
+        DeckRequests.createDeck(title: deckInfoDict["title"] as! String, description: deckInfoDict["description"] as! String, characters: chars, privacy: deckInfoDict["isPublic"] as! Bool, completion: { result in
             if result {
                 DispatchQueue.main.async(execute: {
                     self.performSegue(withIdentifier: "unwindToHome", sender: self)

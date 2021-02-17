@@ -39,7 +39,7 @@ class deckItem: UIView {
     }
     
     @IBAction func charTextChanged(_ sender: Any) {
-        GlobalData.getPinyinAndDefinition(char: charText.text ?? "", completion: { result in
+        CharRequests.getPinyinAndDefinition(char: charText.text ?? "", completion: { result in
             do {
                 if let parsedResult = try JSONSerialization.jsonObject(with: result, options: []) as? [String: Any] {
                     DispatchQueue.main.async(execute: {

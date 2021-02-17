@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
     }
     
     func updateDecks() {
-        GlobalData.getAllDecks(completion: {result in
+        DeckRequests.getAllDecks(completion: {result in
             DispatchQueue.main.async(execute: {
                 if result.count != 0 {
                     if let passed = result[0] as? Bool {
