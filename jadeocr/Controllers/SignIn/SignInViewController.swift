@@ -14,6 +14,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
@@ -65,7 +66,6 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
-        print("Hi")
         self.performSegue(withIdentifier: "openApp", sender: self)
     }
 }

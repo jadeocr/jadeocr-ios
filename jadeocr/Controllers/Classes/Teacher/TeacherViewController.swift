@@ -88,6 +88,22 @@ class TeacherViewController: UIViewController {
         }
     }
 
+    
+    @IBAction func removeClassButton(_ sender: Any) {
+        confirm(message: "This class will be deleted forver (A very long time). Are you sure?", completion: {confirmed in
+            if confirmed {
+                TeacherRequests.removeClass(classCode: self.classCode, completion: { result in
+                    if result {
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "unwindToClassView", sender: self)
+                        }
+                    }
+                })
+            }
+        })
+    }
+    
+    
     @IBAction func unwindToTeacherView(_ unwindSegue: UIStoryboardSegue) {
         updateDecks()
     }

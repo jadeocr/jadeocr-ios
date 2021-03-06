@@ -126,6 +126,10 @@ class UserRequests {
         task.resume()
     }
     
+    //MARK: Sign in
+    
+    
+    
     //MARK: Sign out
     public static func signout(completion: @escaping (Bool) -> ()) {
         let url = URL(string: GlobalData.apiURL + "api/signout")

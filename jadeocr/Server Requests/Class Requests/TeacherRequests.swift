@@ -280,4 +280,43 @@ class TeacherRequests {
         
         task.resume()
     }
+    
+    //MARK: Remove Class
+    public static func removeClass(classCode: String, completion: @escaping (Bool) -> ()) {
+        let url = URL(string: GlobalData.apiURL + "api/class/remove")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        var requestBodyComponents = URLComponents()
+        requestBodyComponents.queryItems = [
+            URLQueryItem(name: "classCode", value: classCode),
+        ]
+        request.httpBody = requestBodyComponents.query?.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+                if (response.statusCode == 200) {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+//                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+//
+//                }
+            }
+        }
+        
+        task.resume()
+    }
 }
