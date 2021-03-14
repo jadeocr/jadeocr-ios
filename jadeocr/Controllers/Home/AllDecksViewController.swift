@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class AllDecksViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -75,13 +75,13 @@ class HomeViewController: UIViewController {
     @IBAction func unwindToHomeFromAddDeck (_ unwindSegue: UIStoryboardSegue) {}
 }
 
-extension HomeViewController: UITableViewDelegate {
+extension AllDecksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tapped(index: indexPath[1])
     }
 }
 
-extension HomeViewController: UITableViewDataSource {
+extension AllDecksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return decks?.count ?? 0
     }
