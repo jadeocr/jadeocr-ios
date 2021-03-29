@@ -9,4 +9,5 @@ import Foundation
 
 protocol HomeDelegate {
     func transition(deckId: String)
+    func switchIndicator(i: Int)
 }

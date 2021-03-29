@@ -32,6 +32,7 @@ extension PublicDecksViewController: UISearchBarDelegate {
         DeckRequests.searchPublicDecks(query: searchBar.text ?? "", completion: {results in
             DispatchQueue.main.async {
                 self.decks = results
+                print(results)
                 self.tableView.reloadData()
             }
         })
@@ -40,7 +41,7 @@ extension PublicDecksViewController: UISearchBarDelegate {
 
 extension PublicDecksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.transition(deckId: decks?[indexPath[1]]["_id"] as? String ?? "")
+        delegate?.transition(deckId: decks?[indexPath[1]]["deckId"] as? String ?? "")
     }
 }
 
@@ -53,8 +54,8 @@ extension PublicDecksViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") as! PublicDecksViewCell
         if decks?.count != 0 && decks?.count != nil {
             if let deck = decks?[indexPath[1]] {
-                cell.titleLabel?.text = deck["title"] as? String
-                cell.descLabel?.text = deck["description"] as? String
+                cell.titleLabel?.text = deck["deckName"] as? String
+                cell.descLabel?.text = deck["deckDescription"] as? String
             }
         }
         return cell

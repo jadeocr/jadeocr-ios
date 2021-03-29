@@ -38,4 +38,8 @@ class DecksViewController: UIViewController, HomeDelegate {
         currDeckId = deckId
         self.performSegue(withIdentifier: "deckInfoSegue", sender: self)
     }
+    
+    func switchIndicator(i: Int) {
+        pageControl.selectedSegmentIndex = i
+    }
 }

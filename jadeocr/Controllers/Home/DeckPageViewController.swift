@@ -34,6 +34,7 @@ class DeckPageViewController: UIPageViewController, DeckPageDelegate {
         setViewControllers([allDecks], direction: .forward, animated: true, completion: nil)
         
         dataSource = self
+        delegate = self
     }
     
     func switchPage(index: Int) {
@@ -69,7 +70,7 @@ extension DeckPageViewController: UIPageViewControllerDataSource {
             return nil
         } else {
             currIndex = index - 1
-            return pages[index - 1]
+            return pages[currIndex]
         }
     }
     
@@ -82,7 +83,23 @@ extension DeckPageViewController: UIPageViewControllerDataSource {
             return nil
         } else {
             currIndex = index + 1
-            return pages[index + 1]
+            return pages[currIndex]
         }
+    }
+}
+
+extension DeckPageViewController: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if !completed {
+            homeDelegate?.switchIndicator(i: pages.firstIndex(of: (pageViewController.viewControllers?.first)!)!)
+        }
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        guard let index = pages.firstIndex(of: pendingViewControllers[0]) else {
+            return
+        }
+        
+        homeDelegate?.switchIndicator(i: index)
     }
 }
