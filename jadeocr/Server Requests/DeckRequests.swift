@@ -175,6 +175,43 @@ class DeckRequests {
         task.resume()
     }
     
+    //MARK: Public Decks
+    public static func searchPublicDecks(query: String, completion: @escaping ([Dictionary<String, Any>])->()) {
+        let url = URL(string: GlobalData.apiURL + "api/deck/public")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        var requestBodyComponents = URLComponents()
+        requestBodyComponents.queryItems = [
+            URLQueryItem(name: "query", value: query),
+        ]
+        request.httpBody = requestBodyComponents.query?.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+            }
+
+            if let data = data {
+                do {
+                    let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! [Dictionary<String, Any>]
+                    completion(jsonData)
+                } catch {}
+            }
+        }
+        task.resume()
+    }
+    
     //MARK: Remove deck
     public static func removeDeck(deckId: String, completion: @escaping (Bool)->()) {
         let url = URL(string: GlobalData.apiURL + "api/deck/delete")

@@ -10,11 +10,12 @@ import UIKit
 class AllDecksViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    var currDeck:String?
+
     var decks: NSArray?
     
     let refreshControl = UIRefreshControl()
+    
+    var delegate: DeckPageDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,16 +60,7 @@ class AllDecksViewController: UIViewController {
     //MARK: Transition function
     func tapped(index: Int) {
         if let deck = decks?[index] as? Dictionary<String, Any> {
-            self.currDeck = deck["deckId"] as? String
-        }
-        self.performSegue(withIdentifier: "deckInfoSegue", sender: self)
-    }
-    
-    //MARK: Segue prep
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is DeckInfoViewController {
-            let vc = segue.destination as! DeckInfoViewController
-            vc.deckId = currDeck
+            delegate?.transition(deckId: deck["deckId"] as? String ?? "")
         }
     }
     

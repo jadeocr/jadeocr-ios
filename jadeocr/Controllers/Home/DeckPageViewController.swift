@@ -7,22 +7,27 @@
 
 import UIKit
 
-class DeckPageViewController: UIPageViewController {
+class DeckPageViewController: UIPageViewController, DeckPageDelegate {
     
-    var allDecks: UIViewController!
+    var allDecks: AllDecksViewController!
     var myDecks: UIViewController!
-    var publicDecks: UIViewController!
+    var publicDecks: PublicDecksViewController!
     
     var pages: [UIViewController]!
     
     var currIndex: Int = 0
     
+    var homeDelegate: HomeDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        allDecks = storyboard?.instantiateViewController(withIdentifier: "All_Decks")
+        allDecks = storyboard?.instantiateViewController(withIdentifier: "All_Decks") as? AllDecksViewController
         myDecks = storyboard?.instantiateViewController(withIdentifier: "My_Decks")
-        publicDecks = storyboard?.instantiateViewController(withIdentifier: "Public_Decks")
+        publicDecks = storyboard?.instantiateViewController(withIdentifier: "Public_Decks") as? PublicDecksViewController
+        
+        allDecks.delegate = self
+        publicDecks.delegate = self
         
         pages = [allDecks, myDecks, publicDecks]
         
@@ -47,6 +52,10 @@ class DeckPageViewController: UIPageViewController {
         currIndex = index
         
         setViewControllers([pages[index]], direction: direction, animated: true, completion: nil)
+    }
+    
+    func transition(deckId: String) {
+        homeDelegate?.transition(deckId: deckId)
     }
 }
 

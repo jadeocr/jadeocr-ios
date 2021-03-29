@@ -10,8 +10,8 @@ import Security
 
 class GlobalData {
 
-    public static var apiURL:String = "https://next.jadeocr.com/"
-//    public static var apiURL:String = "http://192.168.1.77:3000/"
+//    public static var apiURL:String = "https://next.jadeocr.com/"
+    public static var apiURL:String = "http://jt-desktop:3000/"
     
     public static var user: userStruct?
 }
