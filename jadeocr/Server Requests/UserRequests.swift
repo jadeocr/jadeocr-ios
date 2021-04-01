@@ -71,7 +71,7 @@ class UserRequests {
         guard status == errSecSuccess || status == errSecItemNotFound else { throw KeychainError.unhandledError(status: status) }
     }
     
-    //MARK: checkSignInStatus
+    //MARK: checkSignInStatus / signin
     public static func checkSignInStatus(completion: @escaping (Bool)->()) throws {
         // Make request to check
         let url = URL(string: GlobalData.apiURL + "api/signin")
@@ -126,10 +126,6 @@ class UserRequests {
         task.resume()
     }
     
-    //MARK: Sign in
-    
-    
-    
     //MARK: Sign out
     public static func signout(completion: @escaping (Bool) -> ()) {
         let url = URL(string: GlobalData.apiURL + "api/signout")
@@ -157,6 +153,80 @@ class UserRequests {
             if data != nil {
                 completion(true)
             }
+        }
+        task.resume()
+    }
+    
+    //MARK: get stats
+    public static func getStats(completion: @escaping (stats) -> ()) {
+        let url = URL(string: GlobalData.apiURL + "api/user/stats")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+                if response.statusCode == 200 {
+                }
+            }
+
+            if let data = data {
+                do {
+                    let jsonData = try JSONDecoder().decode(stats.self, from: data)
+                    completion(jsonData)
+                } catch {
+                    print("died")
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    //MARK: switch to teacher
+    public static func switchTeacher(completion: @escaping (Bool) -> ()) {
+        let url = URL(string: GlobalData.apiURL + "api/setTeacher")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        
+        var requestBodyComponents = URLComponents()
+        requestBodyComponents.queryItems = [
+            URLQueryItem(name: "isTeacher", value: GlobalData.user?.isTeacher ?? false ? "false": "true"),
+        ]
+        request.httpBody = requestBodyComponents.query?.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+                if response.statusCode == 200 {
+                    completion(true)
+                }
+            }
+            
+//            if let data = data {
+//                print(String(decoding: data, as: UTF8.self))
+//            }
         }
         task.resume()
     }

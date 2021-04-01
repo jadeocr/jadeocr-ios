@@ -50,3 +50,10 @@ struct detailedResults: Decodable {
     var lastName: String
     var id: String
 }
+
+struct stats: Decodable {
+    var classesTeaching: Int
+    var classesJoined: Int
+    var decksTotal: Int
+    var decksOwned: Int
+}

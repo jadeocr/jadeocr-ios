@@ -23,13 +23,12 @@ class DeckPageViewController: UIPageViewController, DeckPageDelegate {
         super.viewDidLoad()
 
         allDecks = storyboard?.instantiateViewController(withIdentifier: "All_Decks") as? AllDecksViewController
-        myDecks = storyboard?.instantiateViewController(withIdentifier: "My_Decks")
         publicDecks = storyboard?.instantiateViewController(withIdentifier: "Public_Decks") as? PublicDecksViewController
         
         allDecks.delegate = self
         publicDecks.delegate = self
         
-        pages = [allDecks, myDecks, publicDecks]
+        pages = [allDecks, publicDecks]
         
         setViewControllers([allDecks], direction: .forward, animated: true, completion: nil)
         
@@ -90,16 +89,8 @@ extension DeckPageViewController: UIPageViewControllerDataSource {
 
 extension DeckPageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        if !completed {
+        if completed {
             homeDelegate?.switchIndicator(i: pages.firstIndex(of: (pageViewController.viewControllers?.first)!)!)
         }
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        guard let index = pages.firstIndex(of: pendingViewControllers[0]) else {
-            return
-        }
-        
-        homeDelegate?.switchIndicator(i: index)
     }
 }
