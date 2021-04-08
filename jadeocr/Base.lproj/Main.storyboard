@@ -2224,18 +2224,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sae-Xf-Kz7">
-                                <rect key="frame" x="334" y="483.5" width="100" height="57.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jade" translatesAutoresizingMaskIntoConstraints="NO" id="vfp-at-X6u">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Hj9-pR-BaV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="sae-Xf-Kz7" firstAttribute="centerX" secondItem="Hj9-pR-BaV" secondAttribute="centerX" id="mcw-vh-zXR"/>
-                            <constraint firstItem="sae-Xf-Kz7" firstAttribute="centerY" secondItem="Hj9-pR-BaV" secondAttribute="centerY" id="uxL-FY-qgJ"/>
+                            <constraint firstItem="vfp-at-X6u" firstAttribute="height" secondItem="fT0-3d-Y33" secondAttribute="height" id="CD3-0U-wSS"/>
+                            <constraint firstItem="vfp-at-X6u" firstAttribute="width" secondItem="fT0-3d-Y33" secondAttribute="width" id="XYk-4o-QDr"/>
+                            <constraint firstItem="vfp-at-X6u" firstAttribute="centerX" secondItem="Hj9-pR-BaV" secondAttribute="centerX" id="f2u-Or-vWF"/>
+                            <constraint firstItem="vfp-at-X6u" firstAttribute="centerY" secondItem="Hj9-pR-BaV" secondAttribute="centerY" id="llc-kS-E1z"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2360,6 +2359,7 @@
         <segue reference="Isa-gX-rWe"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="jade" width="2048" height="2048"/>
         <image name="person-circle" width="30" height="30"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

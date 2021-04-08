@@ -37,10 +37,6 @@ class DeckPageViewController: UIPageViewController, DeckPageDelegate {
     }
     
     func switchPage(index: Int) {
-        guard index != currIndex else {
-            return
-        }
-        
         var direction: UIPageViewController.NavigationDirection!
         
         if index > currIndex {

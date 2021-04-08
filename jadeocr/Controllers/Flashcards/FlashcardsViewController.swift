@@ -239,7 +239,6 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     }
     
     func flip() {
-        print(cardArray)
         guard mode != "quiz" else {
             cardArray[count].front?.isHidden = true
             cardArray[count].back?.isHidden = false

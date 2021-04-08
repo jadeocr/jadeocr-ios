@@ -227,6 +227,7 @@ class TeacherRequests {
             if let response = response as? HTTPURLResponse {
                 print("Response HTTP Status code: \(response.statusCode)")
                 if let data = data, let dataString = String(data: data, encoding: .utf8) {
+//                    print(dataString)
                     do {
                         let jsonData = try JSONDecoder().decode([detailedResults].self, from: data)
                         completion(jsonData)

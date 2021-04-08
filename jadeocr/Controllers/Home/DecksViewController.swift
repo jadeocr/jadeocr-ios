@@ -32,6 +32,7 @@ class DecksViewController: UIViewController, HomeDelegate {
 
     @IBAction func pageSwitched(_ sender: Any) {
         pageViewController.switchPage(index: pageControl.selectedSegmentIndex)
+        print(pageControl.selectedSegmentIndex)
     }
     
     func transition(deckId: String) {

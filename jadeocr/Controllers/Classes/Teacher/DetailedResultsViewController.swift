@@ -24,7 +24,7 @@ class DetailedResultsViewController: UIViewController {
         
         self.tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
-        print(detailedResults)
+//        print(detailedResults)
     }
     
     @objc func refreshTableView() {
