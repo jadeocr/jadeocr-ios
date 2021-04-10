@@ -18,6 +18,8 @@ class SummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.hidesBackButton = true
+        
         let total = answers.count
         var correct = 0
         

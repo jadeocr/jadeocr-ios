@@ -2359,7 +2359,7 @@
         <segue reference="Isa-gX-rWe"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="jade" width="2048" height="2048"/>
+        <image name="jade" width="1024" height="1024"/>
         <image name="person-circle" width="30" height="30"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

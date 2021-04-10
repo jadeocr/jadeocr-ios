@@ -23,20 +23,20 @@ class FlashcardsOptionsViewController: UIViewController {
         
         if let characters = deck?["characters"] as? NSArray {
             if characters.count == 0 {
-                sendError(message: "There are no cards in this deck")
+                FlashcardOptions.sendError(message: "There are no cards in this deck", vc: self)
             }
         } else {
-            sendError(message: "There was an error")
+            FlashcardOptions.sendError(message: "There was an error", vc: self)
         }
     }
     
-    func sendError(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
-            self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
-        }))
-        self.present(alert, animated: true)
-    }
+//    func sendError(message: String, vc: UIViewController) {
+//        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+//            vc.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+//        }))
+//        vc.present(alert, animated: true)
+//    }
 
     @IBAction func stepperChanged(_ sender: Any) {
         repetitionLabel.text = String(Int(repetitionStepper.value))

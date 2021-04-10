@@ -463,11 +463,12 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     }
     
     func showNextQuizCard() {
+        showNextCard()
+        flip()
+        
         if count < (cardArray.count - 1) {
             setMultipleChoiceOptions()
         }
-        showNextCard()
-        flip()
     }
     
     func addQuizResultForHandwriting(correct: Bool, overriden: Bool) {
@@ -503,6 +504,7 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     //delegate function
     func selectedChoice(selected: String) {
         addQuizResultForMultipleChoice(selected: selected)
+//        count += 1
         showNextQuizCard()
     }
     
