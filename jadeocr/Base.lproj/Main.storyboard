@@ -1336,7 +1336,7 @@
         <!--Learn Options-->
         <scene sceneID="pVQ-fW-eI3">
             <objects>
-                <viewController title="Learn Options" id="Vzz-mJ-IMI" customClass="FlashcardsOptionsViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Learn Options" id="Vzz-mJ-IMI" customClass="LearnOptionsViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XTB-Rp-z4x">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1463,11 +1463,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Options" id="gWX-bm-ajZ"/>
                     <connections>
-                        <outlet property="frontControl" destination="QoP-Ed-aiI" id="lJg-2c-2nI"/>
-                        <outlet property="handwritingControl" destination="ZSO-UT-2VK" id="dlc-kh-NX5"/>
-                        <outlet property="repetitionLabel" destination="qA9-NK-RYe" id="L3E-vq-6IJ"/>
-                        <outlet property="repetitionStepper" destination="ZfX-kB-vrl" id="Jtt-XI-SAO"/>
-                        <outlet property="scrambleControl" destination="UHZ-25-Yy4" id="JI9-ce-eOW"/>
+                        <outlet property="frontControl" destination="QoP-Ed-aiI" id="38f-nY-rOK"/>
+                        <outlet property="handwritingControl" destination="ZSO-UT-2VK" id="JZt-fO-tqZ"/>
+                        <outlet property="repetitionLabel" destination="qA9-NK-RYe" id="FAn-2g-hst"/>
+                        <outlet property="repetitionStepper" destination="ZfX-kB-vrl" id="Wkj-An-xFg"/>
+                        <outlet property="scrambleControl" destination="UHZ-25-Yy4" id="g3H-SZ-PRt"/>
                         <segue destination="8t3-yZ-g58" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="cN3-XX-IqY"/>
                     </connections>
                 </viewController>
@@ -1947,7 +1947,7 @@
         <!--SRS Options-->
         <scene sceneID="WPk-B6-FwT">
             <objects>
-                <viewController title="SRS Options" id="SNB-nM-hwi" customClass="FlashcardsOptionsViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="SRS Options" id="SNB-nM-hwi" customClass="SRSOptionsViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iPr-Xs-kkD">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2029,8 +2029,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Options" id="G8M-bS-1h1"/>
                     <connections>
-                        <outlet property="frontControl" destination="snk-mE-HLQ" id="fhS-Ce-WdH"/>
-                        <outlet property="handwritingControl" destination="leZ-di-BOp" id="JrC-T8-9PX"/>
+                        <outlet property="frontControl" destination="snk-mE-HLQ" id="hnl-G9-4Gr"/>
+                        <outlet property="handwritingControl" destination="leZ-di-BOp" id="Ngm-VY-3lz"/>
                         <segue destination="6F5-Gg-FI9" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="XVm-0h-Sho"/>
                     </connections>
                 </viewController>
@@ -2042,7 +2042,7 @@
         <!--Quiz Options-->
         <scene sceneID="b1U-hj-U5v">
             <objects>
-                <viewController title="Quiz Options" id="qrK-zR-Hg2" customClass="FlashcardsOptionsViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Quiz Options" id="qrK-zR-Hg2" customClass="QuizOptionsViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bf0-91-Fdh">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2100,8 +2100,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Options" id="mwS-mp-VCE"/>
                     <connections>
-                        <outlet property="frontControl" destination="Tml-bm-GzI" id="JUf-fz-1dd"/>
-                        <outlet property="scrambleControl" destination="j9b-ZG-Lcv" id="nBO-IS-9gd"/>
+                        <outlet property="frontControl" destination="Tml-bm-GzI" id="efz-bP-Kqk"/>
+                        <outlet property="scrambleControl" destination="j9b-ZG-Lcv" id="rx4-hp-qOf"/>
                         <segue destination="oFI-Af-sPB" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="10f-Sq-j7Z"/>
                     </connections>
                 </viewController>
@@ -2355,7 +2355,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QF0-FK-KpW"/>
+        <segue reference="0cF-N5-Hms"/>
         <segue reference="Isa-gX-rWe"/>
     </inferredMetricsTieBreakers>
     <resources>

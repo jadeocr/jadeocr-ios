@@ -64,8 +64,7 @@ class DeckInfoViewController: UIViewController {
         if segue.destination is EditDeckViewController {
             let vc = segue.destination as! EditDeckViewController
             vc.deckDict = deck
-        } else if segue.destination is FlashcardsOptionsViewController {
-            let vc = segue.destination as! FlashcardsOptionsViewController
+        } else if let vc = segue.destination as? FlashcardOptions {
             vc.deck = deck
             vc.mode = mode
         }

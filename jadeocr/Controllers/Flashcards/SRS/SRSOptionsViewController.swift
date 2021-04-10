@@ -7,23 +7,16 @@
 
 import UIKit
 
-class SRSOptionsViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+class SRSOptionsViewController: FlashcardOptions {
+    @IBOutlet weak var handwritingControl: UISwitch!
+    @IBOutlet weak var frontControl: UISegmentedControl!
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let vc = segue.destination as? FlashcardsViewController {
+            vc.mode = "srs"
+            vc.handwriting = handwritingControl.isOn
+            vc.front = frontControl.titleForSegment(at: frontControl.selectedSegmentIndex)
+            vc.deck = deck
+        }
     }
-    */
-
 }

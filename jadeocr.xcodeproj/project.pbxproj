@@ -21,7 +21,6 @@
 		9D33A2A425DA3BCE0044348C /* CharRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A2A325DA3BCE0044348C /* CharRequests.swift */; };
 		9D33A2A825DA3C870044348C /* DeckRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A2A725DA3C870044348C /* DeckRequests.swift */; };
 		9D3473AD25940983008A9998 /* CardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3473AC25940983008A9998 /* CardDelegate.swift */; };
-		9D3473B225940EC7008A9998 /* FlashcardsOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3473B125940EC7008A9998 /* FlashcardsOptionsViewController.swift */; };
 		9D3A443825A1052C00461467 /* ClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A443725A1052C00461467 /* ClassesViewController.swift */; };
 		9D3B615625D743A10010C391 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3B615525D743A10010C391 /* InitialViewController.swift */; };
 		9D4487CA259A5BD000257D67 /* multipleChoiceCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4487C9259A5BD000257D67 /* multipleChoiceCard.xib */; };
@@ -57,6 +56,8 @@
 		9DAA85E02611207A00948D3D /* DeckPageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA85DF2611207A00948D3D /* DeckPageDelegate.swift */; };
 		9DAA85E42611216400948D3D /* HomeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA85E32611216400948D3D /* HomeDelegate.swift */; };
 		9DBC798325B00B3100890AE2 /* StudentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC798225B00B3100890AE2 /* StudentDelegate.swift */; };
+		9DBF3693262252D4006BC682 /* QuizOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF3692262252D4006BC682 /* QuizOptionsViewController.swift */; };
+		9DBF36962622540F006BC682 /* LearnOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF36952622540F006BC682 /* LearnOptionsViewController.swift */; };
 		9DC857FD2569E2AE00EA00F9 /* AllDecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC857FC2569E2AE00EA00F9 /* AllDecksViewController.swift */; };
 		9DCDBBAE25802E6E00D62F4B /* deckItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCDBBAD25802E6E00D62F4B /* deckItem.xib */; };
 		9DCDBBB12580353500D62F4B /* deckItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDBBB02580353500D62F4B /* deckItem.swift */; };
@@ -82,7 +83,6 @@
 		9D33A2A325DA3BCE0044348C /* CharRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharRequests.swift; sourceTree = "<group>"; };
 		9D33A2A725DA3C870044348C /* DeckRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRequests.swift; sourceTree = "<group>"; };
 		9D3473AC25940983008A9998 /* CardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDelegate.swift; sourceTree = "<group>"; };
-		9D3473B125940EC7008A9998 /* FlashcardsOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsOptionsViewController.swift; sourceTree = "<group>"; };
 		9D3A443725A1052C00461467 /* ClassesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesViewController.swift; sourceTree = "<group>"; };
 		9D3B615525D743A10010C391 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		9D4487C9259A5BD000257D67 /* multipleChoiceCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = multipleChoiceCard.xib; sourceTree = "<group>"; };
@@ -120,6 +120,8 @@
 		9DAA85DF2611207A00948D3D /* DeckPageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckPageDelegate.swift; sourceTree = "<group>"; };
 		9DAA85E32611216400948D3D /* HomeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDelegate.swift; sourceTree = "<group>"; };
 		9DBC798225B00B3100890AE2 /* StudentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDelegate.swift; sourceTree = "<group>"; };
+		9DBF3692262252D4006BC682 /* QuizOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOptionsViewController.swift; sourceTree = "<group>"; };
+		9DBF36952622540F006BC682 /* LearnOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnOptionsViewController.swift; sourceTree = "<group>"; };
 		9DC857FC2569E2AE00EA00F9 /* AllDecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDecksViewController.swift; sourceTree = "<group>"; };
 		9DCDBBAD25802E6E00D62F4B /* deckItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = deckItem.xib; sourceTree = "<group>"; };
 		9DCDBBB02580353500D62F4B /* deckItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deckItem.swift; sourceTree = "<group>"; };
@@ -198,7 +200,6 @@
 				9D69BC6226224A7D000F689F /* SRS */,
 				9D69BC6326224A82000F689F /* Quiz */,
 				9D69BC6426224A9C000F689F /* Learn */,
-				9D3473B125940EC7008A9998 /* FlashcardsOptionsViewController.swift */,
 				9DA40A4D259322320019E814 /* FlashcardsViewController.swift */,
 				9DFA4E2B259D339100D1BFE5 /* SummaryViewController.swift */,
 				9D69BC6826224C6A000F689F /* FlashcardOptions.swift */,
@@ -265,6 +266,7 @@
 		9D69BC6326224A82000F689F /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
+				9DBF3692262252D4006BC682 /* QuizOptionsViewController.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -272,6 +274,7 @@
 		9D69BC6426224A9C000F689F /* Learn */ = {
 			isa = PBXGroup;
 			children = (
+				9DBF36952622540F006BC682 /* LearnOptionsViewController.swift */,
 			);
 			path = Learn;
 			sourceTree = "<group>";
@@ -449,7 +452,7 @@
 				9D1A65FA255472AF007C2C09 /* UserViewController.swift in Sources */,
 				9DA8E7672599448A00B05016 /* OCRDelegate.swift in Sources */,
 				9D5D071125854838003235D8 /* deckTitle.swift in Sources */,
-				9D3473B225940EC7008A9998 /* FlashcardsOptionsViewController.swift in Sources */,
+				9DBF36962622540F006BC682 /* LearnOptionsViewController.swift in Sources */,
 				9D33A2A425DA3BCE0044348C /* CharRequests.swift in Sources */,
 				9DAA85E42611216400948D3D /* HomeDelegate.swift in Sources */,
 				9D0A1B1825FD98900021BEB4 /* DecksViewController.swift in Sources */,
@@ -482,6 +485,7 @@
 				9DAA85E02611207A00948D3D /* DeckPageDelegate.swift in Sources */,
 				9D5D0719258552A6003235D8 /* deckControlPanel.swift in Sources */,
 				9DA40A4E259322320019E814 /* FlashcardsViewController.swift in Sources */,
+				9DBF3693262252D4006BC682 /* QuizOptionsViewController.swift in Sources */,
 				9D7F06C12547A011002C8947 /* SceneDelegate.swift in Sources */,
 				9D9052C72596B86000D022DF /* backCard.swift in Sources */,
 			);
