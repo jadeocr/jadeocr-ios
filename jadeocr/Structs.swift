@@ -57,3 +57,12 @@ struct stats: Decodable {
     var decksTotal: Int
     var decksOwned: Int
 }
+
+struct card {
+    var front: frontCard?
+    var back: backCard?
+    var char: String
+    var pinyin: String
+    var definition: String
+    var charId: String
+}

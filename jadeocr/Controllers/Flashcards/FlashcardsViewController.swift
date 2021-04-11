@@ -7,10 +7,9 @@
 
 import UIKit
 
-class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
+class FlashcardsViewController: Flashcards {
 
     @IBOutlet var learnViewContent: UIView!
-    @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
@@ -18,45 +17,17 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     @IBOutlet weak var nextButtonCenterYAnchor: NSLayoutConstraint!
     @IBOutlet weak var countLabelCenterYAnchor: NSLayoutConstraint!
     
-    var studentDelegate: StudentDelegate?
-    
-    struct card {
-        var front: frontCard?
-        var back: backCard?
-        var char: String
-        var pinyin: String
-        var definition: String
-        var charId: String
-    }
-    
-    var cardArray:[card] = []
-    var count:Int = -1
-    var handwritingView:ocrView?
     var quizMultipleChoiceView:multipleChoiceCard?
-    var srsResultsArray:[srsResults] = []
     var quizResultsArray:[quizResults] = []
     
     var mode:String?
-    var handwriting:Bool?
-    var front:String?
     var quizMode:String?
     var scramble:Bool?
     var repetitions:Int?
-    var deck:Dictionary<String, Any>?
     var pentultimate:Bool = false
     var final:Bool = false
     var fromButton: Bool = false
-    
-    var cardHeightMultiplier:CGFloat = 0.7
-    var cardWidthMultiplier:CGFloat = 0.8
-    var cardXAnchorMultiplier:CGFloat = 1
-    var cardYAnchorMultiplier:CGFloat = 1
-    
-    //Quiz multiple choice view uses the same values
-    var handwritingViewHeightMultiplier:CGFloat = 0.5
-    var handwritingViewWidthMultiplier:CGFloat = 0.8
-    var handwritingViewXAnchorMultiplier:CGFloat = 1
-    var handwritingViewYAnchorMultiplier:CGFloat = 1.5
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,15 +40,15 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
             nextButtonCenterYAnchor.isActive = false
             countLabelCenterYAnchor.isActive = false
             
-            createHandwritingView()
+            createHandwritingView(parentView: learnViewContent)
         }
         
         if mode == "learn" {
-            createCardBasedOnRepetitions(repetitions: repetitions ?? 1)
-        } else if mode == "srs" {
-            createCardBasedOnRepetitions(repetitions: repetitions ?? 1)
-            changeButtonTextToSRS()
-            handwritingView?.turnOnIWasCorrect()
+            createCardsBasedOnRepetitions(repetitions: repetitions ?? 1, parentView: learnViewContent)
+//        } else if mode == "srs" {
+//            createCardBasedOnRepetitions(repetitions: repetitions ?? 1, parentView: learnViewContent)
+//            changeButtonTextToSRS()
+//            handwritingView?.turnOnIWasCorrect()
         } else if mode == "quiz" {
             handwritingView?.turnOnIWasCorrect()
             changeButtonTextToQuiz()
@@ -114,131 +85,48 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
         }
     }
     
-    func sendAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
-            if self.studentDelegate == nil {
-                self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
-            } else {
-                self.performSegue(withIdentifier: "unwindToStudentView", sender: self)
-            }
-        }))
-        self.present(alert, animated: true)
+    override func showNextCard() {
+        super.showNextCard()
+//        guard count < cardArray.count - 1 else {
+//            if mode == "srs" && ((final || !(handwriting ?? false)) || fromButton) {
+//                submitSRS()
+//            } else if mode == "quiz" && (final || !(handwriting ?? false)) {
+//                submitQuiz()
+//            } else if mode == "learn" {
+//                finishedLearn()
+//            }
+//            return
+//        }
+//        
+//        count += 1
+//        if count == 0 {
+//            cardArray[count].front?.isHidden = false
+//        } else {
+//            cardArray[count - 1].front?.isHidden = true
+//            cardArray[count - 1].back?.isHidden = true
+//            cardArray[count].front?.isHidden = false
+//        }
+//
+//        countLabel.text = String(count + 1) + "/" + String(cardArray.count)
+//        setHandwritingViewChar()
     }
     
-    func createFrontCard(title: String) -> frontCard {
-        let frontCardView = frontCard(title: title)
-        learnViewContent.addSubview(frontCardView)
+    override func showLastCard() {
+        super.showLastCard()
+//        guard count > 0 else {
+//            return
+//        }
+//
+//        count -= 1
+//        cardArray[count + 1].front?.isHidden = true
+//        cardArray[count + 1].back?.isHidden = true
+//        cardArray[count].front?.isHidden = false
         
-        frontCardView.delegate = self
-        frontCardView.translatesAutoresizingMaskIntoConstraints = false
-        
-        frontCardView.heightAnchor.constraint(equalTo: learnViewContent.heightAnchor, multiplier: cardHeightMultiplier).isActive = true
-        frontCardView.widthAnchor.constraint(equalTo: learnViewContent.widthAnchor, multiplier: cardWidthMultiplier).isActive = true
-        
-        let centerXAnchor = NSLayoutConstraint(item: frontCardView, attribute: .centerX, relatedBy: .equal, toItem: learnViewContent, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
-        learnViewContent.addConstraint(centerXAnchor)
-        
-        let centerYAnchor = NSLayoutConstraint(item: frontCardView, attribute: .centerY, relatedBy: .equal, toItem: learnViewContent, attribute: .centerY, multiplier: cardYAnchorMultiplier, constant: 0)
-        learnViewContent.addConstraint(centerYAnchor)
-
-        frontCardView.isHidden = true
-        
-        return frontCardView
+//        countLabel.text = String(count + 1) + "/" + String(cardArray.count)
+//        setHandwritingViewChar()
     }
     
-    func createBackCard(first: String, second: String) -> backCard {
-        let backCardView = backCard(first: first, second: second)
-        learnViewContent.addSubview(backCardView)
-        
-        backCardView.delegate = self
-        backCardView.translatesAutoresizingMaskIntoConstraints = false
-        
-        backCardView.heightAnchor.constraint(equalTo: learnViewContent.heightAnchor, multiplier: cardHeightMultiplier)
-            .isActive = true
-        backCardView.widthAnchor.constraint(equalTo: learnViewContent.widthAnchor, multiplier: cardWidthMultiplier).isActive = true
-        
-        let centerXAnchor = NSLayoutConstraint(item: backCardView, attribute: .centerX, relatedBy: .equal, toItem: learnViewContent, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
-        learnViewContent.addConstraint(centerXAnchor)
-        
-        let centerYAnchor = NSLayoutConstraint(item: backCardView, attribute: .centerY, relatedBy: .equal, toItem: learnViewContent, attribute: .centerY, multiplier: cardYAnchorMultiplier, constant: 0)
-        learnViewContent.addConstraint(centerYAnchor)
-        
-        backCardView.isHidden = true
-        
-        return backCardView
-    }
-    
-    func createCard(front: String, backFirst: String, backSecond: String, char: String, pinyin: String, definition: String, charId: String) {
-        cardArray.append(card(front: createFrontCard(title: front), back: createBackCard(first: backFirst, second: backSecond), char: char, pinyin: pinyin, definition: definition, charId: charId))
-    }
-    
-    func createCardBasedOnRepetitions(repetitions: Int) {
-        for _ in 1...(repetitions) {
-            if let characters = deck?["characters"] as? NSArray {
-                if front == "Character" {
-                    for i in 0..<characters.count {
-                        if let character = characters[i] as? Dictionary<String, Any> {
-                            createCard(front: character["char"] as? String ?? "", backFirst: character["pinyin"] as? String ?? "", backSecond: character["definition"] as? String ?? "", char: character["char"] as? String ?? "", pinyin: character["pinyin"] as? String ?? "", definition: character["definition"] as? String ?? "", charId: character["id"] as? String ?? "")
-                        }
-                    }
-                } else if front == "Pinyin" {
-                    for i in 0..<characters.count {
-                        if let character = characters[i] as? Dictionary<String, Any> {
-                            createCard(front: character["pinyin"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["definition"] as? String ?? "", char: character["char"] as? String ?? "", pinyin: character["pinyin"] as? String ?? "", definition: character["definition"] as? String ?? "", charId: character["id"] as? String ?? "")
-                        }
-                    }
-                } else if front == "Definition" {
-                    for i in 0..<characters.count {
-                        if let character = characters[i] as? Dictionary<String, Any> {
-                            createCard(front: character["definition"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["pinyin"] as? String ?? "", char: character["char"] as? String ?? "", pinyin: character["pinyin"] as? String ?? "", definition: character["definition"] as? String ?? "", charId: character["id"] as? String ?? "")
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func showNextCard() {
-        guard count < cardArray.count - 1 else {
-            if mode == "srs" && ((final || !(handwriting ?? false)) || fromButton) {
-                submitSRS()
-            } else if mode == "quiz" && (final || !(handwriting ?? false)) {
-                submitQuiz()
-            } else if mode == "learn" {
-                finishedLearn()
-            }
-            return
-        }
-        
-        count += 1
-        if count == 0 {
-            cardArray[count].front?.isHidden = false
-        } else {
-            cardArray[count - 1].front?.isHidden = true
-            cardArray[count - 1].back?.isHidden = true
-            cardArray[count].front?.isHidden = false
-        }
-        
-        countLabel.text = String(count + 1) + "/" + String(cardArray.count)
-        setHandwritingViewChar()
-    }
-    
-    func showLastCard() {
-        guard count > 0 else {
-            return
-        }
-        
-        count -= 1
-        cardArray[count + 1].front?.isHidden = true
-        cardArray[count + 1].back?.isHidden = true
-        cardArray[count].front?.isHidden = false
-        
-        countLabel.text = String(count + 1) + "/" + String(cardArray.count)
-        setHandwritingViewChar()
-    }
-    
-    func flip() {
+    override func flip() {
         guard mode != "quiz" else {
             cardArray[count].front?.isHidden = true
             cardArray[count].back?.isHidden = false
@@ -262,14 +150,14 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
         fromButton = true
         pentultimate = true
         if mode == "srs" {
-            addSRSResult(correct: true)
+            
         }
         showNextCard()
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
         if mode == "srs" {
-            addSRSResult(correct: false)
+            
             showNextCard()
         } else {
             showLastCard()
@@ -286,29 +174,9 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     }
     
     //MARK: OCR functions
-    func createHandwritingView() {
-        handwritingView = ocrView()
-        learnViewContent.addSubview(handwritingView!)
-        handwritingView!.delegate = self
-        handwritingView!.translatesAutoresizingMaskIntoConstraints = false
-        
-        handwritingView!.heightAnchor.constraint(equalTo: learnViewContent.heightAnchor, multiplier: handwritingViewHeightMultiplier)
-            .isActive = true
-        handwritingView!.widthAnchor.constraint(equalTo: learnViewContent.widthAnchor, multiplier: handwritingViewWidthMultiplier).isActive = true
-        
-        let centerXAnchor = NSLayoutConstraint(item: handwritingView!, attribute: .centerX, relatedBy: .equal, toItem: learnViewContent, attribute: .centerX, multiplier: handwritingViewXAnchorMultiplier, constant: 0)
-        learnViewContent.addConstraint(centerXAnchor)
-        
-        let centerYAnchor = NSLayoutConstraint(item: handwritingView!, attribute: .centerY, relatedBy: .equal, toItem: learnViewContent, attribute: .centerY, multiplier: handwritingViewYAnchorMultiplier, constant: 0)
-        learnViewContent.addConstraint(centerYAnchor)
-    }
+
     
-    func setHandwritingViewChar() {
-        handwritingView?.setChar(char: cardArray[count].char)
-        handwritingView?.clearButtonPressed(self)
-    }
-    
-    func checked(correct: Bool) {
+    override func checked(correct: Bool) {
         fromButton = false
         guard !final else {
             showNextCard()
@@ -316,8 +184,7 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
         }
         
         if mode == "srs" {
-            addSRSResult(correct: correct)
-            showNextCard()
+            
         } else if mode == "quiz" {
             addQuizResultForHandwriting(correct: correct, overriden: false)
             showNextQuizCard()
@@ -341,14 +208,13 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
         }
     }
     
-    func override() {
+    override func override() {
         if count < cardArray.count - 1 {
             count -= 1 //So addResult functions grab the correct charId
         }
         
         if mode == "srs" {
-            srsResultsArray.removeLast()
-            addSRSResult(correct: true)
+            
         } else if mode == "quiz" {
             quizResultsArray.removeLast()
             addQuizResultForHandwriting(correct: true, overriden: true)
@@ -363,37 +229,37 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     }
     
     //MARK: SRS functions
-    func changeButtonTextToSRS() {
-        nextButton.setTitle("Know", for: .normal)
-        backButton.setTitle("Don't Know", for: .normal)
-    }
-    
-    func addSRSResult(correct: Bool) {
-        var quality:Int = 1
-        if correct {
-            quality = 5
-        }
-        srsResultsArray.append(srsResults(charId: cardArray[count].charId, quality: quality))
-    }
-    
-    func submitSRS() {
-        DeckRequests.practiced(results: srsResultsArray, deckId: deck?["_id"] as? String ?? "", completion: {result in
-            if result == true {
-                DispatchQueue.main.async {
-                    if self.studentDelegate == nil {
-                        self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
-                    } else {
-                        self.performSegue(withIdentifier: "unwindToStudentView", sender: self)
-                    }
-                }
-            }
-        })
-        studentDelegate?.submit(resultsForQuiz: [])
-    }
-    
+//    func changeButtonTextToSRS() {
+//        nextButton.setTitle("Know", for: .normal)
+//        backButton.setTitle("Don't Know", for: .normal)
+//    }
+//
+//    func addSRSResult(correct: Bool) {
+//        var quality:Int = 1
+//        if correct {
+//            quality = 5
+//        }
+//        srsResultsArray.append(srsResults(charId: cardArray[count].charId, quality: quality))
+//    }
+//
+//    func submitSRS() {
+//        DeckRequests.practiced(results: srsResultsArray, deckId: deck?["_id"] as? String ?? "", completion: {result in
+//            if result == true {
+//                DispatchQueue.main.async {
+//                    if self.studentDelegate == nil {
+//                        self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
+//                    } else {
+//                        self.performSegue(withIdentifier: "unwindToStudentView", sender: self)
+//                    }
+//                }
+//            }
+//        })
+//        studentDelegate?.submit(resultsForQuiz: [])
+//    }
+//
     //MARK: Quiz functions
     func createQuizQuestionCard(first: String, second: String, char: String, pinyin: String, definition: String, charId: String) {
-        cardArray.append(card(front: nil, back: createBackCard(first: first, second: second), char: char, pinyin: pinyin, definition: definition, charId: charId))
+        cardArray.append(card(front: nil, back: createBackCard(first: first, second: second, parentView: learnViewContent), char: char, pinyin: pinyin, definition: definition, charId: charId))
     }
     
     func createQuizAnswerCard() {
@@ -425,13 +291,13 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
             } else if quizMode == "Pinyin" {
                 for i in 0..<characters.count {
                     if let character = characters[i] as? Dictionary<String, Any> {
-                        createCard(front: character["pinyin"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["definition"] as? String ?? "", char: character["char"] as? String ?? "", pinyin: character["pinyin"] as? String ?? "", definition: character["definition"] as? String ?? "", charId: character["id"] as? String ?? "")
+                        createCard(front: character["pinyin"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["definition"] as? String ?? "", char: character["char"] as? String ?? "", pinyin: character["pinyin"] as? String ?? "", definition: character["definition"] as? String ?? "", charId: character["id"] as? String ?? "", parentView: learnViewContent)
                     }
                 }
             } else if quizMode == "Definition" {
                 for i in 0..<characters.count {
                     if let character = characters[i] as? Dictionary<String, Any> {
-                        createCard(front: character["definition"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["pinyin"] as? String ?? "", char: character["char"] as? String ?? "", pinyin: character["pinyin"] as? String ?? "", definition: character["definition"] as? String ?? "", charId: character["id"] as? String ?? "")
+                        createCard(front: character["definition"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["pinyin"] as? String ?? "", char: character["char"] as? String ?? "", pinyin: character["pinyin"] as? String ?? "", definition: character["definition"] as? String ?? "", charId: character["id"] as? String ?? "", parentView: learnViewContent)
                     }
                 }
             }
@@ -502,7 +368,7 @@ class FlashcardsViewController: UIViewController, CardDelegate, OCRDelegate {
     }
     
     //delegate function
-    func selectedChoice(selected: String) {
+    override func selectedChoice(selected: String) {
         addQuizResultForMultipleChoice(selected: selected)
 //        count += 1
         showNextQuizCard()
