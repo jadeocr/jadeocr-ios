@@ -60,6 +60,8 @@
 		9DBF36962622540F006BC682 /* LearnOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF36952622540F006BC682 /* LearnOptionsViewController.swift */; };
 		9DBF369A26225946006BC682 /* SRSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF369926225946006BC682 /* SRSViewController.swift */; };
 		9DBF369D26225960006BC682 /* Flashcards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF369C26225960006BC682 /* Flashcards.swift */; };
+		9DBF36A126228EC8006BC682 /* Success.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DBF36A026228EC8006BC682 /* Success.xib */; };
+		9DBF36A426228ED6006BC682 /* Failure.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DBF36A326228ED6006BC682 /* Failure.xib */; };
 		9DC857FD2569E2AE00EA00F9 /* AllDecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC857FC2569E2AE00EA00F9 /* AllDecksViewController.swift */; };
 		9DCDBBAE25802E6E00D62F4B /* deckItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCDBBAD25802E6E00D62F4B /* deckItem.xib */; };
 		9DCDBBB12580353500D62F4B /* deckItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCDBBB02580353500D62F4B /* deckItem.swift */; };
@@ -126,6 +128,8 @@
 		9DBF36952622540F006BC682 /* LearnOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnOptionsViewController.swift; sourceTree = "<group>"; };
 		9DBF369926225946006BC682 /* SRSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRSViewController.swift; sourceTree = "<group>"; };
 		9DBF369C26225960006BC682 /* Flashcards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flashcards.swift; sourceTree = "<group>"; };
+		9DBF36A026228EC8006BC682 /* Success.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Success.xib; sourceTree = "<group>"; };
+		9DBF36A326228ED6006BC682 /* Failure.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Failure.xib; sourceTree = "<group>"; };
 		9DC857FC2569E2AE00EA00F9 /* AllDecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDecksViewController.swift; sourceTree = "<group>"; };
 		9DCDBBAD25802E6E00D62F4B /* deckItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = deckItem.xib; sourceTree = "<group>"; };
 		9DCDBBB02580353500D62F4B /* deckItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deckItem.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 				9D69BC6226224A7D000F689F /* SRS */,
 				9D69BC6326224A82000F689F /* Quiz */,
 				9D69BC6426224A9C000F689F /* Learn */,
+				9DBF369F26228E8A006BC682 /* Results */,
 				9DA40A4D259322320019E814 /* FlashcardsViewController.swift */,
 				9DFA4E2B259D339100D1BFE5 /* SummaryViewController.swift */,
 				9D69BC6826224C6A000F689F /* FlashcardOptions.swift */,
@@ -348,6 +353,15 @@
 			path = Cards;
 			sourceTree = "<group>";
 		};
+		9DBF369F26228E8A006BC682 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				9DBF36A026228EC8006BC682 /* Success.xib */,
+				9DBF36A326228ED6006BC682 /* Failure.xib */,
+			);
+			path = Results;
+			sourceTree = "<group>";
+		};
 		9DEA84AC25B64C2900FB15BC /* Student */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,12 +439,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DBF36A426228ED6006BC682 /* Failure.xib in Resources */,
 				9D9052C42596B84A00D022DF /* backCard.xib in Resources */,
 				9D5D071625855162003235D8 /* deckControlPanel.xib in Resources */,
 				9DCDBBAE25802E6E00D62F4B /* deckItem.xib in Resources */,
 				9D5D070E2585480B003235D8 /* deckTitle.xib in Resources */,
 				9D7F06CB2547A012002C8947 /* LaunchScreen.storyboard in Resources */,
 				9D7F06C82547A012002C8947 /* Assets.xcassets in Resources */,
+				9DBF36A126228EC8006BC682 /* Success.xib in Resources */,
 				9D4487CA259A5BD000257D67 /* multipleChoiceCard.xib in Resources */,
 				9DA40A482592E1610019E814 /* frontCard.xib in Resources */,
 				9D8EE1B725981BD90083A944 /* ocrView.xib in Resources */,

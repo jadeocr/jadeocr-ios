@@ -94,6 +94,9 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate {
         
         let centerYAnchor = NSLayoutConstraint(item: handwritingView!, attribute: .centerY, relatedBy: .equal, toItem: parentView, attribute: .centerY, multiplier: handwritingViewYAnchorMultiplier, constant: 0)
         parentView.addConstraint(centerYAnchor)
+        
+        handwritingView?.clipsToBounds = true
+        handwritingView?.layer.cornerRadius = 10
     }
     
     func setHandwritingViewChar() {

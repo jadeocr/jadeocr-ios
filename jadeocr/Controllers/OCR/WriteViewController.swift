@@ -15,6 +15,9 @@ class WriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ocrController.clipsToBounds = true
+        ocrController.layer.cornerRadius = 10
     }
 
     @IBAction func clearPressed(_ sender: Any) {

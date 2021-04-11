@@ -35,6 +35,8 @@ class backCard: UIView {
         Bundle.main.loadNibNamed("backCard", owner: self, options: nil)
         backCardContent.frame = bounds
         backCardContent.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        backCardContent.clipsToBounds = true
+        backCardContent.layer.cornerRadius = 10
         addSubview(backCardContent)
     }
     

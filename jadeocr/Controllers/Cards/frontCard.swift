@@ -33,6 +33,8 @@ class frontCard: UIView {
         Bundle.main.loadNibNamed("frontCard", owner: self, options: nil)
         frontCardContent.frame = bounds
         frontCardContent.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        frontCardContent.clipsToBounds = true
+        frontCardContent.layer.cornerRadius = 10
         addSubview(frontCardContent)
     }
     

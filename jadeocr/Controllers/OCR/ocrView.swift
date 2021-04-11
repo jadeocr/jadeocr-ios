@@ -35,6 +35,10 @@ class ocrView: UIView {
         Bundle.main.loadNibNamed("ocrView", owner: self, options: nil)
         ocrViewContent.frame = bounds
         ocrViewContent.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        ocrController.clipsToBounds = true
+        ocrController.layer.cornerRadius = 10
+        
         addSubview(ocrViewContent)
     }
     

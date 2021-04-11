@@ -11,7 +11,7 @@ class OCRController: UIView {
     
     var lineArray: [[CGPoint]] = [[CGPoint]]()
     var sendArray: [[[Int]]] = []
-
+    
     //MARK: drawing stuff
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }

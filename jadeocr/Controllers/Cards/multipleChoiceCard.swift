@@ -14,6 +14,10 @@ class multipleChoiceCard: UIView {
     @IBOutlet weak var bTextView: UITextView!
     @IBOutlet weak var cTextView: UITextView!
     @IBOutlet weak var dTextView: UITextView!
+    @IBOutlet weak var aView: UIView!
+    @IBOutlet weak var bView: UIView!
+    @IBOutlet weak var cView: UIView!
+    @IBOutlet weak var dView: UIView!
     @IBOutlet weak var correctLabel: UILabel!
     
     var delegate:CardDelegate?
@@ -40,6 +44,16 @@ class multipleChoiceCard: UIView {
         Bundle.main.loadNibNamed("multipleChoiceCard", owner: self, options: nil)
         multipleChoiceCardContent.frame = bounds
         multipleChoiceCardContent.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        aView.clipsToBounds = true
+        aView.layer.cornerRadius = 10
+        bView.clipsToBounds = true
+        bView.layer.cornerRadius = 10
+        cView.clipsToBounds = true
+        cView.layer.cornerRadius = 10
+        dView.clipsToBounds = true
+        dView.layer.cornerRadius = 10
+        
         addSubview(multipleChoiceCardContent)
     }
     
