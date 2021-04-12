@@ -15,6 +15,7 @@ class SRSViewController: Flashcards, SuccessDelegate {
     @IBOutlet weak var countLabelCenterYAnchor: NSLayoutConstraint!
     
     var srsResultsArray:[srsResults] = []
+    var sendArray: [Dictionary<String, Bool>] = [] //for summary view
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +36,6 @@ class SRSViewController: Flashcards, SuccessDelegate {
         
         showNextCard()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
 //    func changeButtonTextToSRS() {
 //        nextButton.setTitle("Know", for: .normal)
@@ -89,6 +81,12 @@ class SRSViewController: Flashcards, SuccessDelegate {
     
     @IBAction func dontKnowButtonPressed(_ sender: Any) {
         addSRSResult(correct: false)
+        
+        guard self.count < self.cardArray.count - 1 else {
+            self.submitSRS()
+            return
+        }
+        
         slideOut(childView: cardArray[count].front!, parentView: srsView, completion: {
             self.showNextCard()
         })
@@ -100,6 +98,12 @@ class SRSViewController: Flashcards, SuccessDelegate {
         if correct {
             showCorrect()
         }
+        
+        guard self.count < self.cardArray.count - 1 else {
+            self.submitSRS()
+            return
+        }
+        
         showNextCard()
     }
     
@@ -109,6 +113,7 @@ class SRSViewController: Flashcards, SuccessDelegate {
         }
         
         srsResultsArray.removeLast()
+        sendArray.removeLast() //also edited in addSRSResult
         addSRSResult(correct: true)
         
         if count < cardArray.count - 1 {
@@ -126,20 +131,28 @@ class SRSViewController: Flashcards, SuccessDelegate {
             quality = 5
         }
         srsResultsArray.append(srsResults(charId: cardArray[count].charId, quality: quality))
+        sendArray.append([cardArray[count].char : correct])
     }
     
     func submitSRS() {
         DeckRequests.practiced(results: srsResultsArray, deckId: deck?["_id"] as? String ?? "", completion: {result in
             if result == true {
                 DispatchQueue.main.async {
-                    if self.studentDelegate == nil {
-                        self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
-                    } else {
-                        self.performSegue(withIdentifier: "unwindToStudentView", sender: self)
-                    }
+                    self.performSegue(withIdentifier: "segueToSummary", sender: self)
                 }
             }
         })
         studentDelegate?.submit(resultsForQuiz: [])
+    }
+    
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SummaryViewController {
+            vc.answers = sendArray
+            if self.studentDelegate != nil {
+                vc.toStudentView = true
+            }
+        }
     }
 }
