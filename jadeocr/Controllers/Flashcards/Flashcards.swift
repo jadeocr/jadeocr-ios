@@ -58,6 +58,13 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate {
             cardArray[count - 1].front?.isHidden = true
             cardArray[count - 1].back?.isHidden = true
             cardArray[count].front?.isHidden = false
+            
+            cardArray[count].front?.alpha = 0
+            UIView.animate(withDuration: 0.3, delay: 0, options: [
+                .curveEaseIn
+            ], animations: {
+                self.cardArray[self.count].front?.alpha = 1
+            }, completion: nil)
         }
         
         countLabel.text = String(count + 1) + "/" + String(cardArray.count)
@@ -76,6 +83,21 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate {
         
         countLabel.text = String(count + 1) + "/" + String(cardArray.count)
         setHandwritingViewChar()
+    }
+    
+    func slideOut(childView: UIView, parentView: UIView, completion: @escaping () -> Void) {
+        parentView.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.15,
+                       delay: 0.1,
+                       options: [],
+                       animations: {
+                        childView.trailingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
+                        parentView.layoutIfNeeded()
+                        
+                       }, completion: { _ in
+                        parentView.isUserInteractionEnabled = true
+                        completion()
+                       })
     }
     
     //MARK: OCR

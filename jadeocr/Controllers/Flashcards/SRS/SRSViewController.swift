@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SRSViewController: Flashcards {
+class SRSViewController: Flashcards, SuccessDelegate {
     @IBOutlet var srsView: UIView!
     
     @IBOutlet weak var dontKnowButtonCenterYAnchor: NSLayoutConstraint!
@@ -50,19 +50,56 @@ class SRSViewController: Flashcards {
 //        backButton.setTitle("Don't Know", for: .normal)
 //    }
     
+    //MARK: card changing
+    func showCorrect() {
+        let vc = UIViewController()
+        let childView = Success(delegate: self)
+        
+        vc.view.frame = vc.view.bounds
+        vc.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        vc.view.backgroundColor = UIColor.systemGreen
+        
+        vc.view.addSubview(childView)
+        childView.translatesAutoresizingMaskIntoConstraints = false
+        
+        childView.widthAnchor.constraint(equalTo: vc.view.widthAnchor, multiplier: 1.0).isActive = true
+        childView.heightAnchor.constraint(equalTo: vc.view.heightAnchor, multiplier: 1.0).isActive = true
+        childView.centerXAnchor.constraint(equalTo: vc.view.centerXAnchor).isActive = true
+        childView.centerYAnchor.constraint(equalTo: vc.view.centerYAnchor).isActive = true
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func nextTapped() {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func knowButtonPressed(_ sender: Any) {
         addSRSResult(correct: true)
-        showNextCard()
+        
+        guard self.count < self.cardArray.count - 1 else {
+            self.submitSRS()
+            return
+        }
+        
+        slideOut(childView: cardArray[count].front!, parentView: srsView, completion: {
+            self.showNextCard()
+        })
     }
     
     @IBAction func dontKnowButtonPressed(_ sender: Any) {
         addSRSResult(correct: false)
-        showNextCard()
+        slideOut(childView: cardArray[count].front!, parentView: srsView, completion: {
+            self.showNextCard()
+        })
     }
     
+    //MARK: Delegate functions
     override func checked(correct: Bool) {
         addSRSResult(correct: correct)
+        if correct {
+            showCorrect()
+        }
         showNextCard()
     }
     
@@ -82,6 +119,7 @@ class SRSViewController: Flashcards {
         handwritingView?.turnOffIWasCorrect()
     }
     
+    //MARK: SRS submit stuffs
     func addSRSResult(correct: Bool) {
         var quality:Int = 1
         if correct {
