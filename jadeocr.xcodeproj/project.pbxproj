@@ -16,6 +16,9 @@
 		9D243DF925B241620036A67B /* AssignOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D243DF825B241620036A67B /* AssignOptionsViewController.swift */; };
 		9D2FF29625AE8921009B4CAD /* StudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FF29525AE8921009B4CAD /* StudentViewController.swift */; };
 		9D2FF29925AE892D009B4CAD /* TeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FF29825AE892D009B4CAD /* TeacherViewController.swift */; };
+		9D330DDC262510C800DF5E94 /* FailureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D330DDB262510C800DF5E94 /* FailureDelegate.swift */; };
+		9D330DDF262519CD00DF5E94 /* FailureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D330DDE262519CD00DF5E94 /* FailureViewController.swift */; };
+		9D330DE226251C8400DF5E94 /* FailureVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D330DE126251C8400DF5E94 /* FailureVCDelegate.swift */; };
 		9D33A29D25DA39FB0044348C /* TeacherRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A29C25DA39FB0044348C /* TeacherRequests.swift */; };
 		9D33A2A125DA3A0D0044348C /* StudentRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A2A025DA3A0D0044348C /* StudentRequests.swift */; };
 		9D33A2A425DA3BCE0044348C /* CharRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A2A325DA3BCE0044348C /* CharRequests.swift */; };
@@ -58,6 +61,7 @@
 		9DAA85E02611207A00948D3D /* DeckPageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA85DF2611207A00948D3D /* DeckPageDelegate.swift */; };
 		9DAA85E42611216400948D3D /* HomeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA85E32611216400948D3D /* HomeDelegate.swift */; };
 		9DBC798325B00B3100890AE2 /* StudentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC798225B00B3100890AE2 /* StudentDelegate.swift */; };
+		9DBDCECB26250FE7005A8678 /* Failure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBDCECA26250FE7005A8678 /* Failure.swift */; };
 		9DBF3693262252D4006BC682 /* QuizOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF3692262252D4006BC682 /* QuizOptionsViewController.swift */; };
 		9DBF36962622540F006BC682 /* LearnOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF36952622540F006BC682 /* LearnOptionsViewController.swift */; };
 		9DBF369A26225946006BC682 /* SRSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF369926225946006BC682 /* SRSViewController.swift */; };
@@ -84,6 +88,9 @@
 		9D243DF825B241620036A67B /* AssignOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignOptionsViewController.swift; sourceTree = "<group>"; };
 		9D2FF29525AE8921009B4CAD /* StudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewController.swift; sourceTree = "<group>"; };
 		9D2FF29825AE892D009B4CAD /* TeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherViewController.swift; sourceTree = "<group>"; };
+		9D330DDB262510C800DF5E94 /* FailureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureDelegate.swift; sourceTree = "<group>"; };
+		9D330DDE262519CD00DF5E94 /* FailureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureViewController.swift; sourceTree = "<group>"; };
+		9D330DE126251C8400DF5E94 /* FailureVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureVCDelegate.swift; sourceTree = "<group>"; };
 		9D33A29C25DA39FB0044348C /* TeacherRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherRequests.swift; sourceTree = "<group>"; };
 		9D33A2A025DA3A0D0044348C /* StudentRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentRequests.swift; sourceTree = "<group>"; };
 		9D33A2A325DA3BCE0044348C /* CharRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharRequests.swift; sourceTree = "<group>"; };
@@ -128,6 +135,7 @@
 		9DAA85DF2611207A00948D3D /* DeckPageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckPageDelegate.swift; sourceTree = "<group>"; };
 		9DAA85E32611216400948D3D /* HomeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDelegate.swift; sourceTree = "<group>"; };
 		9DBC798225B00B3100890AE2 /* StudentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDelegate.swift; sourceTree = "<group>"; };
+		9DBDCECA26250FE7005A8678 /* Failure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Failure.swift; sourceTree = "<group>"; };
 		9DBF3692262252D4006BC682 /* QuizOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOptionsViewController.swift; sourceTree = "<group>"; };
 		9DBF36952622540F006BC682 /* LearnOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnOptionsViewController.swift; sourceTree = "<group>"; };
 		9DBF369926225946006BC682 /* SRSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRSViewController.swift; sourceTree = "<group>"; };
@@ -266,6 +274,8 @@
 				9DAA85DF2611207A00948D3D /* DeckPageDelegate.swift */,
 				9DAA85E32611216400948D3D /* HomeDelegate.swift */,
 				9D6DAE012624A3220068D026 /* SuccessDelegate.swift */,
+				9D330DDB262510C800DF5E94 /* FailureDelegate.swift */,
+				9D330DE126251C8400DF5E94 /* FailureVCDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -364,6 +374,8 @@
 				9DBF36A026228EC8006BC682 /* Success.xib */,
 				9D63383B2623C2630028252D /* Success.swift */,
 				9DBF36A326228ED6006BC682 /* Failure.xib */,
+				9DBDCECA26250FE7005A8678 /* Failure.swift */,
+				9D330DDE262519CD00DF5E94 /* FailureViewController.swift */,
 			);
 			path = Results;
 			sourceTree = "<group>";
@@ -477,6 +489,7 @@
 				9D88E62525A57570004FD1E5 /* CreateClassViewController.swift in Sources */,
 				9D8EE1BA25981FC80083A944 /* ocrView.swift in Sources */,
 				9D491C5B257C14BD00986890 /* AddDeckViewController.swift in Sources */,
+				9DBDCECB26250FE7005A8678 /* Failure.swift in Sources */,
 				9D1A65FA255472AF007C2C09 /* UserViewController.swift in Sources */,
 				9DA8E7672599448A00B05016 /* OCRDelegate.swift in Sources */,
 				9D5D071125854838003235D8 /* deckTitle.swift in Sources */,
@@ -486,6 +499,7 @@
 				9D0A1B1825FD98900021BEB4 /* DecksViewController.swift in Sources */,
 				9D243DF925B241620036A67B /* AssignOptionsViewController.swift in Sources */,
 				9D01C53E258B3DCA00982550 /* DeckInfoViewController.swift in Sources */,
+				9D330DDC262510C800DF5E94 /* FailureDelegate.swift in Sources */,
 				9D6DAE022624A3220068D026 /* SuccessDelegate.swift in Sources */,
 				9D650E97256A4036007B17AA /* SignUpViewController.swift in Sources */,
 				9D44DD3D25DC6C6D000856DA /* UserRequests.swift in Sources */,
@@ -502,6 +516,7 @@
 				9D33A2A825DA3C870044348C /* DeckRequests.swift in Sources */,
 				9D3473AD25940983008A9998 /* CardDelegate.swift in Sources */,
 				9D88E62225A5232F004FD1E5 /* JoinClassViewController.swift in Sources */,
+				9D330DE226251C8400DF5E94 /* FailureVCDelegate.swift in Sources */,
 				9D7F06D92547B573002C8947 /* OCRController.swift in Sources */,
 				9D4487CD259A5EB200257D67 /* multipleChoiceCard.swift in Sources */,
 				9D33A29D25DA39FB0044348C /* TeacherRequests.swift in Sources */,
@@ -518,6 +533,7 @@
 				9DA40A4E259322320019E814 /* FlashcardsViewController.swift in Sources */,
 				9DBF3693262252D4006BC682 /* QuizOptionsViewController.swift in Sources */,
 				9DBF369D26225960006BC682 /* Flashcards.swift in Sources */,
+				9D330DDF262519CD00DF5E94 /* FailureViewController.swift in Sources */,
 				9D7F06C12547A011002C8947 /* SceneDelegate.swift in Sources */,
 				9D9052C72596B86000D022DF /* backCard.swift in Sources */,
 			);

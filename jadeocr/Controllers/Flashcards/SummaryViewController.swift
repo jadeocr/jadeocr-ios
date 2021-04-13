@@ -19,6 +19,8 @@ class SummaryViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
+        summaryTable.rowHeight = UITableView.automaticDimension
+        summaryTable.estimatedRowHeight = 100
         
         let total = answers.count
         var correct = 0

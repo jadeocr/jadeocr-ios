@@ -82,14 +82,14 @@ class ocrView: UIView {
                 
                 if matched == true {
                     charString = "Correct!"
+                    self.charShown.text = charString
                     self.delegate?.checked(correct: true)
                 } else {
                     charString = "Correct was: " + (self.char ?? "") + ". You matched: " + charString
-                    self.delegate?.checked(correct: false)
+                    self.charShown.text = charString
                     self.turnOnIWasCorrect()
+                    self.delegate?.checked(correct: false)
                 }
-                
-                self.charShown.text = charString
             }
         })
     }

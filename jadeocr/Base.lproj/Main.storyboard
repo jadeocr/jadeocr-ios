@@ -1263,7 +1263,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEj-p8-BYH">
-                                                    <rect key="frame" x="38.5" y="7.5" width="57" height="29"/>
+                                                    <rect key="frame" x="38.5" y="7" width="57" height="29.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1278,6 +1278,7 @@
                                             <constraints>
                                                 <constraint firstItem="FEj-p8-BYH" firstAttribute="leading" secondItem="Sht-dY-WQV" secondAttribute="centerX" multiplier="0.1" id="D24-1E-IrM"/>
                                                 <constraint firstItem="Nen-Y7-Iv0" firstAttribute="centerY" secondItem="Sht-dY-WQV" secondAttribute="centerY" id="GK4-mh-YrU"/>
+                                                <constraint firstItem="FEj-p8-BYH" firstAttribute="top" secondItem="Sht-dY-WQV" secondAttribute="top" constant="7" id="IH8-WX-rzG"/>
                                                 <constraint firstItem="FEj-p8-BYH" firstAttribute="centerY" secondItem="Sht-dY-WQV" secondAttribute="centerY" id="K70-bd-XoI"/>
                                                 <constraint firstItem="Nen-Y7-Iv0" firstAttribute="trailing" secondItem="Sht-dY-WQV" secondAttribute="centerX" multiplier="1.9" id="W9H-Kc-StN"/>
                                             </constraints>

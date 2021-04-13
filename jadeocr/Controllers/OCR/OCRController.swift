@@ -12,6 +12,14 @@ class OCRController: UIView {
     var lineArray: [[CGPoint]] = [[CGPoint]]()
     var sendArray: [[[Int]]] = []
     
+    //prevents swipe navigation with drawing view
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer is UIPanGestureRecognizer {
+            return false
+        }
+        return true
+    }
+    
     //MARK: drawing stuff
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }

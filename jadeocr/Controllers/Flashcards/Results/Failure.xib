@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -8,20 +8,105 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Failure" customModule="jadeocr" customModuleProvider="target">
+            <connections>
+                <outlet property="correctLabel" destination="UoE-Rl-Uw6" id="i3Z-24-Fof"/>
+                <outlet property="failureView" destination="iN0-l3-epB" id="S7J-mI-Fab"/>
+                <outlet property="matchedText" destination="MW7-cz-5o2" id="ZBM-kf-ZGJ"/>
+                <outlet property="writeView" destination="1HJ-o4-ocO" id="yo1-7y-JUg"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="753" height="1087"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1HJ-o4-ocO" customClass="OCRController" customModule="jadeocr" customModuleProvider="target">
+                    <rect key="frame" x="37.5" y="380.5" width="678" height="598"/>
+                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incorrect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ni-zI-0Pr">
+                    <rect key="frame" x="286" y="79.5" width="181" height="58"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MW7-cz-5o2">
+                    <rect key="frame" x="37.5" y="163" width="678" height="109"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWx-lO-jTe">
+                    <rect key="frame" x="37.5" y="1012" width="131" height="41"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="I was correct"/>
+                    <connections>
+                        <action selector="override:" destination="-1" eventType="touchUpInside" id="mZf-4f-emT"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvc-tD-iJE">
+                    <rect key="frame" x="666.5" y="1012" width="49" height="41"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="Next"/>
+                    <connections>
+                        <action selector="nextTapped:" destination="-1" eventType="touchUpInside" id="4dw-sX-E58"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write one more time: char" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoE-Rl-Uw6">
+                    <rect key="frame" x="75.5" y="311.5" width="602" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VwC-vt-qqg">
+                    <rect key="frame" x="366" y="1018" width="21" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" image="arrowshape.turn.up.left.fill" catalog="system"/>
+                    <connections>
+                        <action selector="resetTapped:" destination="-1" eventType="touchUpInside" id="3tk-UX-DV7"/>
+                    </connections>
+                </button>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="OWx-lO-jTe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="0.1" id="13T-aC-tgC"/>
+                <constraint firstItem="MW7-cz-5o2" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="2BI-qT-odE"/>
+                <constraint firstItem="7Ni-zI-0Pr" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.2" id="42V-Wi-rhQ"/>
+                <constraint firstItem="fvc-tD-iJE" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.9" id="4A0-yA-EUb"/>
+                <constraint firstItem="UoE-Rl-Uw6" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.8" id="5P7-dk-w8P"/>
+                <constraint firstItem="1HJ-o4-ocO" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.55" id="6u9-m7-LPp"/>
+                <constraint firstItem="MW7-cz-5o2" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.4" id="Btl-6l-eOc"/>
+                <constraint firstItem="UoE-Rl-Uw6" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="CNf-0Q-999"/>
+                <constraint firstItem="OWx-lO-jTe" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.9" id="D9P-cj-GYV"/>
+                <constraint firstItem="fvc-tD-iJE" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.9" id="E54-3n-DgX"/>
+                <constraint firstItem="7Ni-zI-0Pr" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Lyo-24-e2k"/>
+                <constraint firstItem="UoE-Rl-Uw6" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.6" id="OU5-iv-qF5"/>
+                <constraint firstItem="1HJ-o4-ocO" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="PzL-WW-ksm"/>
+                <constraint firstItem="VwC-vt-qqg" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.9" id="Zu8-JV-EPi"/>
+                <constraint firstItem="MW7-cz-5o2" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="ev6-g2-hNj"/>
+                <constraint firstItem="1HJ-o4-ocO" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="gEO-Yq-bhq"/>
+                <constraint firstItem="VwC-vt-qqg" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="gJC-Cb-Ht5"/>
+                <constraint firstItem="1HJ-o4-ocO" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.25" id="hNj-Mf-Nxl"/>
+                <constraint firstItem="MW7-cz-5o2" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.1" id="uwv-oS-kK5"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="141" y="111"/>
+            <point key="canvasLocation" x="265.55555555555554" y="33.055555555555557"/>
         </view>
     </objects>
     <resources>
+        <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

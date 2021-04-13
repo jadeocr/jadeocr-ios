@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SRSViewController: Flashcards, SuccessDelegate {
+class SRSViewController: Flashcards, SuccessDelegate, FailureDelegate, FailureVCDelegate {
     @IBOutlet var srsView: UIView!
     
     @IBOutlet weak var dontKnowButtonCenterYAnchor: NSLayoutConstraint!
@@ -16,6 +16,8 @@ class SRSViewController: Flashcards, SuccessDelegate {
     
     var srsResultsArray:[srsResults] = []
     var sendArray: [Dictionary<String, Bool>] = [] //for summary view
+    
+    var atFinal = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,25 +45,6 @@ class SRSViewController: Flashcards, SuccessDelegate {
 //    }
     
     //MARK: card changing
-    func showCorrect() {
-        let vc = UIViewController()
-        let childView = Success(delegate: self)
-        
-        vc.view.frame = vc.view.bounds
-        vc.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        vc.view.backgroundColor = UIColor.systemGreen
-        
-        vc.view.addSubview(childView)
-        childView.translatesAutoresizingMaskIntoConstraints = false
-        
-        childView.widthAnchor.constraint(equalTo: vc.view.widthAnchor, multiplier: 1.0).isActive = true
-        childView.heightAnchor.constraint(equalTo: vc.view.heightAnchor, multiplier: 1.0).isActive = true
-        childView.centerXAnchor.constraint(equalTo: vc.view.centerXAnchor).isActive = true
-        childView.centerYAnchor.constraint(equalTo: vc.view.centerYAnchor).isActive = true
-        
-        self.present(vc, animated: true, completion: nil)
-    }
-    
     func nextTapped() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -92,11 +75,21 @@ class SRSViewController: Flashcards, SuccessDelegate {
         })
     }
     
-    //MARK: Delegate functions
+    //MARK: OCR functions
     override func checked(correct: Bool) {
         addSRSResult(correct: correct)
-        if correct {
-            showCorrect()
+        if !correct {
+            if self.count == self.cardArray.count - 1 {
+                atFinal = true
+            }
+            
+            handwritingView?.turnOffIWasCorrect()
+            showFailure(matched: handwritingView?.charShown.text ?? "", correct: handwritingView?.char ?? "")
+            handwritingView?.clearButtonPressed(self)
+        }
+        
+        guard !atFinal else {
+            return
         }
         
         guard self.count < self.cardArray.count - 1 else {
@@ -104,24 +97,43 @@ class SRSViewController: Flashcards, SuccessDelegate {
             return
         }
         
-        showNextCard()
+        slideOut(childView: cardArray[count].front!, parentView: srsView, completion: {
+            self.showNextCard()
+        })
     }
     
     override func override() {
-        if count < cardArray.count - 1 {
-            count -= 1 //So addResult functions grab the correct charId
+        if count < cardArray.count {
+            count -= 1 //So addSRSResult function grabs the correct char
         }
         
         srsResultsArray.removeLast()
         sendArray.removeLast() //also edited in addSRSResult
         addSRSResult(correct: true)
         
-        if count < cardArray.count - 1 {
+        if count < cardArray.count {
             count += 1
         }
         
         handwritingView?.setCharShown(text: "Correct!")
         handwritingView?.turnOffIWasCorrect()
+    }
+    
+    func showFailure(matched: String, correct: String) {
+        let vc = FailureViewController()
+        vc.matched = matched
+        vc.correct = correct
+        vc.passthroughDelegate = self
+        vc.delegate = self
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    //failureVCDelegate function
+    func goingBack() {
+        if atFinal {
+            submitSRS()
+        }
     }
     
     //MARK: SRS submit stuffs
@@ -135,10 +147,12 @@ class SRSViewController: Flashcards, SuccessDelegate {
     }
     
     func submitSRS() {
+        srsView.isUserInteractionEnabled = false //so u cant spam buttons twice
         DeckRequests.practiced(results: srsResultsArray, deckId: deck?["_id"] as? String ?? "", completion: {result in
             if result == true {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "segueToSummary", sender: self)
+                    self.srsView.isUserInteractionEnabled = true
                 }
             }
         })
