@@ -44,6 +44,10 @@ class QuizViewController: Flashcards {
         
         createCardsBasedOnRepetitions(repetitions: 1, parentView: quizView)
         
+        if scramble ?? false {
+            cardArray.shuffle()
+        }
+        
         if cardArray.count < 4 && quizMode != "Handwriting" {
             sendAlert(message: "Not enough characters for mcq")
             return
@@ -57,9 +61,7 @@ class QuizViewController: Flashcards {
         super.showNextCard()
         flip()
         
-        if count < (cardArray.count - 1) {
-            setMultipleChoiceOptions()
-        }
+        setMultipleChoiceOptions()
     }
     
     override func flip() {
@@ -67,6 +69,7 @@ class QuizViewController: Flashcards {
         cardArray[count].back?.isHidden = false
     }
     
+    //MARK: Card management
     func setMultipleChoiceOptions() {
         var cards = cardArray
         cards.remove(at: count)
@@ -78,30 +81,24 @@ class QuizViewController: Flashcards {
         
         
         if quizMode == "Character" || quizMode == "Handwriting" {
-            quizMultipleChoiceView?.change(a: cards[options[0]].char, b: cards[options[1]].char, c: cards[options[2]].char, d: cards[options[3]].char)
+            quizMultipleChoiceView?.change(
+                a: cards[options[0]].char,
+                b: cards[options[1]].char,
+                c: cards[options[2]].char,
+                d: cards[options[3]].char)
         } else if quizMode == "Pinyin" {
-            quizMultipleChoiceView?.change(a: cards[options[0]].pinyin, b: cards[options[1]].pinyin, c: cards[options[2]].pinyin, d: cards[options[3]].pinyin)
+            quizMultipleChoiceView?.change(
+                a: cards[options[0]].pinyin,
+                b: cards[options[1]].pinyin,
+                c: cards[options[2]].pinyin,
+                d: cards[options[3]].pinyin)
         } else if quizMode == "Definition" {
-            quizMultipleChoiceView?.change(a: cards[options[0]].definition, b: cards[options[1]].definition, c: cards[options[2]].definition, d: cards[options[3]].definition)
+            quizMultipleChoiceView?.change(
+                a: cards[options[0]].definition,
+                b: cards[options[1]].definition,
+                c: cards[options[2]].definition,
+                d: cards[options[3]].definition)
         }
-    }
-    
-    func createQuizAnswerCard() {
-        quizMultipleChoiceView = multipleChoiceCard()
-        quizView.addSubview(quizMultipleChoiceView!)
-        quizMultipleChoiceView!.delegate = self
-        quizMultipleChoiceView!.translatesAutoresizingMaskIntoConstraints = false
-        
-        quizMultipleChoiceView!.heightAnchor.constraint(equalTo: quizView.heightAnchor, multiplier: mcqViewHeightMultiplier)
-            .isActive = true
-        quizMultipleChoiceView!.widthAnchor.constraint(equalTo: quizView.widthAnchor, multiplier: mcqViewWidthMultiplier).isActive = true
-        
-        let centerXAnchor = NSLayoutConstraint(item: quizMultipleChoiceView!, attribute: .centerX, relatedBy: .equal, toItem: quizView, attribute: .centerX, multiplier: mcqViewXAnchorMultiplier, constant: 0)
-        quizView.addConstraint(centerXAnchor)
-        
-        let centerYAnchor = NSLayoutConstraint(item: quizMultipleChoiceView!, attribute: .centerY, relatedBy: .equal, toItem: quizView, attribute: .centerY, multiplier: mcqViewYAnchorMultiplier, constant: 0)
-        quizView.addConstraint(centerYAnchor)
-        
     }
     
     func addQuizResultForHandwriting(correct: Bool, overriden: Bool) {
@@ -143,20 +140,50 @@ class QuizViewController: Flashcards {
         if correct {
             quizMultipleChoiceView?.correctAnimation(view: view, textView: textView, completion: {
                 self.slideOut(childView: self.cardArray[self.count].back!, parentView: self.quizView, completion: {
-                    self.quizMultipleChoiceView?.setCorrectLabel(text: "")
                     self.showNextCard()
                 })
             })
         } else {
             quizMultipleChoiceView?.incorrectAnimation(view: view, textView: textView, completion: {
                 self.slideOut(childView: self.cardArray[self.count].back!, parentView: self.quizView, completion: {
-                    self.quizMultipleChoiceView?.setCorrectLabel(text: "")
+                    
                     self.showNextCard()
                 })
             })
         }
     }
     
+    override func slideOut(childView: UIView, parentView: UIView, completion: @escaping () -> Void) {
+        guard count < cardArray.count - 1 else {
+            submitQuiz()
+            return
+        }
+        super.slideOut(childView: childView, parentView: parentView, completion: {
+            self.quizMultipleChoiceView?.setCorrectLabel(text: "")
+            completion()
+        })
+    }
+    
+    //MARK: Card creation
+    func createQuizAnswerCard() {
+        quizMultipleChoiceView = multipleChoiceCard()
+        quizView.addSubview(quizMultipleChoiceView!)
+        quizMultipleChoiceView!.delegate = self
+        quizMultipleChoiceView!.translatesAutoresizingMaskIntoConstraints = false
+        
+        quizMultipleChoiceView!.heightAnchor.constraint(equalTo: quizView.heightAnchor, multiplier: mcqViewHeightMultiplier)
+            .isActive = true
+        quizMultipleChoiceView!.widthAnchor.constraint(equalTo: quizView.widthAnchor, multiplier: mcqViewWidthMultiplier).isActive = true
+        
+        let centerXAnchor = NSLayoutConstraint(item: quizMultipleChoiceView!, attribute: .centerX, relatedBy: .equal, toItem: quizView, attribute: .centerX, multiplier: mcqViewXAnchorMultiplier, constant: 0)
+        quizView.addConstraint(centerXAnchor)
+        
+        let centerYAnchor = NSLayoutConstraint(item: quizMultipleChoiceView!, attribute: .centerY, relatedBy: .equal, toItem: quizView, attribute: .centerY, multiplier: mcqViewYAnchorMultiplier, constant: 0)
+        quizView.addConstraint(centerYAnchor)
+        
+    }
+    
+    //MARK: Submit
     func submitQuiz() {
         DeckRequests.quizzed(results: quizResultsArray, deckId: deck?["_id"] as? String ?? "", completion: {result in
             if result == true {
