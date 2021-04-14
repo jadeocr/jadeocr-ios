@@ -12,8 +12,7 @@ class QuizOptionsViewController: FlashcardOptions {
     @IBOutlet weak var scrambleControl: UISwitch!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? FlashcardsViewController {
-            vc.mode = "quiz"
+        if let vc = segue.destination as? QuizViewController {
             vc.quizMode = frontControl.titleForSegment(at: frontControl.selectedSegmentIndex)
             if vc.quizMode == "Handwriting" {
                 vc.handwriting = true

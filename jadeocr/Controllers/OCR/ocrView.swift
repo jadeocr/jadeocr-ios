@@ -68,6 +68,7 @@ class ocrView: UIView {
             self.delegate?.checked(correct: true) //Value doesn't matter
             return
         }
+        ocrViewContent.isUserInteractionEnabled = false
         CharRequests.OCR(sendArray: ocrController.getSendArray() , completion: {results in
             DispatchQueue.main.async {
                 var charString = ""
@@ -90,6 +91,8 @@ class ocrView: UIView {
                     self.turnOnIWasCorrect()
                     self.delegate?.checked(correct: false)
                 }
+                
+                self.ocrViewContent.isUserInteractionEnabled = true
             }
         })
     }

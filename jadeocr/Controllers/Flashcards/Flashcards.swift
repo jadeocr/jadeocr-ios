@@ -9,6 +9,7 @@ import UIKit
 
 class Flashcards: UIViewController, OCRDelegate, CardDelegate {
     @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var countLabelCenterYAnchor: NSLayoutConstraint!
     
     var cardArray:[card] = []
     var handwritingView:ocrView?
@@ -212,7 +213,13 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate {
     
     //MARK: Card delegate functions
     func flip() {
-        //to be overriden
+        if cardArray[count].front!.isHidden {
+            cardArray[count].front?.isHidden = false
+            cardArray[count].back?.isHidden = true
+        } else {
+            cardArray[count].front?.isHidden = true
+            cardArray[count].back?.isHidden = false
+        }
     }
     
     func selectedChoice(selected: String) {

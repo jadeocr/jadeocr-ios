@@ -12,7 +12,6 @@ class SRSViewController: Flashcards, SuccessDelegate, FailureDelegate, FailureVC
     
     @IBOutlet weak var dontKnowButtonCenterYAnchor: NSLayoutConstraint!
     @IBOutlet weak var knowButtonCenterYAnchor: NSLayoutConstraint!
-    @IBOutlet weak var countLabelCenterYAnchor: NSLayoutConstraint!
     
     var srsResultsArray:[srsResults] = []
     var sendArray: [Dictionary<String, Bool>] = [] //for summary view
@@ -38,11 +37,6 @@ class SRSViewController: Flashcards, SuccessDelegate, FailureDelegate, FailureVC
         
         showNextCard()
     }
-    
-//    func changeButtonTextToSRS() {
-//        nextButton.setTitle("Know", for: .normal)
-//        backButton.setTitle("Don't Know", for: .normal)
-//    }
     
     //MARK: card changing
     func nextTapped() {

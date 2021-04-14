@@ -1167,58 +1167,34 @@
             </objects>
             <point key="canvasLocation" x="2034" y="-554"/>
         </scene>
-        <!--Flashcards-->
+        <!--Quiz-->
         <scene sceneID="KgR-qj-KPu">
             <objects>
-                <viewController id="g6b-bv-N3Z" customClass="FlashcardsViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="g6b-bv-N3Z" customClass="QuizViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uhW-L8-bnG">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uX-Ee-lce">
-                                <rect key="frame" x="445" y="906.5" width="32" height="30"/>
-                                <state key="normal" title="Next"/>
-                                <connections>
-                                    <action selector="nextButtonPressed:" destination="g6b-bv-N3Z" eventType="touchUpInside" id="n93-PB-IWP"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paE-KO-R4z">
                                 <rect key="frame" x="641.5" y="912.5" width="23" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be1-YI-udX">
-                                <rect key="frame" x="290" y="906.5" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="backButtonPressed:" destination="g6b-bv-N3Z" eventType="touchUpInside" id="Z05-Qj-yzf"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JkR-7Y-Ya7"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="paE-KO-R4z" firstAttribute="centerX" secondItem="JkR-7Y-Ya7" secondAttribute="centerX" multiplier="1.7" id="6ay-C5-P00"/>
-                            <constraint firstItem="5uX-Ee-lce" firstAttribute="centerY" secondItem="JkR-7Y-Ya7" secondAttribute="centerY" multiplier="0.9" priority="999" id="VYP-99-YUp" userLabel="next center y secondary"/>
                             <constraint firstItem="paE-KO-R4z" firstAttribute="centerY" secondItem="JkR-7Y-Ya7" secondAttribute="centerY" multiplier="1.8" id="WPq-xo-Rtm"/>
-                            <constraint firstItem="5uX-Ee-lce" firstAttribute="centerY" secondItem="JkR-7Y-Ya7" secondAttribute="centerY" multiplier="1.8" id="dSS-J8-Cjv"/>
-                            <constraint firstItem="Be1-YI-udX" firstAttribute="centerX" secondItem="JkR-7Y-Ya7" secondAttribute="centerX" multiplier="0.8" id="f44-G5-Lnr"/>
-                            <constraint firstItem="Be1-YI-udX" firstAttribute="centerY" secondItem="JkR-7Y-Ya7" secondAttribute="centerY" multiplier="0.9" priority="999" id="g6w-Gh-D3X" userLabel="back center y secondary"/>
-                            <constraint firstItem="5uX-Ee-lce" firstAttribute="centerX" secondItem="JkR-7Y-Ya7" secondAttribute="centerX" multiplier="1.2" id="wYP-ot-vzK"/>
-                            <constraint firstItem="Be1-YI-udX" firstAttribute="centerY" secondItem="JkR-7Y-Ya7" secondAttribute="centerY" multiplier="1.8" id="z4x-7a-uZs"/>
                             <constraint firstItem="paE-KO-R4z" firstAttribute="centerY" secondItem="JkR-7Y-Ya7" secondAttribute="centerY" multiplier="0.9" priority="999" id="z9s-sh-j7E" userLabel="count center y secondary"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Flashcards" id="hK6-tJ-BBX"/>
+                    <navigationItem key="navigationItem" title="Quiz" id="hK6-tJ-BBX"/>
                     <connections>
-                        <outlet property="backButton" destination="Be1-YI-udX" id="5L9-f8-dhy"/>
-                        <outlet property="backButtonCenterYAnchor" destination="z4x-7a-uZs" id="egb-RF-te3"/>
                         <outlet property="countLabel" destination="paE-KO-R4z" id="0pM-qa-ibk"/>
                         <outlet property="countLabelCenterYAnchor" destination="WPq-xo-Rtm" id="qyH-Yt-PCB"/>
-                        <outlet property="learnViewContent" destination="uhW-L8-bnG" id="kbA-0G-iDF"/>
-                        <outlet property="nextButton" destination="5uX-Ee-lce" id="Wsp-Lc-rw6"/>
-                        <outlet property="nextButtonCenterYAnchor" destination="dSS-J8-Cjv" id="hpd-kx-PL2"/>
+                        <outlet property="quizView" destination="uhW-L8-bnG" id="nsC-pv-1Dx"/>
                         <segue destination="MKB-rZ-VS7" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="bmY-CF-aGb"/>
                         <segue destination="ydE-4W-NBP" kind="show" identifier="segueToSummary" id="C1u-7n-WxV"/>
                         <segue destination="MKB-rZ-VS7" kind="unwind" identifier="unwindToStudentView" unwindAction="unwindToStudentView:" id="Noj-dl-MR3"/>
@@ -2118,7 +2094,6 @@
                     <tabBarItem key="tabBarItem" title="Classes" id="RTk-0K-vg9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QqH-56-Vky">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2400,7 +2375,7 @@
                     <navigationItem key="navigationItem" title="SRS Flashcards" id="xSy-Rq-A26"/>
                     <connections>
                         <outlet property="countLabel" destination="JHP-Cq-8tx" id="IsU-Ve-VaW"/>
-                        <outlet property="countLabelCenterYAnchor" destination="DkN-Qg-DnM" id="dcO-rh-0fP"/>
+                        <outlet property="countLabelCenterYAnchor" destination="DkN-Qg-DnM" id="5CQ-x8-APa"/>
                         <outlet property="dontKnowButtonCenterYAnchor" destination="TCW-vH-yk0" id="XFC-2i-pof"/>
                         <outlet property="knowButtonCenterYAnchor" destination="PTR-OV-doO" id="VK4-ci-Fvv"/>
                         <outlet property="srsView" destination="6zE-Ud-0hK" id="raL-Um-wKG"/>
