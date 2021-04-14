@@ -222,7 +222,7 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate {
         }
     }
     
-    func selectedChoice(selected: String) {
+    func selectedChoice(selected: String, view: UIView, textView: UITextView) {
         //to be overriden
     }
     /*

@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
 protocol CardDelegate {
     func flip()
-    func selectedChoice(selected: String)
+    func selectedChoice(selected: String, view: UIView, textView: UITextView)
 }

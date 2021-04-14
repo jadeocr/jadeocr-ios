@@ -69,19 +69,86 @@ class multipleChoiceCard: UIView {
         correctLabel.isHidden = false
     }
     
+    func correctAnimation(view: UIView, textView: UITextView, completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: 0.2, animations: {
+            
+            view.backgroundColor = UIColor.systemGreen
+            textView.backgroundColor = UIColor.systemGreen
+            
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.1, delay: 0.3, animations: {
+                
+                view.backgroundColor = UIColor.systemGray4
+                textView.backgroundColor = UIColor.systemGray4
+                
+            }, completion: {_ in
+                completion?()
+            })
+        })
+    }
+    
+    func incorrectAnimation(view: UIView, textView: UITextView, completion: (() -> Void)? = nil) {
+        self.shake(view: view)
+        UIView.animate(withDuration: 0.2, animations: {
+            
+            view.backgroundColor = UIColor.systemRed
+            textView.backgroundColor = UIColor.systemRed
+            
+        }, completion: { _ in
+            
+            UIView.animate(withDuration: 0.1, delay: 0.5, animations: {
+                
+                view.backgroundColor = UIColor.systemGray4
+                textView.backgroundColor = UIColor.systemGray4
+                
+            }, completion: {_ in
+                completion?()
+            })
+        })
+    }
+    
+    func shake(view: UIView, completion: (() -> Void)? = nil) {
+        let speed = 0.6
+        let time = 1.0 * speed - 0.15
+        let timeFactor = CGFloat(time / 4)
+        let animationDelays = [timeFactor, timeFactor * 2, timeFactor * 3]
+
+        let shakeAnimator = UIViewPropertyAnimator(duration: time, dampingRatio: 0.3)
+        // left, right, left, center
+        shakeAnimator.addAnimations({
+            view.transform = CGAffineTransform(translationX: 20, y: 0)
+        })
+        shakeAnimator.addAnimations({
+            view.transform = CGAffineTransform(translationX: -20, y: 0)
+        }, delayFactor: animationDelays[0])
+        shakeAnimator.addAnimations({
+            view.transform = CGAffineTransform(translationX: 20, y: 0)
+        }, delayFactor: animationDelays[1])
+        shakeAnimator.addAnimations({
+            view.transform = CGAffineTransform(translationX: 0, y: 0)
+        }, delayFactor: animationDelays[2])
+        shakeAnimator.startAnimation()
+
+        shakeAnimator.addCompletion { _ in
+            completion?()
+        }
+
+        shakeAnimator.startAnimation()
+    }
+    
     @IBAction func aViewTapped(_ sender: Any) {
-        delegate?.selectedChoice(selected: aTextView.text)
+        delegate?.selectedChoice(selected: aTextView.text, view: aView, textView: aTextView )
     }
     
     @IBAction func bViewTapped(_ sender: Any) {
-        delegate?.selectedChoice(selected: bTextView.text)
+        delegate?.selectedChoice(selected: bTextView.text, view: bView, textView: bTextView)
     }
     
     @IBAction func cViewTapped(_ sender: Any) {
-        delegate?.selectedChoice(selected: cTextView.text)
+        delegate?.selectedChoice(selected: cTextView.text, view: cView, textView: cTextView)
     }
     
     @IBAction func dViewTapped(_ sender: Any) {
-        delegate?.selectedChoice(selected: dTextView.text)
+        delegate?.selectedChoice(selected: dTextView.text, view: dView, textView: dTextView)
     }
 }

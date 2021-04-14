@@ -34,14 +34,21 @@ class QuizViewController: Flashcards {
         if handwriting ?? false {
             countLabelCenterYAnchor.isActive = false
             createHandwritingView(parentView: quizView)
+            cardHeightMultiplier = 0.3
+            cardYAnchorMultiplier = 0.5
         } else {
             createQuizAnswerCard()
+            cardHeightMultiplier = 0.4
+            cardYAnchorMultiplier = 0.6
         }
         
-        cardHeightMultiplier = 0.4
-        cardYAnchorMultiplier = 0.6
-        
         createCardsBasedOnRepetitions(repetitions: 1, parentView: quizView)
+        
+        if cardArray.count < 4 && quizMode != "Handwriting" {
+            sendAlert(message: "Not enough characters for mcq")
+            return
+        }
+        
         showNextCard()
     }
     
@@ -78,9 +85,6 @@ class QuizViewController: Flashcards {
             quizMultipleChoiceView?.change(a: cards[options[0]].definition, b: cards[options[1]].definition, c: cards[options[2]].definition, d: cards[options[3]].definition)
         }
     }
-//    func createQuizQuestionCard(first: String, second: String, char: String, pinyin: String, definition: String, charId: String) {
-//        cardArray.append(card(front: nil, back: createBackCard(first: first, second: second, parentView: quizView), char: char, pinyin: pinyin, definition: definition, charId: charId))
-//    }
     
     func createQuizAnswerCard() {
         quizMultipleChoiceView = multipleChoiceCard()
@@ -100,35 +104,11 @@ class QuizViewController: Flashcards {
         
     }
     
-//    func createQuizQuestionCards() {
-//        if let characters = deck?["characters"] as? NSArray {
-//            if quizMode == "Character" || quizMode == "Handwriting" {
-//                for i in 0..<characters.count {
-//                    if let character = characters[i] as? Dictionary<String, Any> {
-//                        createQuizQuestionCard(first: character["pinyin"] as? String ?? "", second: character["definition"] as? String ?? "", char: character["char"] as? String ?? "", pinyin: character["pinyin"] as? String ?? "", definition: character["definition"] as? String ?? "", charId: character["id"] as? String ?? "")
-//                    }
-//                }
-//            } else if quizMode == "Pinyin" {
-//                for i in 0..<characters.count {
-//                    if let character = characters[i] as? Dictionary<String, Any> {
-//                        createCard(front: character["pinyin"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["definition"] as? String ?? "", char: character["char"] as? String ?? "", pinyin: character["pinyin"] as? String ?? "", definition: character["definition"] as? String ?? "", charId: character["id"] as? String ?? "", parentView: quizView)
-//                    }
-//                }
-//            } else if quizMode == "Definition" {
-//                for i in 0..<characters.count {
-//                    if let character = characters[i] as? Dictionary<String, Any> {
-//                        createCard(front: character["definition"] as? String ?? "", backFirst: character["char"] as? String ?? "", backSecond: character["pinyin"] as? String ?? "", char: character["char"] as? String ?? "", pinyin: character["pinyin"] as? String ?? "", definition: character["definition"] as? String ?? "", charId: character["id"] as? String ?? "", parentView: quizView)
-//                    }
-//                }
-//            }
-//        }
-//    }
-    
     func addQuizResultForHandwriting(correct: Bool, overriden: Bool) {
         quizResultsArray.append(quizResults(id: cardArray[count].charId, correct: correct, overriden: overriden))
     }
     
-    func addQuizResultForMultipleChoice(selected: String) {
+    func addQuizResultForMultipleChoice(selected: String) -> Bool {
         var correct:Bool = false
         
         if quizMode == "Character" {
@@ -152,14 +132,30 @@ class QuizViewController: Flashcards {
         }
         
         quizResultsArray.append(quizResults(id: cardArray[count].charId, correct: correct, overriden: false))
+        
+        return correct
     }
     
     //delegate function
-//    override func selectedChoice(selected: String) {
-//        addQuizResultForMultipleChoice(selected: selected)
-////        count += 1
-//        showNextQuizCard()
-//    }
+    override func selectedChoice(selected: String, view: UIView, textView: UITextView) {
+        let correct = addQuizResultForMultipleChoice(selected: selected)
+
+        if correct {
+            quizMultipleChoiceView?.correctAnimation(view: view, textView: textView, completion: {
+                self.slideOut(childView: self.cardArray[self.count].back!, parentView: self.quizView, completion: {
+                    self.quizMultipleChoiceView?.setCorrectLabel(text: "")
+                    self.showNextCard()
+                })
+            })
+        } else {
+            quizMultipleChoiceView?.incorrectAnimation(view: view, textView: textView, completion: {
+                self.slideOut(childView: self.cardArray[self.count].back!, parentView: self.quizView, completion: {
+                    self.quizMultipleChoiceView?.setCorrectLabel(text: "")
+                    self.showNextCard()
+                })
+            })
+        }
+    }
     
     func submitQuiz() {
         DeckRequests.quizzed(results: quizResultsArray, deckId: deck?["_id"] as? String ?? "", completion: {result in
