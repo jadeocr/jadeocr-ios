@@ -2094,6 +2094,7 @@
                     <tabBarItem key="tabBarItem" title="Classes" id="RTk-0K-vg9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QqH-56-Vky">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

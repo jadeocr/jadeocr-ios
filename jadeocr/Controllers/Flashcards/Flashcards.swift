@@ -92,7 +92,9 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate {
                        delay: 0.1,
                        options: [],
                        animations: {
-                        childView.trailingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
+                        let constraint = childView.trailingAnchor.constraint(equalTo: parentView.leadingAnchor)
+                        constraint.priority = UILayoutPriority(1000)
+                        constraint.isActive = true
                         parentView.layoutIfNeeded()
                         
                        }, completion: { _ in
@@ -149,6 +151,7 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate {
         frontCardView.widthAnchor.constraint(equalTo: parentView.widthAnchor, multiplier: cardWidthMultiplier).isActive = true
         
         let centerXAnchor = NSLayoutConstraint(item: frontCardView, attribute: .centerX, relatedBy: .equal, toItem: parentView, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
+        centerXAnchor.priority = UILayoutPriority(999)
         parentView.addConstraint(centerXAnchor)
         
         let centerYAnchor = NSLayoutConstraint(item: frontCardView, attribute: .centerY, relatedBy: .equal, toItem: parentView, attribute: .centerY, multiplier: cardYAnchorMultiplier, constant: 0)
@@ -171,6 +174,7 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate {
         backCardView.widthAnchor.constraint(equalTo: parentView.widthAnchor, multiplier: cardWidthMultiplier).isActive = true
         
         let centerXAnchor = NSLayoutConstraint(item: backCardView, attribute: .centerX, relatedBy: .equal, toItem: parentView, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
+        centerXAnchor.priority = UILayoutPriority(999)
         parentView.addConstraint(centerXAnchor)
         
         let centerYAnchor = NSLayoutConstraint(item: backCardView, attribute: .centerY, relatedBy: .equal, toItem: parentView, attribute: .centerY, multiplier: cardYAnchorMultiplier, constant: 0)
