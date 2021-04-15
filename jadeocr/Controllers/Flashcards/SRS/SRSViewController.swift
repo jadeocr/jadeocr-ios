@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SRSViewController: Flashcards, SuccessDelegate, FailureDelegate, FailureVCDelegate {
+class SRSViewController: Flashcards {
     @IBOutlet var srsView: UIView!
     
     @IBOutlet weak var dontKnowButtonCenterYAnchor: NSLayoutConstraint!
@@ -15,8 +15,6 @@ class SRSViewController: Flashcards, SuccessDelegate, FailureDelegate, FailureVC
     
     var srsResultsArray:[srsResults] = []
     var sendArray: [Dictionary<String, Bool>] = [] //for summary view
-    
-    var atFinal = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +36,7 @@ class SRSViewController: Flashcards, SuccessDelegate, FailureDelegate, FailureVC
         showNextCard()
     }
     
-    //MARK: card changing
-    func nextTapped() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+    //MARK: card changing    
     @IBAction func knowButtonPressed(_ sender: Any) {
         addSRSResult(correct: true)
         
@@ -124,7 +118,7 @@ class SRSViewController: Flashcards, SuccessDelegate, FailureDelegate, FailureVC
     }
     
     //failureVCDelegate function
-    func goingBack() {
+    override func goingBack() {
         if atFinal {
             submitSRS()
         }

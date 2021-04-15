@@ -164,6 +164,50 @@ class QuizViewController: Flashcards {
         })
     }
     
+    //MARK：OCR functions
+    override func checked(correct: Bool) {
+        addQuizResultForHandwriting(correct: correct, overriden: false)
+        if !correct {
+            if self.count == self.cardArray.count - 1 {
+                atFinal = true
+            }
+            
+            handwritingView?.turnOffIWasCorrect()
+            showFailure(matched: handwritingView?.charShown.text ?? "", correct: handwritingView?.char ?? "")
+            handwritingView?.clearButtonPressed(self)
+        }
+        
+        guard !atFinal else {
+            return
+        }
+        
+        guard self.count < self.cardArray.count - 1 else {
+            self.submitQuiz()
+            return
+        }
+        
+        slideOut(childView: cardArray[count].back!, parentView: quizView, completion: {
+            self.showNextCard()
+        })
+    }
+    
+    func showFailure(matched: String, correct: String) {
+        let vc = FailureViewController()
+        vc.matched = matched
+        vc.correct = correct
+        vc.passthroughDelegate = self
+        vc.delegate = self
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    //failureVCDelegate function
+    override func goingBack() {
+        if atFinal {
+            submitQuiz()
+        }
+    }
+    
     //MARK: Card creation
     func createQuizAnswerCard() {
         quizMultipleChoiceView = multipleChoiceCard()

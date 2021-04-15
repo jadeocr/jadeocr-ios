@@ -7,7 +7,8 @@
 
 import UIKit
 
-class Flashcards: UIViewController, OCRDelegate, CardDelegate {
+class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, FailureDelegate, FailureVCDelegate  {
+    
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var countLabelCenterYAnchor: NSLayoutConstraint!
     
@@ -17,6 +18,7 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate {
     var deck:Dictionary<String, Any>?
     var front:String?
     var handwriting:Bool?
+    var atFinal = false
     
     var studentDelegate: StudentDelegate?
     
@@ -229,6 +231,16 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate {
     func selectedChoice(selected: String, view: UIView, textView: UITextView) {
         //to be overriden
     }
+    
+    //from ocr incorrect popup
+    func nextTapped() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func goingBack() {
+        //to be overriden
+    }
+    
     /*
     // MARK: - Navigation
 
