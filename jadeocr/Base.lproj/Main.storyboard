@@ -2393,7 +2393,7 @@
         <!--Flashcards-->
         <scene sceneID="2Ct-6N-wll">
             <objects>
-                <viewController id="VwF-Xl-VDE" customClass="FlashcardsViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VwF-Xl-VDE" customClass="LearnViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VKU-qz-YQu">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2402,7 +2402,7 @@
                                 <rect key="frame" x="445" y="906.5" width="32" height="30"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="nextButtonPressed:" destination="VwF-Xl-VDE" eventType="touchUpInside" id="zU9-5W-XqU"/>
+                                    <action selector="nextButtonPressed:" destination="VwF-Xl-VDE" eventType="touchUpInside" id="8cg-Xx-0Ni"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mi4-ft-y6K">
@@ -2415,7 +2415,7 @@
                                 <rect key="frame" x="290" y="906.5" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <action selector="backButtonPressed:" destination="VwF-Xl-VDE" eventType="touchUpInside" id="yt5-jI-hEP"/>
+                                    <action selector="backButtonPressed:" destination="VwF-Xl-VDE" eventType="touchUpInside" id="q4g-gZ-KlI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2435,13 +2435,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Flashcards" id="i1d-U4-U6K"/>
                     <connections>
-                        <outlet property="backButton" destination="bhw-wU-KV5" id="xKu-wI-udY"/>
-                        <outlet property="backButtonCenterYAnchor" destination="KAA-jd-b7B" id="Iet-cR-vvf"/>
+                        <outlet property="backButtonCenterYAnchor" destination="KAA-jd-b7B" id="c3D-ke-Qhj"/>
                         <outlet property="countLabel" destination="mi4-ft-y6K" id="mkd-SY-sHl"/>
                         <outlet property="countLabelCenterYAnchor" destination="DK6-5c-6kM" id="8f3-1z-4yR"/>
-                        <outlet property="learnViewContent" destination="VKU-qz-YQu" id="oVw-QX-81P"/>
-                        <outlet property="nextButton" destination="fKb-Ta-4QL" id="RcX-8f-6U2"/>
-                        <outlet property="nextButtonCenterYAnchor" destination="DEd-fL-oX7" id="hCt-SB-b3t"/>
+                        <outlet property="learnView" destination="VKU-qz-YQu" id="9N0-HS-0Zv"/>
+                        <outlet property="nextButtonCenterYAnchor" destination="DEd-fL-oX7" id="dPh-z0-SSL"/>
                         <segue destination="upu-KK-Q2u" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="3Pa-gX-8U7"/>
                         <segue destination="upu-KK-Q2u" kind="unwind" identifier="unwindToStudentView" unwindAction="unwindToStudentView:" id="lhI-6F-kF4"/>
                         <segue destination="ydE-4W-NBP" kind="show" identifier="segueToSummary" id="DWT-40-fxB"/>
@@ -2454,7 +2452,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pM4-89-xYl"/>
+        <segue reference="DWT-40-fxB"/>
         <segue reference="KGA-Dm-oc9"/>
         <segue reference="Isa-gX-rWe"/>
     </inferredMetricsTieBreakers>

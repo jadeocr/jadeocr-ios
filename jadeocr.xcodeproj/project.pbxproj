@@ -26,6 +26,7 @@
 		9D3473AD25940983008A9998 /* CardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3473AC25940983008A9998 /* CardDelegate.swift */; };
 		9D3A443825A1052C00461467 /* ClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A443725A1052C00461467 /* ClassesViewController.swift */; };
 		9D3B615625D743A10010C391 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3B615525D743A10010C391 /* InitialViewController.swift */; };
+		9D3FC9E02628F6D000AD2875 /* LearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC9DF2628F6D000AD2875 /* LearnViewController.swift */; };
 		9D4487CA259A5BD000257D67 /* multipleChoiceCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4487C9259A5BD000257D67 /* multipleChoiceCard.xib */; };
 		9D4487CD259A5EB200257D67 /* multipleChoiceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4487CC259A5EB200257D67 /* multipleChoiceCard.swift */; };
 		9D44DD3D25DC6C6D000856DA /* UserRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D44DD3C25DC6C6D000856DA /* UserRequests.swift */; };
@@ -99,6 +100,7 @@
 		9D3473AC25940983008A9998 /* CardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDelegate.swift; sourceTree = "<group>"; };
 		9D3A443725A1052C00461467 /* ClassesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesViewController.swift; sourceTree = "<group>"; };
 		9D3B615525D743A10010C391 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		9D3FC9DF2628F6D000AD2875 /* LearnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewController.swift; sourceTree = "<group>"; };
 		9D4487C9259A5BD000257D67 /* multipleChoiceCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = multipleChoiceCard.xib; sourceTree = "<group>"; };
 		9D4487CC259A5EB200257D67 /* multipleChoiceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = multipleChoiceCard.swift; sourceTree = "<group>"; };
 		9D44DD3C25DC6C6D000856DA /* UserRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequests.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				9DBF36952622540F006BC682 /* LearnOptionsViewController.swift */,
+				9D3FC9DF2628F6D000AD2875 /* LearnViewController.swift */,
 			);
 			path = Learn;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				9DDDE4F525F8544200767CCD /* DeckPageViewController.swift in Sources */,
 				9D243DF625B241120036A67B /* AssignSelectTableViewController.swift in Sources */,
 				9D5D071D2585596F003235D8 /* DeckDelegate.swift in Sources */,
+				9D3FC9E02628F6D000AD2875 /* LearnViewController.swift in Sources */,
 				9D88E62525A57570004FD1E5 /* CreateClassViewController.swift in Sources */,
 				9D8EE1BA25981FC80083A944 /* ocrView.swift in Sources */,
 				9D491C5B257C14BD00986890 /* AddDeckViewController.swift in Sources */,

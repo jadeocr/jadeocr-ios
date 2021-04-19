@@ -33,7 +33,7 @@ class SRSViewController: Flashcards {
         createCardsBasedOnRepetitions(repetitions: 1, parentView: srsView)
         countLabel.text = "0/" + String(cardArray.count)
         
-        showNextCard()
+        super.showNextCard() //bypass slide animation
     }
     
     //MARK: card changing    
@@ -45,9 +45,7 @@ class SRSViewController: Flashcards {
             return
         }
         
-        slideOut(childView: cardArray[count].front!, parentView: srsView, completion: {
-            self.showNextCard()
-        })
+        showNextCard()
     }
     
     @IBAction func dontKnowButtonPressed(_ sender: Any) {
@@ -58,8 +56,12 @@ class SRSViewController: Flashcards {
             return
         }
         
+        showNextCard()
+    }
+    
+    override func showNextCard() {
         slideOut(childView: cardArray[count].front!, parentView: srsView, completion: {
-            self.showNextCard()
+            super.showNextCard()
         })
     }
     

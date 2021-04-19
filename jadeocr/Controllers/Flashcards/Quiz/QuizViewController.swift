@@ -53,15 +53,19 @@ class QuizViewController: Flashcards {
             return
         }
         
-        showNextCard()
+        super.showNextCard() //bypass slide animation
+        flip() //bundled with bypassed slide animation
+        setMultipleChoiceOptions() //^^
     }
     
     //MARK: Card movement
     override func showNextCard() {
-        super.showNextCard()
-        flip()
-        
-        setMultipleChoiceOptions()
+        self.slideOut(childView: self.cardArray[self.count].back!, parentView: self.quizView, completion: {
+            super.showNextCard()
+            self.flip()
+            
+            self.setMultipleChoiceOptions()
+        })
     }
     
     override func flip() {
@@ -139,16 +143,11 @@ class QuizViewController: Flashcards {
 
         if correct {
             quizMultipleChoiceView?.correctAnimation(view: view, textView: textView, completion: {
-                self.slideOut(childView: self.cardArray[self.count].back!, parentView: self.quizView, completion: {
-                    self.showNextCard()
-                })
+                self.showNextCard()
             })
         } else {
             quizMultipleChoiceView?.incorrectAnimation(view: view, textView: textView, completion: {
-                self.slideOut(childView: self.cardArray[self.count].back!, parentView: self.quizView, completion: {
-                    
-                    self.showNextCard()
-                })
+                self.showNextCard()
             })
         }
     }
@@ -186,9 +185,7 @@ class QuizViewController: Flashcards {
             return
         }
         
-        slideOut(childView: cardArray[count].back!, parentView: quizView, completion: {
-            self.showNextCard()
-        })
+        showNextCard()
     }
     
     func showFailure(matched: String, correct: String) {

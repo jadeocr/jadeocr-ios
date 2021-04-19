@@ -163,14 +163,7 @@ class FlashcardsViewController: Flashcards {
         }
     }
     
-    func finishedLearn() {
-        if self.studentDelegate == nil {
-            self.performSegue(withIdentifier: "unwindToDeckInfo", sender: self)
-        } else {
-            self.performSegue(withIdentifier: "unwindToStudentView", sender: self)
-        }
-        studentDelegate?.submit(resultsForQuiz: [])
-    }
+  
     
     //MARK: OCR functions
 

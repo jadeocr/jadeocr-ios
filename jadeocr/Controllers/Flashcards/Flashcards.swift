@@ -94,15 +94,39 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
                        delay: 0.1,
                        options: [],
                        animations: {
-                        let constraint = childView.trailingAnchor.constraint(equalTo: parentView.leadingAnchor)
-                        constraint.priority = UILayoutPriority(1000)
-                        constraint.isActive = true
+                        self.swapXConstraints(parentView: parentView, childView: childView)
                         parentView.layoutIfNeeded()
                         
                        }, completion: { _ in
                         parentView.isUserInteractionEnabled = true
                         completion()
                        })
+    }
+    
+    func slideIn(childCards: card, parentView: UIView, completion: @escaping () -> Void) {
+        parentView.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.15, delay: 0.1, options: [], animations: {
+            self.swapXConstraints(parentView: parentView, childView: childCards.front!)
+            self.swapXConstraints(parentView: parentView, childView: childCards.back!)
+            parentView.layoutIfNeeded()
+        }, completion: { _ in
+            parentView.isUserInteractionEnabled = true
+            completion()
+        })
+    }
+    
+    func swapXConstraints(parentView: UIView, childView: UIView) {
+        for i in parentView.constraints {
+            if i.firstAnchor == childView.centerXAnchor {
+                i.isActive = false
+                childView.trailingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
+                break
+            } else if i.firstAnchor == childView.trailingAnchor {
+                i.isActive = false
+                childView.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
+                break
+            }
+        }
     }
     
     //MARK: OCR
@@ -152,9 +176,18 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         frontCardView.heightAnchor.constraint(equalTo: parentView.heightAnchor, multiplier: cardHeightMultiplier).isActive = true
         frontCardView.widthAnchor.constraint(equalTo: parentView.widthAnchor, multiplier: cardWidthMultiplier).isActive = true
         
-        let centerXAnchor = NSLayoutConstraint(item: frontCardView, attribute: .centerX, relatedBy: .equal, toItem: parentView, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
-        centerXAnchor.priority = UILayoutPriority(999)
-        parentView.addConstraint(centerXAnchor)
+//        let centerXAnchor = NSLayoutConstraint(item: frontCardView, attribute: .centerX, relatedBy: .equal, toItem: parentView, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
+//        centerXAnchor.priority = UILayoutPriority(999)
+//        parentView.addConstraint(centerXAnchor)
+        let centerXAnchor = frontCardView.centerXAnchor.constraint(equalTo: parentView.centerXAnchor)
+        centerXAnchor.identifier = "show"
+        centerXAnchor.isActive = true
+        
+//        let trailingXAnchor = frontCardView.trailingAnchor.constraint(equalTo: parentView.leadingAnchor)
+//        trailingXAnchor.identifier = "hide"
+//        trailingXAnchor.isActive = true
+//        trailingXAnchor.priority = UILayoutPriority(rawValue: 999)
+
         
         let centerYAnchor = NSLayoutConstraint(item: frontCardView, attribute: .centerY, relatedBy: .equal, toItem: parentView, attribute: .centerY, multiplier: cardYAnchorMultiplier, constant: 0)
         parentView.addConstraint(centerYAnchor)
@@ -175,9 +208,18 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
             .isActive = true
         backCardView.widthAnchor.constraint(equalTo: parentView.widthAnchor, multiplier: cardWidthMultiplier).isActive = true
         
-        let centerXAnchor = NSLayoutConstraint(item: backCardView, attribute: .centerX, relatedBy: .equal, toItem: parentView, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
-        centerXAnchor.priority = UILayoutPriority(999)
-        parentView.addConstraint(centerXAnchor)
+//        let centerXAnchor = NSLayoutConstraint(item: backCardView, attribute: .centerX, relatedBy: .equal, toItem: parentView, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
+//        centerXAnchor.priority = UILayoutPriority(999)
+//        parentView.addConstraint(centerXAnchor)
+        
+        let centerXAnchor = backCardView.centerXAnchor.constraint(equalTo: parentView.centerXAnchor)
+        centerXAnchor.identifier = "show"
+        centerXAnchor.isActive = true
+        
+//        let trailingXAnchor = backCardView.trailingAnchor.constraint(equalTo: parentView.leadingAnchor)
+//        trailingXAnchor.identifier = "hide"
+//        trailingXAnchor.isActive = true
+//        trailingXAnchor.priority = UILayoutPriority(rawValue: 999)
         
         let centerYAnchor = NSLayoutConstraint(item: backCardView, attribute: .centerY, relatedBy: .equal, toItem: parentView, attribute: .centerY, multiplier: cardYAnchorMultiplier, constant: 0)
         parentView.addConstraint(centerYAnchor)

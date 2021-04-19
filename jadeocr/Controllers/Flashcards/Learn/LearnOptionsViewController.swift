@@ -19,8 +19,7 @@ class LearnOptionsViewController: FlashcardOptions {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? FlashcardsViewController {
-            vc.mode = "learn"
+        if let vc = segue.destination as? LearnViewController {
             vc.handwriting = handwritingControl.isOn
             vc.front = frontControl.titleForSegment(at: frontControl.selectedSegmentIndex)
             vc.scramble = scrambleControl.isOn
