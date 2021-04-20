@@ -47,6 +47,10 @@ class LearnViewController: Flashcards {
     }
   
     @IBAction func nextButtonPressed(_ sender: Any) {
+        guard count < cardArray.count - 1 else {
+            self.finishedLearn()
+            return
+        }
         showNextCard()
     }
     

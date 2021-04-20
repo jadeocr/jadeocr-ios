@@ -66,10 +66,10 @@ class FlashcardsViewController: Flashcards {
         
         countLabel.text = "0/" + String(cardArray.count)
         
-        if scramble ?? false {
-            shuffle()
-        }
-        
+//        if scramble ?? false {
+//            shuffle()
+//        }
+//        
         showNextCard()
         setHandwritingViewChar()
         handwritingView?.turnOffIWasCorrect()
@@ -141,84 +141,84 @@ class FlashcardsViewController: Flashcards {
 //        }
 //    }
     
-    func shuffle() {
-        cardArray.shuffle()
-    }
+//    func shuffle() {
+//        cardArray.shuffle()
+//    }
     
-    @IBAction func nextButtonPressed(_ sender: Any) {
-        fromButton = true
-        pentultimate = true
-        if mode == "srs" {
-            
-        }
-        showNextCard()
-    }
+//    @IBAction func nextButtonPressed(_ sender: Any) {
+//        fromButton = true
+//        pentultimate = true
+//        if mode == "srs" {
+//
+//        }
+//        showNextCard()
+//    }
     
-    @IBAction func backButtonPressed(_ sender: Any) {
-        if mode == "srs" {
-            
-            showNextCard()
-        } else {
-            showLastCard()
-        }
-    }
-    
+//    @IBAction func backButtonPressed(_ sender: Any) {
+//        if mode == "srs" {
+//
+//            showNextCard()
+//        } else {
+//            showLastCard()
+//        }
+//    }
+//
   
     
     //MARK: OCR functions
 
     
-    override func checked(correct: Bool) {
-        fromButton = false
-        guard !final else {
-            showNextCard()
-            return
-        }
-        
-        if mode == "srs" {
-            
-        } else if mode == "quiz" {
+//    override func checked(correct: Bool) {
+//        fromButton = false
+//        guard !final else {
+//            showNextCard()
+//            return
+//        }
+//
+//        if mode == "srs" {
+//
+//        } else if mode == "quiz" {
 //            addQuizResultForHandwriting(correct: correct, overriden: false)
-            showNextQuizCard()
-        }
-        
-        if mode != "learn" {
-            if !correct {
-                handwritingView?.turnOnIWasCorrect()
-            } else {
-                handwritingView?.turnOffIWasCorrect()
-            }
-        }        
-        
-        if pentultimate && mode != "learn" {
-            final = true
-            handwritingView?.changeCheckButton()
-        }
-        
-        if count == cardArray.count - 1 {
-            pentultimate = true
-        }
-    }
+//            showNextQuizCard()
+//        }
+//
+//        if mode != "learn" {
+//            if !correct {
+//                handwritingView?.turnOnIWasCorrect()
+//            } else {
+//                handwritingView?.turnOffIWasCorrect()
+//            }
+//        }
+//
+//        if pentultimate && mode != "learn" {
+//            final = true
+//            handwritingView?.changeCheckButton()
+//        }
+//
+//        if count == cardArray.count - 1 {
+//            pentultimate = true
+//        }
+//    }
     
-    override func override() {
-        if count < cardArray.count - 1 {
-            count -= 1 //So addResult functions grab the correct charId
-        }
-        
-        if mode == "srs" {
-            
-        } else if mode == "quiz" {
-            quizResultsArray.removeLast()
-//            addQuizResultForHandwriting(correct: true, overriden: true)
-            
-        }
-        
-        if count < cardArray.count - 1 {
-            count += 1
-        }
-        handwritingView?.setCharShown(text: "Correct!")
-        handwritingView?.turnOffIWasCorrect()
-    }
+//    override func override() {
+//        if count < cardArray.count - 1 {
+//            count -= 1 //So addResult functions grab the correct charId
+//        }
+//
+//        if mode == "srs" {
+//
+//        } else if mode == "quiz" {
+//            quizResultsArray.removeLast()
+////            addQuizResultForHandwriting(correct: true, overriden: true)
+//
+//        }
+//
+//        if count < cardArray.count - 1 {
+//            count += 1
+//        }
+//        handwritingView?.setCharShown(text: "Correct!")
+//        handwritingView?.turnOffIWasCorrect()
+//    }
     
     //MARK: SRS functions
 //    func changeButtonTextToSRS() {
