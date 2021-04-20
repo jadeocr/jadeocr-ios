@@ -51,11 +51,22 @@ class LearnViewController: Flashcards {
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
-        guard count > 0 else {
-            return
-        }
-        showLastCard()
-        slideIn(childCards: cardArray[count], parentView: learnView, completion: {})
+//        guard count > 0 else {
+//            return
+//        }
+//        showLastCard()
+//        slideIn(childCards: cardArray[count], parentView: learnView, completion: {})
+        let view = UIView()
+        view.frame = view.bounds
+        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.systemRed
+        
+        learnView.addSubview(view)
+        view.heightAnchor.constraint(equalTo: learnView.heightAnchor, multiplier: 0.5).isActive = true
+        view.widthAnchor.constraint(equalTo: learnView.widthAnchor, multiplier: 0.5).isActive = true
+        view.centerXAnchor.constraint(equalTo: learnView.centerXAnchor).isActive = true
+        view.centerYAnchor.constraint(equalTo: learnView.centerYAnchor).isActive = true
     }
     
     /*

@@ -219,7 +219,23 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
     }
     
     func createCard(front: String, backFirst: String, backSecond: String, char: String, pinyin: String, definition: String, charId: String, parentView: UIView) {
-        cardArray.append(card(front: createFrontCard(title: front, parentView: parentView), back: createBackCard(first: backFirst, second: backSecond, parentView: parentView), char: char, pinyin: pinyin, definition: definition, charId: charId))
+        let view = UIView()
+        view.frame = view.bounds
+        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.systemRed
+//        view.clipsToBounds = true
+//        view.layer.cornerRadius = 10
+        
+        parentView.addSubview(view)
+        view.heightAnchor.constraint(equalTo: parentView.heightAnchor, multiplier: cardHeightMultiplier).isActive = true
+        view.widthAnchor.constraint(equalTo: parentView.widthAnchor, multiplier: cardWidthMultiplier).isActive = true
+        view.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
+        let centerYAnchor = NSLayoutConstraint(item: view, attribute: .centerY, relatedBy: .equal, toItem: parentView, attribute: .centerY, multiplier: cardYAnchorMultiplier, constant: 0)
+        parentView.addConstraint(centerYAnchor)
+        view.isHidden = true
+        
+        cardArray.append(card(front: createFrontCard(title: front, parentView: parentView), back: createBackCard(first: backFirst, second: backSecond, parentView: parentView), view: view, char: char, pinyin: pinyin, definition: definition, charId: charId))
     }
     
     func createCardsBasedOnRepetitions(repetitions: Int, parentView: UIView) {
@@ -250,14 +266,48 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
     
     //MARK: Card delegate functions
     func flip() {
+//        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
         
-        if cardArray[count].front!.isHidden {
-            cardArray[count].front?.isHidden = false
-            cardArray[count].back?.isHidden = true
-        } else {
-            cardArray[count].front?.isHidden = true
-            cardArray[count].back?.isHidden = false
-        }
+//        if !cardArray[count].front!.isHidden {
+//            UIView.transition(with: cardArray[count].front!, duration: 1, options: transitionOptions, animations: {
+//                self.cardArray[self.count].front!.isHidden = true
+//            })
+//
+//            UIView.transition(with: cardArray[count].back!, duration: 1, options: transitionOptions, animations: {
+//                self.cardArray[self.count].back!.isHidden = false
+//            })
+//        } else {
+//            UIView.transition(with: cardArray[count].back!, duration: 1, options: transitionOptions, animations: {
+//                self.cardArray[self.count].back!.isHidden = true
+//            })
+//
+//            UIView.transition(with: cardArray[count].front!, duration: 1, options: transitionOptions, animations: {
+//                self.cardArray[self.count].front!.isHidden = false
+//            })
+//        }
+        
+        
+//        if cardArray[count].front!.isHidden {
+//            UIView.animate(withDuration: 1, animations: {
+//                self.cardArray[self.count].front?.isHidden = false
+//                self.cardArray[self.count].back?.isHidden = true
+//            }, completion: { _ in
+//                UIView.transition(with: self.cardArray[self.count].front!, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+//            })
+
+//
+//            DispatchQueue.main.async {
+//                UIView.transition(with: self.cardArray[self.count].front!, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+//            }
+//        } else {
+            
+//            DispatchQueue.main.async {
+//                self.cardArray[self.count].front?.isHidden = true
+//                self.cardArray[self.count].back?.isHidden = false
+//                UIView.transition(with: self.cardArray[self.count].back!, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
+//            }
+            
+//        }
     }
     
     func selectedChoice(selected: String, view: UIView, textView: UITextView) {
