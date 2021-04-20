@@ -66,29 +66,6 @@ class StudentViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         tableView.deselectRow(at: selectedIndexPath, animated: true)
-        if let vc = segue.destination as? FlashcardsViewController {
-            if decks[deckIndex]["mode"] as? String ?? "" == "learn" {
-                vc.mode = "learn"
-                vc.handwriting = decks[deckIndex]["handwriting"] as? Bool ?? false
-                vc.front = (decks[deckIndex]["front"] as? String ?? "").capitalizingFirstLetter()
-                vc.scramble = decks[deckIndex]["handwriting"] as? Bool ?? false
-                vc.repetitions = decks[deckIndex]["repetitions"] as? Int ?? 1
-            } else if decks[deckIndex]["mode"] as? String ?? "" == "srs" {
-                vc.mode = "srs"
-                vc.handwriting = decks[deckIndex]["handwriting"] as? Bool ?? false
-                vc.front = (decks[deckIndex]["front"] as? String ?? "").capitalizingFirstLetter()
-            } else if decks[deckIndex]["mode"] as? String ?? "" == "quiz" {
-                vc.mode = "quiz"
-                vc.quizMode = (decks[deckIndex]["front"] as? String ?? "").capitalizingFirstLetter()
-                if vc.quizMode == "Handwriting" {
-                    vc.handwriting = true
-                }
-                vc.scramble = decks[deckIndex]["handwriting"] as? Bool ?? false
-            }
-            
-            vc.deck = deck
-            vc.studentDelegate = self
-        }
         if let vc = segue.destination as? SRSViewController {
             vc.handwriting = decks[deckIndex]["handwriting"] as? Bool ?? false
             vc.front = (decks[deckIndex]["front"] as? String ?? "").capitalizingFirstLetter()

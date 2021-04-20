@@ -56,7 +56,6 @@
 		9D9052C72596B86000D022DF /* backCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9052C62596B86000D022DF /* backCard.swift */; };
 		9DA40A482592E1610019E814 /* frontCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DA40A472592E1610019E814 /* frontCard.xib */; };
 		9DA40A4B2592E2A00019E814 /* frontCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA40A4A2592E2A00019E814 /* frontCard.swift */; };
-		9DA40A4E259322320019E814 /* FlashcardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA40A4D259322320019E814 /* FlashcardsViewController.swift */; };
 		9DA8E7672599448A00B05016 /* OCRDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8E7662599448A00B05016 /* OCRDelegate.swift */; };
 		9DA8E76D2599530600B05016 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8E76C2599530600B05016 /* Structs.swift */; };
 		9DAA85E02611207A00948D3D /* DeckPageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA85DF2611207A00948D3D /* DeckPageDelegate.swift */; };
@@ -132,7 +131,6 @@
 		9D9052C62596B86000D022DF /* backCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = backCard.swift; sourceTree = "<group>"; };
 		9DA40A472592E1610019E814 /* frontCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = frontCard.xib; sourceTree = "<group>"; };
 		9DA40A4A2592E2A00019E814 /* frontCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frontCard.swift; sourceTree = "<group>"; };
-		9DA40A4D259322320019E814 /* FlashcardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsViewController.swift; sourceTree = "<group>"; };
 		9DA8E7662599448A00B05016 /* OCRDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRDelegate.swift; sourceTree = "<group>"; };
 		9DA8E76C2599530600B05016 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		9DAA85DF2611207A00948D3D /* DeckPageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckPageDelegate.swift; sourceTree = "<group>"; };
@@ -225,7 +223,6 @@
 				9D69BC6326224A82000F689F /* Quiz */,
 				9D69BC6426224A9C000F689F /* Learn */,
 				9DBF369F26228E8A006BC682 /* Results */,
-				9DA40A4D259322320019E814 /* FlashcardsViewController.swift */,
 				9DFA4E2B259D339100D1BFE5 /* SummaryViewController.swift */,
 				9D69BC6826224C6A000F689F /* FlashcardOptions.swift */,
 				9DBF369C26225960006BC682 /* Flashcards.swift */,
@@ -537,7 +534,6 @@
 				9D33A2A125DA3A0D0044348C /* StudentRequests.swift in Sources */,
 				9DAA85E02611207A00948D3D /* DeckPageDelegate.swift in Sources */,
 				9D5D0719258552A6003235D8 /* deckControlPanel.swift in Sources */,
-				9DA40A4E259322320019E814 /* FlashcardsViewController.swift in Sources */,
 				9DBF3693262252D4006BC682 /* QuizOptionsViewController.swift in Sources */,
 				9DBF369D26225960006BC682 /* Flashcards.swift in Sources */,
 				9D330DDF262519CD00DF5E94 /* FailureViewController.swift in Sources */,
