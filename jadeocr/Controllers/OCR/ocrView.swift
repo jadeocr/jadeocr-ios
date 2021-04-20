@@ -68,7 +68,9 @@ class ocrView: UIView {
             self.delegate?.checked(correct: true) //Value doesn't matter
             return
         }
-        ocrViewContent.isUserInteractionEnabled = false
+        if ocrController.getSendArray().count != 0 { //wont unlock till it gets results, wont get results if send array is empty
+            ocrViewContent.isUserInteractionEnabled = false
+        }
         CharRequests.OCR(sendArray: ocrController.getSendArray() , completion: {results in
             DispatchQueue.main.async {
                 var charString = ""

@@ -89,6 +89,27 @@ class StudentViewController: UIViewController {
             vc.deck = deck
             vc.studentDelegate = self
         }
+        if let vc = segue.destination as? SRSViewController {
+            vc.handwriting = decks[deckIndex]["handwriting"] as? Bool ?? false
+            vc.front = (decks[deckIndex]["front"] as? String ?? "").capitalizingFirstLetter()
+            vc.deck = deck
+            vc.studentDelegate = self
+        } else if let vc = segue.destination as? QuizViewController {
+            vc.quizMode = (decks[deckIndex]["front"] as? String ?? "").capitalizingFirstLetter()
+            if vc.quizMode == "Handwriting" {
+                vc.handwriting = true
+            }
+            vc.scramble = decks[deckIndex]["handwriting"] as? Bool ?? false
+            vc.deck = deck
+            vc.studentDelegate = self
+        } else if let vc = segue.destination as? LearnViewController {
+            vc.handwriting = decks[deckIndex]["handwriting"] as? Bool ?? false
+            vc.front = (decks[deckIndex]["front"] as? String ?? "").capitalizingFirstLetter()
+            vc.scramble = decks[deckIndex]["handwriting"] as? Bool ?? false
+            vc.repetitions = decks[deckIndex]["repetitions"] as? Int ?? 1
+            vc.deck = deck
+            vc.studentDelegate = self
+        }
     }
     
     @IBAction func unwindToStudentView(_ unwindSegue: UIStoryboardSegue) {}
@@ -115,15 +136,23 @@ extension StudentViewController: UITableViewDelegate {
                         "characters": results
                     ]
                     self.deckIndex = indexPath[1]
-                    self.performSegue(withIdentifier: "toFlashcards", sender: self)
+                    self.performSegue(withIdentifier: "toSRS", sender: self)
                 }
             })
-        } else {
+        } else if decks[indexPath[1]]["mode"] as? String ?? "" == "learn" {
             DeckRequests.getOneDeck(deckId: decks[indexPath[1]]["deckId"] as? String ?? "", completion: {result in
                 DispatchQueue.main.async {
                     self.deck = result
                     self.deckIndex = indexPath[1]
-                    self.performSegue(withIdentifier: "toFlashcards", sender: self)
+                    self.performSegue(withIdentifier: "toLearn", sender: self)
+                }
+            })
+        } else if decks[indexPath[1]]["mode"] as? String ?? "" == "quiz" {
+            DeckRequests.getOneDeck(deckId: decks[indexPath[1]]["deckId"] as? String ?? "", completion: {result in
+                DispatchQueue.main.async {
+                    self.deck = result
+                    self.deckIndex = indexPath[1]
+                    self.performSegue(withIdentifier: "toQuiz", sender: self)
                 }
             })
         }

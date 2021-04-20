@@ -534,12 +534,14 @@
                         <outlet property="descriptionLabel" destination="EHJ-2V-51Z" id="bjb-2i-mvg"/>
                         <outlet property="tableView" destination="eRq-Jl-lBd" id="pAJ-dh-TaT"/>
                         <outlet property="teacherLabel" destination="mGS-wV-v1q" id="q7E-pq-2oc"/>
-                        <segue destination="g6b-bv-N3Z" kind="show" identifier="toFlashcards" id="QF0-FK-KpW"/>
+                        <segue destination="g6b-bv-N3Z" kind="show" identifier="toQuiz" id="QF0-FK-KpW"/>
+                        <segue destination="VwF-Xl-VDE" kind="show" identifier="toLearn" id="8iK-DZ-jBx"/>
+                        <segue destination="syW-iS-wY1" kind="show" identifier="toSRS" id="zD0-Mw-HOR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WsS-TM-ykP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3063" y="2353"/>
+            <point key="canvasLocation" x="2771" y="1705"/>
         </scene>
         <!--Join Class View Controller-->
         <scene sceneID="DPw-GE-zj9">
@@ -2390,7 +2392,7 @@
             </objects>
             <point key="canvasLocation" x="3750.78125" y="-1214.0625"/>
         </scene>
-        <!--Flashcards-->
+        <!--Learn-->
         <scene sceneID="2Ct-6N-wll">
             <objects>
                 <viewController id="VwF-Xl-VDE" customClass="LearnViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
@@ -2433,7 +2435,7 @@
                             <constraint firstItem="fKb-Ta-4QL" firstAttribute="centerY" secondItem="BLB-rp-HUh" secondAttribute="centerY" multiplier="0.9" priority="999" id="h8N-B1-315" userLabel="next center y secondary"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Flashcards" id="i1d-U4-U6K"/>
+                    <navigationItem key="navigationItem" title="Learn" id="i1d-U4-U6K"/>
                     <connections>
                         <outlet property="backButtonCenterYAnchor" destination="KAA-jd-b7B" id="c3D-ke-Qhj"/>
                         <outlet property="countLabel" destination="mi4-ft-y6K" id="mkd-SY-sHl"/>
@@ -2452,8 +2454,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="8iK-DZ-jBx"/>
+        <segue reference="zD0-Mw-HOR"/>
         <segue reference="DWT-40-fxB"/>
-        <segue reference="KGA-Dm-oc9"/>
+        <segue reference="QF0-FK-KpW"/>
         <segue reference="Isa-gX-rWe"/>
     </inferredMetricsTieBreakers>
     <resources>
