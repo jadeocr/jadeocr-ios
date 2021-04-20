@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct userStruct {
     var id: String
@@ -61,6 +62,7 @@ struct stats: Decodable {
 struct card {
     var front: frontCard?
     var back: backCard?
+    var view: UIView
     var char: String
     var pinyin: String
     var definition: String

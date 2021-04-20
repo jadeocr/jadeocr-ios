@@ -183,12 +183,6 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         centerXAnchor.identifier = "show"
         centerXAnchor.isActive = true
         
-//        let trailingXAnchor = frontCardView.trailingAnchor.constraint(equalTo: parentView.leadingAnchor)
-//        trailingXAnchor.identifier = "hide"
-//        trailingXAnchor.isActive = true
-//        trailingXAnchor.priority = UILayoutPriority(rawValue: 999)
-
-        
         let centerYAnchor = NSLayoutConstraint(item: frontCardView, attribute: .centerY, relatedBy: .equal, toItem: parentView, attribute: .centerY, multiplier: cardYAnchorMultiplier, constant: 0)
         parentView.addConstraint(centerYAnchor)
 
@@ -215,11 +209,6 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         let centerXAnchor = backCardView.centerXAnchor.constraint(equalTo: parentView.centerXAnchor)
         centerXAnchor.identifier = "show"
         centerXAnchor.isActive = true
-        
-//        let trailingXAnchor = backCardView.trailingAnchor.constraint(equalTo: parentView.leadingAnchor)
-//        trailingXAnchor.identifier = "hide"
-//        trailingXAnchor.isActive = true
-//        trailingXAnchor.priority = UILayoutPriority(rawValue: 999)
         
         let centerYAnchor = NSLayoutConstraint(item: backCardView, attribute: .centerY, relatedBy: .equal, toItem: parentView, attribute: .centerY, multiplier: cardYAnchorMultiplier, constant: 0)
         parentView.addConstraint(centerYAnchor)
@@ -261,6 +250,7 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
     
     //MARK: Card delegate functions
     func flip() {
+        
         if cardArray[count].front!.isHidden {
             cardArray[count].front?.isHidden = false
             cardArray[count].back?.isHidden = true

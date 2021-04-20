@@ -32,6 +32,10 @@ class LearnViewController: Flashcards {
         createCardsBasedOnRepetitions(repetitions: repetitions ?? 0, parentView: learnView)
         countLabel.text = "0/" + String(cardArray.count)
         
+        if scramble ?? false {
+            cardArray.shuffle()
+        }
+        
         super.showNextCard() //bypass sliding animation
     }
     
@@ -51,8 +55,7 @@ class LearnViewController: Flashcards {
             return
         }
         showLastCard()
-        slideIn(childCards: cardArray[count], parentView: learnView, completion: {
-        })
+        slideIn(childCards: cardArray[count], parentView: learnView, completion: {})
     }
     
     /*
