@@ -55,20 +55,24 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
     
     func showNextCard() {
         count += 1
-        if count == 0 {
-            cardArray[count].front?.isHidden = false
-        } else {
-            cardArray[count - 1].front?.isHidden = true
-            cardArray[count - 1].back?.isHidden = true
-            cardArray[count].front?.isHidden = false
-            
-            cardArray[count].front?.alpha = 0
-            UIView.animate(withDuration: 0.3, delay: 0, options: [
-                .curveEaseIn
-            ], animations: {
-                self.cardArray[self.count].front?.alpha = 1
-            }, completion: nil)
+        cardArray[count].view.isHidden = false
+        if count != 0 {
+            cardArray[count - 1].view.isHidden = true
         }
+//        if count == 0 {
+//            cardArray[count].front?.isHidden = false
+//        } else {
+//            cardArray[count - 1].front?.isHidden = true
+//            cardArray[count - 1].back?.isHidden = true
+//            cardArray[count].front?.isHidden = false
+            
+//            cardArray[count].front?.alpha = 0
+//            UIView.animate(withDuration: 0.3, delay: 0, options: [
+//                .curveEaseIn
+//            ], animations: {
+//                self.cardArray[self.count].front?.alpha = 1
+//            }, completion: nil)
+//        }
         
         countLabel.text = String(count + 1) + "/" + String(cardArray.count)
         setHandwritingViewChar()
@@ -80,9 +84,12 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         }
         
         count -= 1
-        cardArray[count + 1].front?.isHidden = true
-        cardArray[count + 1].back?.isHidden = true
-        cardArray[count].front?.isHidden = false
+        
+        cardArray[count].view.isHidden = false
+        cardArray[count + 1].view.isHidden = true
+//        cardArray[count + 1].front?.isHidden = true
+//        cardArray[count + 1].back?.isHidden = true
+//        cardArray[count].front?.isHidden = false
         
         countLabel.text = String(count + 1) + "/" + String(cardArray.count)
         setHandwritingViewChar()
@@ -103,11 +110,10 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
                        })
     }
     
-    func slideIn(childCards: card, parentView: UIView, completion: @escaping () -> Void) {
+    func slideIn(childView: UIView, parentView: UIView, completion: @escaping () -> Void) {
         parentView.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.15, delay: 0.1, options: [], animations: {
-            self.swapXConstraints(parentView: parentView, childView: childCards.front!)
-            self.swapXConstraints(parentView: parentView, childView: childCards.back!)
+            self.swapXConstraints(parentView: parentView, childView: childView)
             parentView.layoutIfNeeded()
         }, completion: { _ in
             parentView.isUserInteractionEnabled = true
@@ -173,8 +179,8 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         frontCardView.delegate = self
         frontCardView.translatesAutoresizingMaskIntoConstraints = false
         
-        frontCardView.heightAnchor.constraint(equalTo: parentView.heightAnchor, multiplier: cardHeightMultiplier).isActive = true
-        frontCardView.widthAnchor.constraint(equalTo: parentView.widthAnchor, multiplier: cardWidthMultiplier).isActive = true
+        frontCardView.heightAnchor.constraint(equalTo: parentView.heightAnchor, multiplier: 1).isActive = true
+        frontCardView.widthAnchor.constraint(equalTo: parentView.widthAnchor, multiplier: 1).isActive = true
         
 //        let centerXAnchor = NSLayoutConstraint(item: frontCardView, attribute: .centerX, relatedBy: .equal, toItem: parentView, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
 //        centerXAnchor.priority = UILayoutPriority(999)
@@ -183,10 +189,10 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         centerXAnchor.identifier = "show"
         centerXAnchor.isActive = true
         
-        let centerYAnchor = NSLayoutConstraint(item: frontCardView, attribute: .centerY, relatedBy: .equal, toItem: parentView, attribute: .centerY, multiplier: cardYAnchorMultiplier, constant: 0)
+        let centerYAnchor = NSLayoutConstraint(item: frontCardView, attribute: .centerY, relatedBy: .equal, toItem: parentView, attribute: .centerY, multiplier: 1, constant: 0)
         parentView.addConstraint(centerYAnchor)
 
-        frontCardView.isHidden = true
+        frontCardView.isHidden = false
         
         return frontCardView
     }
@@ -198,9 +204,9 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         backCardView.delegate = self
         backCardView.translatesAutoresizingMaskIntoConstraints = false
         
-        backCardView.heightAnchor.constraint(equalTo: parentView.heightAnchor, multiplier: cardHeightMultiplier)
+        backCardView.heightAnchor.constraint(equalTo: parentView.heightAnchor, multiplier: 1)
             .isActive = true
-        backCardView.widthAnchor.constraint(equalTo: parentView.widthAnchor, multiplier: cardWidthMultiplier).isActive = true
+        backCardView.widthAnchor.constraint(equalTo: parentView.widthAnchor, multiplier: 1).isActive = true
         
 //        let centerXAnchor = NSLayoutConstraint(item: backCardView, attribute: .centerX, relatedBy: .equal, toItem: parentView, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
 //        centerXAnchor.priority = UILayoutPriority(999)
@@ -210,7 +216,7 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         centerXAnchor.identifier = "show"
         centerXAnchor.isActive = true
         
-        let centerYAnchor = NSLayoutConstraint(item: backCardView, attribute: .centerY, relatedBy: .equal, toItem: parentView, attribute: .centerY, multiplier: cardYAnchorMultiplier, constant: 0)
+        let centerYAnchor = NSLayoutConstraint(item: backCardView, attribute: .centerY, relatedBy: .equal, toItem: parentView, attribute: .centerY, multiplier: 1, constant: 0)
         parentView.addConstraint(centerYAnchor)
         
         backCardView.isHidden = true
@@ -224,8 +230,8 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.systemRed
-//        view.clipsToBounds = true
-//        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
         
         parentView.addSubview(view)
         view.heightAnchor.constraint(equalTo: parentView.heightAnchor, multiplier: cardHeightMultiplier).isActive = true
@@ -235,7 +241,7 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         parentView.addConstraint(centerYAnchor)
         view.isHidden = true
         
-        cardArray.append(card(front: createFrontCard(title: front, parentView: parentView), back: createBackCard(first: backFirst, second: backSecond, parentView: parentView), view: view, char: char, pinyin: pinyin, definition: definition, charId: charId))
+        cardArray.append(card(front: createFrontCard(title: front, parentView: view), back: createBackCard(first: backFirst, second: backSecond, parentView: view), view: view, char: char, pinyin: pinyin, definition: definition, charId: charId))
     }
     
     func createCardsBasedOnRepetitions(repetitions: Int, parentView: UIView) {
@@ -266,48 +272,13 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
     
     //MARK: Card delegate functions
     func flip() {
-//        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
+        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
         
-//        if !cardArray[count].front!.isHidden {
-//            UIView.transition(with: cardArray[count].front!, duration: 1, options: transitionOptions, animations: {
-//                self.cardArray[self.count].front!.isHidden = true
-//            })
-//
-//            UIView.transition(with: cardArray[count].back!, duration: 1, options: transitionOptions, animations: {
-//                self.cardArray[self.count].back!.isHidden = false
-//            })
-//        } else {
-//            UIView.transition(with: cardArray[count].back!, duration: 1, options: transitionOptions, animations: {
-//                self.cardArray[self.count].back!.isHidden = true
-//            })
-//
-//            UIView.transition(with: cardArray[count].front!, duration: 1, options: transitionOptions, animations: {
-//                self.cardArray[self.count].front!.isHidden = false
-//            })
-//        }
-        
-        
-//        if cardArray[count].front!.isHidden {
-//            UIView.animate(withDuration: 1, animations: {
-//                self.cardArray[self.count].front?.isHidden = false
-//                self.cardArray[self.count].back?.isHidden = true
-//            }, completion: { _ in
-//                UIView.transition(with: self.cardArray[self.count].front!, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-//            })
-
-//
-//            DispatchQueue.main.async {
-//                UIView.transition(with: self.cardArray[self.count].front!, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-//            }
-//        } else {
-            
-//            DispatchQueue.main.async {
-//                self.cardArray[self.count].front?.isHidden = true
-//                self.cardArray[self.count].back?.isHidden = false
-//                UIView.transition(with: self.cardArray[self.count].back!, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
-//            }
-            
-//        }
+        if !cardArray[count].front!.isHidden { //front being shown
+            UIView.transition(from: cardArray[count].front!, to: cardArray[count].back!, duration: 0.3, options: transitionOptions, completion: nil)
+        } else {
+            UIView.transition(from: cardArray[count].back!, to: cardArray[count].front!, duration: 0.3, options: transitionOptions, completion: nil)
+        }
     }
     
     func selectedChoice(selected: String, view: UIView, textView: UITextView) {

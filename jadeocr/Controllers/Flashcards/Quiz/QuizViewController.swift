@@ -60,7 +60,7 @@ class QuizViewController: Flashcards {
     
     //MARK: Card movement
     override func showNextCard() {
-        self.slideOut(childView: self.cardArray[self.count].back!, parentView: self.quizView, completion: {
+        self.slideOut(childView: self.cardArray[self.count].view, parentView: self.quizView, completion: {
             super.showNextCard()
             self.flip()
             

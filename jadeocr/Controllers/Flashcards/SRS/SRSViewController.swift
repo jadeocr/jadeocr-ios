@@ -60,7 +60,7 @@ class SRSViewController: Flashcards {
     }
     
     override func showNextCard() {
-        slideOut(childView: cardArray[count].front!, parentView: srsView, completion: {
+        slideOut(childView: cardArray[count].view, parentView: srsView, completion: {
             super.showNextCard()
         })
     }
