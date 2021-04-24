@@ -1,59 +1,32 @@
 //
-//  DecksViewController.swift
+//  PublicViewController.swift
 //  jadeocr
 //
-//  Created by Jeremy Tow on 3/13/21.
+//  Created by Jeremy Tow on 4/24/21.
 //
 
 import UIKit
 
-class DecksViewController: UIViewController {
+class PublicViewController: UIViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var decks: [Dictionary<String, Any>]?
     var deckId: String = ""
     
-    let refreshControl = UIRefreshControl()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.dataSource = self
+        searchBar.delegate = self
+        
         collectionView.delegate = self
-        
-        self.collectionView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
-        refreshControl.tintColor = UIColor.systemGray5
-        
-        updateDecks()
-    }
-    
-    @objc func refreshTableView() {
-        updateDecks()
+        collectionView.dataSource = self
     }
     
     override func viewWillLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.collectionViewLayout.invalidateLayout()
-    }
-    
-    func updateDecks() {
-        DeckRequests.getAllDecks(completion: {result in
-            DispatchQueue.main.async(execute: {
-                if result.count != 0 {
-                    if let passed = result[0] as? Bool {
-                        if !passed {
-                            self.decks = []
-                        }
-                    } else {
-                        self.decks = result as? [Dictionary<String, Any>]
-                    }
-                    self.collectionView.reloadData()
-                }
-                self.refreshControl.endRefreshing()
-            })
-        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -63,7 +36,19 @@ class DecksViewController: UIViewController {
     }
 }
 
-extension DecksViewController: UICollectionViewDelegate {
+extension PublicViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        DeckRequests.searchPublicDecks(query: searchBar.text ?? "", completion: {results in
+            DispatchQueue.main.async {
+                self.decks = results
+                print(results)
+                self.collectionView.reloadData()
+            }
+        })
+    }
+}
+
+extension PublicViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let deck = decks?[indexPath[1]] {
             deckId = deck["deckId"] as? String ?? ""
@@ -72,7 +57,7 @@ extension DecksViewController: UICollectionViewDelegate {
     }
 }
 
-extension DecksViewController: UICollectionViewDataSource {
+extension PublicViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return decks?.count ?? 0
     }
@@ -98,7 +83,7 @@ extension DecksViewController: UICollectionViewDataSource {
     }
 }
 
-extension DecksViewController: UICollectionViewDelegateFlowLayout {
+extension PublicViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.frame.size.width - 30) / 2, height: 100)
     }

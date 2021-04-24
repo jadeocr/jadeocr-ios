@@ -76,6 +76,7 @@
 		9DDDE4F525F8544200767CCD /* DeckPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDDE4F425F8544200767CCD /* DeckPageViewController.swift */; };
 		9DEA84B025B64C7F00FB15BC /* DetailedResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA84AF25B64C7F00FB15BC /* DetailedResultsViewController.swift */; };
 		9DEC4EEE255099FA0027763F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC4EED255099FA0027763F /* SignInViewController.swift */; };
+		9DEEFE1726348AE7005D4361 /* PublicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEEFE1626348AE7005D4361 /* PublicViewController.swift */; };
 		9DF8870B2550A059000A777A /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF8870A2550A059000A777A /* GlobalData.swift */; };
 		9DFA4E2C259D339100D1BFE5 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA4E2B259D339100D1BFE5 /* SummaryViewController.swift */; };
 /* End PBXBuildFile section */
@@ -152,6 +153,7 @@
 		9DDDE4F425F8544200767CCD /* DeckPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckPageViewController.swift; sourceTree = "<group>"; };
 		9DEA84AF25B64C7F00FB15BC /* DetailedResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedResultsViewController.swift; sourceTree = "<group>"; };
 		9DEC4EED255099FA0027763F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		9DEEFE1626348AE7005D4361 /* PublicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicViewController.swift; sourceTree = "<group>"; };
 		9DF8870A2550A059000A777A /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		9DFA4E2B259D339100D1BFE5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,6 +186,7 @@
 				9D0A1B1725FD98900021BEB4 /* DecksViewController.swift */,
 				9D0818EF26123682006A70E1 /* PublicDecksViewController.swift */,
 				9D41BFCB2632314500D4BDB4 /* DeckCell.swift */,
+				9DEEFE1626348AE7005D4361 /* PublicViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				9D2FF29625AE8921009B4CAD /* StudentViewController.swift in Sources */,
 				9DA8E76D2599530600B05016 /* Structs.swift in Sources */,
 				9DFA4E2C259D339100D1BFE5 /* SummaryViewController.swift in Sources */,
+				9DEEFE1726348AE7005D4361 /* PublicViewController.swift in Sources */,
 				9D3B615625D743A10010C391 /* InitialViewController.swift in Sources */,
 				9DDDE4F525F8544200767CCD /* DeckPageViewController.swift in Sources */,
 				9D243DF625B241120036A67B /* AssignSelectTableViewController.swift in Sources */,
