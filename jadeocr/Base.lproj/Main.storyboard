@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -788,32 +789,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggl-bU-U2v">
-                                <rect key="frame" x="0.0" y="102.5" width="768" height="870.5"/>
-                                <connections>
-                                    <segue destination="ddX-mw-7uK" kind="embed" id="61v-CW-tqt"/>
-                                </connections>
-                            </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XbN-pH-cef">
-                                <rect key="frame" x="326.5" y="66.5" width="115" height="32"/>
-                                <segments>
-                                    <segment title="All"/>
-                                    <segment title="Public"/>
-                                </segments>
-                                <connections>
-                                    <action selector="pageSwitched:" destination="o3X-vD-2kd" eventType="valueChanged" id="iXD-Jc-9vn"/>
-                                </connections>
-                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uWx-pj-gcS">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <color key="backgroundColor" red="0.17950707669999999" green="0.2030345798" blue="0.2528765798" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nQJ-gQ-x6v">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="ZMf-UE-jzo" customClass="DeckCell" customModule="jadeocr" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="329" height="292"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Dl1-6M-x7L">
+                                            <rect key="frame" x="0.0" y="0.0" width="329" height="292"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCx-mB-Wp3">
+                                                    <rect key="frame" x="33" y="51.5" width="66" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xik-g4-wxh">
+                                                    <rect key="frame" x="33" y="204.5" width="54" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.36307543520000002" green="0.50254195930000001" blue="0.681174159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="Xik-g4-wxh" firstAttribute="leading" secondItem="Dl1-6M-x7L" secondAttribute="centerX" multiplier="0.2" id="Ac5-Al-W5C"/>
+                                                <constraint firstItem="iCx-mB-Wp3" firstAttribute="leading" secondItem="Dl1-6M-x7L" secondAttribute="centerX" multiplier="0.2" id="MP6-1X-HJ9"/>
+                                                <constraint firstItem="iCx-mB-Wp3" firstAttribute="centerY" secondItem="Dl1-6M-x7L" secondAttribute="centerY" multiplier="0.5" id="TJ4-5k-fP2"/>
+                                                <constraint firstItem="Xik-g4-wxh" firstAttribute="centerY" secondItem="Dl1-6M-x7L" secondAttribute="centerY" multiplier="1.5" id="uRe-ej-AyA"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="329" height="292"/>
+                                        <connections>
+                                            <outlet property="descLabel" destination="Xik-g4-wxh" id="b7R-wP-Vt7"/>
+                                            <outlet property="titleLabel" destination="iCx-mB-Wp3" id="PqC-iu-jK4"/>
+                                            <outlet property="view" destination="Dl1-6M-x7L" id="z8c-wh-gfm"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="J49-PI-SUb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ggl-bU-U2v" firstAttribute="width" secondItem="cjK-iV-Lvg" secondAttribute="width" id="2kb-Lj-WwT"/>
-                            <constraint firstItem="Ggl-bU-U2v" firstAttribute="centerY" secondItem="J49-PI-SUb" secondAttribute="centerY" multiplier="1.05" id="Fhq-uu-Leu"/>
-                            <constraint firstItem="Ggl-bU-U2v" firstAttribute="height" secondItem="cjK-iV-Lvg" secondAttribute="height" multiplier="0.85" id="Tb0-h4-huW"/>
-                            <constraint firstItem="Ggl-bU-U2v" firstAttribute="centerX" secondItem="J49-PI-SUb" secondAttribute="centerX" id="bhi-2L-WAo"/>
-                            <constraint firstItem="XbN-pH-cef" firstAttribute="centerY" secondItem="J49-PI-SUb" secondAttribute="centerY" multiplier="0.16" id="dDB-Rw-ifw"/>
-                            <constraint firstItem="XbN-pH-cef" firstAttribute="centerX" secondItem="J49-PI-SUb" secondAttribute="centerX" id="kvq-hH-5s0"/>
+                            <constraint firstItem="uWx-pj-gcS" firstAttribute="centerY" secondItem="J49-PI-SUb" secondAttribute="centerY" id="BMB-iq-rSe"/>
+                            <constraint firstItem="uWx-pj-gcS" firstAttribute="centerX" secondItem="J49-PI-SUb" secondAttribute="centerX" id="Dwl-qe-to3"/>
+                            <constraint firstItem="uWx-pj-gcS" firstAttribute="width" secondItem="cjK-iV-Lvg" secondAttribute="width" id="TO6-on-y8r"/>
+                            <constraint firstItem="uWx-pj-gcS" firstAttribute="height" secondItem="cjK-iV-Lvg" secondAttribute="height" id="d5K-fh-qq0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Decks" id="3YL-nb-Yg2">
@@ -831,13 +862,13 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="pageControl" destination="XbN-pH-cef" id="saa-N8-ikB"/>
+                        <outlet property="collectionView" destination="uWx-pj-gcS" id="pjO-Gx-JYs"/>
                         <segue destination="jXA-aa-RkH" kind="show" identifier="deckInfoSegue" id="CU4-Qt-peo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PFW-cc-fq5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1250" y="-554"/>
+            <point key="canvasLocation" x="1250" y="-554.296875"/>
         </scene>
         <!--Home-->
         <scene sceneID="iZ9-dw-gGd">
@@ -1948,7 +1979,7 @@
                                         <rect key="frame" x="116.5" y="48.5" width="51" height="31"/>
                                     </switch>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" red="0.92501109839999995" green="0.93699079750000003" blue="0.95767825839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="snk-mE-HLQ" firstAttribute="centerX" secondItem="NXF-EX-V5x" secondAttribute="centerX" id="BSs-TT-t3l"/>
                                     <constraint firstItem="leZ-di-BOp" firstAttribute="centerX" secondItem="NXF-EX-V5x" secondAttribute="centerX" id="IYW-aI-ZkP"/>
@@ -2476,7 +2507,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="8iK-DZ-jBx"/>
-        <segue reference="zD0-Mw-HOR"/>
+        <segue reference="gbG-ge-GfV"/>
         <segue reference="DWT-40-fxB"/>
         <segue reference="QF0-FK-KpW"/>
         <segue reference="Isa-gX-rWe"/>

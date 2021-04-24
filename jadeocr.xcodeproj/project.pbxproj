@@ -27,6 +27,7 @@
 		9D3A443825A1052C00461467 /* ClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A443725A1052C00461467 /* ClassesViewController.swift */; };
 		9D3B615625D743A10010C391 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3B615525D743A10010C391 /* InitialViewController.swift */; };
 		9D3FC9E02628F6D000AD2875 /* LearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC9DF2628F6D000AD2875 /* LearnViewController.swift */; };
+		9D41BFCC2632314500D4BDB4 /* DeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D41BFCB2632314500D4BDB4 /* DeckCell.swift */; };
 		9D4487CA259A5BD000257D67 /* multipleChoiceCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4487C9259A5BD000257D67 /* multipleChoiceCard.xib */; };
 		9D4487CD259A5EB200257D67 /* multipleChoiceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4487CC259A5EB200257D67 /* multipleChoiceCard.swift */; };
 		9D44DD3D25DC6C6D000856DA /* UserRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D44DD3C25DC6C6D000856DA /* UserRequests.swift */; };
@@ -100,6 +101,7 @@
 		9D3A443725A1052C00461467 /* ClassesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesViewController.swift; sourceTree = "<group>"; };
 		9D3B615525D743A10010C391 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		9D3FC9DF2628F6D000AD2875 /* LearnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewController.swift; sourceTree = "<group>"; };
+		9D41BFCB2632314500D4BDB4 /* DeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCell.swift; sourceTree = "<group>"; };
 		9D4487C9259A5BD000257D67 /* multipleChoiceCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = multipleChoiceCard.xib; sourceTree = "<group>"; };
 		9D4487CC259A5EB200257D67 /* multipleChoiceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = multipleChoiceCard.swift; sourceTree = "<group>"; };
 		9D44DD3C25DC6C6D000856DA /* UserRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequests.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				9DDDE4F425F8544200767CCD /* DeckPageViewController.swift */,
 				9D0A1B1725FD98900021BEB4 /* DecksViewController.swift */,
 				9D0818EF26123682006A70E1 /* PublicDecksViewController.swift */,
+				9D41BFCB2632314500D4BDB4 /* DeckCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				9D491C5B257C14BD00986890 /* AddDeckViewController.swift in Sources */,
 				9DBDCECB26250FE7005A8678 /* Failure.swift in Sources */,
 				9D1A65FA255472AF007C2C09 /* UserViewController.swift in Sources */,
+				9D41BFCC2632314500D4BDB4 /* DeckCell.swift in Sources */,
 				9DA8E7672599448A00B05016 /* OCRDelegate.swift in Sources */,
 				9D5D071125854838003235D8 /* deckTitle.swift in Sources */,
 				9DBF36962622540F006BC682 /* LearnOptionsViewController.swift in Sources */,
