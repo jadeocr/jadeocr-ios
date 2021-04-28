@@ -15,6 +15,7 @@ class DeckInfoViewController: UIViewController {
     @IBOutlet weak var creatorLabel: UILabel!
     @IBOutlet weak var isPublicLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editButton: UIButton!
     
     var deckId: String?
     var deck: Dictionary<String, Any>?
@@ -54,6 +55,12 @@ class DeckInfoViewController: UIViewController {
                 descriptionText.text = deck?["description"] as? String ?? ""
                 creatorLabel.text = "Creator: " + creatorFirst + " " + creatorLast
                 isPublicLabel.text = "This deck is: " + isPublic
+                
+                if GlobalData.user?.id == self.deck?["creator"] as? String {
+                    editButton.isHidden = false
+                } else {
+                    editButton.isHidden = true
+                }
                 
                 tableView.reloadData()
             })
