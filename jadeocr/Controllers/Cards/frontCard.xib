@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="44" width="500" height="422"/>
                     <color key="backgroundColor" systemColor="systemGray4Color"/>
                     <color key="textColor" systemColor="labelColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="128"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>

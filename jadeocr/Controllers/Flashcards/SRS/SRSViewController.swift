@@ -73,7 +73,6 @@ class SRSViewController: Flashcards {
                 atFinal = true
             }
             
-            handwritingView?.turnOffIWasCorrect()
             showFailure(matched: handwritingView?.charShown.text ?? "", correct: handwritingView?.char ?? "")
             handwritingView?.clearButtonPressed(self)
         }
@@ -106,7 +105,6 @@ class SRSViewController: Flashcards {
         }
         
         handwritingView?.setCharShown(text: "Correct!")
-        handwritingView?.turnOffIWasCorrect()
     }
     
     func showFailure(matched: String, correct: String) {

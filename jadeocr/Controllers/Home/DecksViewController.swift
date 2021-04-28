@@ -100,6 +100,6 @@ extension DecksViewController: UICollectionViewDataSource {
 
 extension DecksViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.frame.size.width - 30) / 2, height: 100)
+        return CGSize(width: (collectionView.frame.size.width - 60) / 2, height: (UIScreen.main.bounds.height) / 6)
     }
 }

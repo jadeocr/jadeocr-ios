@@ -171,7 +171,6 @@ class QuizViewController: Flashcards {
                 atFinal = true
             }
             
-            handwritingView?.turnOffIWasCorrect()
             showFailure(matched: handwritingView?.charShown.text ?? "", correct: handwritingView?.char ?? "")
             handwritingView?.clearButtonPressed(self)
         }
