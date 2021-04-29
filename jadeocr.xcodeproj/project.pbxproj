@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9D01C53E258B3DCA00982550 /* DeckInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01C53D258B3DCA00982550 /* DeckInfoViewController.swift */; };
 		9D0A1B1825FD98900021BEB4 /* DecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0A1B1725FD98900021BEB4 /* DecksViewController.swift */; };
+		9D0E8B43263B2358009FE746 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E8B42263B2358009FE746 /* Enums.swift */; };
 		9D11C923258C03C700B45793 /* EditDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D11C91C258C03C600B45793 /* EditDeckViewController.swift */; };
 		9D1A65FA255472AF007C2C09 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1A65F9255472AF007C2C09 /* UserViewController.swift */; };
 		9D243DF625B241120036A67B /* AssignSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D243DF525B241120036A67B /* AssignSelectTableViewController.swift */; };
@@ -81,6 +82,7 @@
 /* Begin PBXFileReference section */
 		9D01C53D258B3DCA00982550 /* DeckInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoViewController.swift; sourceTree = "<group>"; };
 		9D0A1B1725FD98900021BEB4 /* DecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewController.swift; sourceTree = "<group>"; };
+		9D0E8B42263B2358009FE746 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		9D11C91C258C03C600B45793 /* EditDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDeckViewController.swift; sourceTree = "<group>"; };
 		9D1A65F9255472AF007C2C09 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		9D243DF525B241120036A67B /* AssignSelectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignSelectTableViewController.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				9D5D071B25855937003235D8 /* Delegates */,
 				9D33A29A25DA39870044348C /* Server Requests */,
 				9DF8870A2550A059000A777A /* GlobalData.swift */,
+				9D0E8B42263B2358009FE746 /* Enums.swift */,
 				9DA8E76C2599530600B05016 /* Structs.swift */,
 				9D7F06BE2547A011002C8947 /* AppDelegate.swift */,
 				9D7F06C02547A011002C8947 /* SceneDelegate.swift */,
@@ -499,6 +502,7 @@
 				9D33A2A425DA3BCE0044348C /* CharRequests.swift in Sources */,
 				9DAA85E42611216400948D3D /* HomeDelegate.swift in Sources */,
 				9D0A1B1825FD98900021BEB4 /* DecksViewController.swift in Sources */,
+				9D0E8B43263B2358009FE746 /* Enums.swift in Sources */,
 				9D243DF925B241620036A67B /* AssignOptionsViewController.swift in Sources */,
 				9D01C53E258B3DCA00982550 /* DeckInfoViewController.swift in Sources */,
 				9D330DDC262510C800DF5E94 /* FailureDelegate.swift in Sources */,
