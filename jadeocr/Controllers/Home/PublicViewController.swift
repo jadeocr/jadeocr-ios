@@ -15,6 +15,8 @@ class PublicViewController: UIViewController {
     var decks: [Dictionary<String, Any>]?
     var deckId: String = ""
     
+    var shown: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,8 +27,21 @@ class PublicViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillAppear(_ animated: Bool) {
+        shown = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        shown = false
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        guard shown else {
+            return
+        }
+        
         collectionView.collectionViewLayout.invalidateLayout()
     }
     

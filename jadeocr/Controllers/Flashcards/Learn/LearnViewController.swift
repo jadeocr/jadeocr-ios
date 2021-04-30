@@ -37,6 +37,7 @@ class LearnViewController: Flashcards {
         }
         
         super.showNextCard() //bypass sliding animation
+        switchRotation()
     }
     
     override func showNextCard() {

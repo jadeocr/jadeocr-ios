@@ -14,6 +14,8 @@ class DecksViewController: UIViewController {
     var decks: [Dictionary<String, Any>]?
     var deckId: String = ""
     
+    var shown: Bool = false
+    
     let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -29,12 +31,25 @@ class DecksViewController: UIViewController {
         updateDecks()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        shown = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        shown = false
+    }
+    
     @objc func refreshTableView() {
         updateDecks()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        guard shown else {
+            return
+        }
+        
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
