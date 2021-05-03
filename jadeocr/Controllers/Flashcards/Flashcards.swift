@@ -10,7 +10,11 @@ import UIKit
 class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, FailureDelegate, FailureVCDelegate  {
     
     @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var countLabelCenterYAnchor: NSLayoutConstraint!
+    @IBOutlet weak var buttonsView: UIView!
+    
+    @IBOutlet var AnchorButtonsToCenterX: NSLayoutConstraint!
+    @IBOutlet var AnchorButtonsViewToBottom: NSLayoutConstraint!
+    @IBOutlet var AnchorButtonsViewToFullWidth: NSLayoutConstraint!
     
     var cardArray:[card] = []
     var handwritingView:ocrView?
@@ -22,10 +26,10 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
     
     var studentDelegate: StudentDelegate?
     
-    var cardHeightMultiplier:CGFloat = 0.7
+    var cardHeightMultiplier:CGFloat = 0.66
     var cardWidthMultiplier:CGFloat = 0.8
     var cardXAnchorMultiplier:CGFloat = 1
-    var cardYAnchorMultiplier:CGFloat = 1
+    var cardYAnchorMultiplier:CGFloat = 0.9
     
     var handwritingViewHeightMultiplier:CGFloat = 0.5
     var handwritingViewWidthMultiplier:CGFloat = 0.8
@@ -40,6 +44,7 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
     
     override func viewWillAppear(_ animated: Bool) {
         shown = true
+        switchRotation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,68 +61,76 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         switchRotation()
     }
     
+    //MARK: Rotation
     func switchRotation() {
-        switchHandwritingViewOrientation()
-        switchFlashcardOrientation()
+        if handwritingView != nil {
+            switchHandwritingViewOrientation()
+            switchFlashcardOrientation()
+        }
     }
     
     func switchHandwritingViewOrientation() {
         
-        if UIDevice.current.orientation.isPortrait {
+        if UIScreen.main.bounds.width < UIScreen.main.bounds.height { //portrait
             handwritingViewHeightMultiplier = 0.5
             handwritingViewWidthMultiplier = 0.8
             handwritingViewXAnchorMultiplier = 1
             handwritingViewYAnchorMultiplier = 1.5
-        } else if UIDevice.current.orientation.isLandscape {
-            handwritingViewHeightMultiplier = 0.8
+        } else {
+            handwritingViewHeightMultiplier = 0.85
             handwritingViewWidthMultiplier = 0.4
             handwritingViewXAnchorMultiplier = 1.5
-            handwritingViewYAnchorMultiplier = 1
+            handwritingViewYAnchorMultiplier = 1.1
+        }
+        var constraints: [NSLayoutConstraint] = []
+        for constraint in view.constraints {
+            if constraint.identifier == "handwritingHeight" ||
+                constraint.identifier == "handwritingWidth" ||
+                constraint.identifier == "handwritingCenterXAnchor" ||
+                constraint.identifier == "handwritingCenterYAnchor" {
+                constraints.append(constraint)
+            }
         }
         
-        if handwritingView != nil {
-            var constraints: [NSLayoutConstraint] = []
-            for constraint in view.constraints {
-                if constraint.identifier == "handwritingHeight" ||
-                    constraint.identifier == "handwritingWidth" ||
-                    constraint.identifier == "handwritingCenterXAnchor" ||
-                    constraint.identifier == "handwritingCenterYAnchor" {
-                    constraints.append(constraint)
-                }
-            }
-            
-            view.removeConstraints(constraints)
-            
-            let heightAnchor = handwritingView!.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: handwritingViewHeightMultiplier)
-            heightAnchor.isActive = true
-            heightAnchor.identifier = "handwritingHeight"
+        view.removeConstraints(constraints)
+        
+        let heightAnchor = handwritingView!.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: handwritingViewHeightMultiplier)
+        heightAnchor.isActive = true
+        heightAnchor.identifier = "handwritingHeight"
 
-            let widthAnchor = handwritingView!.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: handwritingViewWidthMultiplier)
-            widthAnchor.isActive = true
-            widthAnchor.identifier = "handwritingWidth"
+        let widthAnchor = handwritingView!.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: handwritingViewWidthMultiplier)
+        widthAnchor.isActive = true
+        widthAnchor.identifier = "handwritingWidth"
 
-            let centerXAnchor = NSLayoutConstraint(item: handwritingView!, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: handwritingViewXAnchorMultiplier, constant: 0)
-            view.addConstraint(centerXAnchor)
-            centerXAnchor.identifier = "handwritingCenterXAnchor"
+        let centerXAnchor = NSLayoutConstraint(item: handwritingView!, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: handwritingViewXAnchorMultiplier, constant: 0)
+        view.addConstraint(centerXAnchor)
+        centerXAnchor.identifier = "handwritingCenterXAnchor"
 
-            let centerYAnchor = NSLayoutConstraint(item: handwritingView!, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: handwritingViewYAnchorMultiplier, constant: 0)
-            view.addConstraint(centerYAnchor)
-            centerYAnchor.identifier = "handwritingCenterYAnchor"
-        }
+        let centerYAnchor = NSLayoutConstraint(item: handwritingView!, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: handwritingViewYAnchorMultiplier, constant: 0)
+        view.addConstraint(centerYAnchor)
+        centerYAnchor.identifier = "handwritingCenterYAnchor"
+        
     }
     
     func switchFlashcardOrientation() {
-        
-        if UIDevice.current.orientation.isPortrait {
+        if UIScreen.main.bounds.width < UIScreen.main.bounds.height { //portrait
             cardHeightMultiplier = 0.3
             cardWidthMultiplier = 0.8
-            cardXAnchorMultiplier = 0.5
-            cardYAnchorMultiplier = 1
-        } else if UIDevice.current.orientation.isLandscape {
-            cardHeightMultiplier = 0.8
+            cardXAnchorMultiplier = 1
+            cardYAnchorMultiplier = 0.5
+            
+            AnchorButtonsViewToBottom.isActive = false
+            AnchorButtonsToCenterX.isActive = true
+            AnchorButtonsViewToFullWidth.isActive = true
+        } else {
+            cardHeightMultiplier = 0.7
             cardWidthMultiplier = 0.4
             cardXAnchorMultiplier = 0.5
-            cardYAnchorMultiplier = 1
+            cardYAnchorMultiplier = 0.95
+            
+            AnchorButtonsViewToBottom.isActive = true
+            AnchorButtonsToCenterX.isActive = false
+            AnchorButtonsViewToFullWidth.isActive = false
         }
         
         var constraints: [NSLayoutConstraint] = []
@@ -127,33 +140,33 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
                 constraint.identifier == "flashcardCenterXAnchor" ||
                 constraint.identifier == "flashcardCenterYAnchor" {
                 constraints.append(constraint)
-                print("removed")
             }
         }
         
         view.removeConstraints(constraints)
-        print("deleted\n")
-        
         
         for card in cardArray {
             let view = card.view
             let flashcardHeight = view.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: cardHeightMultiplier)
             flashcardHeight.isActive = true
             flashcardHeight.identifier = "flashcardHeight"
-            
+
             let flashcardWidth = view.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: cardWidthMultiplier)
             flashcardWidth.isActive = true
             flashcardWidth.identifier = "flashcardWidth"
-            
-            let flashcardCenterXAnchor = NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
-            self.view.addConstraint(flashcardCenterXAnchor)
-            flashcardCenterXAnchor.identifier = "flashcardCenterXAnchor"
-            
+
             let flashcardCenterYAnchor = NSLayoutConstraint(item: view, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: cardYAnchorMultiplier, constant: 0)
             self.view.addConstraint(flashcardCenterYAnchor)
             flashcardCenterYAnchor.identifier = "flashcardCenterYAnchor"
         }
         
+        for i in count..<cardArray.count {
+            let view = cardArray[i].view
+            
+            let flashcardCenterXAnchor = NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
+            self.view.addConstraint(flashcardCenterXAnchor)
+            flashcardCenterXAnchor.identifier = "flashcardCenterXAnchor"
+        }
     }
         
     func sendAlert(message: String) {
@@ -225,11 +238,16 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         for i in parentView.constraints {
             if i.firstAnchor == childView.centerXAnchor {
                 i.isActive = false
-                childView.trailingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
+                let flashcardCenterXAnchor = childView.trailingAnchor.constraint(equalTo: parentView.leadingAnchor)
+                flashcardCenterXAnchor.isActive = true
                 break
             } else if i.firstAnchor == childView.trailingAnchor {
                 i.isActive = false
-                childView.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
+                
+                let flashcardCenterXAnchor = NSLayoutConstraint(item: childView, attribute: .centerX, relatedBy: .equal, toItem: parentView, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
+                parentView.addConstraint(flashcardCenterXAnchor)
+                flashcardCenterXAnchor.identifier = "flashcardCenterXAnchor"
+                
                 break
             }
         }
@@ -337,15 +355,15 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         let flashcardHeight = view.heightAnchor.constraint(equalTo: parentView.heightAnchor, multiplier: cardHeightMultiplier)
         flashcardHeight.isActive = true
         flashcardHeight.identifier = "flashcardHeight"
-        
+
         let flashcardWidth = view.widthAnchor.constraint(equalTo: parentView.widthAnchor, multiplier: cardWidthMultiplier)
         flashcardWidth.isActive = true
         flashcardWidth.identifier = "flashcardWidth"
-        
-        let flashcardCenterXAnchor = view.centerXAnchor.constraint(equalTo: parentView.centerXAnchor)
-        flashcardCenterXAnchor.isActive = true
+
+        let flashcardCenterXAnchor = NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: parentView, attribute: .centerX, multiplier: cardXAnchorMultiplier, constant: 0)
+        parentView.addConstraint(flashcardCenterXAnchor)
         flashcardCenterXAnchor.identifier = "flashcardCenterXAnchor"
-        
+
         let flashcardCenterYAnchor = NSLayoutConstraint(item: view, attribute: .centerY, relatedBy: .equal, toItem: parentView, attribute: .centerY, multiplier: cardYAnchorMultiplier, constant: 0)
         parentView.addConstraint(flashcardCenterYAnchor)
         flashcardCenterYAnchor.identifier = "flashcardCenterYAnchor"

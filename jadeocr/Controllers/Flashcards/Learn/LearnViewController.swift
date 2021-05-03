@@ -9,8 +9,6 @@ import UIKit
 
 class LearnViewController: Flashcards {
     @IBOutlet var learnView: UIView!
-    @IBOutlet weak var backButtonCenterYAnchor: NSLayoutConstraint!
-    @IBOutlet weak var nextButtonCenterYAnchor: NSLayoutConstraint!
     
     var scramble: Bool?
     var repetitions: Int?
@@ -22,9 +20,7 @@ class LearnViewController: Flashcards {
             cardHeightMultiplier = 0.3
             cardYAnchorMultiplier = 0.5
             
-            countLabelCenterYAnchor.isActive = false
-            backButtonCenterYAnchor.isActive = false
-            nextButtonCenterYAnchor.isActive = false
+            AnchorButtonsViewToBottom.isActive = false
             
             createHandwritingView(parentView: learnView)
         }
@@ -37,7 +33,6 @@ class LearnViewController: Flashcards {
         }
         
         super.showNextCard() //bypass sliding animation
-        switchRotation()
     }
     
     override func showNextCard() {

@@ -32,7 +32,7 @@ class QuizViewController: Flashcards {
         }
         
         if handwriting ?? false {
-            countLabelCenterYAnchor.isActive = false
+            AnchorButtonsViewToBottom.isActive = false
             createHandwritingView(parentView: quizView)
             cardHeightMultiplier = 0.3
             cardYAnchorMultiplier = 0.5

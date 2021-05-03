@@ -10,9 +10,6 @@ import UIKit
 class SRSViewController: Flashcards {
     @IBOutlet var srsView: UIView!
     
-    @IBOutlet weak var dontKnowButtonCenterYAnchor: NSLayoutConstraint!
-    @IBOutlet weak var knowButtonCenterYAnchor: NSLayoutConstraint!
-    
     var srsResultsArray:[srsResults] = []
     var sendArray: [Dictionary<String, Bool>] = [] //for summary view
     
@@ -23,9 +20,7 @@ class SRSViewController: Flashcards {
             cardHeightMultiplier = 0.3
             cardYAnchorMultiplier = 0.5
             
-            dontKnowButtonCenterYAnchor.isActive = false
-            knowButtonCenterYAnchor.isActive = false
-            countLabelCenterYAnchor.isActive = false
+            AnchorButtonsViewToBottom.isActive = false
             
             createHandwritingView(parentView: srsView)
         }
