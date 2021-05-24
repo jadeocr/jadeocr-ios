@@ -32,7 +32,7 @@ class QuizViewController: Flashcards {
         }
         
         if handwriting ?? false {
-            AnchorButtonsViewToBottom.isActive = false
+//            AnchorButtonsViewToBottom.isActive = false
             createHandwritingView(parentView: quizView)
             cardHeightMultiplier = 0.3
             cardYAnchorMultiplier = 0.5
@@ -185,6 +185,21 @@ class QuizViewController: Flashcards {
         }
         
         showNextCard()
+    }
+    
+    override func override() {
+        if count < cardArray.count {
+            count -= 1 //So add result function grabs the correct char
+        }
+        
+        quizResultsArray.removeLast()
+        addQuizResultForHandwriting(correct: true, overriden: true)
+        
+        if count < cardArray.count {
+            count += 1
+        }
+        
+        handwritingView?.setCharShown(text: "Correct!")
     }
     
     func showFailure(matched: String, correct: String) {

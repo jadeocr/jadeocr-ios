@@ -119,18 +119,22 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
             cardXAnchorMultiplier = 1
             cardYAnchorMultiplier = 0.5
             
-            AnchorButtonsViewToBottom.isActive = false
-            AnchorButtonsToCenterX.isActive = true
-            AnchorButtonsViewToFullWidth.isActive = true
+            if AnchorButtonsViewToBottom != nil {
+                AnchorButtonsViewToBottom.isActive = false
+                AnchorButtonsToCenterX.isActive = true
+                AnchorButtonsViewToFullWidth.isActive = true
+            }
         } else {
             cardHeightMultiplier = 0.7
             cardWidthMultiplier = 0.4
             cardXAnchorMultiplier = 0.5
             cardYAnchorMultiplier = 0.95
             
-            AnchorButtonsViewToBottom.isActive = true
-            AnchorButtonsToCenterX.isActive = false
-            AnchorButtonsViewToFullWidth.isActive = false
+            if AnchorButtonsViewToBottom != nil {
+                AnchorButtonsViewToBottom.isActive = true
+                AnchorButtonsToCenterX.isActive = false
+                AnchorButtonsViewToFullWidth.isActive = false
+            }
         }
         
         var constraints: [NSLayoutConstraint] = []

@@ -599,7 +599,7 @@
             <objects>
                 <viewController id="gGS-6b-ZKf" customClass="CreateClassViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U5w-CS-ezq">
-                        <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="493"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create A Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uQ-0g-6sx">
@@ -2247,7 +2247,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6T-zr-sA9">
-                                <rect key="frame" x="40.5" y="934" width="729" height="76"/>
+                                <rect key="frame" x="40.5" y="880" width="729" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9z-d5-uuK">
                                         <rect key="frame" x="481" y="17.5" width="59" height="41"/>
@@ -2287,13 +2287,19 @@
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="k6T-zr-sA9" firstAttribute="height" secondItem="6zE-Ud-0hK" secondAttribute="height" multiplier="0.07" id="4te-TV-8Pl"/>
+                            <constraint firstItem="k6T-zr-sA9" firstAttribute="centerX" secondItem="WXK-0h-ZY8" secondAttribute="centerX" multiplier="0.5" priority="999" id="65z-r2-3gf"/>
                             <constraint firstItem="k6T-zr-sA9" firstAttribute="centerX" secondItem="WXK-0h-ZY8" secondAttribute="centerX" id="GIA-TD-Ety"/>
+                            <constraint firstItem="k6T-zr-sA9" firstAttribute="width" secondItem="6zE-Ud-0hK" secondAttribute="width" multiplier="0.4" priority="999" id="R7h-l1-xcn"/>
+                            <constraint firstItem="k6T-zr-sA9" firstAttribute="centerY" secondItem="WXK-0h-ZY8" secondAttribute="centerY" multiplier="0.9" priority="999" id="iVN-cr-MBK"/>
                             <constraint firstItem="k6T-zr-sA9" firstAttribute="width" secondItem="6zE-Ud-0hK" secondAttribute="width" multiplier="0.9" id="mud-pT-3tJ"/>
-                            <constraint firstItem="k6T-zr-sA9" firstAttribute="centerY" secondItem="WXK-0h-ZY8" secondAttribute="centerY" multiplier="1.8" id="naD-JD-skD"/>
+                            <constraint firstItem="k6T-zr-sA9" firstAttribute="centerY" secondItem="WXK-0h-ZY8" secondAttribute="centerY" multiplier="1.7" id="naD-JD-skD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SRS Flashcards" id="xSy-Rq-A26"/>
                     <connections>
+                        <outlet property="AnchorButtonsToCenterX" destination="GIA-TD-Ety" id="vTK-nj-qkk"/>
+                        <outlet property="AnchorButtonsViewToBottom" destination="naD-JD-skD" id="AhF-rd-C4V"/>
+                        <outlet property="AnchorButtonsViewToFullWidth" destination="mud-pT-3tJ" id="0Rf-h8-SXj"/>
                         <outlet property="buttonsView" destination="k6T-zr-sA9" id="ut4-lr-xJU"/>
                         <outlet property="countLabel" destination="JHP-Cq-8tx" id="IsU-Ve-VaW"/>
                         <outlet property="srsView" destination="6zE-Ud-0hK" id="raL-Um-wKG"/>
@@ -2493,7 +2499,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="uD1-ET-khV"/>
         <segue reference="gbG-ge-GfV"/>
-        <segue reference="DWT-40-fxB"/>
+        <segue reference="pM4-89-xYl"/>
         <segue reference="QF0-FK-KpW"/>
         <segue reference="yJu-zk-xby"/>
         <segue reference="Isa-gX-rWe"/>
