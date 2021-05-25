@@ -78,8 +78,8 @@ class multipleChoiceCard: UIView {
         }, completion: { _ in
             UIView.animate(withDuration: 0.1, delay: 0.3, animations: {
                 
-                view.backgroundColor = UIColor.systemGray4
-                textView.backgroundColor = UIColor.systemGray4
+                view.backgroundColor = UIColor.systemGray5
+                textView.backgroundColor = UIColor.systemGray5
                 
             }, completion: {_ in
                 completion?()
@@ -98,8 +98,8 @@ class multipleChoiceCard: UIView {
             
             UIView.animate(withDuration: 0.1, delay: 0.5, animations: {
                 
-                view.backgroundColor = UIColor.systemGray4
-                textView.backgroundColor = UIColor.systemGray4
+                view.backgroundColor = UIColor.systemGray5
+                textView.backgroundColor = UIColor.systemGray5
                 
             }, completion: {_ in
                 completion?()

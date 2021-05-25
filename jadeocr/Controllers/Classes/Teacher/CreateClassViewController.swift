@@ -14,6 +14,8 @@ class CreateClassViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        overrideUserInterfaceStyle = .dark
     }
     
     func classCreateError(message: String) {

@@ -32,6 +32,9 @@ class deckTitle: UIView {
         Bundle.main.loadNibNamed("deckTitle", owner: self, options: nil)
         deckTitleContent.frame = bounds
         deckTitleContent.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        
+        
         addSubview(deckTitleContent)
     }
     

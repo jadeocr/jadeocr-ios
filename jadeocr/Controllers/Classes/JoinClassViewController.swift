@@ -13,6 +13,8 @@ class JoinClassViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        overrideUserInterfaceStyle = .dark
     }
     
     func classJoinError(message: String) {

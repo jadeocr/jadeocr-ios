@@ -19,7 +19,7 @@ class AddDeckViewController: UIViewController, DeckDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Add stack iew to scroll view
+        //Add stack view to scroll view
         self.scrollView.addSubview(stackView)
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         self.stackView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true

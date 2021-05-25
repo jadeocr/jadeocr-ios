@@ -17,6 +17,9 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        overrideUserInterfaceStyle = .dark
+        
         self.navigationItem.hidesBackButton = true
     }
     

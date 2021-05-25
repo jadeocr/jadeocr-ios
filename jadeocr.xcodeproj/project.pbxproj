@@ -55,6 +55,8 @@
 		9D8EE1BA25981FC80083A944 /* ocrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8EE1B925981FC80083A944 /* ocrView.swift */; };
 		9D9052C42596B84A00D022DF /* backCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9052C32596B84A00D022DF /* backCard.xib */; };
 		9D9052C72596B86000D022DF /* backCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9052C62596B86000D022DF /* backCard.swift */; };
+		9D915DCB265D71D30031D8B5 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D915DCA265D71D30031D8B5 /* TabViewController.swift */; };
+		9D915DCF265D751E0031D8B5 /* InitialNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D915DCE265D751E0031D8B5 /* InitialNavViewController.swift */; };
 		9DA40A482592E1610019E814 /* frontCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DA40A472592E1610019E814 /* frontCard.xib */; };
 		9DA40A4B2592E2A00019E814 /* frontCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA40A4A2592E2A00019E814 /* frontCard.swift */; };
 		9DA8E7672599448A00B05016 /* OCRDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8E7662599448A00B05016 /* OCRDelegate.swift */; };
@@ -130,6 +132,8 @@
 		9D8EE1B925981FC80083A944 /* ocrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ocrView.swift; sourceTree = "<group>"; };
 		9D9052C32596B84A00D022DF /* backCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = backCard.xib; sourceTree = "<group>"; };
 		9D9052C62596B86000D022DF /* backCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = backCard.swift; sourceTree = "<group>"; };
+		9D915DCA265D71D30031D8B5 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		9D915DCE265D751E0031D8B5 /* InitialNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialNavViewController.swift; sourceTree = "<group>"; };
 		9DA40A472592E1610019E814 /* frontCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = frontCard.xib; sourceTree = "<group>"; };
 		9DA40A4A2592E2A00019E814 /* frontCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frontCard.swift; sourceTree = "<group>"; };
 		9DA8E7662599448A00B05016 /* OCRDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRDelegate.swift; sourceTree = "<group>"; };
@@ -311,6 +315,8 @@
 			isa = PBXGroup;
 			children = (
 				9D3B615525D743A10010C391 /* InitialViewController.swift */,
+				9D915DCE265D751E0031D8B5 /* InitialNavViewController.swift */,
+				9D915DCA265D71D30031D8B5 /* TabViewController.swift */,
 				9D3B615825D746230010C391 /* SignIn */,
 				9D3A443625A1051500461467 /* Classes */,
 				9D3473AF25940E5D008A9998 /* Flashcards */,
@@ -485,6 +491,7 @@
 				9D2FF29625AE8921009B4CAD /* StudentViewController.swift in Sources */,
 				9DA8E76D2599530600B05016 /* Structs.swift in Sources */,
 				9DFA4E2C259D339100D1BFE5 /* SummaryViewController.swift in Sources */,
+				9D915DCF265D751E0031D8B5 /* InitialNavViewController.swift in Sources */,
 				9DEEFE1726348AE7005D4361 /* PublicViewController.swift in Sources */,
 				9D3B615625D743A10010C391 /* InitialViewController.swift in Sources */,
 				9D243DF625B241120036A67B /* AssignSelectTableViewController.swift in Sources */,
@@ -538,6 +545,7 @@
 				9DBF369D26225960006BC682 /* Flashcards.swift in Sources */,
 				9D330DDF262519CD00DF5E94 /* FailureViewController.swift in Sources */,
 				9DD382752626613B003D5C0C /* QuizViewController.swift in Sources */,
+				9D915DCB265D71D30031D8B5 /* TabViewController.swift in Sources */,
 				9D7F06C12547A011002C8947 /* SceneDelegate.swift in Sources */,
 				9D9052C72596B86000D022DF /* backCard.swift in Sources */,
 			);
