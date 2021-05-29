@@ -15,7 +15,7 @@ class AssignSelectTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        overrideUserInterfaceStyle = .dark
         updateDecks()
     }
 

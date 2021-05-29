@@ -56,7 +56,7 @@
 		9D9052C42596B84A00D022DF /* backCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9052C32596B84A00D022DF /* backCard.xib */; };
 		9D9052C72596B86000D022DF /* backCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9052C62596B86000D022DF /* backCard.swift */; };
 		9D915DCB265D71D30031D8B5 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D915DCA265D71D30031D8B5 /* TabViewController.swift */; };
-		9D915DCF265D751E0031D8B5 /* InitialNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D915DCE265D751E0031D8B5 /* InitialNavViewController.swift */; };
+		9D915DCF265D751E0031D8B5 /* DarkNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D915DCE265D751E0031D8B5 /* DarkNavViewController.swift */; };
 		9DA40A482592E1610019E814 /* frontCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DA40A472592E1610019E814 /* frontCard.xib */; };
 		9DA40A4B2592E2A00019E814 /* frontCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA40A4A2592E2A00019E814 /* frontCard.swift */; };
 		9DA8E7672599448A00B05016 /* OCRDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8E7662599448A00B05016 /* OCRDelegate.swift */; };
@@ -133,7 +133,7 @@
 		9D9052C32596B84A00D022DF /* backCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = backCard.xib; sourceTree = "<group>"; };
 		9D9052C62596B86000D022DF /* backCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = backCard.swift; sourceTree = "<group>"; };
 		9D915DCA265D71D30031D8B5 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
-		9D915DCE265D751E0031D8B5 /* InitialNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialNavViewController.swift; sourceTree = "<group>"; };
+		9D915DCE265D751E0031D8B5 /* DarkNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkNavViewController.swift; sourceTree = "<group>"; };
 		9DA40A472592E1610019E814 /* frontCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = frontCard.xib; sourceTree = "<group>"; };
 		9DA40A4A2592E2A00019E814 /* frontCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frontCard.swift; sourceTree = "<group>"; };
 		9DA8E7662599448A00B05016 /* OCRDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRDelegate.swift; sourceTree = "<group>"; };
@@ -315,7 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				9D3B615525D743A10010C391 /* InitialViewController.swift */,
-				9D915DCE265D751E0031D8B5 /* InitialNavViewController.swift */,
+				9D915DCE265D751E0031D8B5 /* DarkNavViewController.swift */,
 				9D915DCA265D71D30031D8B5 /* TabViewController.swift */,
 				9D3B615825D746230010C391 /* SignIn */,
 				9D3A443625A1051500461467 /* Classes */,
@@ -491,7 +491,7 @@
 				9D2FF29625AE8921009B4CAD /* StudentViewController.swift in Sources */,
 				9DA8E76D2599530600B05016 /* Structs.swift in Sources */,
 				9DFA4E2C259D339100D1BFE5 /* SummaryViewController.swift in Sources */,
-				9D915DCF265D751E0031D8B5 /* InitialNavViewController.swift in Sources */,
+				9D915DCF265D751E0031D8B5 /* DarkNavViewController.swift in Sources */,
 				9DEEFE1726348AE7005D4361 /* PublicViewController.swift in Sources */,
 				9D3B615625D743A10010C391 /* InitialViewController.swift in Sources */,
 				9D243DF625B241120036A67B /* AssignSelectTableViewController.swift in Sources */,
@@ -703,7 +703,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.03;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jadeocr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -725,7 +725,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.03;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jadeocr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

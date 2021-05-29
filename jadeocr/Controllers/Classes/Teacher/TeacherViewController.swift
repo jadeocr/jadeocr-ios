@@ -27,7 +27,7 @@ class TeacherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         classCodeLabel.text = "Class code: " + classCode
         classLabel.text = className
         descriptionLabel.text = classDescription

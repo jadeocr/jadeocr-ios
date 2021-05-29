@@ -7,7 +7,8 @@
 
 import UIKit
 
-class InitialNavViewController: UINavigationController {
+//Don't add anything other than the UIStyle override into this class
+class DarkNavViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

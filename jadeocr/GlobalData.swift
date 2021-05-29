@@ -16,4 +16,7 @@ class GlobalData {
 //    public static var apiURL:String = "http://arima-ubuntu-2/"
     
     public static var user: userStruct?
+    
+    //off white: D6DEEB
+    //off black: 171717
 }
