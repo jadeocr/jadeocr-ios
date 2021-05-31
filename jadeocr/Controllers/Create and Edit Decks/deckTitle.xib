@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
             <connections>
                 <outlet property="deckTitleContent" destination="iN0-l3-epB" id="b0G-1J-kOf"/>
                 <outlet property="descriptionText" destination="GBO-FA-LmN" id="PAq-2B-K0l"/>
-                <outlet property="privacyButton" destination="Id8-qE-AAr" id="wO9-B2-Nmw"/>
+                <outlet property="privacySwitch" destination="QkR-cf-uhg" id="xQI-RR-R51"/>
                 <outlet property="titleText" destination="FCj-JQ-ljn" id="hSG-l4-h25"/>
             </connections>
         </placeholder>
@@ -29,33 +29,48 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBO-FA-LmN">
-                    <rect key="frame" x="25.5" y="66" width="355" height="34"/>
+                    <rect key="frame" x="25.5" y="66" width="304" height="34"/>
                     <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="textColor" red="0.8461850286" green="0.86990720030000002" blue="0.91559016699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Id8-qE-AAr">
-                    <rect key="frame" x="418.5" y="66" width="76" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <state key="normal" title="Private"/>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QkR-cf-uhg">
+                    <rect key="frame" x="394" y="67.5" width="51" height="31"/>
                     <connections>
-                        <action selector="privacyButtonPressed:" destination="-1" eventType="touchUpInside" id="Shv-Lx-NHY"/>
+                        <action selector="privacyChanged:" destination="-1" eventType="valueChanged" id="jNa-Ws-gND"/>
                     </connections>
-                </button>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvk-WO-DaK">
+                    <rect key="frame" x="345" y="74.5" width="45" height="17"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahk-dq-upe">
+                    <rect key="frame" x="449" y="74.5" width="40" height="17"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="FCj-JQ-ljn" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="0c3-WZ-BbO"/>
-                <constraint firstItem="GBO-FA-LmN" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.7" id="DfX-Xe-56R"/>
+                <constraint firstItem="GBO-FA-LmN" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.6" id="DfX-Xe-56R"/>
+                <constraint firstItem="ahk-dq-upe" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.3" id="NAW-iw-yhs"/>
                 <constraint firstItem="FCj-JQ-ljn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ot3-FQ-fbN"/>
-                <constraint firstItem="Id8-qE-AAr" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.3" id="PNX-R2-wjU"/>
                 <constraint firstItem="GBO-FA-LmN" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.3" id="QCu-bD-Qta"/>
-                <constraint firstItem="Id8-qE-AAr" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.15" id="jgC-2B-bKJ"/>
+                <constraint firstItem="QkR-cf-uhg" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.3" id="ShK-Lo-lwd"/>
+                <constraint firstItem="ahk-dq-upe" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.85" id="bB0-Ql-QpI"/>
+                <constraint firstItem="Lvk-WO-DaK" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.45" id="mIx-C0-7B5"/>
+                <constraint firstItem="Lvk-WO-DaK" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.3" id="nRH-mN-wm4"/>
                 <constraint firstItem="FCj-JQ-ljn" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.5" id="umx-Md-E1S"/>
-                <constraint firstItem="Id8-qE-AAr" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.8" id="wpt-DU-hxp"/>
-                <constraint firstItem="GBO-FA-LmN" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="0.8" id="ysQ-ov-16r"/>
+                <constraint firstItem="QkR-cf-uhg" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.65" id="xNy-ue-8dU"/>
+                <constraint firstItem="GBO-FA-LmN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="0.1" id="ysQ-ov-16r"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="207.97101449275365" y="117.85714285714285"/>

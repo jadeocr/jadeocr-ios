@@ -49,7 +49,7 @@ class EditDeckViewController: UIViewController, DeckDelegate {
         deckTitleView!.descriptionText.text = deckStruct?.description ?? nil
         deckTitleView!.isPublic = deckStruct?.access["isPublic"] as? Bool ?? false
         if deckTitleView!.isPublic {
-            deckTitleView!.privacyButton.setTitle("Public", for: .normal)
+            deckTitleView!.privacySwitch.setOn(true, animated: false)
         }
         deckTitleView!.translatesAutoresizingMaskIntoConstraints = false
         deckTitleView!.heightAnchor.constraint(equalToConstant: 150).isActive = true

@@ -12,7 +12,7 @@ class deckTitle: UIView {
     @IBOutlet var deckTitleContent: UIView!
     @IBOutlet weak var titleText: UITextField!
     @IBOutlet weak var descriptionText: UITextField!
-    @IBOutlet weak var privacyButton: UIButton!
+    @IBOutlet weak var privacySwitch: UISwitch!
     
     var delegate:DeckDelegate?
     
@@ -32,19 +32,14 @@ class deckTitle: UIView {
         Bundle.main.loadNibNamed("deckTitle", owner: self, options: nil)
         deckTitleContent.frame = bounds
         deckTitleContent.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        
-        
         addSubview(deckTitleContent)
     }
     
-    @IBAction func privacyButtonPressed(_ sender: Any) {
-        if isPublic {
-            privacyButton.setTitle("Private", for: .normal)
-            isPublic = false
-        } else {
-            privacyButton.setTitle("Public", for: .normal)
+    @IBAction func privacyChanged(_ sender: Any) {
+        if privacySwitch.isOn {
             isPublic = true
+        } else {
+            isPublic = false
         }
     }
     
