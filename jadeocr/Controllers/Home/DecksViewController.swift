@@ -76,6 +76,10 @@ class DecksViewController: UIViewController {
             vc.deckId = deckId
         }
     }
+    
+    @IBAction func unwindToHome(_ seg: UIStoryboardSegue) {
+        updateDecks()
+    }
 }
 
 extension DecksViewController: UICollectionViewDelegate {

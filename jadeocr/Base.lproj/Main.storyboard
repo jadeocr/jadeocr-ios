@@ -1648,7 +1648,7 @@
                     <connections>
                         <outlet property="scrollView" destination="YSD-p0-dCd" id="n7I-aW-8ya"/>
                         <outlet property="stackView" destination="O0V-bJ-CHS" id="lID-KG-oWH"/>
-                        <segue destination="keH-Ld-dqW" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeFromAddDeck:" id="Zrx-j8-AsI"/>
+                        <segue destination="keH-Ld-dqW" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHome:" id="Zrx-j8-AsI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyg-5j-Tmp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1704,7 +1704,7 @@
                         <outlet property="scrollView" destination="soW-UR-31H" id="ibK-Gt-D5v"/>
                         <outlet property="stackView" destination="DpZ-zn-bpf" id="rgl-lt-F8o"/>
                         <segue destination="cmM-hu-019" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="JmQ-In-TWZ"/>
-                        <segue destination="cmM-hu-019" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeFromAddDeck:" id="tRq-gj-u9f"/>
+                        <segue destination="cmM-hu-019" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHome:" id="tRq-gj-u9f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Eh-Pd-u8q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1838,7 +1838,6 @@
                         <outlet property="numTeaching" destination="cYd-IQ-vHp" id="Zcr-HL-2tO"/>
                         <outlet property="teacherStatus" destination="B5L-1f-azR" id="dHf-Im-OpV"/>
                         <outlet property="userLabel" destination="MiM-Hx-PqI" id="Uu7-6G-3ci"/>
-                        <segue destination="Zxe-Bn-a2u" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeFromProfile:" id="vYF-oQ-ucd"/>
                         <segue destination="Zxe-Bn-a2u" kind="unwind" identifier="unwindToInitial" unwindAction="unwindToInitial:" id="r3c-34-3m0"/>
                     </connections>
                 </viewController>
