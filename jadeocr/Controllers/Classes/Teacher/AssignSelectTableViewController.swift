@@ -31,7 +31,6 @@ class AssignSelectTableViewController: UITableViewController {
                         self.decks = result
                     }
                     self.tableView.reloadData()
-                    print(result)
                 }
             })
         })

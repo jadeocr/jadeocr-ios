@@ -144,7 +144,7 @@ class TeacherRequests {
     }
     
     //MARK: Assign deck
-    public static func assignDeck(classCode: String, deckId: String, mode: String, front: String, dueDate: Double, handwriting: Bool, repetitions: Int, completion: @escaping (String) -> ()) {
+    public static func assignDeck(classCode: String, deckId: String, mode: String, front: String, dueDate: Double, handwriting: Bool, repetitions: Int, scramble: Bool, completion: @escaping (String) -> ()) {
         let url = URL(string: GlobalData.apiURL + "api/class/assign")
         guard let requestUrl = url else { fatalError() }
         
@@ -158,9 +158,11 @@ class TeacherRequests {
             URLQueryItem(name: "mode", value: mode),
             URLQueryItem(name: "front", value: front),
             URLQueryItem(name: "dueDate", value: String(Int(dueDate * 1000))),
-            URLQueryItem(name: "handwriting", value: String(handwriting)),
+            URLQueryItem(name: "handwriting", value: handwriting ? "true" : "false"),
             URLQueryItem(name: "repetitions", value: String(repetitions)),
+            URLQueryItem(name: "scramble", value: scramble ? "true" : "false")
         ]
+        
         request.httpBody = requestBodyComponents.query?.data(using: .utf8)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -254,6 +256,50 @@ class TeacherRequests {
             URLQueryItem(name: "classCode", value: classCode),
             URLQueryItem(name: "deckId", value: deckId),
             URLQueryItem(name: "assignmentId", value: assignmentId),
+        ]
+        request.httpBody = requestBodyComponents.query?.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+                if (response.statusCode == 200) {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+//                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+//
+//                }
+            }
+        }
+        
+        task.resume()
+    }
+    
+    //MARK: Update
+    public static func updateAssignment(teacherId: String, classCode: String, assignmentId: String, handwriting: Bool, front: String, scramble: Bool, dueDate: Double, completion: @escaping (Bool) -> ()) {
+        let url = URL(string: GlobalData.apiURL + "api/class/updateAssignment")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        var requestBodyComponents = URLComponents()
+        requestBodyComponents.queryItems = [
+            URLQueryItem(name: "classCode", value: classCode),
+            URLQueryItem(name: "assignmentId", value: assignmentId),
+            URLQueryItem(name: "handwriting", value: handwriting ? "true" : "false"),
+            URLQueryItem(name: "front", value: front),
+            URLQueryItem(name: "scramble", value: scramble ? "true" : "false"),
+            URLQueryItem(name: "dueDate", value: String(Int(dueDate * 1000))),
         ]
         request.httpBody = requestBodyComponents.query?.data(using: .utf8)
         

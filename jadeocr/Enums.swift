@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum Modes {
-    case learn
-    case srs
-    case quiz
+enum Modes: String {
+    case learn = "learn"
+    case srs = "srs"
+    case quiz = "quiz"
 }

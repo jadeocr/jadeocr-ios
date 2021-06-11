@@ -42,11 +42,13 @@ class DeckRequests {
             // Read HTTP Response Status code
             if let response = response as? HTTPURLResponse {
                 print("Response HTTP Status code: \(response.statusCode)")
+                if response.statusCode == 200 {
+                    completion(true)
+                }
             }
 
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
                 print(dataString)
-                completion(true)
             }
         }
         task.resume()

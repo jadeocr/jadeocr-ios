@@ -24,6 +24,7 @@ class AssignOptionsViewController: UIViewController {
         super.viewDidLoad()
 
         dueDatePicker.subviews.first?.semanticContentAttribute = .forceRightToLeft
+        dueDatePicker.minimumDate = Date(timeIntervalSinceNow: 0)
     }
     
     func sendAlert(message: String) {
@@ -48,6 +49,7 @@ class AssignOptionsViewController: UIViewController {
         }
         
         if mode.selectedSegmentIndex == 1 { //Srs selected
+            scramble.setOn(false, animated: true)
             scramble.isEnabled = false
         } else {
             scramble.isEnabled = true
@@ -61,7 +63,7 @@ class AssignOptionsViewController: UIViewController {
     }
     
     @IBAction func frontChanged(_ sender: Any) {
-        if front.selectedSegmentIndex == 2 { // Def selected
+        if front.selectedSegmentIndex != 1 { // Def selected
             if handwriting.isOn && mode.selectedSegmentIndex == 2 { //Quiz selected
                 front.selectedSegmentIndex = 1
             }
@@ -80,7 +82,7 @@ class AssignOptionsViewController: UIViewController {
             frontMode = (front.titleForSegment(at: front.selectedSegmentIndex)?.lowercased())!
         }
         
-        TeacherRequests.assignDeck(classCode: classCode, deckId: deckCode, mode: (mode.titleForSegment(at: mode.selectedSegmentIndex)?.lowercased())!, front: frontMode, dueDate: dueDatePicker.date.timeIntervalSince1970, handwriting: handwriting.isEnabled, repetitions: Int(repetitionsStepper.value), completion: {result in
+        TeacherRequests.assignDeck(classCode: classCode, deckId: deckCode, mode: (mode.titleForSegment(at: mode.selectedSegmentIndex)?.lowercased())!, front: frontMode, dueDate: dueDatePicker.date.timeIntervalSince1970, handwriting: handwriting.isOn, repetitions: Int(repetitionsStepper.value), scramble: scramble.isOn, completion: {result in
             DispatchQueue.main.async {
                 print(result)
                 if result == "" {

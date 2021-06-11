@@ -22,6 +22,7 @@ class TeacherViewController: UIViewController {
     var decks: [Dictionary<String, Any>] = []
     var deckId: String = ""
     var detailedResults: [detailedResults] = []
+    var selectedIndex: Int = 0
     
     let refreshControl = UIRefreshControl()
     
@@ -55,6 +56,7 @@ class TeacherViewController: UIViewController {
     func updateDecks() {
         TeacherRequests.getDecksAsTeacher(classCode: classCode, completion: {result in
             DispatchQueue.main.async {
+                print(result)
                 self.decks = result.decks
                 print(result.error)
                 self.tableView.reloadData()
@@ -85,6 +87,18 @@ class TeacherViewController: UIViewController {
             vc.detailedResults = self.detailedResults
             vc.classCode = self.classCode
             vc.deckId = self.deckId
+        } else if segue.identifier == "toUpdate" {
+            let vc = segue.destination as! UpdateAssignmentViewController
+            
+            vc.classCode = self.classCode
+            vc.assignmentId = decks[selectedIndex]["_id"] as? String ?? ""
+            vc.deckName = decks[selectedIndex]["deckName"] as? String ?? ""
+            vc.mode = Modes(rawValue: decks[selectedIndex]["mode"] as! String)
+            vc.repetitions = (decks[selectedIndex]["repetitions"] as? Int) ?? 0
+            vc.storedHandwriting = decks[selectedIndex]["handwriting"] as? Bool ?? true
+            vc.storedFront = decks[selectedIndex]["front"] as? String ?? ""
+            vc.storedScramble = decks[selectedIndex]["scramble"] as? Bool ?? false
+            vc.storedDueDate = decks[selectedIndex]["dueDate"] as? Double ?? 0
         }
     }
 
@@ -150,26 +164,39 @@ extension TeacherViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-            let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
-                self.confirm(message: "Unassign this deck? This deck will be removed forever (a very long time)", completion: {remove in
-                    if remove {
-                        TeacherRequests.unassign(deckId: self.decks[indexPath[1]]["deckId"] as? String ?? "", classCode: self.classCode, assignmentId: self.decks[indexPath[1]]["_id"] as? String ?? "") { result in
-                            print(self.decks[indexPath[1]])
-                            DispatchQueue.main.async {
-                                self.decks.remove(at: indexPath[1]) //Doesnt do anything, but need to satisfy next line
-                                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                                self.updateDecks()
-                                completionHandler(true)
-                            }
+        //MARK: Delete action
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
+            self.confirm(message: "Unassign this deck? This deck will be removed forever (a very long time)", completion: {remove in
+                if remove {
+                    TeacherRequests.unassign(deckId: self.decks[indexPath[1]]["deckId"] as? String ?? "", classCode: self.classCode, assignmentId: self.decks[indexPath[1]]["_id"] as? String ?? "") { result in
+                        print(self.decks[indexPath[1]])
+                        DispatchQueue.main.async {
+                            self.decks.remove(at: indexPath[1]) //Doesnt do anything, but need to satisfy next line
+                            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                            self.updateDecks()
+                            completionHandler(true)
                         }
                     }
-                })
-            }
+                }
+            })
+        }
+    
+        deleteAction.image = UIImage(systemName: "trash")
+        deleteAction.backgroundColor = .systemRed
         
-            deleteAction.image = UIImage(systemName: "trash")
-            deleteAction.backgroundColor = .systemRed
-            let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-            return configuration
+        
+        //MARK: Edit action
+        let editAction = UIContextualAction(style: .normal, title: nil, handler: { (_, _, completionHandler) in
+            print(self.decks[indexPath[1]])
+            self.selectedIndex = indexPath[1]
+            self.performSegue(withIdentifier: "toUpdate", sender: self)
+        })
+        editAction.image = UIImage(systemName: "pencil")
+        editAction.backgroundColor = .systemBlue
+        
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        return configuration
     }
 }
 
