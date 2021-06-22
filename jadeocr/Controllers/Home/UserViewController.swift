@@ -49,7 +49,16 @@ class UserViewController: UIViewController {
     @IBAction func teacherSwitch(_ sender: Any) {
         UserRequests.switchTeacher(completion: {result in
             if result {
-                self.updateStats()
+                do {
+                    try UserRequests.checkSignInStatus(completion: { result in
+                        if result {
+                            self.updateStats()
+                        }
+                    })
+                } catch {
+                    print(error)
+                }
+                
             }
         })
     }

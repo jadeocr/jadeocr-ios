@@ -2578,7 +2578,7 @@
             <objects>
                 <viewController interfaceStyle="dark" id="1VN-z4-B4X" customClass="UpdateAssignmentViewController" customModule="jadeocr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="346-fx-7gO">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mOf-cT-Wa1">
