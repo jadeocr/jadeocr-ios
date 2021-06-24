@@ -25,6 +25,8 @@ class PublicViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        search(query: ".")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +35,16 @@ class PublicViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         shown = false
+    }
+    
+    func search(query: String) {
+        DeckRequests.searchPublicDecks(query: query, completion: {results in
+            DispatchQueue.main.async {
+                self.decks = results
+                print(results)
+                self.collectionView.reloadData()
+            }
+        })
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -54,13 +66,7 @@ class PublicViewController: UIViewController {
 
 extension PublicViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        DeckRequests.searchPublicDecks(query: searchBar.text ?? "", completion: {results in
-            DispatchQueue.main.async {
-                self.decks = results
-                print(results)
-                self.collectionView.reloadData()
-            }
-        })
+        search(query: searchBar.text ?? "")
     }
 }
 

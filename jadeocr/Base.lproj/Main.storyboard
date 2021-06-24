@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Draw!-->
+        <!--Handwrite-->
         <scene sceneID="WYj-W9-rAR">
             <objects>
                 <navigationController id="oNr-uc-ldD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Draw!" id="7fa-iY-oLf"/>
+                    <tabBarItem key="tabBarItem" title="Handwrite" image="pencil" catalog="system" id="7fa-iY-oLf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Hs-2t-BpU">
                         <rect key="frame" x="0.0" y="0.0" width="810" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -729,7 +729,7 @@
                             <constraint firstItem="f2U-Rl-PDu" firstAttribute="height" secondItem="wW1-H8-9AV" secondAttribute="height" multiplier="0.6" id="rFu-ud-6kn"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Write" id="g3J-t5-Gmv"/>
+                    <tabBarItem key="tabBarItem" title="Handwrite" image="pencil" catalog="system" id="g3J-t5-Gmv"/>
                     <navigationItem key="navigationItem" title="Write" id="nZp-mL-nNY"/>
                     <connections>
                         <outlet property="charShown" destination="Cwc-o6-9wq" id="ERa-ZU-CcZ"/>
@@ -785,7 +785,7 @@
         <scene sceneID="UDw-gQ-vVC">
             <objects>
                 <navigationController id="9vl-fs-aan" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="OPp-U8-DYY"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="OPp-U8-DYY"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="osN-KR-cT5">
                         <rect key="frame" x="0.0" y="0.0" width="810" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -975,7 +975,7 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="EEX-aJ-ZpZ">
                                 <rect key="frame" x="0.0" y="486" width="810" height="594"/>
-                                <color key="backgroundColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tableCell" id="y1E-Sk-4pl" customClass="DeckInfoTableViewCell" customModule="jadeocr" customModuleProvider="target">
                                         <rect key="frame" x="16" y="55.5" width="778" height="42"/>
@@ -1026,14 +1026,14 @@
                             </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jE0-cn-Y1p">
                                 <rect key="frame" x="81" y="162" width="324" height="108"/>
-                                <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.8461850286" green="0.86990720030000002" blue="0.91559016699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vNk-pI-6C1"/>
-                        <color key="backgroundColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="EEX-aJ-ZpZ" firstAttribute="centerY" secondItem="vNk-pI-6C1" secondAttribute="centerY" multiplier="1.45" id="2cm-QU-k3D"/>
                             <constraint firstItem="S73-jJ-LqK" firstAttribute="centerY" secondItem="vNk-pI-6C1" secondAttribute="centerY" multiplier="0.67" id="2ld-sj-6uR"/>
@@ -2015,7 +2015,7 @@
         <scene sceneID="Vb9-XN-hWg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Mc-G1-XYk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Classes" id="RTk-0K-vg9"/>
+                    <tabBarItem key="tabBarItem" title="Classes" image="book" catalog="system" id="RTk-0K-vg9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QqH-56-Vky">
                         <rect key="frame" x="0.0" y="0.0" width="810" height="50"/>
@@ -2470,7 +2470,7 @@
         <scene sceneID="TgV-Mb-iH2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CYi-Xd-s78" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Public" id="qEJ-M7-Uv4"/>
+                    <tabBarItem key="tabBarItem" title="Public" image="magnifyingglass" catalog="system" id="qEJ-M7-Uv4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Bv-GS-4CX">
                         <rect key="frame" x="0.0" y="0.0" width="810" height="50"/>
@@ -2748,12 +2748,16 @@
         <segue reference="uD1-ET-khV"/>
         <segue reference="zD0-Mw-HOR"/>
         <segue reference="pM4-89-xYl"/>
-        <segue reference="QF0-FK-KpW"/>
-        <segue reference="CU4-Qt-peo"/>
-        <segue reference="Xrc-wE-mQy"/>
+        <segue reference="KGA-Dm-oc9"/>
+        <segue reference="yJu-zk-xby"/>
+        <segue reference="Isa-gX-rWe"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="book" catalog="system" width="128" height="102"/>
+        <image name="house" catalog="system" width="128" height="106"/>
         <image name="jade" width="1024" height="1024"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person-circle" width="30" height="30"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
