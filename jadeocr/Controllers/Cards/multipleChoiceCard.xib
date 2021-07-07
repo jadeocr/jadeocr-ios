@@ -32,13 +32,13 @@
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="a" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ye9-zf-E0z">
                             <rect key="frame" x="10" y="10" width="348.5" height="183.5"/>
-                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textColor" red="0.8461850286" green="0.86990720030000002" blue="0.91559016699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="36"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="ye9-zf-E0z" firstAttribute="leading" secondItem="ybV-ni-Zqs" secondAttribute="leading" constant="10" id="Aea-Ki-BpA"/>
@@ -55,13 +55,13 @@
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="c" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGV-Uk-HVG">
                             <rect key="frame" x="10" y="10" width="348.5" height="183"/>
-                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textColor" red="0.8461850286" green="0.86990720030000002" blue="0.91559016699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="36"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="xGV-Uk-HVG" firstAttribute="top" secondItem="bwj-X2-gfl" secondAttribute="top" constant="10" id="7Qj-Nl-FUJ"/>
@@ -78,13 +78,13 @@
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="b" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pjo-qK-3hy">
                             <rect key="frame" x="10" y="10" width="348.5" height="183.5"/>
-                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textColor" red="0.8461850286" green="0.86990720030000002" blue="0.91559016699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="36"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Pjo-qK-3hy" secondAttribute="trailing" constant="10" id="BX2-b9-Ijk"/>
@@ -107,13 +107,13 @@
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="d" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4op-yg-hgP">
                             <rect key="frame" x="10" y="10" width="348.5" height="183"/>
-                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textColor" red="0.8461850286" green="0.86990720030000002" blue="0.91559016699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="36"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="4op-yg-hgP" firstAttribute="top" secondItem="ZSh-BY-oE6" secondAttribute="top" constant="10" id="axp-DQ-FIY"/>
@@ -173,8 +173,8 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

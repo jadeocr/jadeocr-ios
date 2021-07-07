@@ -38,8 +38,11 @@ class frontCard: UIView {
         addSubview(frontCardContent)
     }
     
+    func centerVertically() {
+        frontTextView.centerVertically()
+    }
+    
     @IBAction func tapped(_ sender: Any) {
         delegate?.flip()
     }
-    
 }

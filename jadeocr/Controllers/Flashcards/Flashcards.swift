@@ -61,6 +61,13 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         switchRotation()
     }
     
+    override func viewDidLayoutSubviews() {
+        for card in cardArray {
+            card.front?.centerVertically()
+            card.back?.centerVertically()
+        }
+    }
+    
     //MARK: Rotation
     func switchRotation() {
         if handwritingView != nil {
@@ -350,9 +357,13 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         view.frame = view.bounds
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.systemRed
         view.clipsToBounds = true
         view.layer.cornerRadius = 10
+        
+        view.layer.borderWidth = 5
+        view.layer.borderColor = UIColor(named: "nord9")?.cgColor
+        view.backgroundColor = .none
+        
         
         parentView.addSubview(view)
         

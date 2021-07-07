@@ -50,7 +50,7 @@ class OCRController: UIView {
         
         // 2
         context.setLineWidth(5)
-        context.setStrokeColor(UIColor.systemOrange.cgColor)
+        context.setStrokeColor(UIColor(named: "nord9")!.cgColor)
         context.setLineCap(.round)
 
         // 3

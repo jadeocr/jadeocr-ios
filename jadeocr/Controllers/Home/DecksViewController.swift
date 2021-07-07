@@ -113,12 +113,19 @@ extension DecksViewController: UICollectionViewDataSource {
         cell.view.clipsToBounds = true
         cell.view.layer.cornerRadius = 10
         
+//        cell.view.layer.borderWidth = 5
+//        cell.view.layer.borderColor = UIColor(named: "nord9")?.cgColor
+//        cell.view.backgroundColor = .none
+        
+        
+        
         return cell
     }
 }
 
 extension DecksViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.frame.size.width - 60) / 2, height: (UIScreen.main.bounds.height) / 6)
+//        return CGSize(width: (collectionView.frame.size.width - 80) / 2, height: (UIScreen.main.bounds.height) / 6)
+        return CGSize(width: (collectionView.frame.size.width - 80) / 2, height: (collectionView.frame.size.width - 80) / 5)
     }
 }

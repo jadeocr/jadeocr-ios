@@ -133,11 +133,20 @@ extension ClassesViewController: UITableViewDataSource {
                 cell.teacherNameLabel.text = Class["teacherName"] as? String
             }
         }
+        
+        cell.view.clipsToBounds = true
+        cell.view.layer.cornerRadius = 10
+        
+        cell.view.layer.borderWidth = 5
+        cell.view.layer.borderColor = UIColor(named: "nord9")?.cgColor
+        cell.view.backgroundColor = .none
+        
         return cell
     }
 }
 
 class ClassesViewTableCell: UITableViewCell {
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var classLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var teacherNameLabel: UILabel!

@@ -38,6 +38,9 @@ class ocrView: UIView {
         ocrController.clipsToBounds = true
         ocrController.layer.cornerRadius = 10
         
+        ocrController.layer.borderWidth = 5
+        ocrController.layer.borderColor = UIColor(named: "nord9")?.cgColor
+        
         addSubview(ocrViewContent)
     }
     

@@ -47,12 +47,25 @@ class multipleChoiceCard: UIView {
         
         aView.clipsToBounds = true
         aView.layer.cornerRadius = 10
+        aView.layer.borderWidth = 5
+        aView.layer.borderColor = UIColor(named: "nord9")?.cgColor
+        
         bView.clipsToBounds = true
         bView.layer.cornerRadius = 10
+        bView.layer.borderWidth = 5
+        bView.layer.borderColor = UIColor(named: "nord9")?.cgColor
+        
         cView.clipsToBounds = true
         cView.layer.cornerRadius = 10
+        cView.layer.borderWidth = 5
+        cView.layer.borderColor = UIColor(named: "nord9")?.cgColor
+        
         dView.clipsToBounds = true
         dView.layer.cornerRadius = 10
+        dView.layer.borderWidth = 5
+        dView.layer.borderColor = UIColor(named: "nord9")?.cgColor
+        
+        
         
         addSubview(multipleChoiceCardContent)
     }
@@ -73,13 +86,11 @@ class multipleChoiceCard: UIView {
         UIView.animate(withDuration: 0.2, animations: {
             
             view.backgroundColor = UIColor.systemGreen
-            textView.backgroundColor = UIColor.systemGreen
             
         }, completion: { _ in
             UIView.animate(withDuration: 0.1, delay: 0.3, animations: {
                 
-                view.backgroundColor = UIColor.systemGray5
-                textView.backgroundColor = UIColor.systemGray5
+                view.backgroundColor = UIColor.systemGray6
                 
             }, completion: {_ in
                 completion?()
@@ -92,14 +103,12 @@ class multipleChoiceCard: UIView {
         UIView.animate(withDuration: 0.2, animations: {
             
             view.backgroundColor = UIColor.systemRed
-            textView.backgroundColor = UIColor.systemRed
             
         }, completion: { _ in
             
             UIView.animate(withDuration: 0.1, delay: 0.5, animations: {
                 
-                view.backgroundColor = UIColor.systemGray5
-                textView.backgroundColor = UIColor.systemGray5
+                view.backgroundColor = UIColor.systemGray6
                 
             }, completion: {_ in
                 completion?()

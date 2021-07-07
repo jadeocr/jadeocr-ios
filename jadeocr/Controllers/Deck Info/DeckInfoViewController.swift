@@ -12,10 +12,10 @@ class DeckInfoViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionText: UITextView!
-    @IBOutlet weak var creatorLabel: UILabel!
-    @IBOutlet weak var isPublicLabel: UILabel!
+    @IBOutlet weak var deckInfoLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    
     
     var deckId: String?
     var deck: Dictionary<String, Any>?
@@ -27,7 +27,6 @@ class DeckInfoViewController: UIViewController {
         
         updateDeckInfo()
         
-        self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 100
@@ -53,13 +52,12 @@ class DeckInfoViewController: UIViewController {
                 
                 titleLabel.text = deck?["title"] as? String ?? ""
                 descriptionText.text = deck?["description"] as? String ?? ""
-                creatorLabel.text = "Creator: " + creatorFirst + " " + creatorLast
-                isPublicLabel.text = "This deck is: " + isPublic
+                deckInfoLabel.text = creatorFirst + " " + creatorLast + "  |  " + isPublic
                 
                 if GlobalData.user?.id == self.deck?["creator"] as? String {
-                    editButton.isHidden = false
+                    editButton.isEnabled = true
                 } else {
-                    editButton.isHidden = true
+                    editButton.isEnabled = false
                 }
                 
                 tableView.reloadData()
@@ -107,10 +105,6 @@ class DeckInfoViewController: UIViewController {
     
 }
 
-extension DeckInfoViewController: UITableViewDelegate {
-    
-}
-
 extension DeckInfoViewController: UITableViewDataSource {
     
     
@@ -119,15 +113,26 @@ extension DeckInfoViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") as! DeckInfoTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "test") as! DeckInfoTableViewCell
         cell.charLabel?.text = characters?[indexPath[1]]["char"] as? String ?? ""
         cell.pinyinLabel?.text = characters?[indexPath[1]]["pinyin"] as? String ?? ""
         cell.defText?.text = characters?[indexPath[1]]["definition"] as? String ?? ""
+        
+        cell.view.clipsToBounds = true
+        cell.view.layer.masksToBounds = true
+        cell.view.layer.cornerRadius = 10
+        
+//        cell.view.layer.borderWidth = 5
+//        cell.view.layer.borderColor = UIColor(named: "nord9")?.cgColor
+//        cell.view.backgroundColor = .none
+        
         return cell
     }
 }
 
 class DeckInfoTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var charLabel: UILabel!
     @IBOutlet weak var pinyinLabel: UILabel!
     @IBOutlet weak var defText: UITextView!

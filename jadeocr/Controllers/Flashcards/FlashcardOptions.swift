@@ -8,9 +8,11 @@
 import Foundation
 import UIKit
 
-class FlashcardOptions: UIViewController {
+class FlashcardOptions: UITableViewController {
     var deck:Dictionary<String, Any>?
     var mode:String?
+    
+    @IBOutlet weak var startCell: UITableViewCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,21 @@ class FlashcardOptions: UIViewController {
         } else {
             sendError(message: "There was an error")
         }
+        
+//        startCell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+//        startCell.directionalLayoutMargins = .zero
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.font = UIFont.systemFont(ofSize: 24)
+        header.textLabel?.textColor = UIColor(named: "nord4")
+        header.textLabel?.frame = header.bounds
+        header.textLabel?.text? = (header.textLabel?.text!.capitalized)!
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 72
     }
     
     func sendError(message: String) {

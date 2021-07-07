@@ -40,6 +40,10 @@ class backCard: UIView {
         addSubview(backCardContent)
     }
     
+    func centerVertically() {
+        firstTextView.centerVertically()
+    }
+    
     @IBAction func tapped(_ sender: Any) {
         delegate?.flip()
     }
