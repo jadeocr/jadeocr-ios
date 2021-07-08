@@ -22,17 +22,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Xn-Bf-6pA">
-                    <rect key="frame" x="498" y="322.5" width="84" height="48"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                    <state key="normal" title="Check"/>
+                    <rect key="frame" x="548" y="336.5" width="67" height="41"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="Check">
+                        <color key="titleColor" red="0.50133770700000002" green="0.62921124699999997" blue="0.76238733530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
                         <action selector="checkButtonPressed:" destination="-1" eventType="touchUpInside" id="a2y-xe-o7x"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wW2-CJ-9PA">
-                    <rect key="frame" x="166" y="322.5" width="249.5" height="48"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                    <state key="normal" title="Clear"/>
+                    <rect key="frame" x="124.5" y="336.5" width="249.5" height="41"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="Clear">
+                        <color key="titleColor" red="0.50133770700000002" green="0.62921124699999997" blue="0.76238733530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -45,30 +49,29 @@
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="No Character Drawn" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3uz-Lc-pO9">
                     <rect key="frame" x="0.0" y="368.5" width="831" height="42.5"/>
-                    <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="textColor" red="0.8461850286" green="0.86990720030000002" blue="0.91559016699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-iC-Nkj" customClass="OCRController" customModule="jadeocr" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="831" height="322.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="831" height="336.5"/>
                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="jMJ-iC-Nkj" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="5PE-zd-M01"/>
                 <constraint firstItem="3uz-Lc-pO9" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="7Ga-S2-Nya"/>
                 <constraint firstItem="wW2-CJ-9PA" firstAttribute="top" secondItem="jMJ-iC-Nkj" secondAttribute="bottom" id="7xV-EF-6SX"/>
                 <constraint firstItem="3uz-Lc-pO9" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.1" id="Fp9-Z5-vBk"/>
                 <constraint firstItem="jMJ-iC-Nkj" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="GvM-an-JF1"/>
-                <constraint firstItem="7Xn-Bf-6pA" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.6" id="HUz-bB-qom"/>
+                <constraint firstItem="7Xn-Bf-6pA" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.65" id="HUz-bB-qom"/>
                 <constraint firstItem="wW2-CJ-9PA" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.3" id="Uc7-uT-OHL"/>
-                <constraint firstItem="7Xn-Bf-6pA" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.3" id="WIQ-kz-bA0"/>
+                <constraint firstItem="7Xn-Bf-6pA" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.4" id="WIQ-kz-bA0"/>
                 <constraint firstItem="3uz-Lc-pO9" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Xvd-fF-Gja"/>
-                <constraint firstItem="wW2-CJ-9PA" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="0.7" id="hQw-BF-GRk"/>
-                <constraint firstItem="wW2-CJ-9PA" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.6" id="oCY-TP-ckH"/>
+                <constraint firstItem="wW2-CJ-9PA" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="0.6" id="hQw-BF-GRk"/>
+                <constraint firstItem="wW2-CJ-9PA" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.65" id="oCY-TP-ckH"/>
                 <constraint firstItem="3uz-Lc-pO9" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.8" id="yhF-Dj-7E2"/>
                 <constraint firstItem="jMJ-iC-Nkj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zwc-mh-jGB"/>
             </constraints>

@@ -59,9 +59,19 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         }
         
         switchRotation()
+        
+        coordinator.animate(alongsideTransition: nil, completion: {_ in //runs after rotation has finished
+            UIView.animate(withDuration: 0.15, animations: {
+                self.centerTextInCards()
+            })
+        })
     }
     
     override func viewDidLayoutSubviews() {
+        centerTextInCards()
+    }
+    
+    func centerTextInCards() {
         for card in cardArray {
             card.front?.centerVertically()
             card.back?.centerVertically()
@@ -74,6 +84,7 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
             switchHandwritingViewOrientation()
             switchFlashcardOrientation()
         }
+        
     }
     
     func switchHandwritingViewOrientation() {
