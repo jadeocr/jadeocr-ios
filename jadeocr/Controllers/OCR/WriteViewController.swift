@@ -20,7 +20,7 @@ class WriteViewController: UIViewController {
         ocrController.layer.cornerRadius = 10
         
         ocrController.layer.borderWidth = 5
-        ocrController.layer.borderColor = UIColor(named: "nord9")?.cgColor
+        ocrController.layer.borderColor = UIColor(named: "nord3")?.cgColor
     }
     
     @IBAction func clearPressed(_ sender: Any) {

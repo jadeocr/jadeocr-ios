@@ -111,7 +111,7 @@ extension DecksViewController: UICollectionViewDataSource {
         }
         
         cell.view.clipsToBounds = true
-        cell.view.layer.cornerRadius = 10
+        cell.view.layer.cornerRadius = 15
         
 //        cell.view.layer.borderWidth = 5
 //        cell.view.layer.borderColor = UIColor(named: "nord9")?.cgColor

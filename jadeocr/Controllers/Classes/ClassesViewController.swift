@@ -137,9 +137,10 @@ extension ClassesViewController: UITableViewDataSource {
         cell.view.clipsToBounds = true
         cell.view.layer.cornerRadius = 10
         
-        cell.view.layer.borderWidth = 5
-        cell.view.layer.borderColor = UIColor(named: "nord9")?.cgColor
-        cell.view.backgroundColor = .none
+//        cell.view.layer.borderWidth = 5
+//        cell.view.layer.borderColor = UIColor(named: "nord1")?.cgColor
+        
+//        cell.view.backgroundColor = UIColor(named: "nord1")
         
         return cell
     }
