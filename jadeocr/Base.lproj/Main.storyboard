@@ -283,6 +283,12 @@
                                 <color key="textColor" red="0.8461850286" green="0.86990720030000002" blue="0.91559016699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assign a deck!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBK-eJ-YWR">
+                                <rect key="frame" x="346.5" y="607.5" width="117" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.92501109839999995" green="0.93699079750000003" blue="0.95767825839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ttg-ki-qkJ"/>
                         <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -291,12 +297,14 @@
                             <constraint firstItem="h9g-ex-dWo" firstAttribute="trailing" secondItem="Ttg-ki-qkJ" secondAttribute="centerX" multiplier="1.8" id="B4u-mX-8IE"/>
                             <constraint firstItem="bQG-KS-Lvx" firstAttribute="trailing" secondItem="Ttg-ki-qkJ" secondAttribute="centerX" multiplier="1.8" id="FJp-sD-HdG"/>
                             <constraint firstItem="vGe-Fc-Jj6" firstAttribute="centerY" secondItem="Ttg-ki-qkJ" secondAttribute="centerY" multiplier="0.35" id="Sni-ov-5ZS"/>
+                            <constraint firstItem="PBK-eJ-YWR" firstAttribute="centerY" secondItem="Ttg-ki-qkJ" secondAttribute="centerY" multiplier="1.2" id="U00-IJ-q1Q"/>
                             <constraint firstItem="VWA-EP-fML" firstAttribute="firstBaseline" secondItem="h9g-ex-dWo" secondAttribute="baseline" id="UqZ-BT-WH4"/>
                             <constraint firstItem="lBE-I4-NF2" firstAttribute="height" secondItem="fc0-wf-y3J" secondAttribute="height" multiplier="0.65" id="XUY-q3-P9P"/>
                             <constraint firstItem="lBE-I4-NF2" firstAttribute="centerX" secondItem="Ttg-ki-qkJ" secondAttribute="centerX" id="Yfz-aX-P0s"/>
                             <constraint firstItem="VWA-EP-fML" firstAttribute="leading" secondItem="Ttg-ki-qkJ" secondAttribute="centerX" multiplier="0.2" id="bwM-Dn-hRH"/>
                             <constraint firstItem="VWA-EP-fML" firstAttribute="centerY" secondItem="Ttg-ki-qkJ" secondAttribute="centerY" multiplier="0.25" id="cO8-NN-Iwr"/>
                             <constraint firstItem="lBE-I4-NF2" firstAttribute="bottom" secondItem="Ttg-ki-qkJ" secondAttribute="bottom" id="wCy-Ql-zXu"/>
+                            <constraint firstItem="PBK-eJ-YWR" firstAttribute="centerX" secondItem="Ttg-ki-qkJ" secondAttribute="centerX" id="xu6-Ws-tRv"/>
                             <constraint firstItem="vGe-Fc-Jj6" firstAttribute="firstBaseline" secondItem="bQG-KS-Lvx" secondAttribute="baseline" id="z5k-G4-3cZ"/>
                             <constraint firstItem="vGe-Fc-Jj6" firstAttribute="leading" secondItem="Ttg-ki-qkJ" secondAttribute="centerX" multiplier="0.2" id="zZV-Cv-q9y"/>
                         </constraints>
@@ -311,7 +319,6 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Assign" id="8ue-2C-f3X">
-                                <color key="tintColor" red="0.50133770700000002" green="0.62921124699999997" blue="0.76238733530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="pha-II-bnq" kind="presentation" identifier="toAssignSelect" id="duH-KL-lEz"/>
                                 </connections>
@@ -323,6 +330,7 @@
                         <outlet property="classCodeLabel" destination="h9g-ex-dWo" id="YBB-Ni-F5X"/>
                         <outlet property="classLabel" destination="VWA-EP-fML" id="daz-Km-Uyy"/>
                         <outlet property="descriptionLabel" destination="vGe-Fc-Jj6" id="rp7-ny-PDH"/>
+                        <outlet property="emptyLabel" destination="PBK-eJ-YWR" id="cdu-4w-slS"/>
                         <outlet property="tableView" destination="lBE-I4-NF2" id="XfU-Tl-A6D"/>
                         <outlet property="teacherLabel" destination="bQG-KS-Lvx" id="UWW-j0-cSA"/>
                         <segue destination="Jyn-zP-pMF" kind="show" identifier="toDetailedResults" id="QfS-P7-tEn"/>
@@ -346,11 +354,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detailed Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cb7-Wn-IzA">
                                 <rect key="frame" x="280.5" y="107.5" width="249" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.92501109839999995" green="0.93699079750000003" blue="0.95767825839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="WlG-WE-Zt2">
                                 <rect key="frame" x="0.0" y="187.5" width="810" height="810"/>
+                                <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tableCell" id="fQj-CR-YHe" customClass="DetailedResultsViewTableCell" customModule="jadeocr" customModuleProvider="target">
                                         <rect key="frame" x="16" y="55.5" width="778" height="43.5"/>
@@ -372,7 +381,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.17950707669999999" green="0.2030345798" blue="0.2528765798" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Nmp-EW-13Y" firstAttribute="trailing" secondItem="KmE-hn-Bmo" secondAttribute="centerX" multiplier="1.8" id="UCz-EU-TSU"/>
                                                 <constraint firstItem="LqH-VY-EoP" firstAttribute="centerY" secondItem="KmE-hn-Bmo" secondAttribute="centerY" id="gGY-nh-Q14"/>
@@ -391,7 +400,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s33-aw-zhV"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WlG-WE-Zt2" firstAttribute="width" secondItem="maA-qH-wRF" secondAttribute="width" id="Eho-Ze-ZNY"/>
                             <constraint firstItem="WlG-WE-Zt2" firstAttribute="centerX" secondItem="s33-aw-zhV" secondAttribute="centerX" id="WaZ-Zb-VRn"/>
@@ -425,8 +434,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="eRq-Jl-lBd">
-                                <rect key="frame" x="0.0" y="383.5" width="810" height="648"/>
-                                <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="328" width="810" height="702"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="studentViewTableCell" rowHeight="220" id="XzJ-oF-F7Z" customClass="StudentViewTableCell" customModule="jadeocr" customModuleProvider="target">
                                         <rect key="frame" x="16" y="55.5" width="778" height="220"/>
@@ -484,7 +493,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.50133770700000002" green="0.62921124699999997" blue="0.76238733530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.17950707669999999" green="0.2030345798" blue="0.2528765798" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="x0V-Jw-gBU" firstAttribute="centerX" secondItem="xr6-IO-0Yr" secondAttribute="centerX" id="4NH-eL-h2x"/>
                                                 <constraint firstItem="mRL-h8-BYV" firstAttribute="leading" secondItem="xr6-IO-0Yr" secondAttribute="centerX" multiplier="0.2" id="8XK-ni-Kum"/>
@@ -536,6 +545,12 @@
                                 <color key="textColor" red="0.8461850286" green="0.86990720030000002" blue="0.91559016699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No decks have been assigned yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVF-Dw-DJQ">
+                                <rect key="frame" x="270.5" y="637.5" width="269" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.92501109839999995" green="0.93699079750000003" blue="0.95767825839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ELh-b8-n27"/>
                         <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -546,11 +561,13 @@
                             <constraint firstItem="DeG-hz-J39" firstAttribute="baseline" secondItem="ELh-b8-n27" secondAttribute="centerY" multiplier="0.25" id="Fpz-KO-oX4"/>
                             <constraint firstItem="BFz-nx-obV" firstAttribute="trailing" secondItem="ELh-b8-n27" secondAttribute="centerX" multiplier="1.8" id="KwD-hq-I7U"/>
                             <constraint firstItem="DeG-hz-J39" firstAttribute="leading" secondItem="ELh-b8-n27" secondAttribute="centerX" multiplier="0.2" id="Qg0-ox-rhU"/>
-                            <constraint firstItem="eRq-Jl-lBd" firstAttribute="centerY" secondItem="ELh-b8-n27" secondAttribute="centerY" multiplier="1.31" id="SXQ-Je-TBT"/>
+                            <constraint firstItem="FVF-Dw-DJQ" firstAttribute="centerY" secondItem="ELh-b8-n27" secondAttribute="centerY" multiplier="1.2" id="Qit-JJ-C4H"/>
                             <constraint firstItem="eRq-Jl-lBd" firstAttribute="centerX" secondItem="ELh-b8-n27" secondAttribute="centerX" id="ZFI-la-S53"/>
                             <constraint firstItem="EHJ-2V-51Z" firstAttribute="leading" secondItem="ELh-b8-n27" secondAttribute="centerX" multiplier="0.2" id="Zen-Hn-ckO"/>
                             <constraint firstItem="eRq-Jl-lBd" firstAttribute="width" secondItem="ZjV-51-2bd" secondAttribute="width" id="d0a-0t-pBb"/>
-                            <constraint firstItem="eRq-Jl-lBd" firstAttribute="height" secondItem="ZjV-51-2bd" secondAttribute="height" multiplier="0.6" id="ei3-pX-nvk"/>
+                            <constraint firstItem="eRq-Jl-lBd" firstAttribute="height" secondItem="ZjV-51-2bd" secondAttribute="height" multiplier="0.65" id="ei3-pX-nvk"/>
+                            <constraint firstItem="eRq-Jl-lBd" firstAttribute="bottom" secondItem="ELh-b8-n27" secondAttribute="bottom" id="gGf-SW-NEW"/>
+                            <constraint firstItem="FVF-Dw-DJQ" firstAttribute="centerX" secondItem="ELh-b8-n27" secondAttribute="centerX" id="hMJ-v0-jd0"/>
                             <constraint firstItem="EHJ-2V-51Z" firstAttribute="centerY" secondItem="ELh-b8-n27" secondAttribute="centerY" multiplier="0.35" id="sXd-y3-AYq"/>
                         </constraints>
                     </view>
@@ -559,6 +576,7 @@
                         <outlet property="classCodeLabel" destination="BFz-nx-obV" id="AZe-yZ-fAD"/>
                         <outlet property="classLabel" destination="DeG-hz-J39" id="ww7-J6-kTK"/>
                         <outlet property="descriptionLabel" destination="EHJ-2V-51Z" id="bjb-2i-mvg"/>
+                        <outlet property="emptyLabel" destination="FVF-Dw-DJQ" id="ptF-lN-sVZ"/>
                         <outlet property="tableView" destination="eRq-Jl-lBd" id="pAJ-dh-TaT"/>
                         <outlet property="teacherLabel" destination="mGS-wV-v1q" id="q7E-pq-2oc"/>
                         <segue destination="g6b-bv-N3Z" kind="show" identifier="toQuiz" id="QF0-FK-KpW"/>
@@ -568,7 +586,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WsS-TM-ykP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2771" y="1705"/>
+            <point key="canvasLocation" x="2770.37037037037" y="1705"/>
         </scene>
         <!--Join Class View Controller-->
         <scene sceneID="DPw-GE-zj9">
@@ -885,13 +903,21 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a deck!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnh-tD-kR4">
+                                <rect key="frame" x="346.5" y="529" width="117" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.92501109839999995" green="0.93699079750000003" blue="0.95767825839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="J49-PI-SUb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="uWx-pj-gcS" firstAttribute="centerY" secondItem="J49-PI-SUb" secondAttribute="centerY" id="BMB-iq-rSe"/>
+                            <constraint firstItem="Jnh-tD-kR4" firstAttribute="centerY" secondItem="J49-PI-SUb" secondAttribute="centerY" id="CAe-br-6xg"/>
                             <constraint firstItem="uWx-pj-gcS" firstAttribute="centerX" secondItem="J49-PI-SUb" secondAttribute="centerX" id="Dwl-qe-to3"/>
                             <constraint firstItem="uWx-pj-gcS" firstAttribute="width" secondItem="cjK-iV-Lvg" secondAttribute="width" id="TO6-on-y8r"/>
+                            <constraint firstItem="Jnh-tD-kR4" firstAttribute="centerX" secondItem="J49-PI-SUb" secondAttribute="centerX" id="cUX-ud-UMl"/>
                             <constraint firstItem="uWx-pj-gcS" firstAttribute="height" secondItem="cjK-iV-Lvg" secondAttribute="height" id="d5K-fh-qq0"/>
                         </constraints>
                     </view>
@@ -907,11 +933,11 @@
                                     <segue destination="GUT-jY-DwA" kind="show" id="ylc-lF-Dvm"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" id="n23-8O-v2O"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="uWx-pj-gcS" id="pjO-Gx-JYs"/>
+                        <outlet property="emptyLabel" destination="Jnh-tD-kR4" id="LJg-lH-Mnx"/>
                         <segue destination="jXA-aa-RkH" kind="show" identifier="deckInfoSegue" id="CU4-Qt-peo"/>
                     </connections>
                 </viewController>
@@ -1146,7 +1172,7 @@
                         <outlet property="deckInfoLabel" destination="sic-iy-jFR" id="sTu-mb-ITh"/>
                         <outlet property="descriptionText" destination="jE0-cn-Y1p" id="uFJ-4Z-ecr"/>
                         <outlet property="editButton" destination="HdZ-Ut-Fjx" id="3fK-Js-Ldq"/>
-                        <outlet property="getStartedLabel" destination="gLY-Da-ayV" id="1Ii-yU-jIa"/>
+                        <outlet property="emptyLabel" destination="gLY-Da-ayV" id="1Ii-yU-jIa"/>
                         <outlet property="tableView" destination="EEX-aJ-ZpZ" id="Wwb-I2-w2b"/>
                         <outlet property="titleLabel" destination="V5A-In-3t5" id="mJb-Or-1LD"/>
                         <segue destination="3Fl-DX-PcV" kind="show" identifier="segueToSRS" id="rha-wD-G3b"/>
@@ -2187,6 +2213,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QqH-56-Vky">
                         <rect key="frame" x="0.0" y="0.0" width="810" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.92501109839999995" green="0.93699079750000003" blue="0.95767825839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.92501109839999995" green="0.93699079750000003" blue="0.95767825839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.17950707669999999" green="0.2030345798" blue="0.2528765798" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -3046,7 +3073,7 @@
         <segue reference="zD0-Mw-HOR"/>
         <segue reference="DWT-40-fxB"/>
         <segue reference="QF0-FK-KpW"/>
-        <segue reference="yJu-zk-xby"/>
+        <segue reference="CU4-Qt-peo"/>
         <segue reference="Isa-gX-rWe"/>
     </inferredMetricsTieBreakers>
     <resources>

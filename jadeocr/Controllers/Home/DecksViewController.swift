@@ -10,6 +10,7 @@ import UIKit
 class DecksViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var emptyLabel: UILabel!
     
     var decks: [Dictionary<String, Any>]?
     var deckId: String = ""
@@ -63,6 +64,9 @@ class DecksViewController: UIViewController {
                         }
                     } else {
                         self.decks = result as? [Dictionary<String, Any>]
+                    }
+                    if self.decks?.count != 0 {
+                        self.emptyLabel.isHidden = true
                     }
                     self.collectionView.reloadData()
                 }

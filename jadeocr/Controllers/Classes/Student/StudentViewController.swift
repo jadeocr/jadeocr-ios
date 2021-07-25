@@ -14,6 +14,7 @@ class StudentViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyLabel: UILabel!
     
     var classCode: String = ""
     var className: String = ""
@@ -57,6 +58,9 @@ class StudentViewController: UIViewController {
         StudentRequests.getDecksAsStudent(classCode: classCode, completion: {result in
             DispatchQueue.main.async {
                 self.decks = result.decks
+                if self.decks.count != 0 {
+                    self.emptyLabel.isHidden = true
+                }
                 print(result.error)
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()

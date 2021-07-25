@@ -15,7 +15,7 @@ class DeckInfoViewController: UIViewController {
     @IBOutlet weak var deckInfoLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
-    @IBOutlet weak var getStartedLabel: UILabel!
+    @IBOutlet weak var emptyLabel: UILabel!
     
     
     var deckId: String?
@@ -43,7 +43,7 @@ class DeckInfoViewController: UIViewController {
                 }
                 
                 if characters?.count ?? 0 > 0 {
-                    self.getStartedLabel.isHidden = true;
+                    self.emptyLabel.isHidden = true;
                 }
                 
                 let creatorFirst:String = deck?["creatorFirst"] as? String ?? ""

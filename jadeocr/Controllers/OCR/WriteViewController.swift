@@ -29,7 +29,7 @@ class WriteViewController: UIViewController {
     }
     
     @IBAction func checkPressed(_ sender: Any) {
-        CharRequests.OCR(sendArray: ocrController.getSendArray() , completion: {results in
+        CharRequests.OCR(sendArray: ocrController.getSendArray(), completion: {results in
             DispatchQueue.main.async {
                 var charString = ""
                 for result in results {
