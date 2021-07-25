@@ -101,9 +101,9 @@ extension PublicViewController: UICollectionViewDataSource {
         cell.view.clipsToBounds = true
         cell.view.layer.cornerRadius = 10
         
-        cell.view.layer.borderWidth = 5
-        cell.view.layer.borderColor = UIColor(named: "nord9")?.cgColor
-        cell.view.backgroundColor = .none
+//        cell.view.layer.borderWidth = 5
+//        cell.view.layer.borderColor = UIColor(named: "nord9")?.cgColor
+//        cell.view.backgroundColor = .none
         
         return cell
     }
@@ -111,6 +111,7 @@ extension PublicViewController: UICollectionViewDataSource {
 
 extension PublicViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.frame.size.width - 80) / 2, height: (collectionView.frame.size.width - 80) / 5)
+        return CGSize(width: (UIScreen.main.bounds.width - 80) / 2, height: (UIScreen.main.bounds.width - 80) / 5)
+        
     }
 }

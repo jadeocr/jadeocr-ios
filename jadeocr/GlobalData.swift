@@ -19,4 +19,6 @@ class GlobalData {
     
     //off white: D6DEEB
     //off black: 171717
+    //accent black: 181818
+    //text white: nord6
 }

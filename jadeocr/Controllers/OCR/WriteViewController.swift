@@ -18,8 +18,11 @@ class WriteViewController: UIViewController {
         
         ocrController.clipsToBounds = true
         ocrController.layer.cornerRadius = 10
+        
+        ocrController.layer.borderWidth = 5
+        ocrController.layer.borderColor = UIColor(named: "nord9")?.cgColor
     }
-
+    
     @IBAction func clearPressed(_ sender: Any) {
         ocrController.clear()
         charShown.text = "No character drawn."
