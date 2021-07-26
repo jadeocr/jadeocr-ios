@@ -58,6 +58,12 @@ class QuizViewController: Flashcards {
         setMultipleChoiceOptions() //^^
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        quizMultipleChoiceView?.center()
+    }
+    
     //MARK: Card movement
     override func showNextCard() {
         self.slideOut(childView: self.cardArray[self.count].view, parentView: self.quizView, completion: {

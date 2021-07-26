@@ -34,10 +34,12 @@ class multipleChoiceCard: UIView {
     
     convenience init(a: String, b: String, c: String, d: String) {
         self.init()
-        aTextView.text = a
-        bTextView.text = b
-        cTextView.text = c
-        dTextView.text = d
+//        aTextView.text = a
+//        bTextView.text = b
+//        cTextView.text = c
+//        dTextView.text = d
+        
+        change(a: a, b: b, c: c, d: d)
     }
     
     func initWithNib() {
@@ -75,6 +77,15 @@ class multipleChoiceCard: UIView {
         bTextView.text = b
         cTextView.text = c
         dTextView.text = d
+        
+        center()
+    }
+    
+    public func center() {
+        aTextView.centerVertically()
+        bTextView.centerVertically()
+        cTextView.centerVertically()
+        dTextView.centerVertically()
     }
     
     public func setCorrectLabel(text: String) {
