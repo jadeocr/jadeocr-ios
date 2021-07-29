@@ -92,14 +92,14 @@ class AssignSelectTableViewController: UITableViewController {
 }
 
 extension AssignSelectTableViewController : UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if searchBar.text == "" {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
             displayDecks = decks;
         } else {
             displayDecks = decks?.filter{
-                ($0["deckName"] as? String ?? "").lowercased().contains((searchBar.text ?? "").lowercased())
+                ($0["deckName"] as? String ?? "").lowercased().contains((searchText).lowercased())
                 ||
-                ($0["deckDescription"] as? String ?? "").lowercased().contains((searchBar.text ?? "").lowercased())
+                ($0["deckDescription"] as? String ?? "").lowercased().contains((searchText).lowercased())
             }
         }
         

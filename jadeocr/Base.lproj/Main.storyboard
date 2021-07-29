@@ -1701,6 +1701,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5By-hC-39B">
                         <rect key="frame" x="0.0" y="0.0" width="704" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.17950707669999999" green="0.2030345798" blue="0.2528765798" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="Oqq-gS-bU7" kind="relationship" relationship="rootViewController" id="xeA-Wb-Kp4"/>
@@ -1717,7 +1718,6 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="rh0-pN-esm">
                         <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="0sX-IL-0yG">
                             <rect key="frame" x="0.0" y="0.0" width="704" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -1747,7 +1747,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.17950707669999999" green="0.2030345798" blue="0.2528765798" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="descLabel" destination="7xa-hh-rpn" id="rD5-tL-eO9"/>
                                     <outlet property="titleLabel" destination="guU-4O-xA9" id="thj-0X-2lv"/>
