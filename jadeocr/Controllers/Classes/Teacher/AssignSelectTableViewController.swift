@@ -11,11 +11,14 @@ class AssignSelectTableViewController: UITableViewController {
 
     var classCode: String?
     var currDeck:String?
-    var decks: NSArray?
+    var decks: [Dictionary<String, Any>]?
+    var displayDecks: [Dictionary<String, Any>]?
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
+        searchBar.delegate = self
         updateDecks()
     }
 
@@ -28,7 +31,8 @@ class AssignSelectTableViewController: UITableViewController {
                             self.decks = []
                         }
                     } else {
-                        self.decks = result
+                        self.decks = result as? [Dictionary<String, Any>]
+                        self.displayDecks = self.decks
                     }
                     self.tableView.reloadData()
                 }
@@ -54,13 +58,13 @@ class AssignSelectTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return decks?.count ?? 0
+        return displayDecks?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! AssignSelectTableViewCell
-        if decks?.count != 0 && decks?.count != nil {
-            if let deck = decks?[indexPath[1]] as? Dictionary<String, Any> {
+        if displayDecks?.count != 0 && displayDecks?.count != nil {
+            if let deck = displayDecks?[indexPath[1]] {
                 cell.titleLabel?.text = deck["deckName"] as? String
                 cell.descLabel?.text = deck["deckDescription"] as? String
             }
@@ -70,7 +74,7 @@ class AssignSelectTableViewController: UITableViewController {
     
     //MARK: - Table view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let deck = decks?[indexPath[1]] as? Dictionary<String, Any> {
+        if let deck = displayDecks?[indexPath[1]] {
             currDeck = deck["deckId"] as? String
         }
         self.performSegue(withIdentifier: "toAssignOptions", sender: self)
@@ -84,6 +88,22 @@ class AssignSelectTableViewController: UITableViewController {
             vc.classCode = classCode ?? ""
             vc.deckCode = currDeck ?? ""
         }
+    }
+}
+
+extension AssignSelectTableViewController : UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar.text == "" {
+            displayDecks = decks;
+        } else {
+            displayDecks = decks?.filter{
+                ($0["deckName"] as? String ?? "").lowercased().contains((searchBar.text ?? "").lowercased())
+                ||
+                ($0["deckDescription"] as? String ?? "").lowercased().contains((searchBar.text ?? "").lowercased())
+            }
+        }
+        
+        tableView.reloadData()
     }
 }
 

@@ -57,12 +57,10 @@ class TeacherViewController: UIViewController {
     func updateDecks() {
         TeacherRequests.getDecksAsTeacher(classCode: classCode, completion: {result in
             DispatchQueue.main.async {
-                print(result)
                 self.decks = result.decks
                 if self.decks.count != 0 {
                     self.emptyLabel.isHidden = true
                 }
-                print(result.error)
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
@@ -173,7 +171,6 @@ extension TeacherViewController: UITableViewDataSource {
             self.confirm(message: "Unassign this deck? This deck will be removed forever (a very long time)", completion: {remove in
                 if remove {
                     TeacherRequests.unassign(deckId: self.decks[indexPath[1]]["deckId"] as? String ?? "", classCode: self.classCode, assignmentId: self.decks[indexPath[1]]["_id"] as? String ?? "") { result in
-                        print(self.decks[indexPath[1]])
                         DispatchQueue.main.async {
                             self.decks.remove(at: indexPath[1]) //Doesnt do anything, but need to satisfy next line
                             self.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -191,7 +188,6 @@ extension TeacherViewController: UITableViewDataSource {
         
         //MARK: Edit action
         let editAction = UIContextualAction(style: .normal, title: nil, handler: { (_, _, completionHandler) in
-            print(self.decks[indexPath[1]])
             self.selectedIndex = indexPath[1]
             self.performSegue(withIdentifier: "toUpdate", sender: self)
         })
