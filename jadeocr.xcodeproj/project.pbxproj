@@ -34,6 +34,7 @@
 		9D44DD3D25DC6C6D000856DA /* UserRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D44DD3C25DC6C6D000856DA /* UserRequests.swift */; };
 		9D491C5B257C14BD00986890 /* AddDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D491C5A257C14BD00986890 /* AddDeckViewController.swift */; };
 		9D4A6867268996D2005EBC91 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A6866268996D2005EBC91 /* Extensions.swift */; };
+		9D58031226B3306A00FCF860 /* ListStudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D58031126B3306A00FCF860 /* ListStudentsViewController.swift */; };
 		9D5D070E2585480B003235D8 /* deckTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5D070D2585480B003235D8 /* deckTitle.xib */; };
 		9D5D071125854838003235D8 /* deckTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5D071025854838003235D8 /* deckTitle.swift */; };
 		9D5D071625855162003235D8 /* deckControlPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5D071525855162003235D8 /* deckControlPanel.xib */; };
@@ -111,6 +112,7 @@
 		9D44DD3C25DC6C6D000856DA /* UserRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequests.swift; sourceTree = "<group>"; };
 		9D491C5A257C14BD00986890 /* AddDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckViewController.swift; sourceTree = "<group>"; };
 		9D4A6866268996D2005EBC91 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9D58031126B3306A00FCF860 /* ListStudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStudentsViewController.swift; sourceTree = "<group>"; };
 		9D5D070D2585480B003235D8 /* deckTitle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = deckTitle.xib; sourceTree = "<group>"; };
 		9D5D071025854838003235D8 /* deckTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deckTitle.swift; sourceTree = "<group>"; };
 		9D5D071525855162003235D8 /* deckControlPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = deckControlPanel.xib; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 				9D243DF825B241620036A67B /* AssignOptionsViewController.swift */,
 				9DEA84AF25B64C7F00FB15BC /* DetailedResultsViewController.swift */,
 				9D06A35026726C1F00A0B35A /* UpdateAssignmentViewController.swift */,
+				9D58031126B3306A00FCF860 /* ListStudentsViewController.swift */,
 			);
 			path = Teacher;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				9DAA85E42611216400948D3D /* HomeDelegate.swift in Sources */,
 				9D0A1B1825FD98900021BEB4 /* DecksViewController.swift in Sources */,
 				9D0E8B43263B2358009FE746 /* Enums.swift in Sources */,
+				9D58031226B3306A00FCF860 /* ListStudentsViewController.swift in Sources */,
 				9D243DF925B241620036A67B /* AssignOptionsViewController.swift in Sources */,
 				9D01C53E258B3DCA00982550 /* DeckInfoViewController.swift in Sources */,
 				9D330DDC262510C800DF5E94 /* FailureDelegate.swift in Sources */,

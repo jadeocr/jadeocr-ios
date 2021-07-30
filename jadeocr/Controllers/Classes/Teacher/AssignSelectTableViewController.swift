@@ -10,7 +10,8 @@ import UIKit
 class AssignSelectTableViewController: UITableViewController {
 
     var classCode: String?
-    var currDeck:String?
+    var currDeck: String?
+    var currDeckName: String?
     var decks: [Dictionary<String, Any>]?
     var displayDecks: [Dictionary<String, Any>]?
     @IBOutlet weak var searchBar: UISearchBar!
@@ -76,6 +77,7 @@ class AssignSelectTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let deck = displayDecks?[indexPath[1]] {
             currDeck = deck["deckId"] as? String
+            currDeckName = deck["deckName"] as? String
         }
         self.performSegue(withIdentifier: "toAssignOptions", sender: self)
     }
@@ -87,6 +89,7 @@ class AssignSelectTableViewController: UITableViewController {
         if let vc = segue.destination as? AssignOptionsViewController {
             vc.classCode = classCode ?? ""
             vc.deckCode = currDeck ?? ""
+            vc.deckName = currDeckName ?? ""
         }
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 class DetailedResultsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyLabel: UILabel!
     
     var deckId: String = ""
     var classCode: String = ""
@@ -22,9 +23,12 @@ class DetailedResultsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        if detailedResults.count != 0 {
+            emptyLabel.isHidden = true
+        }
+        
         self.tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
-//        print(detailedResults)
     }
     
     @objc func refreshTableView() {
@@ -37,6 +41,10 @@ class DetailedResultsViewController: UIViewController {
                 self.detailedResults = results
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
+                
+                if self.detailedResults.count != 0 {
+                    self.emptyLabel.isHidden = true
+                }
             }
         })
     }

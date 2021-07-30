@@ -319,9 +319,9 @@ class TeacherRequests {
                 } else {
                     completion(false)
                 }
-//                if let data = data, let dataString = String(data: data, encoding: .utf8) {
-//
-//                }
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print(dataString)
+                }
             }
         }
         

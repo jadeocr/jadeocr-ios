@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UpdateAssignmentViewController: UIViewController {
+class UpdateAssignmentViewController: UITableViewController {
 
     var classCode: String = ""
     var assignmentId: String = ""
@@ -36,6 +36,10 @@ class UpdateAssignmentViewController: UIViewController {
         modeLabel.text = mode?.rawValue
         repetitionLabel.text = String(repetitions)
         handwriting.setOn(storedHandwriting, animated: false)
+        
+        if mode != Modes.learn {
+            scramble.isEnabled = false
+        }
         
         switch storedFront {
         case "character":

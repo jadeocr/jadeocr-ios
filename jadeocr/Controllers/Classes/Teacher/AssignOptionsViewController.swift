@@ -7,11 +7,13 @@
 
 import UIKit
 
-class AssignOptionsViewController: UIViewController {
+class AssignOptionsViewController: UITableViewController {
 
     var classCode: String = ""
-    var deckCode:String = ""
+    var deckCode: String = ""
+    var deckName: String = ""
     
+    @IBOutlet weak var deckNameLabel: UILabel!
     @IBOutlet weak var mode: UISegmentedControl!
     @IBOutlet weak var handwriting: UISwitch!
     @IBOutlet weak var front: UISegmentedControl!
@@ -23,6 +25,8 @@ class AssignOptionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        deckNameLabel.text = deckName
+        
         dueDatePicker.subviews.first?.semanticContentAttribute = .forceRightToLeft
         dueDatePicker.minimumDate = Date(timeIntervalSinceNow: 0)
     }
@@ -43,9 +47,15 @@ class AssignOptionsViewController: UIViewController {
         if mode.selectedSegmentIndex != 0 { //Learn not selected
             repetitionsStepper.isEnabled = false
             repetitionsCountLabel.isEnabled = false
+            
+            scramble.isOn = false
+            scramble.isEnabled = false
         } else {
             repetitionsStepper.isEnabled = true
             repetitionsCountLabel.isEnabled = true
+            
+            scramble.isOn = true
+            scramble.isEnabled = true
         }
         
         if mode.selectedSegmentIndex == 1 { //Srs selected
