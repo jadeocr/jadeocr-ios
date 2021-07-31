@@ -17,6 +17,8 @@ class FailureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        overrideUserInterfaceStyle = .dark
+        
         failureView = Failure(matched: matched!, corrrect: correct!, delegate: passthroughDelegate!)
 
         self.view.frame = self.view.bounds

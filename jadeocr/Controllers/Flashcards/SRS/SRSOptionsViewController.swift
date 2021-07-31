@@ -14,7 +14,6 @@ class SRSOptionsViewController: FlashcardOptions {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24)], for: .normal)
         frontControl.clipsToBounds = true
         frontControl.layer.cornerRadius = 20
     }
