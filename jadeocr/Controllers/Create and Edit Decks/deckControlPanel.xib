@@ -20,6 +20,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19L-sD-ylG">
                     <rect key="frame" x="103.5" y="16" width="207" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="tintColor" red="0.50133770700000002" green="0.62921124699999997" blue="0.76238733530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="Add Card"/>
                     <connections>
                         <action selector="addCardButtonPressed:" destination="-1" eventType="touchUpInside" id="F3a-K7-G9F"/>

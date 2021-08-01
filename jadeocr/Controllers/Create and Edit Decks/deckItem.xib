@@ -50,6 +50,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKV-Dc-sHb">
                     <rect key="frame" x="509.33333333333326" y="18.666666666666671" width="19" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="tintColor" red="0.50133770700000002" green="0.62921124699999997" blue="0.76238733530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" image="trash" catalog="system"/>
                     <connections>
                         <action selector="deleteButtonPressed:" destination="-1" eventType="touchUpInside" id="Lbm-Es-mUK"/>
