@@ -30,7 +30,7 @@ class Failure: UIView {
         self.init()
         self.delegate = delegate
         matchedText.text = matched
-        correctLabel.text = "Write one more time: " + corrrect
+        correctLabel.text = "Write it one more time: " + corrrect
     }
     
     func initWithNib() {
@@ -39,6 +39,10 @@ class Failure: UIView {
         failureView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         writeView.clipsToBounds = true
         writeView.layer.cornerRadius = 10
+        
+        writeView.layer.borderWidth = 5
+        writeView.layer.borderColor = UIColor(named: "nord9")?.cgColor
+        
         addSubview(failureView)
     }
     
