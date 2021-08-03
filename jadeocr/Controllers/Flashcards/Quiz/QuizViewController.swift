@@ -71,6 +71,7 @@ class QuizViewController: Flashcards {
             self.flip()
             
             self.setMultipleChoiceOptions()
+            self.quizMultipleChoiceView?.allowTouch()
         })
     }
     
@@ -146,7 +147,7 @@ class QuizViewController: Flashcards {
     //delegate function
     override func selectedChoice(selected: String, view: UIView, textView: UITextView) {
         let correct = addQuizResultForMultipleChoice(selected: selected)
-
+        
         if correct {
             quizMultipleChoiceView?.correctAnimation(view: view, textView: textView, completion: {
                 self.showNextCard()
@@ -156,6 +157,8 @@ class QuizViewController: Flashcards {
                 self.showNextCard()
             })
         }
+        
+
     }
     
     override func slideOut(childView: UIView, parentView: UIView, completion: @escaping () -> Void) {

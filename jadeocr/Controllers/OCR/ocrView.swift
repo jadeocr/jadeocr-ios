@@ -12,6 +12,7 @@ class ocrView: UIView {
     @IBOutlet var ocrViewContent: UIView!
     @IBOutlet weak var ocrController: OCRController!
     @IBOutlet weak var charShown: UITextView!
+    @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
     
     
@@ -40,6 +41,9 @@ class ocrView: UIView {
         
         ocrController.layer.borderWidth = 5
         ocrController.layer.borderColor = UIColor(named: "nord9")?.cgColor
+        
+        clearButton.isExclusiveTouch = true
+        checkButton.isExclusiveTouch = true
         
         addSubview(ocrViewContent)
     }

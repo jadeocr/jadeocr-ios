@@ -10,11 +10,17 @@ import UIKit
 class LearnViewController: Flashcards {
     @IBOutlet var learnView: UIView!
     
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    
     var scramble: Bool?
     var repetitions: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backButton.isExclusiveTouch = true
+        nextButton.isExclusiveTouch = true
 
         if handwriting ?? false {
             cardHeightMultiplier = 0.3
@@ -36,7 +42,6 @@ class LearnViewController: Flashcards {
     }
     
     override func showNextCard() {
-//        let childView: UIView = (cardArray[count].front!.isHidden == true) ? cardArray[count].back! : cardArray[count].front!
         slideOut(childView: cardArray[count].view, parentView: learnView, completion: {
             super.showNextCard()
         })
@@ -57,16 +62,6 @@ class LearnViewController: Flashcards {
         showLastCard()
         slideIn(childView: cardArray[count].view, parentView: learnView, completion: {})
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func finishedLearn() {
         if self.studentDelegate == nil {

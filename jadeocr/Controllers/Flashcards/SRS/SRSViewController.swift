@@ -10,6 +10,9 @@ import UIKit
 class SRSViewController: Flashcards {
     @IBOutlet var srsView: UIView!
     
+    @IBOutlet weak var dontKnowButton: UIButton!
+    @IBOutlet weak var knowButton: UIButton!
+    
     var srsResultsArray:[srsResults] = []
     var sendArray: [Dictionary<String, Bool>] = [] //for summary view
     
@@ -27,6 +30,9 @@ class SRSViewController: Flashcards {
         
         createCardsBasedOnRepetitions(repetitions: 1, parentView: srsView)
         countLabel.text = "0/" + String(cardArray.count)
+        
+        dontKnowButton.isExclusiveTouch = true
+        knowButton.isExclusiveTouch = true
         
         super.showNextCard() //bypass slide animation
     }

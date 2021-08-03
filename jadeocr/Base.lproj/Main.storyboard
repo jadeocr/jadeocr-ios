@@ -1550,9 +1550,11 @@
                     <connections>
                         <outlet property="frontControl" destination="Tml-bm-GzI" id="xF4-PP-oVU"/>
                         <outlet property="scrambleControl" destination="j9b-ZG-Lcv" id="3bc-KF-fQr"/>
+                        <segue destination="7io-6b-nrd" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="atH-wR-YfC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qrY-Cs-pva" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="7io-6b-nrd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2884" y="-554"/>
         </scene>
@@ -1888,9 +1890,11 @@
                         <outlet property="repetitionLabel" destination="qA9-NK-RYe" id="p1J-nR-ifU"/>
                         <outlet property="repetitionStepper" destination="ZfX-kB-vrl" id="kxD-27-LE0"/>
                         <outlet property="scrambleControl" destination="UHZ-25-Yy4" id="TGy-Zv-5yn"/>
+                        <segue destination="Er1-EP-005" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="8Kh-as-lhy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aIw-dl-kXP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Er1-EP-005" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2883.7037037037035" y="271.66666666666669"/>
         </scene>
@@ -1921,7 +1925,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="0sX-IL-0yG">
-                            <rect key="frame" x="0.0" y="0.0" width="598" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="704" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
@@ -2373,13 +2377,15 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iip-Rv-qMO">
                                                         <rect key="frame" x="20.5" y="285" width="364.5" height="48"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <state key="normal" title="Sign In"/>
+                                                        <state key="normal" title="Sign In">
+                                                            <color key="titleColor" red="0.50133770700000002" green="0.62921124699999997" blue="0.76238733530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="signInTapped:" destination="RVk-75-DUu" eventType="touchUpInside" id="Wk6-pZ-PRZ"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="Hso-WC-Cj9" firstAttribute="width" secondItem="OrE-TD-Hay" secondAttribute="width" multiplier="0.9" id="3RF-Lk-qhv"/>
                                                     <constraint firstItem="iip-Rv-qMO" firstAttribute="width" secondItem="OrE-TD-Hay" secondAttribute="width" multiplier="0.9" id="CI4-XZ-UL9"/>
@@ -2397,21 +2403,21 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFx-Nr-5IO">
                                                 <rect key="frame" x="0.0" y="79" width="810" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                <color key="textColor" red="0.8461850286" green="0.86990720030000002" blue="0.91559016699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.92501109839999995" green="0.93699079750000003" blue="0.95767825839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="highlightedColor" name="AccentColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Lv-el-49m">
                                                 <rect key="frame" x="264" y="909" width="282" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Don't have an account? Sign up!">
-                                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.8461850286" green="0.86990720030000002" blue="0.91559016699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <segue destination="sWe-d3-bWl" kind="show" id="WIb-sQ-0OD"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="OrE-TD-Hay" firstAttribute="centerY" secondItem="fnW-AI-e8t" secondAttribute="centerY" id="37U-HI-CXc"/>
                                             <constraint firstItem="bFx-Nr-5IO" firstAttribute="centerY" secondItem="fnW-AI-e8t" secondAttribute="centerY" multiplier="0.2" id="4sT-Lw-Ovm"/>
@@ -2503,7 +2509,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bd5-xy-fS2">
                                                 <rect key="frame" x="0.0" y="79" width="810" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                <color key="textColor" red="0.8461850286" green="0.86990720030000002" blue="0.91559016699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.92501109839999995" green="0.93699079750000003" blue="0.95767825839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aGI-X2-qvK">
@@ -2547,14 +2553,16 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JL-1d-Bcm">
                                                         <rect key="frame" x="28.5" y="414" width="510" height="48"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <state key="normal" title="Sign Up"/>
+                                                        <state key="normal" title="Sign Up">
+                                                            <color key="titleColor" red="0.50133770700000002" green="0.62921124699999997" blue="0.76238733530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="signInPressed:" destination="sWe-d3-bWl" eventType="touchUpInside" id="Wip-wV-jRj"/>
                                                             <action selector="signInTapped:" destination="RVk-75-DUu" eventType="touchUpInside" id="gs8-6I-K2x"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="Gjk-Kx-Far" firstAttribute="width" secondItem="aGI-X2-qvK" secondAttribute="width" multiplier="0.43" id="1cQ-kN-jFT"/>
                                                     <constraint firstItem="Wdf-qo-pAX" firstAttribute="centerX" secondItem="aGI-X2-qvK" secondAttribute="centerX" id="7Gu-eg-Lgb"/>
@@ -2577,7 +2585,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="bd5-xy-fS2" firstAttribute="centerY" secondItem="GSO-e2-f2B" secondAttribute="centerY" multiplier="0.2" id="5nh-bA-Srd"/>
                                             <constraint firstItem="aGI-X2-qvK" firstAttribute="height" secondItem="GSO-e2-f2B" secondAttribute="height" multiplier="0.5" id="9TJ-5O-e9h"/>
@@ -2692,6 +2700,8 @@
                         <outlet property="AnchorButtonsViewToFullWidth" destination="mud-pT-3tJ" id="0Rf-h8-SXj"/>
                         <outlet property="buttonsView" destination="k6T-zr-sA9" id="ut4-lr-xJU"/>
                         <outlet property="countLabel" destination="JHP-Cq-8tx" id="IsU-Ve-VaW"/>
+                        <outlet property="dontKnowButton" destination="klj-Im-ASu" id="yL5-MA-kXe"/>
+                        <outlet property="knowButton" destination="K9z-d5-uuK" id="39o-Ig-Uwx"/>
                         <outlet property="srsView" destination="6zE-Ud-0hK" id="raL-Um-wKG"/>
                         <segue destination="qw1-8m-mjD" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="hM1-m9-bnC"/>
                         <segue destination="qw1-8m-mjD" kind="unwind" identifier="unwindToStudentView" unwindAction="unwindToStudentView:" id="4Mi-Da-aEN"/>
@@ -2769,9 +2779,11 @@
                         <outlet property="AnchorButtonsToCenterX" destination="qV8-0H-6uT" id="TbE-Ea-CZL"/>
                         <outlet property="AnchorButtonsViewToBottom" destination="d96-Uj-4o5" id="LsK-YX-ypR"/>
                         <outlet property="AnchorButtonsViewToFullWidth" destination="3pF-Om-81i" id="hdU-Fb-PZt"/>
+                        <outlet property="backButton" destination="bhw-wU-KV5" id="7d0-Ab-Hfj"/>
                         <outlet property="buttonsView" destination="1fC-3P-dSJ" id="ODJ-og-qn0"/>
                         <outlet property="countLabel" destination="mi4-ft-y6K" id="mkd-SY-sHl"/>
                         <outlet property="learnView" destination="VKU-qz-YQu" id="9N0-HS-0Zv"/>
+                        <outlet property="nextButton" destination="fKb-Ta-4QL" id="gKT-P2-fvr"/>
                         <segue destination="upu-KK-Q2u" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="3Pa-gX-8U7"/>
                         <segue destination="upu-KK-Q2u" kind="unwind" identifier="unwindToStudentView" unwindAction="unwindToStudentView:" id="lhI-6F-kF4"/>
                         <segue destination="ydE-4W-NBP" kind="show" identifier="segueToSummary" id="DWT-40-fxB"/>
@@ -3004,9 +3016,11 @@
                         <outlet property="frontControl" destination="snk-mE-HLQ" id="HaM-ZF-VRt"/>
                         <outlet property="handwritingControl" destination="leZ-di-BOp" id="fLS-Jq-P80"/>
                         <outlet property="startCell" destination="7LX-r8-nBN" id="CKY-Is-mp7"/>
+                        <segue destination="9IG-GF-FHk" kind="unwind" identifier="unwindToDeckInfo" unwindAction="unwindToDeckInfoWithUnwindSegue:" id="BAP-mq-VOw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lGe-FB-nid" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="9IG-GF-FHk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2885" y="-1214"/>
         </scene>
@@ -3371,8 +3385,8 @@
         <segue reference="6al-cd-dAe"/>
         <segue reference="DWT-40-fxB"/>
         <segue reference="KGA-Dm-oc9"/>
-        <segue reference="yJu-zk-xby"/>
-        <segue reference="Isa-gX-rWe"/>
+        <segue reference="CU4-Qt-peo"/>
+        <segue reference="Xrc-wE-mQy"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>

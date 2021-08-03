@@ -67,8 +67,6 @@ class multipleChoiceCard: UIView {
         dView.layer.borderWidth = 5
         dView.layer.borderColor = UIColor(named: "nord9")?.cgColor
         
-        
-        
         addSubview(multipleChoiceCardContent)
     }
     
@@ -156,19 +154,38 @@ class multipleChoiceCard: UIView {
         shakeAnimator.startAnimation()
     }
     
+    var pressed: Bool = false
+    
+    func allowTouch() {
+        pressed = false
+        print("HI")
+    }
+    
     @IBAction func aViewTapped(_ sender: Any) {
-        delegate?.selectedChoice(selected: aTextView.text, view: aView, textView: aTextView )
+        if !pressed {
+            delegate?.selectedChoice(selected: aTextView.text, view: aView, textView: aTextView )
+            pressed = true
+        }
     }
     
     @IBAction func bViewTapped(_ sender: Any) {
-        delegate?.selectedChoice(selected: bTextView.text, view: bView, textView: bTextView)
+        if !pressed {
+            delegate?.selectedChoice(selected: bTextView.text, view: bView, textView: bTextView)
+            pressed = true
+        }
     }
     
     @IBAction func cViewTapped(_ sender: Any) {
-        delegate?.selectedChoice(selected: cTextView.text, view: cView, textView: cTextView)
+        if !pressed {
+            delegate?.selectedChoice(selected: cTextView.text, view: cView, textView: cTextView)
+            pressed = true
+        }
     }
     
     @IBAction func dViewTapped(_ sender: Any) {
-        delegate?.selectedChoice(selected: dTextView.text, view: dView, textView: dTextView)
+        if !pressed {
+            delegate?.selectedChoice(selected: dTextView.text, view: dView, textView: dTextView)
+            pressed = true
+        }
     }
 }
