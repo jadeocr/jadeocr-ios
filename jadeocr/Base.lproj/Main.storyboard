@@ -1404,6 +1404,7 @@
                             <constraint firstItem="jE0-cn-Y1p" firstAttribute="firstBaseline" secondItem="sic-iy-jFR" secondAttribute="baseline" constant="10" id="AHf-Hn-jko"/>
                             <constraint firstItem="EEX-aJ-ZpZ" firstAttribute="height" secondItem="7vF-9q-jNS" secondAttribute="height" multiplier="0.47" id="AkL-w7-pHk"/>
                             <constraint firstItem="g7j-4O-Rw9" firstAttribute="centerY" secondItem="vNk-pI-6C1" secondAttribute="centerY" multiplier="0.8" id="Ar0-ov-jXL"/>
+                            <constraint firstItem="jE0-cn-Y1p" firstAttribute="width" secondItem="7vF-9q-jNS" secondAttribute="width" multiplier="0.8" id="BQa-lr-1qg"/>
                             <constraint firstItem="sic-iy-jFR" firstAttribute="leading" secondItem="vNk-pI-6C1" secondAttribute="centerX" multiplier="0.2" id="CSZ-dQ-ecB"/>
                             <constraint firstItem="EEX-aJ-ZpZ" firstAttribute="bottom" secondItem="vNk-pI-6C1" secondAttribute="bottom" id="CwQ-Jn-Of5"/>
                             <constraint firstItem="gLY-Da-ayV" firstAttribute="centerX" secondItem="vNk-pI-6C1" secondAttribute="centerX" id="Eca-ey-t8X"/>
@@ -1415,9 +1416,10 @@
                             <constraint firstItem="V5A-In-3t5" firstAttribute="leading" secondItem="vNk-pI-6C1" secondAttribute="centerX" multiplier="0.2" id="NhH-kh-Txz"/>
                             <constraint firstItem="vjc-l4-epY" firstAttribute="centerY" secondItem="vNk-pI-6C1" secondAttribute="centerY" multiplier="0.8" id="Qfx-fV-Imh"/>
                             <constraint firstItem="jE0-cn-Y1p" firstAttribute="height" secondItem="7vF-9q-jNS" secondAttribute="height" multiplier="0.1" id="cYG-sk-oel"/>
+                            <constraint firstItem="vjc-l4-epY" firstAttribute="centerY" secondItem="vNk-pI-6C1" secondAttribute="centerY" multiplier="0.7" priority="999" id="gRz-El-ezZ"/>
                             <constraint firstItem="vjc-l4-epY" firstAttribute="trailing" secondItem="vNk-pI-6C1" secondAttribute="centerX" multiplier="1.8" id="l8O-OI-s1y"/>
                             <constraint firstItem="g7j-4O-Rw9" firstAttribute="leading" secondItem="vNk-pI-6C1" secondAttribute="centerX" multiplier="0.2" id="oVm-JN-2o6"/>
-                            <constraint firstItem="jE0-cn-Y1p" firstAttribute="width" secondItem="7vF-9q-jNS" secondAttribute="width" multiplier="0.8" id="p66-S7-oQK"/>
+                            <constraint firstItem="jE0-cn-Y1p" firstAttribute="width" secondItem="7vF-9q-jNS" secondAttribute="width" multiplier="0.5" priority="999" id="p66-S7-oQK"/>
                             <constraint firstItem="vjc-l4-epY" firstAttribute="height" secondItem="7vF-9q-jNS" secondAttribute="height" multiplier="0.0824074" id="sFH-3R-Al0"/>
                         </constraints>
                     </view>
@@ -1429,7 +1431,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonsLandscapeConstraint" destination="gRz-El-ezZ" id="pJU-DF-J8p"/>
+                        <outlet property="buttonsPortraitConstraint" destination="Qfx-fV-Imh" id="94B-6U-Ueu"/>
                         <outlet property="deckInfoLabel" destination="sic-iy-jFR" id="sTu-mb-ITh"/>
+                        <outlet property="descLandscapeConstraint" destination="p66-S7-oQK" id="Poh-5g-PP1"/>
+                        <outlet property="descPortraitConstraint" destination="BQa-lr-1qg" id="zka-3S-zUN"/>
                         <outlet property="descriptionText" destination="jE0-cn-Y1p" id="uFJ-4Z-ecr"/>
                         <outlet property="editButton" destination="HdZ-Ut-Fjx" id="3fK-Js-Ldq"/>
                         <outlet property="emptyLabel" destination="gLY-Da-ayV" id="1Ii-yU-jIa"/>

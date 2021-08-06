@@ -17,11 +17,33 @@ class DeckInfoViewController: UIViewController {
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var emptyLabel: UILabel!
     
+    @IBOutlet var descPortraitConstraint: NSLayoutConstraint!
+    @IBOutlet var descLandscapeConstraint: NSLayoutConstraint!
+    @IBOutlet var buttonsPortraitConstraint: NSLayoutConstraint!
+    @IBOutlet var buttonsLandscapeConstraint: NSLayoutConstraint!
     
     var deckId: String?
     var deck: Dictionary<String, Any>?
     var characters: [Dictionary<String, Any>]?
     var mode:String = "none"
+    
+    var shown: Bool = false
+    
+    override func viewDidAppear(_ animated: Bool) {
+        shown = true
+        switchRotation()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        shown = false
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        guard  shown else {
+            return
+        }
+        switchRotation()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +53,21 @@ class DeckInfoViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 100
+    }
+    
+    func switchRotation() {
+        if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
+            //portrait
+            descPortraitConstraint.isActive = true
+            buttonsPortraitConstraint.isActive = true
+            descLandscapeConstraint.isActive = false
+            buttonsLandscapeConstraint.isActive = false
+        } else {
+            descPortraitConstraint.isActive = false
+            buttonsPortraitConstraint.isActive = false
+            descLandscapeConstraint.isActive = true
+            buttonsLandscapeConstraint.isActive = true
+        }
     }
     
     func updateDeckInfo() {
