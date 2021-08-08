@@ -62,7 +62,6 @@ class ClassesViewController: UIViewController {
                 self.tableView.reloadData()
             }
         })
-        print(classesTeaching)
         self.refreshControl.endRefreshing()
     }
 
