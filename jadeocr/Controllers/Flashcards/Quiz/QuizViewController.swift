@@ -61,6 +61,7 @@ class QuizViewController: Flashcards {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+//        centerTextInCards()
         quizMultipleChoiceView?.center()
     }
     

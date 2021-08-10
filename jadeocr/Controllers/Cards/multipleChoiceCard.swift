@@ -158,7 +158,6 @@ class multipleChoiceCard: UIView {
     
     func allowTouch() {
         pressed = false
-        print("HI")
     }
     
     @IBAction func aViewTapped(_ sender: Any) {

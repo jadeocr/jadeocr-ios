@@ -60,11 +60,17 @@ class Flashcards: UIViewController, OCRDelegate, CardDelegate, SuccessDelegate, 
         
         switchRotation()
         
-        coordinator.animate(alongsideTransition: nil, completion: {_ in //runs after rotation has finished
-            UIView.animate(withDuration: 0.15, animations: {
-                self.centerTextInCards()
-            })
-        })
+//        coordinator.animate(alongsideTransition: nil, completion: {_ in //runs after rotation has finished
+//            UIView.animate(withDuration: 0.15, animations: {
+//                self.centerTextInCards()
+//            })
+//        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        centerTextInCards()
     }
     
     override func viewDidLayoutSubviews() {
