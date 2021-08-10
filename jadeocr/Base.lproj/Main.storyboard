@@ -1936,7 +1936,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="0sX-IL-0yG">
-                            <rect key="frame" x="0.0" y="0.0" width="598" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="704" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
@@ -2842,7 +2842,7 @@
                                 <color key="barTintColor" red="0.17950707669999999" green="0.2030345798" blue="0.2528765798" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Za0-lO-JKU">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Za0-lO-JKU">
                                 <rect key="frame" x="0.0" y="106" width="810" height="924"/>
                                 <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.17950707669999999" green="0.2030345798" blue="0.2528765798" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3396,7 +3396,7 @@
         <segue reference="zD0-Mw-HOR"/>
         <segue reference="DWT-40-fxB"/>
         <segue reference="QF0-FK-KpW"/>
-        <segue reference="CU4-Qt-peo"/>
+        <segue reference="yJu-zk-xby"/>
         <segue reference="Xrc-wE-mQy"/>
     </inferredMetricsTieBreakers>
     <resources>

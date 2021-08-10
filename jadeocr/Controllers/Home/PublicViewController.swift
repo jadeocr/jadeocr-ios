@@ -41,7 +41,6 @@ class PublicViewController: UIViewController {
         DeckRequests.searchPublicDecks(query: query, completion: {results in
             DispatchQueue.main.async {
                 self.decks = results
-                print(results)
                 self.collectionView.reloadData()
             }
         })
@@ -65,8 +64,13 @@ class PublicViewController: UIViewController {
 }
 
 extension PublicViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        search(query: searchBar.text ?? "")
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchText.count != 0) {
+            search(query: searchText)
+        } else {
+            search(query: ".")
+        }
+        
     }
 }
 

@@ -91,7 +91,7 @@ class DeckRequests {
 
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
                 //MARK: TODO: Error handling
-                print(dataString)
+//                print(dataString)
                 completion(true)
             }
         }
